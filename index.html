@@ -326,8 +326,14 @@ const bypassGames = ["red dead redemption 2", "red dead redemption", "red dead",
 function normalize(t) { return t.toLowerCase().replace(/[^a-z0-9]/g, ""); }
 function score(input, game) {
     const a = normalize(input); const b = normalize(game);
-    if (a === b) return 100; if (b.startsWith(a)) return 80; if (b.includes(a)) return 60; return 0;
+    if (a === b) return 100;
+    if (b.startsWith(a)) return 80;
+    const words = game.toLowerCase().split(/\s+/);
+    if (words.some(w => normalize(w).startsWith(a))) return 70;
+    if (b.includes(a)) return 40;
+    return 0;
 }
+
 
 function liveSearch() {
     const inputRaw = document.getElementById("search").value.trim();
@@ -355,7 +361,7 @@ function liveSearch() {
 
     const isBypass = best && bypassGames.some(g => normalize(best) === normalize(g) || normalize("red dead redemption 2").startsWith(normalize(best)));
 
-    if (bestScore >= 60) {
+    if (bestScore >= 70) {
         expOk.style.display = "none";
         if (isBypass) {
             result.innerHTML = `${best} <span style="font-size:1.4rem;">⚠️</span>`;
