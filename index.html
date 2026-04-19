@@ -457,9 +457,11 @@
         <div class="sidebar">
             <button class="tab-button active" onclick="switchTab(0)">🏠 Accueil</button>
             <button class="tab-button" onclick="switchTab(1)">🎮 Checker</button>
-            <button class="tab-button" onclick="switchTab(2)">🔓 Bypass</button>
-            <button class="tab-button" onclick="switchTab(3)">❓ FAQ</button>
-            <button class="tab-button" onclick="switchTab(4)">⚙️ Paramètres</button>
+     <button class="tab-button" onclick="switchTab(2)">🔓 Bypass</button>
+<button class="tab-button" onclick="switchTab(3)">🌐 Online Fix</button>   <!-- Nouveau -->
+<button class="tab-button" onclick="switchTab(4)">❓ FAQ</button>
+            
+            <button class="tab-button" onclick="switchTab(5)">⚙️ Paramètres</button>
         </div>
 
         <!-- CONTENU -->
@@ -502,8 +504,33 @@
                 </div>
             </div>
 
-            <!-- TAB 3 -->
-            <div id="tab-3" class="tab-content">
+<!-- TAB 3 - ONLINE FIX (nouvelle tab) -->
+<div id="tab-3" class="tab-content">
+    <div class="bypass-container" style="padding: 40px 20px;">
+        <h1 class="bypass-title" style="font-size: 2.1rem;">🌐 Online Fix</h1>
+        
+        <p style="font-size: 1.1rem; line-height: 1.7; max-width: 620px; margin: 0 auto 30px; opacity: 0.9;">
+            Pour jouer en multijoueur avec des amis sur des jeux crackés, tu peux utiliser les Online Fix.
+        </p>
+
+        <div style="background: rgba(255,255,255,0.08); border: 1px solid var(--accent-border); border-radius: 16px; padding: 28px; max-width: 520px; margin: 0 auto 30px;">
+            <p style="font-size: 1.15rem; margin-bottom: 18px;">
+                Voici le lien officiel du Online Fix :
+            </p>
+            <a href="https://online-fix.me/" target="_blank" style="display: inline-block; background: linear-gradient(45deg, #00c4ff, #0099ff); color: white; padding: 16px 32px; border-radius: 14px; font-size: 1.2rem; font-weight: 700; text-decoration: none; box-shadow: 0 0 20px rgba(0, 196, 255, 0.5); transition: all 0.3s;">
+                🌐 online-fix.me
+            </a>
+        </div>
+
+        <p style="font-size: 1rem; opacity: 0.85; max-width: 580px; margin: 0 auto;">
+            Pour savoir comment installer correctement un Online Fix, 
+            <strong>consultez l’onglet FAQ</strong> (il y a une question dédiée).
+        </p>
+    </div>
+</div>
+
+            <!-- TAB 4 -->
+            <div id="tab-4" class="tab-content">
                 <div class="faq-container">
                     <h1 class="faq-title">FAQ</h1>
                     <div class="faq-item">
@@ -526,7 +553,7 @@
             </div>
 
             <!-- TAB 4 -->
-            <div id="tab-4" class="tab-content">
+            <div id="tab-5" class="tab-content">
                 <div class="settings-container">
                     <h1 class="settings-title">⚙️ Paramètres</h1>
                     <div class="settings-section">
@@ -552,8 +579,9 @@
 <nav class="bottom-nav">
     <button class="bottom-nav-btn active" onclick="switchTab(0)"><span class="bn-icon">🏠</span>Accueil</button>
     <button class="bottom-nav-btn" onclick="switchTab(1)"><span class="bn-icon">🎮</span>Checker</button>
-    <button class="bottom-nav-btn" onclick="switchTab(2)"><span class="bn-icon">🔓</span>Bypass</button>
-    <button class="bottom-nav-btn" onclick="switchTab(3)"><span class="bn-icon">❓</span>FAQ</button>
+ <button class="bottom-nav-btn" onclick="switchTab(2)"><span class="bn-icon">🔓</span>Bypass</button>
+<button class="bottom-nav-btn" onclick="switchTab(3)"><span class="bn-icon">🌐</span>Online Fix</button>   <!-- Nouveau -->
+<button class="bottom-nav-btn" onclick="switchTab(4)"><span class="bn-icon">❓</span>FAQ</button>
     <button class="bottom-nav-btn" onclick="switchTab(4)"><span class="bn-icon">⚙️</span>Params</button>
 </nav>
 
@@ -754,6 +782,7 @@ function downloadFile2() {
 function switchTab(n) {
     document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
     document.getElementById('tab-' + n).classList.add('active');
+    
     document.querySelectorAll('.tab-button').forEach((b, i) => b.classList.toggle('active', i === n));
     document.querySelectorAll('.bottom-nav-btn').forEach((b, i) => b.classList.toggle('active', i === n));
 }
