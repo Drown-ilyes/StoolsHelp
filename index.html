@@ -11,9 +11,24 @@
         --neon-green: #00ff9d;
         --neon-red: #ff2d55;
         --neon-yellow: #ffcc00;
-        --card: rgba(15, 15, 35, 0.95);
+
+        /* Variables dynamiques pour les thèmes */
         --bg1: #1a0033;
         --bg2: #0a0a1f;
+        --dark-panel: rgba(10,10,30,0.98);
+        --dark-panel-light: rgba(10,10,30,0.9);
+        --dark-panel-lighter: rgba(10,10,30,0.85);
+        --accent-border: rgba(0,240,255,0.25);
+        --accent-shadow: rgba(0,240,255,0.2);
+        --accent-hover-bg: rgba(0,240,255,0.1);
+        --accent-active-bg: rgba(0,240,255,0.18);
+        --accent-active-shadow: rgba(0,240,255,0.3);
+        --accent-focus-shadow: rgba(0,240,255,0.4);
+        --grid-color: rgba(0,240,255,0.03);
+        --bottom-nav-bg: rgba(8,8,24,0.98);
+        --accent-hover: rgba(0,240,255,0.15);
+        --list-border: rgba(0,240,255,0.15);
+        --faq-border: rgba(0,240,255,0.15);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -32,8 +47,8 @@
         content: "";
         position: fixed;
         inset: 0;
-        background: linear-gradient(90deg, rgba(0,240,255,0.03) 1px, transparent 1px),
-                    linear-gradient(rgba(0,240,255,0.03) 1px, transparent 1px);
+        background: linear-gradient(90deg, var(--grid-color) 1px, transparent 1px),
+                    linear-gradient(var(--grid-color) 1px, transparent 1px);
         background-size: 60px 60px;
         pointer-events: none;
         animation: gridMove 40s linear infinite;
@@ -52,14 +67,14 @@
     /* HEADER */
     .header {
         height: 68px;
-        background: rgba(10,10,30,0.98);
+        background: var(--dark-panel);
         border-radius: 18px;
-        border: 1px solid rgba(0,240,255,0.25);
+        border: 1px solid var(--accent-border);
         display: flex;
         align-items: center;
         padding: 0 22px;
         gap: 15px;
-        box-shadow: 0 0 25px rgba(0,240,255,0.2);
+        box-shadow: 0 0 25px var(--accent-shadow);
         margin-bottom: 16px;
     }
 
@@ -111,13 +126,12 @@
         align-items: flex-start;
     }
 
-    /* SIDEBAR - desktop uniquement */
     .sidebar {
         width: 220px;
         flex-shrink: 0;
-        background: rgba(10,10,30,0.98);
+        background: var(--dark-panel);
         border-radius: 18px;
-        border: 1px solid rgba(0,240,255,0.25);
+        border: 1px solid var(--accent-border);
         padding: 16px 12px;
         display: flex;
         flex-direction: column;
@@ -142,20 +156,19 @@
         text-align: left;
         width: 100%;
     }
-    .tab-button:hover { background: rgba(0,240,255,0.1); }
+    .tab-button:hover { background: var(--accent-hover-bg); }
     .tab-button.active {
-        background: rgba(0,240,255,0.18);
+        background: var(--accent-active-bg);
         border-color: var(--neon-cyan);
-        box-shadow: 0 0 20px rgba(0,240,255,0.3);
+        box-shadow: 0 0 20px var(--accent-active-shadow);
         color: var(--neon-cyan);
     }
 
-    /* CONTENU */
     .main-content {
         flex: 1;
-        background: rgba(10,10,30,0.98);
+        background: var(--dark-panel);
         border-radius: 18px;
-        border: 1px solid rgba(0,240,255,0.25);
+        border: 1px solid var(--accent-border);
         padding: 30px 28px;
         min-height: 500px;
     }
@@ -163,14 +176,14 @@
     .tab-content { display: none; }
     .tab-content.active { display: block; }
 
-    /* NAV BAS - mobile uniquement */
+    /* NAV BAS - mobile */
     .bottom-nav {
         display: none;
         position: fixed;
         bottom: 0; left: 0; right: 0;
         height: 65px;
-        background: rgba(8,8,24,0.98);
-        border-top: 1px solid rgba(0,240,255,0.25);
+        background: var(--bottom-nav-bg);
+        border-top: 1px solid var(--accent-border);
         z-index: 999;
         padding: 0 8px;
         justify-content: space-around;
@@ -219,33 +232,47 @@
     h2 { font-size:2rem; font-weight:700; letter-spacing:-1px; margin-bottom:6px; background:linear-gradient(90deg,#fff,var(--neon-cyan)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
     .subtitle { font-size:1rem; opacity:0.6; margin-bottom:22px; }
 
-    input { width:100%; padding:16px 20px; font-size:16px; background:rgba(10,10,30,0.9); border:2px solid transparent; border-radius:14px; color:white; outline:none; transition:all 0.3s; box-shadow:0 0 12px rgba(0,240,255,0.15); }
-    input:focus { border-color:var(--neon-cyan); box-shadow:0 0 25px rgba(0,240,255,0.4); }
+    input { 
+        width:100%; padding:16px 20px; font-size:16px; 
+        background:var(--dark-panel-light); 
+        border:2px solid transparent; 
+        border-radius:14px; 
+        color:white; 
+        outline:none; 
+        transition:all 0.3s; 
+        box-shadow:0 0 12px var(--accent-shadow); 
+    }
+    input:focus { 
+        border-color:var(--neon-cyan); 
+        box-shadow:0 0 25px var(--accent-focus-shadow); 
+    }
 
-    .result { margin-top:20px; padding:24px 20px; border-radius:16px; font-size:1.3rem; font-weight:700; min-height:90px; display:flex; align-items:center; justify-content:center; gap:12px; transition:all 0.4s; text-align:center; }
+    .result { 
+        margin-top:20px; padding:24px 20px; border-radius:16px; 
+        font-size:1.3rem; font-weight:700; min-height:90px; 
+        display:flex; align-items:center; justify-content:center; 
+        gap:12px; transition:all 0.4s; text-align:center; 
+    }
     .ok { background:rgba(0,255,157,0.12); border:3px solid var(--neon-green); box-shadow:0 0 30px var(--neon-green); color:var(--neon-green); }
     .no { background:rgba(255,45,85,0.12); border:3px solid var(--neon-red); box-shadow:0 0 30px var(--neon-red); color:var(--neon-red); }
-    .bypass-result { background:rgba(255,200,0,0.12); border:3px solid #ffcc00; box-shadow:0 0 30px #ffcc00; color:#ffcc00; }
+    .bypass-result { background:rgba(255,200,0,0.12); border:3px solid var(--neon-yellow); box-shadow:0 0 30px var(--neon-yellow); color:var(--neon-yellow); }
 
     .explanation { margin-top:14px; padding:14px 18px; border-radius:12px; font-size:13.5px; line-height:1.5; display:none; text-align:left; }
     .explanation.ok { background:rgba(0,255,157,0.08); border:1px solid rgba(0,255,157,0.4); color:#a0ffcc; }
     .explanation.no { background:rgba(255,45,85,0.08); border:1px solid rgba(255,45,85,0.4); color:#ff8899; }
-    .explanation.bypass { background:rgba(255,200,0,0.08); border:1px solid rgba(255,200,0,0.4); color:#ffcc00; }
+    .explanation.bypass { background:rgba(255,200,0,0.08); border:1px solid rgba(255,200,0,0.4); color:var(--neon-yellow); }
 
-    .discord-btn {
-        display: inline-flex; align-items: center; gap: 10px;
-        margin-top: 28px; padding: 15px 30px;
-        background: linear-gradient(45deg, #5865F2, #7289da);
-        color: white; font-size: 1.05rem; font-weight: 700;
-        border-radius: 14px; text-decoration: none;
-        box-shadow: 0 0 25px rgba(88,101,242,0.5);
-        transition: all 0.3s;
+    .list { 
+        margin-top:16px; background:var(--dark-panel-lighter); 
+        border-radius:14px; max-height:240px; overflow-y:auto; 
+        border:1px solid var(--list-border); padding:5px; 
     }
-    .discord-btn:hover { transform: scale(1.04); }
-
-    .list { margin-top:16px; background:rgba(10,10,30,0.85); border-radius:14px; max-height:240px; overflow-y:auto; border:1px solid rgba(0,240,255,0.15); padding:5px; }
-    .item { padding:12px 16px; border-radius:10px; cursor:pointer; transition:all 0.25s; margin-bottom:3px; font-size:0.98rem; display:flex; align-items:center; gap:10px; }
-    .item:hover { background:rgba(0,240,255,0.15); transform:translateX(6px); }
+    .item { 
+        padding:12px 16px; border-radius:10px; cursor:pointer; 
+        transition:all 0.25s; margin-bottom:3px; font-size:0.98rem; 
+        display:flex; align-items:center; gap:10px; 
+    }
+    .item:hover { background: var(--accent-hover); transform:translateX(6px); }
     .item::before { content:"🎮"; font-size:1.1rem; opacity:0.6; }
 
     .show-list-btn {
@@ -259,7 +286,7 @@
     .show-list-btn:hover { transform:scale(1.02); }
 
     .full-list {
-        margin-top:12px; background:rgba(10,10,30,0.85);
+        margin-top:12px; background:var(--dark-panel-lighter);
         border-radius:14px; max-height:300px; overflow-y:auto;
         border:1px solid rgba(255,45,85,0.3); padding:8px;
         columns: 2; column-gap:6px;
@@ -284,9 +311,42 @@
     }
     .bypass-btn:hover { transform:scale(1.03); }
 
+/* ====================== BOUTON DISCORD ====================== */
+.discord-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 28px;
+    padding: 16px 32px;
+    background: linear-gradient(135deg, #5865F2, #7289DA);
+    color: white;
+    font-size: 1.08rem;
+    font-weight: 700;
+    border-radius: 14px;
+    text-decoration: none;
+    box-shadow: 0 0 25px rgba(88, 101, 242, 0.6);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255,255,255,0.15);
+}
+
+.discord-btn:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 0 35px rgba(88, 101, 242, 0.8);
+    background: linear-gradient(135deg, #4752C4, #5B6BCE);
+}
+
+.discord-btn svg {
+    filter: drop-shadow(0 0 4px rgba(255,255,255,0.7));
+}
+
     .faq-container { padding: 8px 0 30px; }
     .faq-title { font-size:2rem; font-weight:700; background:linear-gradient(90deg,#fff,var(--neon-cyan)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:22px; text-align:center; }
-    .faq-item { background:rgba(10,10,30,0.85); border:1px solid rgba(0,240,255,0.15); border-radius:14px; margin-bottom:10px; overflow:hidden; transition:all 0.3s; }
+    .faq-item { 
+        background:var(--dark-panel-lighter); 
+        border:1px solid var(--faq-border); 
+        border-radius:14px; margin-bottom:10px; overflow:hidden; 
+        transition:all 0.3s; 
+    }
     .faq-item:hover { border-color:rgba(0,240,255,0.35); }
     .faq-question { padding:16px 20px; font-size:0.98rem; font-weight:700; cursor:pointer; display:flex; justify-content:space-between; align-items:center; color:var(--neon-cyan); }
     .faq-question span { font-size:1.2rem; transition:transform 0.3s; flex-shrink:0; margin-left:10px; }
@@ -296,18 +356,23 @@
 
     .settings-container { padding: 8px 0 30px; }
     .settings-title { font-size:2rem; font-weight:700; background:linear-gradient(90deg,#fff,var(--neon-cyan)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:22px; text-align:center; }
-    .settings-section { background:rgba(10,10,30,0.85); border:1px solid rgba(0,240,255,0.15); border-radius:14px; padding:20px; margin-bottom:14px; }
+    .settings-section { 
+        background:var(--dark-panel-lighter); 
+        border:1px solid var(--faq-border); 
+        border-radius:14px; padding:20px; margin-bottom:14px; 
+    }
     .settings-section-title { font-size:0.9rem; font-weight:700; color:var(--neon-cyan); margin-bottom:16px; letter-spacing:1px; text-transform:uppercase; }
     .theme-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; }
-    .theme-btn { padding:12px 6px; border-radius:10px; border:2px solid transparent; cursor:pointer; font-size:0.8rem; font-weight:700; color:white; transition:all 0.3s; text-align:center; }
+    .theme-btn { 
+        padding:12px 6px; border-radius:10px; border:2px solid transparent; 
+        cursor:pointer; font-size:0.8rem; font-weight:700; color:white; 
+        transition:all 0.3s; text-align:center; 
+    }
     .theme-btn:hover { transform:scale(1.04); }
-    .theme-btn.active-theme { border-color:white; box-shadow:0 0 12px rgba(255,255,255,0.3); }
-    .theme-cyan { background:linear-gradient(45deg,#001a2e,#003a5e); }
-    .theme-purple { background:linear-gradient(45deg,#1a0033,#3a0066); }
-    .theme-green { background:linear-gradient(45deg,#001a00,#003a00); }
-    .theme-red { background:linear-gradient(45deg,#1a0000,#3a0000); }
-    .theme-orange { background:linear-gradient(45deg,#1a0800,#3a1800); }
-    .theme-white { background:linear-gradient(45deg,#1a1a2e,#2a2a4e); }
+    .theme-btn.active-theme { 
+        border-color:white; 
+        box-shadow:0 0 12px rgba(255,255,255,0.3); 
+    }
 
     .modal {
         display:none; position:fixed; top:0; left:0; width:100%; height:100%;
@@ -321,11 +386,19 @@
         max-height: 90vh; overflow-y: auto;
     }
     .modal-title { color:#ffaa00; font-size:1.2rem; font-weight:700; text-align:center; margin-bottom:8px; }
-    .download-btn { width:100%; padding:12px; background:linear-gradient(45deg,#ff8c00,#ff2d55); color:white; font-size:1.1rem; font-weight:700; border:none; border-radius:12px; cursor:pointer; margin:8px 0; }
-    .step { background:#16213e; padding:10px 12px; border-radius:10px; margin-bottom:6px; display:flex; gap:12px; font-size:0.92rem; }
-    .step-number { background:#0f3460; color:#00f0ff; width:24px; height:24px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:bold; flex-shrink:0; font-size:0.8rem; }
+    .download-btn { 
+        width:100%; padding:12px; 
+        background:linear-gradient(45deg,#ff8c00,#ff2d55); 
+        color:white; font-size:1.1rem; font-weight:700; 
+        border:none; border-radius:12px; cursor:pointer; margin:8px 0; 
+    }
+    .step { background:var(--dark-panel-light); padding:10px 12px; border-radius:10px; margin-bottom:6px; display:flex; gap:12px; font-size:0.92rem; }
+    .step-number { background:#0f3460; color:var(--neon-cyan); width:24px; height:24px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:bold; flex-shrink:0; font-size:0.8rem; }
     .password-box { background:#0f1629; padding:8px; border-radius:8px; margin:8px 0; text-align:center; font-family:monospace; color:#ffaa00; font-size:0.9rem; }
-    .close-btn { width:100%; padding:10px; background:#333; color:white; border:none; border-radius:12px; font-size:1rem; cursor:pointer; margin-top:8px; }
+    .close-btn { 
+        width:100%; padding:10px; background:#333; color:white; 
+        border:none; border-radius:12px; font-size:1rem; cursor:pointer; margin-top:8px; 
+    }
 
     .credit { margin-top:30px; text-align:center; font-size:12px; opacity:0.5; color:var(--neon-cyan); }
     .credit a { color:var(--neon-cyan); text-decoration:none; }
@@ -484,38 +557,67 @@
 </div>
 
 <script>
-const gamesList = ["Anno 117: Pax Romana","Assassin's Creed Shadows","Atomfall","Avatar: Frontiers of Pandora","Beyond Good & Evil - 20th Anniversary Edition","Black Myth Wukong","BattleBit Remastered","BRAVELY DEFAULT FLYING FAIRY HD Remaster","Borderlands 4","Call of Duty: Black Ops 7","City Transport Simulator","Civilization VII","CODE VEIN II","Company of Heroes 3","Construction Simulator","Crimson Desert","Demon Slayer: The Hinokami Chronicles 1","Demon Slayer: The Hinokami Chronicles 2","Demon Slayer -Kimetsu no Yaiba- Sweep the Board!","Digimon Story Time Stranger","Dirt 5","DRAGON QUEST VII Reimagined","Dune","EA SPORTS FC 24","EA SPORTS FC 25","EA SPORTS FC 26","EA SPORTS WRC","Eagle Flight","Etrian Odyssey HD","Etrian Odyssey II HD","Etrian Odyssey III HD","Evil Genius 2: World Domination","F1 23","F1 24","F1 25","F1 Manager 22","F1 Manager 23","F1 Manager 24","F1 Manager 26","Fe","FINAL FANTASY TACTICS - The Ivalice Chronicles","Firefighting Simulator - The Squad","Football Manager 22","Football Manager 24","Football Manager 26","FOR HONOR","FortiFyte","GRID Legends","Harry Potter: Quidditch Champions","Hatsune Miku: Project Diva Megamix+","Hello Kitty Island Adventures","Jurassic World Evolution 3","Like A Dragon: Gaiden","Like A Dragon: Infinite Wealth","Like A Dragon: Ishin","Like A Dragon: Pirate Yakuza In Hawaii","Lost in Random","Lost Judgment","Life is Strange: Reunion","Madden NFL 21","Madden NFL 22","Madden NFL 23","Madden NFL 24","Madden NFL 25","Madden NFL 26","Mafia: The Old Country","Marathon","Marvel's Midnight Suns","Microsoft Flight Simulator 2024","Might and Magic: Heroes VII – Trial by Fire","MONOPOLY 2024","Monopoly Madness","Monster Hunter Wilds","Monster Hunter Stories 3: Twisted Reflection","Mortal Kombat 1","NBA 2K24","NBA 2K25","NBA 2K26","Need for Speed Unbound","Octopath Traveler 0","OddBallers","Onimusha 2: Samurai's Destiny","Persona 3 Portable","Persona 3 Reload","Persona 4 Arena Ultimax","Persona 4 Revival","Persona 5 Tactica","Phantom Blade Zero","PGA TOUR 2K25","Planet Coaster 2","Plants vs. Zombies: Garden Warfare 2","PRAGMATA","Prince Of Persia The Lost Crown","Professional Baseball Spirits 2024","Professional Baseball Spirits 2025","Rocksmith 2014 Edition REMASTERED","RAIDOU Remastered","Red Dead Redemption 2","Redfall","Resident Evil Requiem","Shin Megami Tensei III: Nocturne HD","Shin Megami Tensei V: Vengeance","Shinobi - Art of Vengeance","Sniper Elite 5","Sniper Elite Resistance","Sniper Elite VR","Sonic Origins","Sonic Superstars","Sonic Racing Crossworlds","Sonic X Shadow Generations","Soul Hackers 2","Speedball","Star Wars Outlaws","Star Wars Squadrons","Stellar Blade","Street Fighter 6","Suicide Squad: Kill the Justice League","Super Mega Baseball 4","Super Robot Wars Y","The Bus","The First Berserker: Khazan","The Settlers: New Allies","Tom Clancy's Ghost Recon Breakpoint","TopSpin 2K25","Total War: Warhammer 3","Train Sim World 2020","Train Sim World 3","Trials Rising","Two Point Museum","Undisputed","Valiant Hearts: Coming Home","Warhammer 40k: Chaos Gate Daemonhunters","Warhammer Age Of Sigmar: Realms Of Ruin","WWE 2K26","Yakuza Kiwami 3","Dark Ties","Zombie Army 4: Dead War","Zombie Army VR"];
+// ====================== HELPER HEX TO RGB ======================
+function hexToRgb(hex) {
+    const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result ? {
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16)
+    } : { r: 0, g: 240, b: 255 };
+}
 
-const bypassGames = ["red dead redemption 2","red dead redemption","red dead","rdr2","resident evil requiem","resident evil req","re requiem"];
-
+// ====================== THÈMES ======================
 const themes = {
-    purple: { bg1:'#1a0033', bg2:'#0a0a1f', cyan:'#00f0ff' },
-    cyan:   { bg1:'#001a2e', bg2:'#000d1a', cyan:'#00f0ff' },
-    green:  { bg1:'#001a00', bg2:'#000d00', cyan:'#00ff9d' },
-    red:    { bg1:'#1a0000', bg2:'#0d0000', cyan:'#ff2d55' },
-    orange: { bg1:'#1a0800', bg2:'#0d0400', cyan:'#ff8c00' },
-    white:  { bg1:'#1a1a2e', bg2:'#0d0d1a', cyan:'#a0a0ff' }
+    purple: { bg1: '#1a0033', bg2: '#0a0a1f', accent: '#00f0ff' },
+    cyan:   { bg1: '#001a2e', bg2: '#000d1a', accent: '#00f0ff' },
+    green:  { bg1: '#001a00', bg2: '#000d00', accent: '#00ff9d' },
+    red:    { bg1: '#1a0000', bg2: '#0d0000', accent: '#ff2d55' },
+    orange: { bg1: '#1a0800', bg2: '#0d0400', accent: '#ff8c00' },
+    white:  { bg1: '#1a1a2e', bg2: '#0d0d1a', accent: '#a0a0ff' }
 };
 
 function setTheme(name, btn) {
     const t = themes[name];
+    const rgb = hexToRgb(t.accent);
+
+    // Couleurs principales
     document.documentElement.style.setProperty('--bg1', t.bg1);
     document.documentElement.style.setProperty('--bg2', t.bg2);
-    document.documentElement.style.setProperty('--neon-cyan', t.cyan);
+    document.documentElement.style.setProperty('--neon-cyan', t.accent);
+
+    // Panels et accents
+    document.documentElement.style.setProperty('--dark-panel', `rgba(${Math.floor(rgb.r*0.15)},${Math.floor(rgb.g*0.15)},${Math.floor(rgb.b*0.4)},0.98)`);
+    document.documentElement.style.setProperty('--dark-panel-light', `rgba(${Math.floor(rgb.r*0.15)},${Math.floor(rgb.g*0.15)},${Math.floor(rgb.b*0.4)},0.9)`);
+    document.documentElement.style.setProperty('--dark-panel-lighter', `rgba(${Math.floor(rgb.r*0.15)},${Math.floor(rgb.g*0.15)},${Math.floor(rgb.b*0.4)},0.85)`);
+    document.documentElement.style.setProperty('--bottom-nav-bg', `rgba(${Math.floor(rgb.r*0.1)},${Math.floor(rgb.g*0.1)},${Math.floor(rgb.b*0.35)},0.98)`);
+
+    document.documentElement.style.setProperty('--accent-border', `rgba(${rgb.r},${rgb.g},${rgb.b},0.25)`);
+    document.documentElement.style.setProperty('--accent-shadow', `rgba(${rgb.r},${rgb.g},${rgb.b},0.2)`);
+    document.documentElement.style.setProperty('--accent-hover-bg', `rgba(${rgb.r},${rgb.g},${rgb.b},0.1)`);
+    document.documentElement.style.setProperty('--accent-active-bg', `rgba(${rgb.r},${rgb.g},${rgb.b},0.18)`);
+    document.documentElement.style.setProperty('--accent-active-shadow', `rgba(${rgb.r},${rgb.g},${rgb.b},0.3)`);
+    document.documentElement.style.setProperty('--accent-focus-shadow', `rgba(${rgb.r},${rgb.g},${rgb.b},0.4)`);
+    document.documentElement.style.setProperty('--grid-color', `rgba(${rgb.r},${rgb.g},${rgb.b},0.03)`);
+    document.documentElement.style.setProperty('--accent-hover', `rgba(${rgb.r},${rgb.g},${rgb.b},0.15)`);
+    document.documentElement.style.setProperty('--list-border', `rgba(${rgb.r},${rgb.g},${rgb.b},0.15)`);
+    document.documentElement.style.setProperty('--faq-border', `rgba(${rgb.r},${rgb.g},${rgb.b},0.15)`);
+
+    // Mise à jour visuelle des boutons
     document.querySelectorAll('.theme-btn').forEach(b => b.classList.remove('active-theme'));
     btn.classList.add('active-theme');
+
     localStorage.setItem('theme', name);
 }
 
-window.addEventListener('load', () => {
-    const saved = localStorage.getItem('theme');
-    if (saved) {
-        const btn = document.querySelector(`.theme-${saved}`);
-        if (btn) setTheme(saved, btn);
-    }
-});
+// ====================== DONNÉES ======================
+const gamesList = ["Anno 117: Pax Romana","Assassin's Creed Shadows","Atomfall","Avatar: Frontiers of Pandora","Beyond Good & Evil - 20th Anniversary Edition","Black Myth Wukong","BattleBit Remastered","BRAVELY DEFAULT FLYING FAIRY HD Remaster","Borderlands 4","Call of Duty: Black Ops 7","City Transport Simulator","Civilization VII","CODE VEIN II","Company of Heroes 3","Construction Simulator","Crimson Desert","Demon Slayer: The Hinokami Chronicles 1","Demon Slayer: The Hinokami Chronicles 2","Demon Slayer -Kimetsu no Yaiba- Sweep the Board!","Digimon Story Time Stranger","Dirt 5","DRAGON QUEST VII Reimagined","Dune","EA SPORTS FC 24","EA SPORTS FC 25","EA SPORTS FC 26","EA SPORTS WRC","Eagle Flight","Etrian Odyssey HD","Etrian Odyssey II HD","Etrian Odyssey III HD","Evil Genius 2: World Domination","F1 23","F1 24","F1 25","F1 Manager 22","F1 Manager 23","F1 Manager 24","F1 Manager 26","Fe","FINAL FANTASY TACTICS - The Ivalice Chronicles","Firefighting Simulator - The Squad","Football Manager 22","Football Manager 24","Football Manager 26","FOR HONOR","FortiFyte","GRID Legends","Harry Potter: Quidditch Champions","Hatsune Miku: Project Diva Megamix+","Hello Kitty Island Adventures","Jurassic World Evolution 3","Like A Dragon: Gaiden","Like A Dragon: Infinite Wealth","Like A Dragon: Ishin","Like A Dragon: Pirate Yakuza In Hawaii","Lost in Random","Lost Judgment","Life is Strange: Reunion","Madden NFL 21","Madden NFL 22","Madden NFL 23","Madden NFL 24","Madden NFL 25","Madden NFL 26","Mafia: The Old Country","Marathon","Marvel's Midnight Suns","Microsoft Flight Simulator 2024","Might and Magic: Heroes VII – Trial by Fire","MONOPOLY 2024","Monopoly Madness","Monster Hunter Wilds","Monster Hunter Stories 3: Twisted Reflection","Mortal Kombat 1","NBA 2K24","NBA 2K25","NBA 2K26","Need for Speed Unbound","Octopath Traveler 0","OddBallers","Onimusha 2: Samurai's Destiny","Persona 3 Portable","Persona 3 Reload","Persona 4 Arena Ultimax","Persona 4 Revival","Persona 5 Tactica","Phantom Blade Zero","PGA TOUR 2K25","Planet Coaster 2","Plants vs. Zombies: Garden Warfare 2","PRAGMATA","Prince Of Persia The Lost Crown","Professional Baseball Spirits 2024","Professional Baseball Spirits 2025","Rocksmith 2014 Edition REMASTERED","RAIDOU Remastered","Red Dead Redemption 2","Redfall","Resident Evil Requiem","Shin Megami Tensei III: Nocturne HD","Shin Megami Tensei V: Vengeance","Shinobi - Art of Vengeance","Sniper Elite 5","Sniper Elite Resistance","Sniper Elite VR","Sonic Origins","Sonic Superstars","Sonic Racing Crossworlds","Sonic X Shadow Generations","Soul Hackers 2","Speedball","Star Wars Outlaws","Star Wars Squadrons","Stellar Blade","Street Fighter 6","Suicide Squad: Kill the Justice League","Super Mega Baseball 4","Super Robot Wars Y","The Bus","The First Berserker: Khazan","The Settlers: New Allies","Tom Clancy's Ghost Recon Breakpoint","TopSpin 2K25","Total War: Warhammer 3","Train Sim World 2020","Train Sim World 3","Trials Rising","Two Point Museum","Undisputed","Valiant Hearts: Coming Home","Warhammer 40k: Chaos Gate Daemonhunters","Warhammer Age Of Sigmar: Realms Of Ruin","WWE 2K26","Yakuza Kiwami 3","Dark Ties","Zombie Army 4: Dead War","Zombie Army VR"];
 
+const bypassGames = ["red dead redemption 2","red dead redemption","red dead","rdr2","resident evil requiem","resident evil req","re requiem"];
+
+// ====================== FONCTIONS JS ======================
 function normalize(t) { return t.toLowerCase().replace(/[^a-z0-9]/g, ""); }
+
 function score(input, game) {
     const a = normalize(input); const b = normalize(game);
     if (a === b) return 100;
@@ -547,11 +649,7 @@ function liveSearch() {
         if (s > bestScore) { bestScore = s; best = game; }
     });
 
-    const isBypass = best && (
-        bypassGames.some(g => normalize(best) === normalize(g)) ||
-        normalize("red dead redemption 2").startsWith(normalize(best)) ||
-        normalize("resident evil requiem").startsWith(normalize(best))
-    );
+    const isBypass = best && bypassGames.some(g => normalize(best) === normalize(g));
 
     if (bestScore >= 70) {
         expOk.style.display = "none";
@@ -628,6 +726,13 @@ function switchTab(n) {
     document.querySelectorAll('.tab-button').forEach((b, i) => b.classList.toggle('active', i === n));
     document.querySelectorAll('.bottom-nav-btn').forEach((b, i) => b.classList.toggle('active', i === n));
 }
+
+// ====================== INITIALISATION ======================
+window.addEventListener('load', () => {
+    const saved = localStorage.getItem('theme') || 'purple';
+    const btn = document.querySelector(`.theme-${saved}`);
+    if (btn) setTheme(saved, btn);
+});
 </script>
 </body>
 </html>
