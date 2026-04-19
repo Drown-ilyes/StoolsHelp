@@ -423,14 +423,20 @@ function toggleFullList() {
     const btn = document.querySelector(".show-list-btn");
     fullListVisible = !fullListVisible;
     if (fullListVisible) {
-        el.innerHTML = gamesList.map(g => `<div class="full-list-item">❌ ${g}</div>`).join("");
+        el.innerHTML = gamesList.map(g => {
+            const isBypassGame = normalize(g) === normalize("red dead redemption 2");
+            return `<div class="full-list-item" style="${isBypassGame ? 'color:#ffcc00; border-color:rgba(255,200,0,0.3); background:rgba(255,200,0,0.06);' : ''}">
+                ${isBypassGame ? '⚠️' : '❌'} ${g}
+            </div>`;
+        }).join("");
         el.style.display = "block";
         btn.textContent = "❌ Masquer la liste";
     } else {
         el.style.display = "none";
-        btn.textContent = "📋 Voir tous les jeux indisponibles (scroll vers la gauche)";
+        btn.textContent = "📋 Voir tous les jeux indisponibles";
     }
 }
+
 
 function toggleFaq(el) {
     const answer = el.nextElementSibling;
