@@ -1,3 +1,5 @@
+Voici le script complet avec l’onglet Paramètres ajouté :
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -16,12 +18,14 @@
         --neon-red: #ff2d55;
         --neon-yellow: #ffcc00;
         --card: rgba(15, 15, 35, 0.95);
+        --bg1: #1a0033;
+        --bg2: #0a0a1f;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-        background: radial-gradient(circle at 50% 15%, #1a0033, #0a0a1f 60%);
+        background: radial-gradient(circle at 50% 15%, var(--bg1), var(--bg2) 60%);
         color: white;
         min-height: 100vh;
         font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -158,6 +162,26 @@
     .faq-answer.open { max-height:1000px; padding:0 24px 20px; }
     .faq-question.open span { transform: rotate(45deg); }
 
+    /* PARAMETRES */
+    .settings-container { padding: 10px 0 40px; }
+    .settings-title { font-size:2.4rem; font-weight:700; background:linear-gradient(90deg,#fff,var(--neon-cyan)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:30px; text-align:center; }
+    .settings-section { background:rgba(10,10,30,0.85); border:1px solid rgba(0,240,255,0.15); border-radius:16px; padding:24px; margin-bottom:16px; }
+    .settings-section-title { font-size:1rem; font-weight:700; color:var(--neon-cyan); margin-bottom:18px; letter-spacing:1px; text-transform:uppercase; }
+    .theme-grid { display:grid; grid-template-columns: repeat(3, 1fr); gap:10px; }
+    .theme-btn {
+        padding:14px 8px; border-radius:12px; border:2px solid transparent;
+        cursor:pointer; font-size:0.85rem; font-weight:700; color:white;
+        transition:all 0.3s; text-align:center;
+    }
+    .theme-btn:hover { transform:scale(1.05); }
+    .theme-btn.active-theme { border-color:white; box-shadow:0 0 15px rgba(255,255,255,0.3); }
+    .theme-cyan { background:linear-gradient(45deg,#001a2e,#003a5e); }
+    .theme-purple { background:linear-gradient(45deg,#1a0033,#3a0066); }
+    .theme-green { background:linear-gradient(45deg,#001a00,#003a00); }
+    .theme-red { background:linear-gradient(45deg,#1a0000,#3a0000); }
+    .theme-orange { background:linear-gradient(45deg,#1a0800,#3a1800); }
+    .theme-white { background:linear-gradient(45deg,#1a1a2e,#2a2a4e); }
+
     .modal {
         display:none; position:fixed; top:0; left:0; width:100%; height:100%;
         background:rgba(0,0,0,0.93); z-index:9999;
@@ -190,6 +214,7 @@
         <button class="tab-button" onclick="switchTab(1)">🎮 Checker</button>
         <button class="tab-button" onclick="switchTab(2)">🔓 Bypass</button>
         <button class="tab-button" onclick="switchTab(3)">❓ FAQ</button>
+        <button class="tab-button" onclick="switchTab(4)">⚙️ Paramètres</button>
     </div>
 
     <!-- TAB 0 -->
@@ -215,7 +240,7 @@
         <div id="explanation-no" class="explanation no">Quand un jeu est indisponible, cela veut dire qu'il est protégé par un DRM, et qu'il ne sera pas crackable et jouable via SteamTools, Lua Tools, etc.</div>
         <div id="explanation-bypass" class="explanation bypass">⚡ Un bypass est disponible pour ce jeu, rendez-vous dans l'onglet <strong>Bypass disponibles</strong> !</div>
         <div id="list" class="list"></div>
-        <button class="show-list-btn" onclick="toggleFullList()">📋 Voir tous les jeux indisponibles (scroll vers la gauche)</button>
+        <button class="show-list-btn" onclick="toggleFullList()">📋 Voir tous les jeux indisponibles</button>
         <div id="full-list" class="full-list" style="display:none;"></div>
     </div>
 
@@ -284,6 +309,26 @@
         </div>
     </div>
 
+    <!-- TAB 4 PARAMETRES -->
+    <div id="tab-4" class="tab-content">
+        <div class="settings-container">
+            <h1 class="settings-title">⚙️ Paramètres</h1>
+
+            <div class="settings-section">
+                <div class="settings-section-title">🎨 Thème</div>
+                <div class="theme-grid">
+                    <button class="theme-btn theme-purple active-theme" onclick="setTheme('purple', this)">💜 Violet<br><small>Par défaut</small></button>
+                    <button class="theme-btn theme-cyan" onclick="setTheme('cyan', this)">🩵 Cyan<br><small>Bleu néon</small></button>
+                    <button class="theme-btn theme-green" onclick="setTheme('green', this)">💚 Vert<br><small>Matrix</small></button>
+                    <button class="theme-btn theme-red" onclick="setTheme('red', this)">❤️ Rouge<br><small>Danger</small></button>
+                    <button class="theme-btn theme-orange" onclick="setTheme('orange', this)">🧡 Orange<br><small>Feu</small></button>
+                    <button class="theme-btn theme-white" onclick="setTheme('white', this)">🤍 Neutre<br><small>Sobre</small></button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
     <div class="credit">
         Réalisé par <a href="https://x.com/wspp757" target="_blank">@wspp757</a> (@burger)
     </div>
@@ -346,6 +391,34 @@ const gamesList = [
 "Warhammer Age Of Sigmar: Realms Of Ruin","WWE 2K26","Yakuza Kiwami 3","Dark Ties",
 "Zombie Army 4: Dead War","Zombie Army VR"
 ];
+
+const themes = {
+    purple: { bg1: '#1a0033', bg2: '#0a0a1f', cyan: '#00f0ff' },
+    cyan:   { bg1: '#001a2e', bg2: '#000d1a', cyan: '#00f0ff' },
+    green:  { bg1: '#001a00', bg2: '#000d00', cyan: '#00ff9d' },
+    red:    { bg1: '#1a0000', bg2: '#0d0000', cyan: '#ff2d55' },
+    orange: { bg1: '#1a0800', bg2: '#0d0400', cyan: '#ff8c00' },
+    white:  { bg1: '#1a1a2e', bg2: '#0d0d1a', cyan: '#a0a0ff' },
+};
+
+function setTheme(name, btn) {
+    const t = themes[name];
+    document.documentElement.style.setProperty('--bg1', t.bg1);
+    document.documentElement.style.setProperty('--bg2', t.bg2);
+    document.documentElement.style.setProperty('--neon-cyan', t.cyan);
+    document.querySelectorAll('.theme-btn').forEach(b => b.classList.remove('active-theme'));
+    btn.classList.add('active-theme');
+    localStorage.setItem('theme', name);
+}
+
+// Charger le thème sauvegardé
+window.addEventListener('load', () => {
+    const saved = localStorage.getItem('theme');
+    if (saved) {
+        const btn = document.querySelector(`.theme-${saved}`);
+        if (btn) setTheme(saved, btn);
+    }
+});
 
 const bypassGames = ["red dead redemption 2", "red dead redemption", "red dead", "rdr2"];
 
@@ -437,7 +510,6 @@ function toggleFullList() {
     }
 }
 
-
 function toggleFaq(el) {
     const answer = el.nextElementSibling;
     const isOpen = answer.classList.contains("open");
@@ -474,3 +546,6 @@ function switchTab(n) {
 
 </body>
 </html>
+
+
+J’ai ajouté 6 thèmes (Violet, Cyan, Vert, Rouge, Orange, Neutre) et le thème choisi est sauvegardé dans le localStorage donc il se souvient du choix même après avoir fermé la page.​​​​​​​​​​​​​​​​
