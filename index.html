@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -221,7 +219,7 @@
     <div id="tab-0" class="tab-content active">
         <div class="welcome">
             <h1>Bienvenue au centre d'aide</h1>
-            <p>Ce site web sert d'aide en rapport aux jeux steamtools, lua tools etc. Ce serveur est principalement liée au serveur de Abelou.</p>
+            <p>Ce site web est pour obtenir de l'aide en rapport aux jeux steamtools, lua tools etc. Ce serveur est principalement liée au serveur de Abelou.</p>
             <a href="https://discord.gg/eTcyJezWkH" target="_blank" class="discord-btn">
                 <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057c.002.022.015.043.03.056a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
                 Rejoindre le serveur Discord
@@ -251,6 +249,9 @@
             <p class="bypass-description">Un bypass permet de contourner le drm du jeu. Cela permet de le lancer même si il est protégé par un drm comme denuvo ou un launcher externe.</p>
             <button class="bypass-btn" onclick="showBypassModal()">
                 📥 Red Dead Redemption 2
+            </button>
+            <button class="bypass-btn" onclick="showBypassModal2()">
+                📥 Resident Evil Requiem
             </button>
         </div>
     </div>
@@ -313,7 +314,6 @@
     <div id="tab-4" class="tab-content">
         <div class="settings-container">
             <h1 class="settings-title">⚙️ Paramètres</h1>
-
             <div class="settings-section">
                 <div class="settings-section-title">🎨 Thème</div>
                 <div class="theme-grid">
@@ -325,7 +325,6 @@
                     <button class="theme-btn theme-white" onclick="setTheme('white', this)">🤍 Neutre<br><small>Sobre</small></button>
                 </div>
             </div>
-
         </div>
     </div>
 
@@ -334,7 +333,7 @@
     </div>
 </div>
 
-<!-- MODAL -->
+<!-- MODAL RDR2 -->
 <div id="bypassModal" class="modal">
     <div class="modal-content">
         <div class="modal-title">Red Dead Redemption 2 a besoin d'un bypass pour s'exécuter proprement.</div>
@@ -348,6 +347,25 @@
         <div class="step"><div class="step-number">4</div><div><strong>Remplace les fichiers existants</strong><br><small>Quand Windows te demande "Remplacer ou Ignorer", clique sur Remplacer.</small></div></div>
         <div class="step"><div class="step-number">5</div><div><strong>Lancez le jeu</strong><br><small>Lancez le jeu via rdr2launcher.exe</small></div></div>
         <button class="close-btn" onclick="closeModal()">Fermer</button>
+    </div>
+</div>
+
+<!-- MODAL RE REQUIEM -->
+<div id="bypassModal2" class="modal">
+    <div class="modal-content">
+        <div class="modal-title">Resident Evil Requiem a besoin d'un bypass pour s'exécuter proprement.</div>
+        <button class="download-btn" onclick="downloadFile2()">↓ Télécharger le bypass</button>
+        <div style="text-align:center; margin:18px 0; font-weight:600;">Guide d'installation:</div>
+        <div class="step"><div class="step-number">1</div><div><strong>Installe le jeu sur Steam</strong><br><small>Assure-toi que le jeu est installé via Steam avant de continuer.</small></div></div>
+        <div class="step"><div class="step-number">2</div><div><strong>Ouvre le dossier du jeu</strong><br><small>Clic droit sur le jeu dans Steam → Gérer → Parcourir les fichiers locaux.</small></div></div>
+        <div class="step"><div class="step-number">3</div><div><strong>Extrait et copie les fichiers</strong><br><small>Utilise WinRAR pour extraire le fichier, puis copie tous les fichiers dans le dossier du jeu.</small>
+            <div class="password-box">Mot de passe : <strong>openlua.cloud</strong></div>
+        </div></div>
+        <div class="step"><div class="step-number">4</div><div><strong>Remplace les fichiers existants</strong><br><small>Quand Windows te demande "Remplacer ou Ignorer", clique sur Remplacer.</small></div></div>
+
+   <div class="step"><div class="step-number">5</div><div><strong>Lancez le jeu</strong><br><small>Ne pas lancer le jeu via steam</small></div></div>
+
+        <button class="close-btn" onclick="closeModal2()">Fermer</button>
     </div>
 </div>
 
@@ -379,7 +397,8 @@ const gamesList = [
 "Phantom Blade Zero","PGA TOUR 2K25","Planet Coaster 2","Plants vs. Zombies: Garden Warfare 2",
 "PRAGMATA","Prince Of Persia The Lost Crown","Professional Baseball Spirits 2024",
 "Professional Baseball Spirits 2025","Rocksmith 2014 Edition REMASTERED","RAIDOU Remastered",
-"Red Dead Redemption 2","Redfall","Shin Megami Tensei III: Nocturne HD","Shin Megami Tensei V: Vengeance",
+"Red Dead Redemption 2","Redfall","Resident Evil Requiem",
+"Shin Megami Tensei III: Nocturne HD","Shin Megami Tensei V: Vengeance",
 "Shinobi - Art of Vengeance","Sniper Elite 5","Sniper Elite Resistance","Sniper Elite VR",
 "Sonic Origins","Sonic Superstars","Sonic Racing Crossworlds","Sonic X Shadow Generations",
 "Soul Hackers 2","Speedball","Star Wars Outlaws","Star Wars Squadrons","Stellar Blade",
@@ -391,6 +410,8 @@ const gamesList = [
 "Warhammer Age Of Sigmar: Realms Of Ruin","WWE 2K26","Yakuza Kiwami 3","Dark Ties",
 "Zombie Army 4: Dead War","Zombie Army VR"
 ];
+
+const bypassGames = ["red dead redemption 2", "red dead redemption", "red dead", "rdr2", "resident evil requiem", "resident evil req", "re requiem"];
 
 const themes = {
     purple: { bg1: '#1a0033', bg2: '#0a0a1f', cyan: '#00f0ff' },
@@ -411,7 +432,6 @@ function setTheme(name, btn) {
     localStorage.setItem('theme', name);
 }
 
-// Charger le thème sauvegardé
 window.addEventListener('load', () => {
     const saved = localStorage.getItem('theme');
     if (saved) {
@@ -419,8 +439,6 @@ window.addEventListener('load', () => {
         if (btn) setTheme(saved, btn);
     }
 });
-
-const bypassGames = ["red dead redemption 2", "red dead redemption", "red dead", "rdr2"];
 
 function normalize(t) { return t.toLowerCase().replace(/[^a-z0-9]/g, ""); }
 function score(input, game) {
@@ -457,7 +475,11 @@ function liveSearch() {
         if (s > bestScore) { bestScore = s; best = game; }
     });
 
-    const isBypass = best && bypassGames.some(g => normalize(best) === normalize(g) || normalize("red dead redemption 2").startsWith(normalize(best)));
+    const isBypass = best && (
+        bypassGames.some(g => normalize(best) === normalize(g)) ||
+        normalize("red dead redemption 2").startsWith(normalize(best)) ||
+        normalize("resident evil requiem").startsWith(normalize(best))
+    );
 
     if (bestScore >= 70) {
         expOk.style.display = "none";
@@ -497,7 +519,7 @@ function toggleFullList() {
     fullListVisible = !fullListVisible;
     if (fullListVisible) {
         el.innerHTML = gamesList.map(g => {
-            const isBypassGame = normalize(g) === normalize("red dead redemption 2");
+            const isBypassGame = normalize(g) === normalize("red dead redemption 2") || normalize(g) === normalize("resident evil requiem");
             return `<div class="full-list-item" style="${isBypassGame ? 'color:#ffcc00; border-color:rgba(255,200,0,0.3); background:rgba(255,200,0,0.06);' : ''}">
                 ${isBypassGame ? '⚠️' : '❌'} ${g}
             </div>`;
@@ -521,20 +543,22 @@ function toggleFaq(el) {
     }
 }
 
-function showBypassModal() {
-    document.getElementById("bypassModal").style.display = "flex";
-}
-function closeModal() {
-    document.getElementById("bypassModal").style.display = "none";
-}
+function showBypassModal() { document.getElementById("bypassModal").style.display = "flex"; }
+function closeModal() { document.getElementById("bypassModal").style.display = "none"; }
+function showBypassModal2() { document.getElementById("bypassModal2").style.display = "flex"; }
+function closeModal2() { document.getElementById("bypassModal2").style.display = "none"; }
+
 function downloadFile() {
     const url = "https://www.dropbox.com/scl/fi/2vdri07077gd8g3qk7pm6/1174180_bypass.rar?rlkey=a4x4nr6obj427egucklc58z58&st=esusubwy&dl=1";
     const link = document.createElement("a");
-    link.href = url;
-    link.download = "RDR2_Bypass.rar";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    link.href = url; link.download = "RDR2_Bypass.rar";
+    document.body.appendChild(link); link.click(); document.body.removeChild(link);
+}
+function downloadFile2() {
+    const url = "https://www.dropbox.com/scl/fi/2vdri07077gd8g3qk7pm6/1174180_bypass.rar?rlkey=a4x4nr6obj427egucklc58z58&st=m5jf01v6&dl=1";
+    const link = document.createElement("a");
+    link.href = url; link.download = "RE_Requiem_Bypass.rar";
+    document.body.appendChild(link); link.click(); document.body.removeChild(link);
 }
 
 function switchTab(n) {
@@ -546,4 +570,3 @@ function switchTab(n) {
 
 </body>
 </html>
-
