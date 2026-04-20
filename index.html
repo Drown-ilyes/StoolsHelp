@@ -600,15 +600,33 @@
                     <div class="settings-section">
                         <div class="settings-section-title">🎨 Thème</div>
                         <div class="theme-grid">
-                            <button class="theme-btn theme-purple active-theme" onclick="setTheme('purple', this)">💜 Violet<br><small>Par défaut</small></button>
-                            <button class="theme-btn theme-cyan" onclick="setTheme('cyan', this)">🩵 Cyan<br><small>Bleu néon</small></button>
-                            <button class="theme-btn theme-green" onclick="setTheme('green', this)">💚 Vert<br><small>Matrix</small></button>
-                            <button class="theme-btn theme-red" onclick="setTheme('red', this)">❤️ Rouge<br><small>Danger</small></button>
-                            <button class="theme-btn theme-orange" onclick="setTheme('orange', this)">🧡 Orange<br><small>Feu</small></button>
-                            <button class="theme-btn theme-white" onclick="setTheme('white', this)">🤍 Neutre<br><small>Sobre</small></button>
-                        </div>
+    <button class="theme-btn theme-purple active-theme" onclick="setTheme('purple', this)">💜 Violet<br><small>Par défaut</small></button>
+    <button class="theme-btn theme-cyan" onclick="setTheme('cyan', this)">🩵 Cyan<br><small>Bleu néon</small></button>
+    <button class="theme-btn theme-green" onclick="setTheme('green', this)">💚 Vert<br><small>Matrix</small></button>
+    <button class="theme-btn theme-red" onclick="setTheme('red', this)">❤️ Rouge<br><small>Danger</small></button>
+    <button class="theme-btn theme-orange" onclick="setTheme('orange', this)">🧡 Orange<br><small>Feu</small></button>
+    <button class="theme-btn theme-white" onclick="setTheme('white', this)">🤍 Neutre<br><small>Sobre</small></button>
+    
+    <!-- NOUVEAUX THÈMES -->
+    <button class="theme-btn theme-pink" onclick="setTheme('pink', this)">💖 Rose<br><small>Neon Rose</small></button>
+    <button class="theme-btn theme-teal" onclick="setTheme('teal', this)">🌊 Turquoise<br><small>Océan</small></button>
+    <button class="theme-btn theme-indigo" onclick="setTheme('indigo', this)">💜 Indigo<br><small>Profond</small></button>
+    <button class="theme-btn theme-gold" onclick="setTheme('gold', this)">🌟 Or<br><small>Jaune néon</small></button>
+</div>
                     </div>
                 </div>
+            </div>
+
+            <!-- Image PFP avant les crédits -->
+            <div style="text-align: center; margin: 25px 0 20px;">
+                <img src="pfp.png" 
+                     alt="Profile Picture" 
+                     style="width: 85px; 
+                            height: 85px; 
+                            border-radius: 50%; 
+                            border: 3px solid var(--neon-cyan); 
+                            box-shadow: 0 0 20px var(--accent-shadow); 
+                            transition: all 0.3s;">
             </div>
 
             <div class="credit">Réalisé par <a href="https://x.com/wspp757" target="_blank">@wspp757</a> (@burger)</div>
@@ -668,13 +686,20 @@ function hexToRgb(hex) {
 }
 
 // ====================== THÈMES ======================
+
 const themes = {
     purple: { bg1: '#1a0033', bg2: '#0a0a1f', accent: '#00f0ff' },
     cyan:   { bg1: '#001a2e', bg2: '#000d1a', accent: '#00f0ff' },
     green:  { bg1: '#001a00', bg2: '#000d00', accent: '#00ff9d' },
     red:    { bg1: '#1a0000', bg2: '#0d0000', accent: '#ff2d55' },
     orange: { bg1: '#1a0800', bg2: '#0d0400', accent: '#ff8c00' },
-    white:  { bg1: '#1a1a2e', bg2: '#0d0d1a', accent: '#a0a0ff' }
+    white:  { bg1: '#1a1a2e', bg2: '#0d0d1a', accent: '#a0a0ff' },
+    
+    // === NOUVEAUX THÈMES ===
+    pink:    { bg1: '#33001a', bg2: '#1a000f', accent: '#ff00aa' },
+    teal:    { bg1: '#002e2e', bg2: '#001a1a', accent: '#00ffdd' },
+    indigo:  { bg1: '#1f0033', bg2: '#14001f', accent: '#9900ff' },
+    gold:    { bg1: '#332900', bg2: '#1f1900', accent: '#ffdd00' }
 };
 
 function setTheme(name, btn) {
