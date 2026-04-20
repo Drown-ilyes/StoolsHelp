@@ -330,6 +330,23 @@
 }
 .bypass-card-arrow { color: rgba(255,140,0,0.6); font-size: 1.2rem; }
 
+/* ====================== IMAGES BYPASS RONDES ====================== */
+.bypass-image {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--neon-cyan);
+    box-shadow: 0 0 18px var(--accent-shadow);
+    flex-shrink: 0;
+    transition: all 0.3s;
+}
+
+.bypass-image:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 25px var(--accent-active-shadow);
+}
+
     .bypass-btn:hover { transform:scale(1.03); }
 
 /* ====================== BOUTON DISCORD ====================== */
@@ -515,35 +532,37 @@
                 <div id="full-list" class="full-list" style="display:none;"></div>
             </div>
 
-            <!-- TAB 2 -->
-            <div id="tab-2" class="tab-content">
-                <div class="bypass-container">
-                    <h1 class="bypass-title">Bypass disponibles</h1>
-                    <p class="bypass-description">Un bypass permet de contourner le drm du jeu. Cela permet de le lancer même si il est protégé par un drm comme denuvo ou un launcher externe.</p>
-             <div class="bypass-card" onclick="showBypassModal()">
-    <div class="bypass-card-left">
-        <div class="bypass-card-emoji">🤠</div>
-        <div>
-            <div class="bypass-card-name">Red Dead Redemption 2</div>
-            <span class="bypass-card-tag">Bypass requis</span>
-        </div>
-    </div>
-    <div class="bypass-card-arrow">→</div>
-</div>
-
-<div class="bypass-card" onclick="showBypassModal2()">
-    <div class="bypass-card-left">
-        <div class="bypass-card-emoji">🧟</div>
-        <div>
-            <div class="bypass-card-name">Resident Evil Requiem</div>
-            <span class="bypass-card-tag">⚠️ Bypass potentiellement non fonctionnel</span>
-        </div>
-    </div>
-    <div class="bypass-card-arrow">→</div>
-</div>
-
+    <!-- TAB 2 -->
+<div id="tab-2" class="tab-content">
+    <div class="bypass-container">
+        <h1 class="bypass-title">Bypass disponibles</h1>
+        <p class="bypass-description">Un bypass permet de contourner le drm du jeu. Cela permet de le lancer même si il est protégé par un drm comme denuvo ou un launcher externe.</p>
+        
+        <!-- Carte RDR2 avec image ronde -->
+        <div class="bypass-card" onclick="showBypassModal()">
+            <div class="bypass-card-left">
+                <img src="rdr2.png" alt="Red Dead Redemption 2" class="bypass-image">
+                <div>
+                    <div class="bypass-card-name">Red Dead Redemption 2</div>
+                    <span class="bypass-card-tag">Bypass requis</span>
                 </div>
             </div>
+            <div class="bypass-card-arrow">→</div>
+        </div>
+
+        <!-- Carte Resident Evil Requiem avec image ronde -->
+        <div class="bypass-card" onclick="showBypassModal2()">
+            <div class="bypass-card-left">
+                <img src="requiem.png" alt="Resident Evil Requiem" class="bypass-image">
+                <div>
+                    <div class="bypass-card-name">Resident Evil Requiem</div>
+                    <span class="bypass-card-tag">⚠️ Bypass potentiellement non fonctionnel</span>
+                </div>
+            </div>
+            <div class="bypass-card-arrow">→</div>
+        </div>
+    </div>
+</div>
 
 <!-- TAB 3 - ONLINE FIX (nouvelle tab) -->
 <div id="tab-3" class="tab-content">
