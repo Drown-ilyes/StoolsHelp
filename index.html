@@ -301,14 +301,35 @@
     .bypass-title { font-size:2rem; font-weight:700; background:linear-gradient(90deg,#fff,var(--neon-cyan)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:30px; }
     .bypass-description { font-size:0.9rem; opacity:0.7; max-width:500px; margin:0 auto 24px; line-height:1.6; }
 
-    .bypass-btn {
-        display:block; width:100%; max-width:400px; margin:12px auto;
-        padding:16px 26px; font-size:1.2rem; font-weight:700;
-        background:linear-gradient(45deg,#ff8c00,#ff2d55); color:white;
-        border:none; border-radius:14px; cursor:pointer;
-        box-shadow:0 0 25px rgba(255,140,0,0.5);
-        transition:all 0.3s;
-    }
+.bypass-card {
+    display: flex; align-items: center; justify-content: space-between;
+    width: 100%; max-width: 500px; margin: 14px auto;
+    padding: 18px 24px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,140,0,0.3);
+    border-radius: 16px; cursor: pointer;
+    transition: all 0.3s;
+    text-align: left;
+    color: white;
+}
+.bypass-card:hover {
+    background: rgba(255,140,0,0.1);
+    border-color: rgba(255,140,0,0.6);
+    transform: translateX(5px);
+    box-shadow: 0 0 20px rgba(255,140,0,0.3);
+}
+.bypass-card-left { display: flex; align-items: center; gap: 16px; }
+.bypass-card-emoji { font-size: 2rem; }
+.bypass-card-name { font-size: 1.05rem; font-weight: 700; margin-bottom: 4px; }
+.bypass-card-tag {
+    font-size: 0.72rem; font-weight: 700;
+    background: rgba(255,200,0,0.1);
+    border: 1px solid rgba(255,200,0,0.3);
+    color: #ffcc00; padding: 2px 8px; border-radius: 50px;
+    display: inline-block;
+}
+.bypass-card-arrow { color: rgba(255,140,0,0.6); font-size: 1.2rem; }
+
     .bypass-btn:hover { transform:scale(1.03); }
 
 /* ====================== BOUTON DISCORD ====================== */
@@ -499,8 +520,28 @@
                 <div class="bypass-container">
                     <h1 class="bypass-title">Bypass disponibles</h1>
                     <p class="bypass-description">Un bypass permet de contourner le drm du jeu. Cela permet de le lancer même si il est protégé par un drm comme denuvo ou un launcher externe.</p>
-                    <button class="bypass-btn" onclick="showBypassModal()">📥 Red Dead Redemption 2</button>
-                    <button class="bypass-btn" onclick="showBypassModal2()">📥 Resident Evil Requiem</button>
+             <div class="bypass-card" onclick="showBypassModal()">
+    <div class="bypass-card-left">
+        <div class="bypass-card-emoji">🤠</div>
+        <div>
+            <div class="bypass-card-name">Red Dead Redemption 2</div>
+            <span class="bypass-card-tag">Bypass requis</span>
+        </div>
+    </div>
+    <div class="bypass-card-arrow">→</div>
+</div>
+
+<div class="bypass-card" onclick="showBypassModal2()">
+    <div class="bypass-card-left">
+        <div class="bypass-card-emoji">🧟</div>
+        <div>
+            <div class="bypass-card-name">Resident Evil Requiem</div>
+            <span class="bypass-card-tag">⚠️ Bypass potentiellement non fonctionnel</span>
+        </div>
+    </div>
+    <div class="bypass-card-arrow">→</div>
+</div>
+
                 </div>
             </div>
 
