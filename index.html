@@ -331,6 +331,35 @@
 }
 .bypass-card-arrow { color: rgba(255,140,0,0.6); font-size: 1.2rem; }
 
+.bypass-card-tag {
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 50px;
+    display: inline-block;
+}
+
+/* GREEN = fonctionnel */
+.bypass-card-tag.green {
+    background: rgba(0,255,0,0.1);
+    border: 1px solid rgba(0,255,0,0.3);
+    color: #00ff66;
+}
+
+/* YELLOW = potentiellement */
+.bypass-card-tag.yellow {
+    background: rgba(255,200,0,0.1);
+    border: 1px solid rgba(255,200,0,0.3);
+    color: #ffcc00;
+}
+
+/* WHITE = inconnu */
+.bypass-card-tag.white {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #ffffff;
+}
+
 /* ====================== IMAGES BYPASS RONDES ====================== */
 .bypass-image {
     width: 52px;
@@ -614,7 +643,7 @@
                 <img src="rdr2.png" alt="Red Dead Redemption 2" class="bypass-image">
                 <div>
                     <div class="bypass-card-name">Red Dead Redemption 2</div>
-                    <span class="bypass-card-tag">Bypass requis</span>
+                   <span class="bypass-card-tag red"></span>
                 </div>
             </div>
             <div class="bypass-card-arrow">→</div>
@@ -626,7 +655,7 @@
                 <img src="requiem.png" alt="Resident Evil Requiem" class="bypass-image">
                 <div>
                     <div class="bypass-card-name">Resident Evil Requiem</div>
-                    <span class="bypass-card-tag">⚠️ Bypass potentiellement non fonctionnel</span>
+                    <span class="bypass-card-tag"></span>
                 </div>
             </div>
             <div class="bypass-card-arrow">→</div>
@@ -637,7 +666,7 @@
                 <img src="gta5.png" alt="Grand Theft Auto V Legacy" class="bypass-image">
                 <div>
                     <div class="bypass-card-name">Grand Theft Auto V Legacy</div>
-                    <span class="bypass-card-tag">Bypass requis</span>
+                    <span class="bypass-card-tag"></span>
                 </div>
             </div>
             <div class="bypass-card-arrow">→</div>
@@ -841,6 +870,49 @@ const themes = {
     indigo:  { bg1: '#1f0033', bg2: '#14001f', accent: '#9900ff' },
     gold:    { bg1: '#332900', bg2: '#1f1900', accent: '#ffdd00' }
 };
+
+const greengamelist = [
+    "Red Dead Redemption 2"
+];
+
+const yellowgamelist = [
+    "Resident Evil Requiem"
+];
+
+const whitegamelist = [
+    "Grand Theft Auto V Legacy"
+];
+
+function getGameStatusColor(gameName) {
+    if (greengamelist.includes(gameName)) {
+        return "green";
+    }
+    if (yellowgamelist.includes(gameName)) {
+        return "yellow";
+    }
+    if (whitegamelist.includes(gameName)) {
+        return "white";
+    }
+    return "yellow"; // fallback
+}
+
+function getGameStatus(gameName) {
+    const name = gameName.trim();
+
+    if (greengamelist.includes(name)) {
+        return { color: "green", text: "Bypass fonctionnel" };
+    }
+
+    if (yellowgamelist.includes(name)) {
+        return { color: "yellow", text: "Bypass incertain" };
+    }
+
+    if (whitegamelist.includes(name)) {
+        return { color: "white", text: "Bypass non testé" };
+    }
+
+    return { color: "yellow", text: "Bypass potentiellement non fonctionnel" };
+}
 
 function setTheme(name, btn) {
     const t = themes[name];
@@ -1092,6 +1164,33 @@ window.addEventListener('load', () => {
     if (btn) {
         setTheme(theme, btn);
     }
+});
+
+document.querySelectorAll(".bypass-card").forEach(card => {
+    const gameName = card.querySelector(".bypass-card-name").textContent;
+    const tag = card.querySelector(".bypass-card-tag");
+
+    const status = getGameStatusColor(gameName);
+
+    tag.classList.add(status);
+});
+
+window.addEventListener("load", () => {
+    document.querySelectorAll(".bypass-card").forEach(card => {
+        const gameName = card.querySelector(".bypass-card-name").textContent;
+        const tag = card.querySelector(".bypass-card-tag");
+
+        const status = getGameStatus(gameName);
+
+        // reset propre
+        tag.classList.remove("green", "yellow", "white");
+
+        // couleur
+        tag.classList.add(status.color);
+
+        // texte automatique
+        tag.textContent = status.text;
+    });
 });
 
 </script>
