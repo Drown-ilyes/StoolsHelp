@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -443,6 +444,75 @@
     opacity: 0.75;
     font-weight: 500;
 }
+
+/* ====================== COLOR PICKER ARCHI STYLÉ ====================== */
+.color-picker-section {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.preset-swatches {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(58px, 1fr));
+    gap: 14px;
+}
+
+.swatch {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    border: 4px solid rgba(255,255,255,0.18);
+    box-shadow: 0 0 18px var(--accent-shadow);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.45rem;
+    position: relative;
+
+}
+
+.swatch:hover {
+    transform: scale(1.15);
+    box-shadow: 0 0 30px var(--accent-active-shadow);
+    border-color: var(--neon-cyan);
+}
+
+.swatch.active {
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 35px var(--accent-active-shadow);
+    transform: scale(1.1);
+}
+
+.custom-picker {
+    background: var(--dark-panel-lighter);
+    border-radius: 18px;
+    padding: 22px 24px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+.custom-picker label {
+    font-size: 0.98rem;
+    font-weight: 700;
+    color: var(--neon-cyan);
+    letter-spacing: 0.5px;
+}
+
+.custom-preview {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    border: 5px solid var(--neon-cyan);
+    box-shadow: 0 0 28px var(--accent-shadow);
+    flex-shrink: 0;
+    transition: all 0.3s;
+}
+
     .modal {
         display:none; position:fixed; top:0; left:0; width:100%; height:100%;
         background:rgba(0,0,0,0.93); z-index:9999;
@@ -561,6 +631,19 @@
             </div>
             <div class="bypass-card-arrow">→</div>
         </div>
+
+       <div class="bypass-card" onclick="showBypassModal3()">
+            <div class="bypass-card-left">
+                <img src="gta5.png" alt="Grand Theft Auto V Legacy" class="bypass-image">
+                <div>
+                    <div class="bypass-card-name">Grand Theft Auto V Legacy</div>
+                    <span class="bypass-card-tag">Bypass requis</span>
+                </div>
+            </div>
+            <div class="bypass-card-arrow">→</div>
+        </div>
+
+
     </div>
 </div>
 
@@ -603,36 +686,57 @@
                     </div>
                     <div class="faq-item">
                         <div class="faq-question" onclick="toggleFaq(this)">❓ Comment correctement installer un Online Fix ? <span>+</span></div>
-                        <div class="faq-answer">Allez sur <strong>online-fix.me</strong>, puis cherchez le jeu que vous voulez. Vous aurez un fichier .rar ou .zip.<br><br>1. Clic droit sur le jeu dans Steam → Gérer → Parcourir les fichiers locaux<br>2. Glissez le fichier téléchargé ici puis extrayez-le<br>3. Vous pouvez maintenant lancer le jeu<br><br><strong>⚠️ Note :</strong> Si ça vous met "self protection failed", le Online Fix ne marche pas. Vous pourrez uniquement jouer avec des gens qui ont le même Online Fix que vous.</div>
+                        <div class="faq-answer">Allez sur <strong>online-fix.me</strong>, puis cherchez le jeu que vous voulez. Vous aurez un fichier .rar ou .zip.<br><br>1. Clic droit sur le jeu dans Steam → Gérer → Parcourir les fichiers locaux<br>2. Glissez le fichier téléchargé ici puis extrayez-le (le mot de passe est normalement indiqué sur la page du jeu sur online-fix.me)<br>3. Vous pouvez maintenant lancer le jeu<br><br><strong>⚠️ Note :</strong> Si ça vous met "self protection failed", le Online Fix ne marche pas. Vous pourrez uniquement jouer avec des gens qui ont le même Online Fix que vous.</div>
                     </div>
                     <div class="faq-item">
                         <div class="faq-question" onclick="toggleFaq(this)">❓ C'est quoi Denuvo ? <span>+</span></div>
-                        <div class="faq-answer">Denuvo est un DRM (anti-tamper) utilisé par certains développeurs pour protéger leurs jeux du piratage. Il crash votre jeu s'il détecte que vous n'êtes pas sur une copie légale.<br><br>Des groupes de hackers comme <strong>voices38</strong> travaillent à cracker ces protections. Si un jeu est cracké, il se retrouve généralement sur <strong>fitgirl-repacks.site</strong> ou <strong>steamrip.com</strong>.<br><br>Il existe d'autres DRM (Rockstar, Punkbuster, etc.) mais Denuvo est le plus efficace. Peu importe le jeu, vous pourrez y jouer un jour — Denuvo ne fait que retarder le piratage.</div>
+                        <div class="faq-answer">Denuvo est un DRM (anti-tamper) utilisé par certains développeurs pour protéger leurs jeux du piratage. Il crash votre jeu s'il détecte que vous n'êtes pas sur une copie légale.<br><br>Des groupes de hackers comme <strong>voices38</strong> travaillent à cracker ces protections. Si un jeu est cracké, il se retrouve généralement sur <strong>fitgirl-repacks.site</strong> ou <strong>steamrip.com</strong>.<br><br>Il existe d'autres DRM (Rockstar, Punkbuster, etc.) mais Denuvo est le plus efficace. Peu importe le jeu, vous pourrez y jouer un jour — Denuvo ne fait que retarder le piratage.</div> </div>
+
+<div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">❓ Comment faire en sorte que windows defender arrête de supprimer les bypass/online fix ?<span>+</span></div>
+
+                        <div class="faq-answer">1. Ouvrez Windows Security (Windows Defender sur Windows 10)<br>2.Accédez à Protection contre les virus et menaces. <br>3. Cliquez sur Gérer les paramètres sous Paramètres de protection contre les virus et menaces <br>4. Faites défiler jusqu’en bas
+,puis Cliquez sur Ajouter ou supprimer des exclusions <br>5. Acceptez la demande de contrôle de compte utilisateur (UAC) <br> 6. Cliquez sur Ajouter une exclusion <br> 7. Sélectionnez Dossier <br> 8. Sélectionnez le dossier de votre jeu 🎮
+<strong></strong></div>
+
                     </div>
                 </div>
             </div>
 
-            <!-- TAB 4 -->
+            <!-- TAB 5 -->
             <div id="tab-5" class="tab-content">
                 <div class="settings-container">
                     <h1 class="settings-title">⚙️ Paramètres</h1>
                     <div class="settings-section">
-                        <div class="settings-section-title">🎨 Thème</div>
-                        <div class="theme-grid">
-    <button class="theme-btn theme-purple active-theme" onclick="setTheme('purple', this)">💜 Violet<br><small>Par défaut</small></button>
-    <button class="theme-btn theme-cyan" onclick="setTheme('cyan', this)">🩵 Cyan<br><small>Bleu néon</small></button>
-    <button class="theme-btn theme-green" onclick="setTheme('green', this)">💚 Vert<br><small>Matrix</small></button>
-    <button class="theme-btn theme-red" onclick="setTheme('red', this)">❤️ Rouge<br><small>Danger</small></button>
-    <button class="theme-btn theme-orange" onclick="setTheme('orange', this)">🧡 Orange<br><small>Feu</small></button>
-    <button class="theme-btn theme-white" onclick="setTheme('white', this)">🤍 Neutre<br><small>Sobre</small></button>
+    <div class="settings-section-title">🎨 Color Picker</div>
     
-    <!-- NOUVEAUX THÈMES -->
-    <button class="theme-btn theme-pink" onclick="setTheme('pink', this)">💖 Rose<br><small>Neon Rose</small></button>
-    <button class="theme-btn theme-teal" onclick="setTheme('teal', this)">🌊 Turquoise<br><small>Océan</small></button>
-    <button class="theme-btn theme-indigo" onclick="setTheme('indigo', this)">💜 Indigo<br><small>Profond</small></button>
-    <button class="theme-btn theme-gold" onclick="setTheme('gold', this)">🌟 Or<br><small>Jaune néon</small></button>
+    <div class="color-picker-section">
+        <!-- Swatches prédéfinis -->
+        <div>
+            <div style="font-size:0.85rem; opacity:0.75; margin-bottom:12px; letter-spacing:1px;">THÈMES PRÉDÉFINIS</div>
+            <div class="preset-swatches">
+                <div class="swatch" style="background: linear-gradient(135deg, #1a0033, #00f0ff)" data-theme="purple" onclick="selectPreset('purple', this)" title="Violet"></div>
+                <div class="swatch" style="background: linear-gradient(135deg, #001a2e, #00f0ff)" data-theme="cyan" onclick="selectPreset('cyan', this)" title="Cyan"></div>
+                <div class="swatch" style="background: linear-gradient(135deg, #001a00, #00ff9d)" data-theme="green" onclick="selectPreset('green', this)" title="Vert"></div>
+                <div class="swatch" style="background: linear-gradient(135deg, #1a0000, #ff2d55)" data-theme="red" onclick="selectPreset('red', this)" title="Rouge"></div>
+                <div class="swatch" style="background: linear-gradient(135deg, #1a0800, #ff8c00)" data-theme="orange" onclick="selectPreset('orange', this)" title="Orange"></div>
+                <div class="swatch" style="background: linear-gradient(135deg, #1a1a2e, #a0a0ff)" data-theme="white" onclick="selectPreset('white', this)" title="Neutre"></div>
+                <div class="swatch" style="background: linear-gradient(135deg, #33001a, #ff00aa)" data-theme="pink" onclick="selectPreset('pink', this)" title="Rose"></div>
+                <div class="swatch" style="background: linear-gradient(135deg, #002e2e, #00ffdd)" data-theme="teal" onclick="selectPreset('teal', this)" title="Turquoise"></div>
+                <div class="swatch" style="background: linear-gradient(135deg, #1f0033, #9900ff)" data-theme="indigo" onclick="selectPreset('indigo', this)" title="Indigo"></div>
+                <div class="swatch" style="background: linear-gradient(135deg, #332900, #ffdd00)" data-theme="gold" onclick="selectPreset('gold', this)" title="Or"></div>
+            </div>
+        </div>
+
+        <!-- Color picker personnalisé -->
+        <div class="custom-picker">
+            <label>Couleur néon personnalisée :</label>
+            <input type="color" id="custom-color" value="#00f0ff" onchange="applyCustomColor(this.value)">
+            <div id="live-preview" class="custom-preview"></div>
+            <small style="opacity:0.65; font-size:0.82rem; line-height:1.3;">Choisis n’importe quelle couleur<br>tout le site s’adapte en direct</small>
+        </div>
+    </div>
 </div>
-                    </div>
                 </div>
             </div>
 
@@ -693,6 +797,23 @@
     </div>
 </div>
 
+
+<!-- MODAL RE REQUIEM -->
+<div id="bypassModal3" class="modal">
+    <div class="modal-content">
+        <div class="modal-title">Grand Theft Auto V LEGACY a besoin d'un bypass pour s'exécuter proprement.</div>
+        <button class="download-btn" onclick="downloadFile3()">↓ Télécharger le bypass</button>
+        <div style="text-align:center; margin:14px 0 10px; font-weight:600; font-size:0.95rem;">Guide d'installation:</div>
+        <div class="step"><div class="step-number">1</div><div><strong>Installe le jeu sur Steam</strong><br><small>Assure-toi que le jeu est installé via Steam avant de continuer.</small></div></div>
+        <div class="step"><div class="step-number">2</div><div><strong>Ouvre le dossier du jeu</strong><br><small>Clic droit → Gérer → Parcourir les fichiers locaux.</small></div></div>
+        <div class="step"><div class="step-number">3</div><div><strong>Extrait et copie les fichiers</strong><br><small>WinRAR → extraire → copier tout dans le dossier.</small><div class="password-box">Mot de passe : <strong>openlua.cloud</strong></div></div></div>
+        <div class="step"><div class="step-number">4</div><div><strong>Remplace les fichiers existants</strong><br><small>Clique sur Remplacer quand Windows le demande.</small></div></div>
+   
+        <button class="close-btn" onclick="closeModal3()">Fermer</button>
+    </div>
+</div>
+
+
 <script>
 // ====================== HELPER HEX TO RGB ======================
 function hexToRgb(hex) {
@@ -724,11 +845,16 @@ const themes = {
 function setTheme(name, btn) {
     const t = themes[name];
     const rgb = hexToRgb(t.accent);
+    const color = t.accent;
+
+    // 🔥 Reset custom pour éviter conflit preset/custom
+    localStorage.removeItem('customAccent');
+    localStorage.setItem('theme', name);
 
     // Couleurs principales
     document.documentElement.style.setProperty('--bg1', t.bg1);
     document.documentElement.style.setProperty('--bg2', t.bg2);
-    document.documentElement.style.setProperty('--neon-cyan', t.accent);
+    document.documentElement.style.setProperty('--neon-cyan', color);
 
     // Panels et accents
     document.documentElement.style.setProperty('--dark-panel', `rgba(${Math.floor(rgb.r*0.15)},${Math.floor(rgb.g*0.15)},${Math.floor(rgb.b*0.4)},0.98)`);
@@ -747,17 +873,84 @@ function setTheme(name, btn) {
     document.documentElement.style.setProperty('--list-border', `rgba(${rgb.r},${rgb.g},${rgb.b},0.15)`);
     document.documentElement.style.setProperty('--faq-border', `rgba(${rgb.r},${rgb.g},${rgb.b},0.15)`);
 
-    // Mise à jour visuelle des boutons
-    document.querySelectorAll('.theme-btn').forEach(b => b.classList.remove('active-theme'));
-    btn.classList.add('active-theme');
+    // 🎯 UI boutons active
+    document.querySelectorAll('.swatch').forEach(s => s.classList.remove('active'));
+    if (btn) btn.classList.add('active');
 
+    // 🎯 Color picker sync (cercle + input)
+    const preview = document.getElementById('live-preview');
+    if (preview) {
+        preview.style.background = color;
+        preview.style.borderColor = color;
+        preview.style.boxShadow = `0 0 30px ${color}`;
+    }
+
+    const input = document.getElementById('custom-color');
+    if (input) input.value = color;
+}
+
+// ====================== COLOR PICKER ======================
+function selectPreset(name, el) {
+    document.querySelectorAll('.swatch').forEach(s => s.classList.remove('active'));
+    el.classList.add('active');
+    
     localStorage.setItem('theme', name);
+    localStorage.removeItem('customAccent');
+    
+    setTheme(name, el);
+}
+
+function applyCustomColor(hex) {
+    const rgb = hexToRgb(hex);
+    if (!rgb) return;
+
+    // 💥 mode custom actif = on coupe les presets
+    localStorage.setItem('customAccent', hex);
+    localStorage.removeItem('theme');
+
+    document.querySelectorAll('.swatch').forEach(s => s.classList.remove('active'));
+
+    const r = rgb.r, g = rgb.g, b = rgb.b;
+
+    // 🎯 couleur principale
+    document.documentElement.style.setProperty('--neon-cyan', hex);
+
+    // 🎯 BACKGROUND cohérent (IMPORTANT)
+    document.documentElement.style.setProperty('--bg1', `rgba(${r*0.08},${g*0.08},${b*0.15},1)`);
+    document.documentElement.style.setProperty('--bg2', `rgba(10,10,20,1)`);
+
+    // 🎯 panels synchronisés
+    const panel = `rgba(${r*0.12},${g*0.12},${b*0.2},0.95)`;
+
+    document.documentElement.style.setProperty('--dark-panel', panel);
+    document.documentElement.style.setProperty('--dark-panel-light', panel);
+    document.documentElement.style.setProperty('--dark-panel-lighter', panel);
+
+    // 🎯 accents
+    document.documentElement.style.setProperty('--accent-border', `rgba(${r},${g},${b},0.25)`);
+    document.documentElement.style.setProperty('--accent-shadow', `rgba(${r},${g},${b},0.2)`);
+    document.documentElement.style.setProperty('--accent-hover-bg', `rgba(${r},${g},${b},0.1)`);
+    document.documentElement.style.setProperty('--accent-active-bg', `rgba(${r},${g},${b},0.18)`);
+    document.documentElement.style.setProperty('--accent-active-shadow', `rgba(${r},${g},${b},0.3)`);
+    document.documentElement.style.setProperty('--grid-color', `rgba(${r},${g},${b},0.03)`);
+
+    // 🎯 preview (cercle propre)
+    const preview = document.getElementById('live-preview');
+    if (preview) {
+        preview.style.background = hex;
+        preview.style.borderColor = hex;
+        preview.style.boxShadow = `0 0 25px ${hex}`;
+    }
+
+    // 🎯 sync input color
+    const input = document.getElementById('custom-color');
+    if (input) input.value = hex;
 }
 
 // ====================== DONNÉES ======================
-const gamesList = ["Anno 117: Pax Romana","Assassin's Creed Shadows","Atomfall","Avatar: Frontiers of Pandora","Beyond Good & Evil - 20th Anniversary Edition","Black Myth Wukong","BattleBit Remastered","BRAVELY DEFAULT FLYING FAIRY HD Remaster","Borderlands 4","Call of Duty: Black Ops 7","City Transport Simulator","Civilization VII","CODE VEIN II","Company of Heroes 3","Construction Simulator","Crimson Desert","Demon Slayer: The Hinokami Chronicles 1","Demon Slayer: The Hinokami Chronicles 2","Demon Slayer -Kimetsu no Yaiba- Sweep the Board!","Digimon Story Time Stranger","Dirt 5","DRAGON QUEST VII Reimagined","Dune","EA SPORTS FC 24","EA SPORTS FC 25","EA SPORTS FC 26","EA SPORTS WRC","Eagle Flight","Etrian Odyssey HD","Etrian Odyssey II HD","Etrian Odyssey III HD","Evil Genius 2: World Domination","F1 23","F1 24","F1 25","F1 Manager 22","F1 Manager 23","F1 Manager 24","F1 Manager 26","Fe","FINAL FANTASY TACTICS - The Ivalice Chronicles","Firefighting Simulator - The Squad","Football Manager 22","Football Manager 24","Football Manager 26","FOR HONOR","FortiFyte","GRID Legends","Harry Potter: Quidditch Champions","Hatsune Miku: Project Diva Megamix+","Hello Kitty Island Adventures","Jurassic World Evolution 3","Like A Dragon: Gaiden","Like A Dragon: Infinite Wealth","Like A Dragon: Ishin","Like A Dragon: Pirate Yakuza In Hawaii","Lost in Random","Lost Judgment","Life is Strange: Reunion","Madden NFL 21","Madden NFL 22","Madden NFL 23","Madden NFL 24","Madden NFL 25","Madden NFL 26","Mafia: The Old Country","Marathon","Marvel's Midnight Suns","Microsoft Flight Simulator 2024","Might and Magic: Heroes VII – Trial by Fire","MONOPOLY 2024","Monopoly Madness","Monster Hunter Wilds","Monster Hunter Stories 3: Twisted Reflection","Mortal Kombat 1","NBA 2K24","NBA 2K25","NBA 2K26","Need for Speed Unbound","Octopath Traveler 0","OddBallers","Onimusha 2: Samurai's Destiny","Persona 3 Portable","Persona 3 Reload","Persona 4 Arena Ultimax","Persona 4 Revival","Persona 5 Tactica","Phantom Blade Zero","PGA TOUR 2K25","Planet Coaster 2","Plants vs. Zombies: Garden Warfare 2","PRAGMATA","Prince Of Persia The Lost Crown","Professional Baseball Spirits 2024","Professional Baseball Spirits 2025","Rocksmith 2014 Edition REMASTERED","RAIDOU Remastered","Red Dead Redemption 2","Redfall","Resident Evil Requiem","Shin Megami Tensei III: Nocturne HD","Shin Megami Tensei V: Vengeance","Shinobi - Art of Vengeance","Sniper Elite 5","Sniper Elite Resistance","Sniper Elite VR","Sonic Origins","Sonic Superstars","Sonic Racing Crossworlds","Sonic X Shadow Generations","Soul Hackers 2","Speedball","Star Wars Outlaws","Star Wars Squadrons","Stellar Blade","Street Fighter 6","Suicide Squad: Kill the Justice League","Super Mega Baseball 4","Super Robot Wars Y","The Bus","The First Berserker: Khazan","The Settlers: New Allies","Tom Clancy's Ghost Recon Breakpoint","TopSpin 2K25","Total War: Warhammer 3","Train Sim World 2020","Train Sim World 3","Trials Rising","Two Point Museum","Undisputed","Valiant Hearts: Coming Home","Warhammer 40k: Chaos Gate Daemonhunters","Warhammer Age Of Sigmar: Realms Of Ruin","WWE 2K26","Yakuza Kiwami 3","Dark Ties","Zombie Army 4: Dead War","Zombie Army VR"];
+const gamesList = ["Anno 117: Pax Romana","Assassin's Creed Shadows","Atomfall","Avatar: Frontiers of Pandora","Beyond Good & Evil - 20th Anniversary Edition","Black Myth Wukong","BattleBit Remastered","BRAVELY DEFAULT FLYING FAIRY HD Remaster","Borderlands 4","Call of Duty: Black Ops 7","City Transport Simulator","Civilization VII","CODE VEIN II","Company of Heroes 3","Construction Simulator","Crimson Desert","Demon Slayer: The Hinokami Chronicles 1","Demon Slayer: The Hinokami Chronicles 2","Demon Slayer -Kimetsu no Yaiba- Sweep the Board!","Digimon Story Time Stranger","Dirt 5","DRAGON QUEST VII Reimagined","Dune","EA SPORTS FC 24","EA SPORTS FC 25","EA SPORTS FC 26","EA SPORTS WRC","Eagle Flight","Etrian Odyssey HD","Etrian Odyssey II HD","Etrian Odyssey III HD","Evil Genius 2: World Domination","F1 23","F1 24","F1 25","F1 Manager 22","F1 Manager 23","F1 Manager 24","F1 Manager 26","Fe","FINAL FANTASY TACTICS - The Ivalice Chronicles","Firefighting Simulator - The Squad","Football Manager 22","Football Manager 24","Football Manager 26","FOR HONOR","FortiFyte","GRID Legends","Grand Theft Auto V Legacy","Harry Potter: Quidditch Champions","Hatsune Miku: Project Diva Megamix+","Hello Kitty Island Adventures","Jurassic World Evolution 3","Like A Dragon: Gaiden","Like A Dragon: Infinite Wealth","Like A Dragon: Ishin","Like A Dragon: Pirate Yakuza In Hawaii","Lost in Random","Lost Judgment","Life is Strange: Reunion","Madden NFL 21","Madden NFL 22","Madden NFL 23","Madden NFL 24","Madden NFL 25","Madden NFL 26","Mafia: The Old Country","Marathon","Marvel's Midnight Suns","Microsoft Flight Simulator 2024","Might and Magic: Heroes VII – Trial by Fire","MONOPOLY 2024","Monopoly Madness","Monster Hunter Wilds","Monster Hunter Stories 3: Twisted Reflection","Mortal Kombat 1","NBA 2K24","NBA 2K25","NBA 2K26","Need for Speed Unbound","Octopath Traveler 0","OddBallers","Onimusha 2: Samurai's Destiny","Persona 3 Portable","Persona 3 Reload","Persona 4 Arena Ultimax","Persona 4 Revival","Persona 5 Tactica","Phantom Blade Zero","PGA TOUR 2K25","Planet Coaster 2","Plants vs. Zombies: Garden Warfare 2","PRAGMATA","Prince Of Persia The Lost Crown","Professional Baseball Spirits 2024","Professional Baseball Spirits 2025","Rocksmith 2014 Edition REMASTERED","RAIDOU Remastered","Red Dead Redemption 2","Redfall","Resident Evil Requiem","Shin Megami Tensei III: Nocturne HD","Shin Megami Tensei V: Vengeance","Shinobi - Art of Vengeance","Sniper Elite 5","Sniper Elite Resistance","Sniper Elite VR","Sonic Origins","Sonic Superstars","Sonic Racing Crossworlds","Sonic X Shadow Generations","Soul Hackers 2","Speedball","Star Wars Outlaws","Star Wars Squadrons","Stellar Blade","Street Fighter 6","Suicide Squad: Kill the Justice League","Super Mega Baseball 4","Super Robot Wars Y","The Bus","The First Berserker: Khazan","The Settlers: New Allies","Tom Clancy's Ghost Recon Breakpoint","TopSpin 2K25","Total War: Warhammer 3","Train Sim World 2020","Train Sim World 3","Trials Rising","Two Point Museum","Undisputed","Valiant Hearts: Coming Home","Warhammer 40k: Chaos Gate Daemonhunters","Warhammer Age Of Sigmar: Realms Of Ruin","WWE 2K26","Yakuza Kiwami 3","Dark Ties","Zombie Army 4: Dead War","Zombie Army VR"];
 
-const bypassGames = ["red dead redemption 2","red dead redemption","red dead","rdr2","resident evil requiem","resident evil req","re requiem"];
+const bypassGames = ["red dead redemption 2","red dead redemption","red dead","rdr2","resident evil requiem","resident evil req","re requiem","grand theft auto","grand theft auto V","grand theft auto v legacy","grand t","grand"];
 
 // ====================== FONCTIONS JS ======================
 function normalize(t) { return t.toLowerCase().replace(/[^a-z0-9]/g, ""); }
@@ -851,6 +1044,11 @@ function closeModal() { document.getElementById("bypassModal").style.display = "
 function showBypassModal2() { document.getElementById("bypassModal2").style.display = "flex"; }
 function closeModal2() { document.getElementById("bypassModal2").style.display = "none"; }
 
+function showBypassModal3() { document.getElementById("bypassModal3").style.display = "flex"; }
+
+function closeModal3() { document.getElementById("bypassModal3").style.display = "none"; }
+
+
 function downloadFile() {
     const url = "https://www.dropbox.com/scl/fi/2vdri07077gd8g3qk7pm6/1174180_bypass.rar?rlkey=a4x4nr6obj427egucklc58z58&st=esusubwy&dl=1";
     const link = document.createElement("a");
@@ -864,6 +1062,13 @@ function downloadFile2() {
     document.body.appendChild(link); link.click(); document.body.removeChild(link);
 }
 
+function downloadFile3() {
+    const url = "https://www.dropbox.com/scl/fi/8cfjg7wxooe3ur4gg0490/271590_bypass.rar?rlkey=t4qdxlyof8ptz207t1ht6oi2t&st=fe8ucc3b&dl=1";
+    const link = document.createElement("a");
+    link.href = url; link.download = "GTA5_Bypass.rar";
+    document.body.appendChild(link); link.click(); document.body.removeChild(link);
+}
+
 function switchTab(n) {
     document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
     document.getElementById('tab-' + n).classList.add('active');
@@ -873,11 +1078,22 @@ function switchTab(n) {
 }
 
 // ====================== INITIALISATION ======================
+
 window.addEventListener('load', () => {
-    const saved = localStorage.getItem('theme') || 'purple';
-    const btn = document.querySelector(`.theme-${saved}`);
-    if (btn) setTheme(saved, btn);
+    const custom = localStorage.getItem('customAccent');
+    const theme = localStorage.getItem('theme') || 'purple';
+
+    if (custom) {
+        applyCustomColor(custom);
+        return;
+    }
+
+    const btn = document.querySelector(`[data-theme="${theme}"]`);
+    if (btn) {
+        setTheme(theme, btn);
+    }
 });
+
 </script>
 </body>
 </html>
