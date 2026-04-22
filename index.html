@@ -761,6 +761,18 @@
                 </div>
                 <div class="bypass-card-arrow">→</div>
             </div>
+
+        <div class="bypass-card" onclick="showBypassModal4()">
+                <div class="bypass-card-left">
+                    <img src="assassins.png" alt="Assassin’s Creed Unity" class="bypass-image">
+                    <div>
+                        <div class="bypass-card-name">Assassin’s Creed Unity</div>
+                        <span class="bypass-card-tag"></span>
+                    </div>
+                </div>
+                <div class="bypass-card-arrow">→</div>
+            </div>
+
         </div>
     </div>
 
@@ -865,6 +877,7 @@
     <div class="credit">Réalisé par <a href="https://x.com/wspp757" target="_blank">@wspp757</a> (@burger)</div>
 </div>
 
+
 </div>
 
 </div>
@@ -918,6 +931,27 @@
             <div class="step"><div class="step-number">3</div><div><strong>Extrait et copie les fichiers</strong><br><small>WinRAR → extraire → copier tout dans le dossier.</small><div class="password-box">Mot de passe : <strong>openlua.cloud</strong></div></div></div>
             <div class="step"><div class="step-number">4</div><div><strong>Remplace les fichiers existants</strong><br><small>Clique sur Remplacer quand Windows le demande.</small></div></div>
             <div class="step"><div class="step-number">5</div><div><strong>Lancez le jeu</strong><br><small>Via re9.exe</small></div></div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL ASSASIN CREED UNITY-->
+
+<div id="bypassModal4" class="modal">
+    <div class="modal-content">
+        <div class="modal-left">
+            <img src="assassins.png" class="modal-image">
+            <div class="modal-title">Assassin’s Creed Unity</div>
+            <button class="download-btn" onclick="downloadFile4()">↓ Télécharger</button>
+            <button class="close-btn" onclick="closeModal4()">Fermer</button>
+        </div>
+        <div class="modal-right">
+            <h3 style="color: var(--neon-cyan); margin-bottom: 10px;">Installation</h3>
+            <div class="step"><div class="step-number">1</div><div><strong>Installe le jeu sur Steam</strong><br><small>Assure-toi que le jeu est installé via Steam avant de continuer.</small></div></div>
+            <div class="step"><div class="step-number">2</div><div><strong>Ouvre le dossier du jeu</strong><br><small>Clic droit → Gérer → Parcourir les fichiers locaux.</small></div></div>
+            <div class="step"><div class="step-number">3</div><div><strong>Extrait et copie les fichiers</strong><br><small>WinRAR → extraire → copier tout dans le dossier.</small><div class="password-box">Mot de passe : <strong>openlua.cloud</strong></div></div></div>
+            <div class="step"><div class="step-number">4</div><div><strong>Remplace les fichiers existants</strong><br><small>Clique sur Remplacer quand Windows le demande.</small></div></div>
+            <div class="step"><div class="step-number">5</div><div><strong>Lancez le jeu</strong><br><small>Lancez le jeu</small></div></div>
         </div>
     </div>
 </div>
@@ -1105,7 +1139,7 @@ function applyCustomColor(hex) {
 
 const greengamelist = ["Red Dead Redemption 2","Grand Theft Auto V Legacy"];
 const yellowgamelist = ["Resident Evil Requiem"];
-const whitegamelist = [""];
+const whitegamelist = ["Assassin’s Creed Unity"];
 
 function getGameStatus(gameName) {
     const name = gameName.trim();
@@ -1115,8 +1149,8 @@ function getGameStatus(gameName) {
     return { color: "yellow", text: "Bypass potentiellement non fonctionnel" };
 }
 
-const gamesList = ["Anno 117: Pax Romana","Assassin's Creed Shadows","Atomfall","Avatar: Frontiers of Pandora","Beyond Good & Evil - 20th Anniversary Edition","Black Myth Wukong","BattleBit Remastered","BRAVELY DEFAULT FLYING FAIRY HD Remaster","Borderlands 4","Call of Duty: Black Ops 7","City Transport Simulator","Civilization VII","CODE VEIN II","Company of Heroes 3","Construction Simulator","Crimson Desert","Demon Slayer: The Hinokami Chronicles 1","Demon Slayer: The Hinokami Chronicles 2","Demon Slayer -Kimetsu no Yaiba- Sweep the Board!","Digimon Story Time Stranger","Dirt 5","DRAGON QUEST VII Reimagined","Dune","EA SPORTS FC 24","EA SPORTS FC 25","EA SPORTS FC 26","EA SPORTS WRC","Eagle Flight","Etrian Odyssey HD","Etrian Odyssey II HD","Etrian Odyssey III HD","Evil Genius 2: World Domination","F1 23","F1 24","F1 25","F1 Manager 22","F1 Manager 23","F1 Manager 24","F1 Manager 26","Fe","FINAL FANTASY TACTICS - The Ivalice Chronicles","Firefighting Simulator - The Squad","Football Manager 22","Football Manager 24","Football Manager 26","FOR HONOR","FortiFyte","GRID Legends","Grand Theft Auto V Legacy","Harry Potter: Quidditch Champions","Hatsune Miku: Project Diva Megamix+","Hello Kitty Island Adventures","Jurassic World Evolution 3","Like A Dragon: Gaiden","Like A Dragon: Infinite Wealth","Like A Dragon: Ishin","Like A Dragon: Pirate Yakuza In Hawaii","Lost in Random","Lost Judgment","Life is Strange: Reunion","Madden NFL 21","Madden NFL 22","Madden NFL 23","Madden NFL 24","Madden NFL 25","Madden NFL 26","Mafia: The Old Country","Marathon","Marvel's Midnight Suns","Microsoft Flight Simulator 2024","Might and Magic: Heroes VII – Trial by Fire","MONOPOLY 2024","Monopoly Madness","Monster Hunter Wilds","Monster Hunter Stories 3: Twisted Reflection","Mortal Kombat 1","NBA 2K24","NBA 2K25","NBA 2K26","Need for Speed Unbound","Octopath Traveler 0","OddBallers","Onimusha 2: Samurai's Destiny","Persona 3 Portable","Persona 3 Reload","Persona 4 Arena Ultimax","Persona 4 Revival","Persona 5 Tactica","Phantom Blade Zero","PGA TOUR 2K25","Planet Coaster 2","Plants vs. Zombies: Garden Warfare 2","PRAGMATA","Prince Of Persia The Lost Crown","Professional Baseball Spirits 2024","Professional Baseball Spirits 2025","Rocksmith 2014 Edition REMASTERED","RAIDOU Remastered","Red Dead Redemption 2","Redfall","Resident Evil Requiem","Shin Megami Tensei III: Nocturne HD","Shin Megami Tensei V: Vengeance","Shinobi - Art of Vengeance","Sniper Elite 5","Sniper Elite Resistance","Sniper Elite VR","Sonic Origins","Sonic Superstars","Sonic Racing Crossworlds","Sonic X Shadow Generations","Soul Hackers 2","Speedball","Star Wars Outlaws","Star Wars Squadrons","Stellar Blade","Street Fighter 6","Suicide Squad: Kill the Justice League","Super Mega Baseball 4","The Bus","The First Berserker: Khazan","The Settlers: New Allies","Tom Clancy's Ghost Recon Breakpoint","TopSpin 2K25","Total War: Warhammer 3","Train Sim World 2020","Train Sim World 3","Trials Rising","Two Point Museum","Undisputed","Valiant Hearts: Coming Home","Warhammer 40k: Chaos Gate Daemonhunters","Warhammer Age Of Sigmar: Realms Of Ruin","WWE 2K26","Yakuza Kiwami 3","Dark Ties","Zombie Army 4: Dead War","Zombie Army VR"];
-const bypassGames = ["red dead redemption 2","red dead redemption","red dead","rdr2","resident evil requiem","resident evil req","re requiem","grand theft auto","grand theft auto V","grand theft auto v legacy","grand t","grand"];
+const gamesList = ["Anno 117: Pax Romana","Assassin's Creed Shadows","Assassin’s Creed Unity","Atomfall","Avatar: Frontiers of Pandora","Beyond Good & Evil - 20th Anniversary Edition","Black Myth Wukong","BattleBit Remastered","BRAVELY DEFAULT FLYING FAIRY HD Remaster","Borderlands 4","Call of Duty: Black Ops 7","City Transport Simulator","Civilization VII","CODE VEIN II","Company of Heroes 3","Construction Simulator","Crimson Desert","Demon Slayer: The Hinokami Chronicles 1","Demon Slayer: The Hinokami Chronicles 2","Demon Slayer -Kimetsu no Yaiba- Sweep the Board!","Digimon Story Time Stranger","Dirt 5","DRAGON QUEST VII Reimagined","Dune","EA SPORTS FC 24","EA SPORTS FC 25","EA SPORTS FC 26","EA SPORTS WRC","Eagle Flight","Etrian Odyssey HD","Etrian Odyssey II HD","Etrian Odyssey III HD","Evil Genius 2: World Domination","F1 23","F1 24","F1 25","F1 Manager 22","F1 Manager 23","F1 Manager 24","F1 Manager 26","Fe","FINAL FANTASY TACTICS - The Ivalice Chronicles","Firefighting Simulator - The Squad","Football Manager 22","Football Manager 24","Football Manager 26","FOR HONOR","FortiFyte","GRID Legends","Grand Theft Auto V Legacy","Harry Potter: Quidditch Champions","Hatsune Miku: Project Diva Megamix+","Hello Kitty Island Adventures","Jurassic World Evolution 3","Like A Dragon: Gaiden","Like A Dragon: Infinite Wealth","Like A Dragon: Ishin","Like A Dragon: Pirate Yakuza In Hawaii","Lost in Random","Lost Judgment","Life is Strange: Reunion","Madden NFL 21","Madden NFL 22","Madden NFL 23","Madden NFL 24","Madden NFL 25","Madden NFL 26","Mafia: The Old Country","Marathon","Marvel's Midnight Suns","Microsoft Flight Simulator 2024","Might and Magic: Heroes VII – Trial by Fire","MONOPOLY 2024","Monopoly Madness","Monster Hunter Wilds","Monster Hunter Stories 3: Twisted Reflection","Mortal Kombat 1","NBA 2K24","NBA 2K25","NBA 2K26","Need for Speed Unbound","Octopath Traveler 0","OddBallers","Onimusha 2: Samurai's Destiny","Persona 3 Portable","Persona 3 Reload","Persona 4 Arena Ultimax","Persona 4 Revival","Persona 5 Tactica","Phantom Blade Zero","PGA TOUR 2K25","Planet Coaster 2","Plants vs. Zombies: Garden Warfare 2","PRAGMATA","Prince Of Persia The Lost Crown","Professional Baseball Spirits 2024","Professional Baseball Spirits 2025","Rocksmith 2014 Edition REMASTERED","RAIDOU Remastered","Red Dead Redemption 2","Redfall","Resident Evil Requiem","Shin Megami Tensei III: Nocturne HD","Shin Megami Tensei V: Vengeance","Shinobi - Art of Vengeance","Sniper Elite 5","Sniper Elite Resistance","Sniper Elite VR","Sonic Origins","Sonic Superstars","Sonic Racing Crossworlds","Sonic X Shadow Generations","Soul Hackers 2","Speedball","Star Wars Outlaws","Star Wars Squadrons","Stellar Blade","Street Fighter 6","Suicide Squad: Kill the Justice League","Super Mega Baseball 4","The Bus","The First Berserker: Khazan","The Settlers: New Allies","Tom Clancy's Ghost Recon Breakpoint","TopSpin 2K25","Total War: Warhammer 3","Train Sim World 2020","Train Sim World 3","Trials Rising","Two Point Museum","Undisputed","Valiant Hearts: Coming Home","Warhammer 40k: Chaos Gate Daemonhunters","Warhammer Age Of Sigmar: Realms Of Ruin","WWE 2K26","Yakuza Kiwami 3","Dark Ties","Zombie Army 4: Dead War","Zombie Army VR"];
+const bypassGames = ["red dead redemption 2","red dead redemption","red dead","rdr2","resident evil requiem","resident evil req","re requiem","grand theft auto","grand theft auto V","grand theft auto v legacy","grand t","grand","assassin’s creed unity","assassins creed unity","assassin’s creed u","assassins creed u"];
 
 function normalize(t) { return t.toLowerCase().replace(/[^a-z0-9]/g, ""); }
 function score(input, game) {
@@ -1201,6 +1235,8 @@ function showBypassModal2() { document.getElementById("bypassModal2").style.disp
 function closeModal2()      { document.getElementById("bypassModal2").style.display = "none"; }
 function showBypassModal3() { document.getElementById("bypassModal3").style.display = "flex"; }
 function closeModal3()      { document.getElementById("bypassModal3").style.display = "none"; }
+function showBypassModal4() { document.getElementById("bypassModal4").style.display = "flex"; }
+function closeModal4()      { document.getElementById("bypassModal4").style.display = "none"; }
 
 function downloadFile() {
     const url = "https://www.dropbox.com/scl/fi/2vdri07077gd8g3qk7pm6/1174180_bypass.rar?rlkey=a4x4nr6obj427egucklc58z58&st=esusubwy&dl=1";
@@ -1215,6 +1251,12 @@ function downloadFile2() {
 function downloadFile3() {
     const url = "https://www.dropbox.com/scl/fi/8cfjg7wxooe3ur4gg0490/271590_bypass.rar?rlkey=t4qdxlyof8ptz207t1ht6oi2t&st=fe8ucc3b&dl=1";
     const link = document.createElement("a"); link.href = url; link.download = "GTA5_Bypass.rar";
+    document.body.appendChild(link); link.click(); document.body.removeChild(link);
+}
+
+function downloadFile4() {
+    const url = "https://www.dropbox.com/scl/fi/gc5e81p1i04yucpu4hxrm/289650_bypass_ext.zip?rlkey=275jly98uwbpek08xutceovrs&st=6vx9dc1n&dl=1";
+    const link = document.createElement("a"); link.href = url; link.download = "AssasinsCreedUnity_Bypass.rar";
     document.body.appendChild(link); link.click(); document.body.removeChild(link);
 }
 
