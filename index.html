@@ -541,16 +541,62 @@
 }
 
     .modal {
-        display:none; position:fixed; top:0; left:0; width:100%; height:100%;
-        background:rgba(0,0,0,0.93); z-index:9999;
-        align-items:center; justify-content:center;
-    }
-    .modal-content {
-        background:#1a1a2e; width:92%; max-width:500px;
-        border-radius:16px; padding:18px 20px; border: 2px solid var(--neon-cyan);
-        box-shadow: 0 0 40px var(--accent-active-shadow);
-        max-height: 90vh; overflow-y: auto;
-    }
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+    backdrop-filter: blur(10px);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modal-content {
+    width: min(900px, 95%);
+    height: 85vh;
+    background: rgba(15, 15, 30, 0.85);
+    border: 1px solid rgba(0,240,255,0.25);
+    border-radius: 22px;
+    box-shadow: 0 0 40px rgba(0,240,255,0.15);
+    display: flex;
+    overflow: hidden;
+    animation: pop 0.25s ease;
+}
+
+.modal-left {
+    width: 40%;
+    background: rgba(0,0,0,0.25);
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    border-right: 1px solid rgba(255,255,255,0.08);
+}
+
+.modal-right {
+    flex: 1;
+    padding: 22px;
+    overflow-y: auto;
+}
+
+.modal-title {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--neon-cyan);
+    margin-bottom: 10px;
+}
+
+.modal-image {
+    width: 100%;
+    border-radius: 16px;
+    box-shadow: 0 0 25px rgba(0,240,255,0.2);
+}
+
+@keyframes pop {
+    from { transform: scale(0.95); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
     .modal-title { color:#ffaa00; font-size:1.2rem; font-weight:700; text-align:center; margin-bottom:8px; }
     .download-btn { 
         width:100%; padding:12px; 
@@ -791,15 +837,72 @@
 
 <div id="bypassModal" class="modal">
     <div class="modal-content">
-        <div class="modal-title">Red Dead Redemption 2 a besoin d'un bypass pour s'exécuter proprement.</div>
-        <button class="download-btn" onclick="downloadFile()">↓ Télécharger le bypass</button>
-        <div style="text-align:center; margin:14px 0 10px; font-weight:600; font-size:0.95rem;">Guide d'installation:</div>
-        <div class="step"><div class="step-number">1</div><div><strong>Installe le jeu sur Steam</strong><br><small>Assure-toi que le jeu est installé via Steam avant de continuer.</small></div></div>
-        <div class="step"><div class="step-number">2</div><div><strong>Ouvre le dossier du jeu</strong><br><small>Clic droit → Gérer → Parcourir les fichiers locaux.</small></div></div>
-        <div class="step"><div class="step-number">3</div><div><strong>Extrait et copie les fichiers</strong><br><small>WinRAR → extraire → copier tout dans le dossier.</small><div class="password-box">Mot de passe : <strong>openlua.cloud</strong></div></div></div>
-        <div class="step"><div class="step-number">4</div><div><strong>Remplace les fichiers existants</strong><br><small>Clique sur Remplacer quand Windows le demande.</small></div></div>
-        <div class="step"><div class="step-number">5</div><div><strong>Lancez le jeu</strong><br><small>Via rdr2launcher.exe</small></div></div>
-        <button class="close-btn" onclick="closeModal()">Fermer</button>
+
+        <!-- LEFT -->
+        <div class="modal-left">
+            <img src="rdr2.png" class="modal-image">
+
+            <div class="modal-title">Red Dead Redemption 2</div>
+
+            <button class="download-btn" onclick="downloadFile()">
+                ↓ Télécharger le bypass
+            </button>
+
+            <button class="close-btn" onclick="closeModal()">Fermer</button>
+        </div>
+
+        <!-- RIGHT -->
+        <div class="modal-right">
+
+            <h3 style="color: var(--neon-cyan); margin-bottom: 10px;">
+                Installation
+            </h3>
+
+            <div class="step">
+                <div class="step-number">1</div>
+                <div>
+                    <strong>Installe le jeu sur Steam</strong><br>
+                    <small>Assure-toi que le jeu est installé via Steam avant de continuer.</small>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <div>
+                    <strong>Ouvre le dossier du jeu</strong><br>
+                    <small>Clic droit → Gérer → Parcourir les fichiers locaux.</small>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3</div>
+                <div>
+                    <strong>Extrait et copie les fichiers</strong><br>
+                    <small>WinRAR → extraire → copier tout dans le dossier.</small>
+                    <div class="password-box">
+                        Mot de passe : <strong>openlua.cloud</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">4</div>
+                <div>
+                    <strong>Remplace les fichiers existants</strong><br>
+                    <small>Clique sur Remplacer quand Windows le demande.</small>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">5</div>
+                <div>
+                    <strong>Lancez le jeu</strong><br>
+                    <small>Via rdr2launcher.exe</small>
+                </div>
+            </div>
+
+        </div>
+
     </div>
 </div>
 
@@ -807,15 +910,72 @@
 
 <div id="bypassModal2" class="modal">
     <div class="modal-content">
-        <div class="modal-title">Resident Evil Requiem a besoin d'un bypass pour s'exécuter proprement.</div>
-        <button class="download-btn" onclick="downloadFile2()">↓ Télécharger le bypass</button>
-        <div style="text-align:center; margin:14px 0 10px; font-weight:600; font-size:0.95rem;">Guide d'installation:</div>
-        <div class="step"><div class="step-number">1</div><div><strong>Installe le jeu sur Steam</strong><br><small>Assure-toi que le jeu est installé via Steam avant de continuer.</small></div></div>
-        <div class="step"><div class="step-number">2</div><div><strong>Ouvre le dossier du jeu</strong><br><small>Clic droit → Gérer → Parcourir les fichiers locaux.</small></div></div>
-        <div class="step"><div class="step-number">3</div><div><strong>Extrait et copie les fichiers</strong><br><small>WinRAR → extraire → copier tout dans le dossier.</small><div class="password-box">Mot de passe : <strong>openlua.cloud</strong></div></div></div>
-        <div class="step"><div class="step-number">4</div><div><strong>Remplace les fichiers existants</strong><br><small>Clique sur Remplacer quand Windows le demande.</small></div></div>
-        <div class="step"><div class="step-number">5</div><div><strong>Lancez le jeu</strong><br><small>Ne pas lancer le jeu via Steam.</small></div></div>
-        <button class="close-btn" onclick="closeModal2()">Fermer</button>
+
+        <!-- LEFT -->
+        <div class="modal-left">
+            <img src="re.png" class="modal-image">
+
+            <div class="modal-title">Resident Evil Requiem</div>
+
+            <button class="download-btn" onclick="downloadFile2()">
+                ↓ Télécharger
+            </button>
+
+            <button class="close-btn" onclick="closeModal2()">Fermer</button>
+        </div>
+
+        <!-- RIGHT -->
+        <div class="modal-right">
+
+            <h3 style="color: var(--neon-cyan); margin-bottom: 10px;">
+                Installation
+            </h3>
+
+            <div class="step">
+                <div class="step-number">1</div>
+                <div>
+                    <strong>Installe le jeu sur Steam</strong><br>
+                    <small>Assure-toi que le jeu est installé via Steam avant de continuer.</small>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <div>
+                    <strong>Ouvre le dossier du jeu</strong><br>
+                    <small>Clic droit → Gérer → Parcourir les fichiers locaux.</small>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3</div>
+                <div>
+                    <strong>Extrait et copie les fichiers</strong><br>
+                    <small>WinRAR → extraire → copier tout dans le dossier.</small>
+                    <div class="password-box">
+                        Mot de passe : <strong>openlua.cloud</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">4</div>
+                <div>
+                    <strong>Remplace les fichiers existants</strong><br>
+                    <small>Clique sur Remplacer quand Windows le demande.</small>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">5</div>
+                <div>
+                    <strong>Lancez le jeu</strong><br>
+                    <small>Via le launcher du jeu</small>
+                </div>
+            </div>
+
+        </div>
+
     </div>
 </div>
 
@@ -823,15 +983,72 @@
 
 <div id="bypassModal3" class="modal">
     <div class="modal-content">
-        <div class="modal-title">Grand Theft Auto V LEGACY a besoin d'un bypass pour s'exécuter proprement.</div>
-        <button class="download-btn" onclick="downloadFile3()">↓ Télécharger le bypass</button>
-        <div style="text-align:center; margin:14px 0 10px; font-weight:600; font-size:0.95rem;">Guide d'installation:</div>
-        <div class="step"><div class="step-number">1</div><div><strong>Installe le jeu sur Steam</strong><br><small>Assure-toi que le jeu est installé via Steam avant de continuer.</small></div></div>
-        <div class="step"><div class="step-number">2</div><div><strong>Ouvre le dossier du jeu</strong><br><small>Clic droit → Gérer → Parcourir les fichiers locaux.</small></div></div>
-        <div class="step"><div class="step-number">3</div><div><strong>Extrait et copie les fichiers</strong><br><small>WinRAR → extraire → copier tout dans le dossier.</small><div class="password-box">Mot de passe : <strong>openlua.cloud</strong></div></div></div>
-        <div class="step"><div class="step-number">4</div><div><strong>Remplace les fichiers existants</strong><br><small>Clique sur Remplacer quand Windows le demande.</small></div></div>
-        <div class="step"><div class="step-number">5</div><div><strong>Lancez le jeu</strong><br><small>Lancez le via PlayGtav.bat (si il y en a deux, essayez les deux)</small></div></div>
-        <button class="close-btn" onclick="closeModal3()">Fermer</button>
+
+        <!-- LEFT -->
+        <div class="modal-left">
+            <img src="gta5.png" class="modal-image">
+
+            <div class="modal-title">GTA V LEGACY</div>
+
+            <button class="download-btn">
+                ↓ Télécharger
+            </button>
+
+            <button class="close-btn" onclick="closeModal3()">Fermer</button>
+        </div>
+
+        <!-- RIGHT -->
+        <div class="modal-right">
+
+            <h3 style="color: var(--neon-cyan); margin-bottom: 10px;">
+                Installation
+            </h3>
+
+            <div class="step">
+                <div class="step-number">1</div>
+                <div>
+                    <strong>Installe le jeu sur Steam</strong><br>
+                    <small>Assure-toi que le jeu est installé via Steam avant de continuer.</small>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <div>
+                    <strong>Ouvre le dossier du jeu</strong><br>
+                    <small>Clic droit → Gérer → Parcourir les fichiers locaux.</small>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3</div>
+                <div>
+                    <strong>Extrait et copie les fichiers</strong><br>
+                    <small>WinRAR → extraire → copier tout dans le dossier.</small>
+                    <div class="password-box">
+                        Mot de passe : <strong>openlua.cloud</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">4</div>
+                <div>
+                    <strong>Remplace les fichiers existants</strong><br>
+                    <small>Clique sur Remplacer quand Windows le demande.</small>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">5</div>
+                <div>
+                    <strong>Lancez le jeu</strong><br>
+                    <small>Lancez le via PlayGtav.bat (si il y en a deux, essayez les deux)</small>
+                </div>
+            </div>
+
+        </div>
+
     </div>
 </div>
 
