@@ -1,11 +1,11 @@
-
 <!DOCTYPE html>
+
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SteamTools Helper</title>
-  
+
 <style>
     :root {
         --neon-cyan: #00f0ff;
@@ -436,8 +436,8 @@
     padding: 18px 12px;
     border-radius: 14px;
     border: 2px solid rgba(255,255,255,0.1);
-    background: rgba(255,255,255,0.08);           /* Semi-transparent sombre */
-    backdrop-filter: blur(12px);                  /* Effet glassmorphism léger */
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(12px);
     color: white;
     font-size: 0.95rem;
     font-weight: 700;
@@ -467,7 +467,6 @@
     color: var(--neon-cyan);
 }
 
-/* Petits textes en dessous */
 .theme-btn small {
     font-size: 0.78rem;
     opacity: 0.75;
@@ -500,7 +499,6 @@
     justify-content: center;
     font-size: 1.45rem;
     position: relative;
-
 }
 
 .swatch:hover {
@@ -549,8 +547,8 @@
     }
     .modal-content {
         background:#1a1a2e; width:92%; max-width:500px;
-        border-radius:16px; padding:18px 20px; border:2px solid #ff2d55;
-        box-shadow:0 0 40px rgba(255,45,85,0.5);
+        border-radius:16px; padding:18px 20px; border: 2px solid var(--neon-cyan);
+        box-shadow: 0 0 40px var(--accent-active-shadow);
         max-height: 90vh; overflow-y: auto;
     }
     .modal-title { color:#ffaa00; font-size:1.2rem; font-weight:700; text-align:center; margin-bottom:8px; }
@@ -571,232 +569,227 @@
     .credit { margin-top:30px; text-align:center; font-size:12px; opacity:0.5; color:var(--neon-cyan); }
     .credit a { color:var(--neon-cyan); text-decoration:none; }
 </style>
+
 </head>
 <body>
 
 <div class="app">
 
-    <!-- HEADER -->
-    <div class="header">
-        <div class="logo">
-            <img src="icon.png" alt="" class="logo-icon">
-            SteamTools Helper
-        </div>
-        <div class="header-right">
-            <div class="server-name">Serveur de Abelou</div>
-            <div class="version">v2.1</div>
-        </div>
+```
+<!-- HEADER -->
+<div class="header">
+    <div class="logo">
+        <img src="icon.png" alt="" class="logo-icon">
+        SteamTools Helper
+    </div>
+    <div class="header-right">
+        <div class="server-name">Serveur de Abelou</div>
+        <div class="version">v2.1</div>
+    </div>
+</div>
+
+<div class="main-layout">
+
+    <!-- SIDEBAR desktop -->
+    <div class="sidebar">
+        <button class="tab-button active" onclick="switchTab(0)">🏠 Accueil</button>
+        <button class="tab-button" onclick="switchTab(1)">🎮 Checker</button>
+        <button class="tab-button" onclick="switchTab(2)">🔓 Bypass</button>
+        <button class="tab-button" onclick="switchTab(3)">🌐 Online Fix</button>
+        <button class="tab-button" onclick="switchTab(4)">❓ FAQ</button>
+        <button class="tab-button" onclick="switchTab(5)">⚙️ Paramètres</button>
     </div>
 
-    <div class="main-layout">
+    <!-- CONTENU -->
+    <div class="main-content">
 
-        <!-- SIDEBAR desktop -->
-        <div class="sidebar">
-            <button class="tab-button active" onclick="switchTab(0)">🏠 Accueil</button>
-            <button class="tab-button" onclick="switchTab(1)">🎮 Checker</button>
-     <button class="tab-button" onclick="switchTab(2)">🔓 Bypass</button>
-<button class="tab-button" onclick="switchTab(3)">🌐 Online Fix</button>   <!-- Nouveau -->
-<button class="tab-button" onclick="switchTab(4)">❓ FAQ</button>
-            
-            <button class="tab-button" onclick="switchTab(5)">⚙️ Paramètres</button>
+        <!-- TAB 0 -->
+        <div id="tab-0" class="tab-content active">
+            <div class="welcome">
+                <h1>Bienvenue au centre d'aide</h1>
+                <p>Ce site web est pour obtenir de l'aide en rapport aux jeux steamtools, lua tools etc. Ce serveur est principalement liée au serveur de Abelou.</p>
+                <a href="https://discord.gg/eTcyJezWkH" target="_blank" class="discord-btn">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057c.002.022.015.043.03.056a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+                    Rejoindre le serveur Discord
+                </a>
+            </div>
         </div>
 
-        <!-- CONTENU -->
-        <div class="main-content">
+        <!-- TAB 1 -->
+        <div id="tab-1" class="tab-content">
+            <div class="info"><span>⚡</span> Vérifie si un jeu est obtenable via des Tools</div>
+            <h2>GAME CHECKER</h2>
+            <div class="subtitle">Neon Edition</div>
+            <input id="search" placeholder="🔍 Tape le nom du jeu..." oninput="liveSearch()">
+            <div id="result" class="result">Tape pour commencer le scan...</div>
+            <div id="explanation-ok" class="explanation ok">Ce jeu a l'air d'être disponible (SI IL EST BIEN ORTHOGRAPHIÉ ET QU'IL EXISTE), sachez tout de même que la liste des jeux n'est pas complète, et qu'il se peut que le jeu ne marche pas.</div>
+            <div id="explanation-no" class="explanation no">Quand un jeu est indisponible, cela veut dire qu'il est protégé par un DRM, et qu'il ne sera pas crackable et jouable via SteamTools, Lua Tools, etc.</div>
+            <div id="explanation-bypass" class="explanation bypass">⚡ Un bypass est disponible pour ce jeu, rendez-vous dans l'onglet <strong>Bypass disponibles</strong> !</div>
+            <div id="list" class="list"></div>
+            <button class="show-list-btn" onclick="toggleFullList()">📋 Voir tous les jeux indisponibles</button>
+            <div id="full-list" class="full-list" style="display:none;"></div>
+        </div>
 
-            <!-- TAB 0 -->
-            <div id="tab-0" class="tab-content active">
-                <div class="welcome">
-                    <h1>Bienvenue au centre d'aide</h1>
-                    <p>Ce site web est pour obtenir de l'aide en rapport aux jeux steamtools, lua tools etc. Ce serveur est principalement liée au serveur de Abelou.</p>
-                    <a href="https://discord.gg/eTcyJezWkH" target="_blank" class="discord-btn">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057c.002.022.015.043.03.056a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
-                        Rejoindre le serveur Discord
+        <!-- TAB 2 -->
+        <div id="tab-2" class="tab-content">
+            <div class="bypass-container">
+                <h1 class="bypass-title">Bypass disponibles</h1>
+                <p class="bypass-description">Un bypass permet de contourner le drm du jeu. Cela permet de le lancer même si il est protégé par un drm comme denuvo ou un launcher externe.</p>
+                
+                <div class="bypass-card" onclick="showBypassModal()">
+                    <div class="bypass-card-left">
+                        <img src="rdr2.png" alt="Red Dead Redemption 2" class="bypass-image">
+                        <div>
+                            <div class="bypass-card-name">Red Dead Redemption 2</div>
+                           <span class="bypass-card-tag red"></span>
+                        </div>
+                    </div>
+                    <div class="bypass-card-arrow">→</div>
+                </div>
+
+                <div class="bypass-card" onclick="showBypassModal2()">
+                    <div class="bypass-card-left">
+                        <img src="requiem.png" alt="Resident Evil Requiem" class="bypass-image">
+                        <div>
+                            <div class="bypass-card-name">Resident Evil Requiem</div>
+                            <span class="bypass-card-tag"></span>
+                        </div>
+                    </div>
+                    <div class="bypass-card-arrow">→</div>
+                </div>
+
+               <div class="bypass-card" onclick="showBypassModal3()">
+                    <div class="bypass-card-left">
+                        <img src="gta5.png" alt="Grand Theft Auto V Legacy" class="bypass-image">
+                        <div>
+                            <div class="bypass-card-name">Grand Theft Auto V Legacy</div>
+                            <span class="bypass-card-tag"></span>
+                        </div>
+                    </div>
+                    <div class="bypass-card-arrow">→</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 3 - ONLINE FIX -->
+        <div id="tab-3" class="tab-content">
+            <div class="bypass-container" style="padding: 40px 20px;">
+                <h1 class="bypass-title" style="font-size: 2.1rem;">🌐 Online Fix</h1>
+                
+                <p style="font-size: 1.1rem; line-height: 1.7; max-width: 620px; margin: 0 auto 30px; opacity: 0.9;">
+                    Pour jouer en multijoueur avec des amis sur des jeux crackés, tu peux utiliser les Online Fix.
+                </p>
+
+                <div style="background: rgba(255,255,255,0.08); border: 1px solid var(--accent-border); border-radius: 16px; padding: 28px; max-width: 520px; margin: 0 auto 30px;">
+                    <p style="font-size: 1.15rem; margin-bottom: 18px;">
+                        Voici le lien officiel du Online Fix :
+                    </p>
+                    <a href="https://online-fix.me/" target="_blank" style="display: inline-block; background: linear-gradient(45deg, #00c4ff, #0099ff); color: white; padding: 16px 32px; border-radius: 14px; font-size: 1.2rem; font-weight: 700; text-decoration: none; box-shadow: 0 0 20px rgba(0, 196, 255, 0.5); transition: all 0.3s;">
+                        🌐 online-fix.me
                     </a>
                 </div>
-            </div>
 
-            <!-- TAB 1 -->
-            <div id="tab-1" class="tab-content">
-                <div class="info"><span>⚡</span> Vérifie si un jeu est obtenable via des Tools</div>
-                <h2>GAME CHECKER</h2>
-                <div class="subtitle">Neon Edition</div>
-                <input id="search" placeholder="🔍 Tape le nom du jeu..." oninput="liveSearch()">
-                <div id="result" class="result">Tape pour commencer le scan...</div>
-                <div id="explanation-ok" class="explanation ok">Ce jeu a l'air d'être disponible (SI IL EST BIEN ORTHOGRAPHIÉ ET QU'IL EXISTE), sachez tout de même que la liste des jeux n'est pas complète, et qu'il se peut que le jeu ne marche pas.</div>
-                <div id="explanation-no" class="explanation no">Quand un jeu est indisponible, cela veut dire qu'il est protégé par un DRM, et qu'il ne sera pas crackable et jouable via SteamTools, Lua Tools, etc.</div>
-                <div id="explanation-bypass" class="explanation bypass">⚡ Un bypass est disponible pour ce jeu, rendez-vous dans l'onglet <strong>Bypass disponibles</strong> !</div>
-                <div id="list" class="list"></div>
-                <button class="show-list-btn" onclick="toggleFullList()">📋 Voir tous les jeux indisponibles</button>
-                <div id="full-list" class="full-list" style="display:none;"></div>
+                <p style="font-size: 1rem; opacity: 0.85; max-width: 580px; margin: 0 auto;">
+                    Pour savoir comment installer correctement un Online Fix, 
+                    <strong>consultez l'onglet FAQ</strong> (il y a une question dédiée).
+                </p>
             </div>
-
-    <!-- TAB 2 -->
-<div id="tab-2" class="tab-content">
-    <div class="bypass-container">
-        <h1 class="bypass-title">Bypass disponibles</h1>
-        <p class="bypass-description">Un bypass permet de contourner le drm du jeu. Cela permet de le lancer même si il est protégé par un drm comme denuvo ou un launcher externe.</p>
-        
-        <!-- Carte RDR2 avec image ronde -->
-        <div class="bypass-card" onclick="showBypassModal()">
-            <div class="bypass-card-left">
-                <img src="rdr2.png" alt="Red Dead Redemption 2" class="bypass-image">
-                <div>
-                    <div class="bypass-card-name">Red Dead Redemption 2</div>
-                   <span class="bypass-card-tag red"></span>
-                </div>
-            </div>
-            <div class="bypass-card-arrow">→</div>
         </div>
 
-        <!-- Carte Resident Evil Requiem avec image ronde -->
-        <div class="bypass-card" onclick="showBypassModal2()">
-            <div class="bypass-card-left">
-                <img src="requiem.png" alt="Resident Evil Requiem" class="bypass-image">
-                <div>
-                    <div class="bypass-card-name">Resident Evil Requiem</div>
-                    <span class="bypass-card-tag"></span>
+        <!-- TAB 4 -->
+        <div id="tab-4" class="tab-content">
+            <div class="faq-container">
+                <h1 class="faq-title">FAQ</h1>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">❓ Cela me met "fichier encore crypté" lors de l'installation <span>+</span></div>
+                    <div class="faq-answer">Désactiver tous les DLC est une solution qui marche la grande majorité du temps. Va dans la bibliothèque Steam, clic droit sur le jeu → Propriétés → DLC, et décoche tous les DLC.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">❓ J'ai le code erreur 126 après le OnlineFix <span>+</span></div>
+                    <div class="faq-answer">Cela veut dire que votre antivirus a supprimé un fichier nécessaire au fonctionnement du OnlineFix. Essaye de le désactiver temporairement, puis réinstalle les fichiers du OnlineFix.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">❓ Comment correctement installer un Online Fix ? <span>+</span></div>
+                    <div class="faq-answer">Allez sur <strong>online-fix.me</strong>, puis cherchez le jeu que vous voulez. Vous aurez un fichier .rar ou .zip.<br><br>1. Clic droit sur le jeu dans Steam → Gérer → Parcourir les fichiers locaux<br>2. Glissez le fichier téléchargé ici puis extrayez-le (le mot de passe est normalement indiqué sur la page du jeu sur online-fix.me)<br>3. Vous pouvez maintenant lancer le jeu<br><br><strong>⚠️ Note :</strong> Si ça vous met "self protection failed", le Online Fix ne marche pas. Vous pourrez uniquement jouer avec des gens qui ont le même Online Fix que vous.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">❓ C'est quoi Denuvo ? <span>+</span></div>
+                    <div class="faq-answer">Denuvo est un DRM (anti-tamper) utilisé par certains développeurs pour protéger leurs jeux du piratage. Il crash votre jeu s'il détecte que vous n'êtes pas sur une copie légale.<br><br>Des groupes de hackers comme <strong>voices38</strong> travaillent à cracker ces protections. Si un jeu est cracké, il se retrouve généralement sur <strong>fitgirl-repacks.site</strong> ou <strong>steamrip.com</strong>.<br><br>Il existe d'autres DRM (Rockstar, Punkbuster, etc.) mais Denuvo est le plus efficace. Peu importe le jeu, vous pourrez y jouer un jour — Denuvo ne fait que retarder le piratage.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">❓ Comment faire en sorte que windows defender arrête de supprimer les bypass/online fix ?<span>+</span></div>
+                    <div class="faq-answer">1. Ouvrez Windows Security (Windows Defender sur Windows 10)<br>2.Accédez à Protection contre les virus et menaces. <br>3. Cliquez sur Gérer les paramètres sous Paramètres de protection contre les virus et menaces <br>4. Faites défiler jusqu'en bas, puis Cliquez sur Ajouter ou supprimer des exclusions <br>5. Acceptez la demande de contrôle de compte utilisateur (UAC) <br> 6. Cliquez sur Ajouter une exclusion <br> 7. Sélectionnez Dossier <br> 8. Sélectionnez le dossier de votre jeu 🎮</div>
                 </div>
             </div>
-            <div class="bypass-card-arrow">→</div>
         </div>
 
-       <div class="bypass-card" onclick="showBypassModal3()">
-            <div class="bypass-card-left">
-                <img src="gta5.png" alt="Grand Theft Auto V Legacy" class="bypass-image">
-                <div>
-                    <div class="bypass-card-name">Grand Theft Auto V Legacy</div>
-                    <span class="bypass-card-tag"></span>
+        <!-- TAB 5 -->
+        <div id="tab-5" class="tab-content">
+            <div class="settings-container">
+                <h1 class="settings-title">⚙️ Paramètres</h1>
+                <div class="settings-section">
+                    <div class="settings-section-title">🎨 Color Picker</div>
+                    
+                    <div class="color-picker-section">
+                        <div>
+                            <div style="font-size:0.85rem; opacity:0.75; margin-bottom:12px; letter-spacing:1px;">THÈMES PRÉDÉFINIS</div>
+                            <div class="preset-swatches">
+                                <div class="swatch" style="background: linear-gradient(135deg, #1a0033, #00f0ff)" data-theme="purple" onclick="selectPreset('purple', this)" title="Violet"></div>
+                                <div class="swatch" style="background: linear-gradient(135deg, #001a2e, #00f0ff)" data-theme="cyan" onclick="selectPreset('cyan', this)" title="Cyan"></div>
+                                <div class="swatch" style="background: linear-gradient(135deg, #001a00, #00ff9d)" data-theme="green" onclick="selectPreset('green', this)" title="Vert"></div>
+                                <div class="swatch" style="background: linear-gradient(135deg, #1a0000, #ff2d55)" data-theme="red" onclick="selectPreset('red', this)" title="Rouge"></div>
+                                <div class="swatch" style="background: linear-gradient(135deg, #1a0800, #ff8c00)" data-theme="orange" onclick="selectPreset('orange', this)" title="Orange"></div>
+                                <div class="swatch" style="background: linear-gradient(135deg, #1a1a2e, #a0a0ff)" data-theme="white" onclick="selectPreset('white', this)" title="Neutre"></div>
+                                <div class="swatch" style="background: linear-gradient(135deg, #33001a, #ff00aa)" data-theme="pink" onclick="selectPreset('pink', this)" title="Rose"></div>
+                                <div class="swatch" style="background: linear-gradient(135deg, #002e2e, #00ffdd)" data-theme="teal" onclick="selectPreset('teal', this)" title="Turquoise"></div>
+                                <div class="swatch" style="background: linear-gradient(135deg, #1f0033, #9900ff)" data-theme="indigo" onclick="selectPreset('indigo', this)" title="Indigo"></div>
+                                <div class="swatch" style="background: linear-gradient(135deg, #332900, #ffdd00)" data-theme="gold" onclick="selectPreset('gold', this)" title="Or"></div>
+                            </div>
+                        </div>
+
+                        <div class="custom-picker">
+                            <label>Couleur néon personnalisée :</label>
+                            <input type="color" id="custom-color" value="#00f0ff" onchange="applyCustomColor(this.value)">
+                            <div id="live-preview" class="custom-preview"></div>
+                            <small style="opacity:0.65; font-size:0.82rem; line-height:1.3;">Choisis n'importe quelle couleur<br>tout le site s'adapte en direct</small>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="bypass-card-arrow">→</div>
         </div>
 
+        <!-- Image PFP avant les crédits -->
+        <div style="text-align: center; margin: 25px 0 20px;">
+            <img src="pfp.png" 
+                 alt="Profile Picture" 
+                 style="width: 85px; 
+                        height: 85px; 
+                        border-radius: 50%; 
+                        border: 3px solid var(--neon-cyan); 
+                        box-shadow: 0 0 20px var(--accent-shadow); 
+                        transition: all 0.3s;">
+        </div>
 
+        <div class="credit">Réalisé par <a href="https://x.com/wspp757" target="_blank">@wspp757</a> (@burger)</div>
     </div>
 </div>
+```
 
-<!-- TAB 3 - ONLINE FIX (nouvelle tab) -->
-<div id="tab-3" class="tab-content">
-    <div class="bypass-container" style="padding: 40px 20px;">
-        <h1 class="bypass-title" style="font-size: 2.1rem;">🌐 Online Fix</h1>
-        
-        <p style="font-size: 1.1rem; line-height: 1.7; max-width: 620px; margin: 0 auto 30px; opacity: 0.9;">
-            Pour jouer en multijoueur avec des amis sur des jeux crackés, tu peux utiliser les Online Fix.
-        </p>
-
-        <div style="background: rgba(255,255,255,0.08); border: 1px solid var(--accent-border); border-radius: 16px; padding: 28px; max-width: 520px; margin: 0 auto 30px;">
-            <p style="font-size: 1.15rem; margin-bottom: 18px;">
-                Voici le lien officiel du Online Fix :
-            </p>
-            <a href="https://online-fix.me/" target="_blank" style="display: inline-block; background: linear-gradient(45deg, #00c4ff, #0099ff); color: white; padding: 16px 32px; border-radius: 14px; font-size: 1.2rem; font-weight: 700; text-decoration: none; box-shadow: 0 0 20px rgba(0, 196, 255, 0.5); transition: all 0.3s;">
-                🌐 online-fix.me
-            </a>
-        </div>
-
-        <p style="font-size: 1rem; opacity: 0.85; max-width: 580px; margin: 0 auto;">
-            Pour savoir comment installer correctement un Online Fix, 
-            <strong>consultez l’onglet FAQ</strong> (il y a une question dédiée).
-        </p>
-    </div>
-</div>
-
-            <!-- TAB 4 -->
-            <div id="tab-4" class="tab-content">
-                <div class="faq-container">
-                    <h1 class="faq-title">FAQ</h1>
-                    <div class="faq-item">
-                        <div class="faq-question" onclick="toggleFaq(this)">❓ Cela me met "fichier encore crypté" lors de l'installation <span>+</span></div>
-                        <div class="faq-answer">Désactiver tous les DLC est une solution qui marche la grande majorité du temps. Va dans la bibliothèque Steam, clic droit sur le jeu → Propriétés → DLC, et décoche tous les DLC.</div>
-                    </div>
-                    <div class="faq-item">
-                        <div class="faq-question" onclick="toggleFaq(this)">❓ J'ai le code erreur 126 après le OnlineFix <span>+</span></div>
-                        <div class="faq-answer">Cela veut dire que votre antivirus a supprimé un fichier nécessaire au fonctionnement du OnlineFix. Essaye de le désactiver temporairement, puis réinstalle les fichiers du OnlineFix.</div>
-                    </div>
-                    <div class="faq-item">
-                        <div class="faq-question" onclick="toggleFaq(this)">❓ Comment correctement installer un Online Fix ? <span>+</span></div>
-                        <div class="faq-answer">Allez sur <strong>online-fix.me</strong>, puis cherchez le jeu que vous voulez. Vous aurez un fichier .rar ou .zip.<br><br>1. Clic droit sur le jeu dans Steam → Gérer → Parcourir les fichiers locaux<br>2. Glissez le fichier téléchargé ici puis extrayez-le (le mot de passe est normalement indiqué sur la page du jeu sur online-fix.me)<br>3. Vous pouvez maintenant lancer le jeu<br><br><strong>⚠️ Note :</strong> Si ça vous met "self protection failed", le Online Fix ne marche pas. Vous pourrez uniquement jouer avec des gens qui ont le même Online Fix que vous.</div>
-                    </div>
-                    <div class="faq-item">
-                        <div class="faq-question" onclick="toggleFaq(this)">❓ C'est quoi Denuvo ? <span>+</span></div>
-                        <div class="faq-answer">Denuvo est un DRM (anti-tamper) utilisé par certains développeurs pour protéger leurs jeux du piratage. Il crash votre jeu s'il détecte que vous n'êtes pas sur une copie légale.<br><br>Des groupes de hackers comme <strong>voices38</strong> travaillent à cracker ces protections. Si un jeu est cracké, il se retrouve généralement sur <strong>fitgirl-repacks.site</strong> ou <strong>steamrip.com</strong>.<br><br>Il existe d'autres DRM (Rockstar, Punkbuster, etc.) mais Denuvo est le plus efficace. Peu importe le jeu, vous pourrez y jouer un jour — Denuvo ne fait que retarder le piratage.</div> </div>
-
-<div class="faq-item">
-                        <div class="faq-question" onclick="toggleFaq(this)">❓ Comment faire en sorte que windows defender arrête de supprimer les bypass/online fix ?<span>+</span></div>
-
-                        <div class="faq-answer">1. Ouvrez Windows Security (Windows Defender sur Windows 10)<br>2.Accédez à Protection contre les virus et menaces. <br>3. Cliquez sur Gérer les paramètres sous Paramètres de protection contre les virus et menaces <br>4. Faites défiler jusqu’en bas
-,puis Cliquez sur Ajouter ou supprimer des exclusions <br>5. Acceptez la demande de contrôle de compte utilisateur (UAC) <br> 6. Cliquez sur Ajouter une exclusion <br> 7. Sélectionnez Dossier <br> 8. Sélectionnez le dossier de votre jeu 🎮
-<strong></strong></div>
-
-                    </div>
-                </div>
-            </div>
-
-            <!-- TAB 5 -->
-            <div id="tab-5" class="tab-content">
-                <div class="settings-container">
-                    <h1 class="settings-title">⚙️ Paramètres</h1>
-                    <div class="settings-section">
-    <div class="settings-section-title">🎨 Color Picker</div>
-    
-    <div class="color-picker-section">
-        <!-- Swatches prédéfinis -->
-        <div>
-            <div style="font-size:0.85rem; opacity:0.75; margin-bottom:12px; letter-spacing:1px;">THÈMES PRÉDÉFINIS</div>
-            <div class="preset-swatches">
-                <div class="swatch" style="background: linear-gradient(135deg, #1a0033, #00f0ff)" data-theme="purple" onclick="selectPreset('purple', this)" title="Violet"></div>
-                <div class="swatch" style="background: linear-gradient(135deg, #001a2e, #00f0ff)" data-theme="cyan" onclick="selectPreset('cyan', this)" title="Cyan"></div>
-                <div class="swatch" style="background: linear-gradient(135deg, #001a00, #00ff9d)" data-theme="green" onclick="selectPreset('green', this)" title="Vert"></div>
-                <div class="swatch" style="background: linear-gradient(135deg, #1a0000, #ff2d55)" data-theme="red" onclick="selectPreset('red', this)" title="Rouge"></div>
-                <div class="swatch" style="background: linear-gradient(135deg, #1a0800, #ff8c00)" data-theme="orange" onclick="selectPreset('orange', this)" title="Orange"></div>
-                <div class="swatch" style="background: linear-gradient(135deg, #1a1a2e, #a0a0ff)" data-theme="white" onclick="selectPreset('white', this)" title="Neutre"></div>
-                <div class="swatch" style="background: linear-gradient(135deg, #33001a, #ff00aa)" data-theme="pink" onclick="selectPreset('pink', this)" title="Rose"></div>
-                <div class="swatch" style="background: linear-gradient(135deg, #002e2e, #00ffdd)" data-theme="teal" onclick="selectPreset('teal', this)" title="Turquoise"></div>
-                <div class="swatch" style="background: linear-gradient(135deg, #1f0033, #9900ff)" data-theme="indigo" onclick="selectPreset('indigo', this)" title="Indigo"></div>
-                <div class="swatch" style="background: linear-gradient(135deg, #332900, #ffdd00)" data-theme="gold" onclick="selectPreset('gold', this)" title="Or"></div>
-            </div>
-        </div>
-
-        <!-- Color picker personnalisé -->
-        <div class="custom-picker">
-            <label>Couleur néon personnalisée :</label>
-            <input type="color" id="custom-color" value="#00f0ff" onchange="applyCustomColor(this.value)">
-            <div id="live-preview" class="custom-preview"></div>
-            <small style="opacity:0.65; font-size:0.82rem; line-height:1.3;">Choisis n’importe quelle couleur<br>tout le site s’adapte en direct</small>
-        </div>
-    </div>
-</div>
-                </div>
-            </div>
-
-            <!-- Image PFP avant les crédits -->
-            <div style="text-align: center; margin: 25px 0 20px;">
-                <img src="pfp.png" 
-                     alt="Profile Picture" 
-                     style="width: 85px; 
-                            height: 85px; 
-                            border-radius: 50%; 
-                            border: 3px solid var(--neon-cyan); 
-                            box-shadow: 0 0 20px var(--accent-shadow); 
-                            transition: all 0.3s;">
-            </div>
-
-            <div class="credit">Réalisé par <a href="https://x.com/wspp757" target="_blank">@wspp757</a> (@burger)</div>
-        </div>
-    </div>
 </div>
 
 <!-- NAV BAS mobile -->
+
 <nav class="bottom-nav">
     <button class="bottom-nav-btn active" onclick="switchTab(0)"><span class="bn-icon">🏠</span>Accueil</button>
     <button class="bottom-nav-btn" onclick="switchTab(1)"><span class="bn-icon">🎮</span>Checker</button>
- <button class="bottom-nav-btn" onclick="switchTab(2)"><span class="bn-icon">🔓</span>Bypass</button>
-<button class="bottom-nav-btn" onclick="switchTab(3)"><span class="bn-icon">🌐</span>Online Fix</button>   <!-- Nouveau -->
-<button class="bottom-nav-btn" onclick="switchTab(4)"><span class="bn-icon">❓</span>FAQ</button>
+    <button class="bottom-nav-btn" onclick="switchTab(2)"><span class="bn-icon">🔓</span>Bypass</button>
+    <button class="bottom-nav-btn" onclick="switchTab(3)"><span class="bn-icon">🌐</span>Online Fix</button>
+    <button class="bottom-nav-btn" onclick="switchTab(4)"><span class="bn-icon">❓</span>FAQ</button>
     <button class="bottom-nav-btn" onclick="switchTab(5)"><span class="bn-icon">⚙️</span>Params</button>
 </nav>
 
 <!-- MODAL RDR2 -->
+
 <div id="bypassModal" class="modal">
     <div class="modal-content">
         <div class="modal-title">Red Dead Redemption 2 a besoin d'un bypass pour s'exécuter proprement.</div>
@@ -812,6 +805,7 @@
 </div>
 
 <!-- MODAL RE REQUIEM -->
+
 <div id="bypassModal2" class="modal">
     <div class="modal-content">
         <div class="modal-title">Resident Evil Requiem a besoin d'un bypass pour s'exécuter proprement.</div>
@@ -826,8 +820,8 @@
     </div>
 </div>
 
-
 <!-- MODAL GTA V -->
+
 <div id="bypassModal3" class="modal">
     <div class="modal-content">
         <div class="modal-title">Grand Theft Auto V LEGACY a besoin d'un bypass pour s'exécuter proprement.</div>
@@ -837,14 +831,10 @@
         <div class="step"><div class="step-number">2</div><div><strong>Ouvre le dossier du jeu</strong><br><small>Clic droit → Gérer → Parcourir les fichiers locaux.</small></div></div>
         <div class="step"><div class="step-number">3</div><div><strong>Extrait et copie les fichiers</strong><br><small>WinRAR → extraire → copier tout dans le dossier.</small><div class="password-box">Mot de passe : <strong>openlua.cloud</strong></div></div></div>
         <div class="step"><div class="step-number">4</div><div><strong>Remplace les fichiers existants</strong><br><small>Clique sur Remplacer quand Windows le demande.</small></div></div>
-
         <div class="step"><div class="step-number">5</div><div><strong>Lancez le jeu</strong><br><small>Lancez le via PlayGtav.bat (si il y en a deux, essayez les deux)</small></div></div>
-
-   
         <button class="close-btn" onclick="closeModal3()">Fermer</button>
     </div>
 </div>
-
 
 <script>
 // ====================== HELPER HEX TO RGB ======================
@@ -857,8 +847,59 @@ function hexToRgb(hex) {
     } : { r: 0, g: 240, b: 255 };
 }
 
-// ====================== THÈMES ======================
+// ====================== FONCTION CENTRALE D'APPLICATION DU THÈME ======================
+// Une seule fonction fait TOUT — utilisée par setTheme ET applyCustomColor
+function applyThemeVars(color, bg1, bg2) {
+    const rgb = hexToRgb(color);
+    const r = rgb.r, g = rgb.g, b = rgb.b;
 
+    const root = document.documentElement;
+
+    // Couleurs de fond
+    root.style.setProperty('--bg1', bg1);
+    root.style.setProperty('--bg2', bg2);
+
+    // Couleur accent principale
+    root.style.setProperty('--neon-cyan', color);
+
+    // Panels (basés sur la teinte de l'accent)
+    const pr = Math.floor(r * 0.12);
+    const pg = Math.floor(g * 0.12);
+    const pb = Math.floor(b * 0.25);
+    root.style.setProperty('--dark-panel',         `rgba(${pr},${pg},${pb},0.98)`);
+    root.style.setProperty('--dark-panel-light',   `rgba(${pr},${pg},${pb},0.9)`);
+    root.style.setProperty('--dark-panel-lighter', `rgba(${pr},${pg},${pb},0.85)`);
+
+    // Bottom nav — même base que les panels, légèrement plus sombre
+    const nr = Math.floor(r * 0.08);
+    const ng = Math.floor(g * 0.08);
+    const nb = Math.floor(b * 0.18);
+    root.style.setProperty('--bottom-nav-bg', `rgba(${nr},${ng},${nb},0.98)`);
+
+    // Accents
+    root.style.setProperty('--accent-border',        `rgba(${r},${g},${b},0.25)`);
+    root.style.setProperty('--accent-shadow',        `rgba(${r},${g},${b},0.2)`);
+    root.style.setProperty('--accent-hover-bg',      `rgba(${r},${g},${b},0.1)`);
+    root.style.setProperty('--accent-active-bg',     `rgba(${r},${g},${b},0.18)`);
+    root.style.setProperty('--accent-active-shadow', `rgba(${r},${g},${b},0.3)`);
+    root.style.setProperty('--accent-focus-shadow',  `rgba(${r},${g},${b},0.4)`);
+    root.style.setProperty('--accent-hover',         `rgba(${r},${g},${b},0.15)`);
+    root.style.setProperty('--grid-color',           `rgba(${r},${g},${b},0.03)`);
+    root.style.setProperty('--list-border',          `rgba(${r},${g},${b},0.15)`);
+    root.style.setProperty('--faq-border',           `rgba(${r},${g},${b},0.15)`);
+
+    // Sync preview circle + color input
+    const preview = document.getElementById('live-preview');
+    if (preview) {
+        preview.style.background   = color;
+        preview.style.borderColor  = color;
+        preview.style.boxShadow    = `0 0 30px ${color}`;
+    }
+    const input = document.getElementById('custom-color');
+    if (input) input.value = color;
+}
+
+// ====================== THÈMES PRÉDÉFINIS ======================
 const themes = {
     purple: { bg1: '#1a0033', bg2: '#0a0a1f', accent: '#00f0ff' },
     cyan:   { bg1: '#001a2e', bg2: '#000d1a', accent: '#00f0ff' },
@@ -866,160 +907,66 @@ const themes = {
     red:    { bg1: '#1a0000', bg2: '#0d0000', accent: '#ff2d55' },
     orange: { bg1: '#1a0800', bg2: '#0d0400', accent: '#ff8c00' },
     white:  { bg1: '#1a1a2e', bg2: '#0d0d1a', accent: '#a0a0ff' },
-    
-    // === NOUVEAUX THÈMES ===
-    pink:    { bg1: '#33001a', bg2: '#1a000f', accent: '#ff00aa' },
-    teal:    { bg1: '#002e2e', bg2: '#001a1a', accent: '#00ffdd' },
-    indigo:  { bg1: '#1f0033', bg2: '#14001f', accent: '#9900ff' },
-    gold:    { bg1: '#332900', bg2: '#1f1900', accent: '#ffdd00' }
+    pink:   { bg1: '#33001a', bg2: '#1a000f', accent: '#ff00aa' },
+    teal:   { bg1: '#002e2e', bg2: '#001a1a', accent: '#00ffdd' },
+    indigo: { bg1: '#1f0033', bg2: '#14001f', accent: '#9900ff' },
+    gold:   { bg1: '#332900', bg2: '#1f1900', accent: '#ffdd00' }
 };
 
-const greengamelist = [
-    "Red Dead Redemption 2","Grand Theft Auto V Legacy"
-];
+function setTheme(name, btn) {
+    const t = themes[name];
+    if (!t) return;
 
-const yellowgamelist = [
-    "Resident Evil Requiem"
-];
+    localStorage.setItem('theme', name);
+    localStorage.removeItem('customAccent');
 
-const whitegamelist = [
-    ""
-];
+    applyThemeVars(t.accent, t.bg1, t.bg2);
+
+    // Highlight swatch actif
+    document.querySelectorAll('.swatch').forEach(s => s.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+}
+
+function selectPreset(name, el) {
+    setTheme(name, el);
+}
+
+// ====================== COLOR PICKER CUSTOM ======================
+function applyCustomColor(hex) {
+    if (!hex) return;
+
+    localStorage.setItem('customAccent', hex);
+    localStorage.removeItem('theme');
+
+    // Génère des bg cohérents à partir de la couleur choisie
+    const rgb = hexToRgb(hex);
+    const bg1 = `rgb(${Math.floor(rgb.r * 0.1)},${Math.floor(rgb.g * 0.1)},${Math.floor(rgb.b * 0.18)})`;
+    const bg2 = `rgb(5,5,15)`;
+
+    applyThemeVars(hex, bg1, bg2);
+
+    // Retire le highlight de tous les swatches (c'est un thème custom)
+    document.querySelectorAll('.swatch').forEach(s => s.classList.remove('active'));
+}
+
+// ====================== BYPASS STATUS ======================
+const greengamelist = ["Red Dead Redemption 2","Grand Theft Auto V Legacy"];
+const yellowgamelist = ["Resident Evil Requiem"];
+const whitegamelist = [""];
 
 function getGameStatusColor(gameName) {
-    if (greengamelist.includes(gameName)) {
-        return "green";
-    }
-    if (yellowgamelist.includes(gameName)) {
-        return "yellow";
-    }
-    if (whitegamelist.includes(gameName)) {
-        return "white";
-    }
-    return "yellow"; // fallback
+    if (greengamelist.includes(gameName)) return "green";
+    if (yellowgamelist.includes(gameName)) return "yellow";
+    if (whitegamelist.includes(gameName)) return "white";
+    return "yellow";
 }
 
 function getGameStatus(gameName) {
     const name = gameName.trim();
-
-    if (greengamelist.includes(name)) {
-        return { color: "green", text: "Bypass fonctionnel" };
-    }
-
-    if (yellowgamelist.includes(name)) {
-        return { color: "yellow", text: "Bypass incertain" };
-    }
-
-    if (whitegamelist.includes(name)) {
-        return { color: "white", text: "Bypass non testé" };
-    }
-
+    if (greengamelist.includes(name)) return { color: "green",  text: "Bypass fonctionnel" };
+    if (yellowgamelist.includes(name)) return { color: "yellow", text: "Bypass incertain" };
+    if (whitegamelist.includes(name))  return { color: "white",  text: "Bypass non testé" };
     return { color: "yellow", text: "Bypass potentiellement non fonctionnel" };
-}
-
-function setTheme(name, btn) {
-    const t = themes[name];
-    const rgb = hexToRgb(t.accent);
-    const color = t.accent;
-
-    // 🔥 Reset custom pour éviter conflit preset/custom
-    localStorage.removeItem('customAccent');
-    localStorage.setItem('theme', name);
-
-    // Couleurs principales
-    document.documentElement.style.setProperty('--bg1', t.bg1);
-    document.documentElement.style.setProperty('--bg2', t.bg2);
-    document.documentElement.style.setProperty('--neon-cyan', color);
-
-    // Panels et accents
-    document.documentElement.style.setProperty('--dark-panel', `rgba(${Math.floor(rgb.r*0.15)},${Math.floor(rgb.g*0.15)},${Math.floor(rgb.b*0.4)},0.98)`);
-    document.documentElement.style.setProperty('--dark-panel-light', `rgba(${Math.floor(rgb.r*0.15)},${Math.floor(rgb.g*0.15)},${Math.floor(rgb.b*0.4)},0.9)`);
-    document.documentElement.style.setProperty('--dark-panel-lighter', `rgba(${Math.floor(rgb.r*0.15)},${Math.floor(rgb.g*0.15)},${Math.floor(rgb.b*0.4)},0.85)`);
-    document.documentElement.style.setProperty('--bottom-nav-bg', `rgba(${Math.floor(rgb.r*0.1)},${Math.floor(rgb.g*0.1)},${Math.floor(rgb.b*0.35)},0.98)`);
-
-    document.documentElement.style.setProperty('--accent-border', `rgba(${rgb.r},${rgb.g},${rgb.b},0.25)`);
-    document.documentElement.style.setProperty('--accent-shadow', `rgba(${rgb.r},${rgb.g},${rgb.b},0.2)`);
-    document.documentElement.style.setProperty('--accent-hover-bg', `rgba(${rgb.r},${rgb.g},${rgb.b},0.1)`);
-    document.documentElement.style.setProperty('--accent-active-bg', `rgba(${rgb.r},${rgb.g},${rgb.b},0.18)`);
-    document.documentElement.style.setProperty('--accent-active-shadow', `rgba(${rgb.r},${rgb.g},${rgb.b},0.3)`);
-    document.documentElement.style.setProperty('--accent-focus-shadow', `rgba(${rgb.r},${rgb.g},${rgb.b},0.4)`);
-    document.documentElement.style.setProperty('--grid-color', `rgba(${rgb.r},${rgb.g},${rgb.b},0.03)`);
-    document.documentElement.style.setProperty('--accent-hover', `rgba(${rgb.r},${rgb.g},${rgb.b},0.15)`);
-    document.documentElement.style.setProperty('--list-border', `rgba(${rgb.r},${rgb.g},${rgb.b},0.15)`);
-    document.documentElement.style.setProperty('--faq-border', `rgba(${rgb.r},${rgb.g},${rgb.b},0.15)`);
-
-    // 🎯 UI boutons active
-    document.querySelectorAll('.swatch').forEach(s => s.classList.remove('active'));
-    if (btn) btn.classList.add('active');
-
-    // 🎯 Color picker sync (cercle + input)
-    const preview = document.getElementById('live-preview');
-    if (preview) {
-        preview.style.background = color;
-        preview.style.borderColor = color;
-        preview.style.boxShadow = `0 0 30px ${color}`;
-    }
-
-    const input = document.getElementById('custom-color');
-    if (input) input.value = color;
-}
-
-// ====================== COLOR PICKER ======================
-function selectPreset(name, el) {
-    document.querySelectorAll('.swatch').forEach(s => s.classList.remove('active'));
-    el.classList.add('active');
-    
-    localStorage.setItem('theme', name);
-    localStorage.removeItem('customAccent');
-    
-    setTheme(name, el);
-}
-
-function applyCustomColor(hex) {
-    const rgb = hexToRgb(hex);
-    if (!rgb) return;
-
-    // 💥 mode custom actif = on coupe les presets
-    localStorage.setItem('customAccent', hex);
-    localStorage.removeItem('theme');
-
-    document.querySelectorAll('.swatch').forEach(s => s.classList.remove('active'));
-
-    const r = rgb.r, g = rgb.g, b = rgb.b;
-
-    // 🎯 couleur principale
-    document.documentElement.style.setProperty('--neon-cyan', hex);
-
-    // 🎯 BACKGROUND cohérent (IMPORTANT)
-    document.documentElement.style.setProperty('--bg1', `rgba(${r*0.08},${g*0.08},${b*0.15},1)`);
-    document.documentElement.style.setProperty('--bg2', `rgba(10,10,20,1)`);
-
-    // 🎯 panels synchronisés
-    const panel = `rgba(${r*0.12},${g*0.12},${b*0.2},0.95)`;
-
-    document.documentElement.style.setProperty('--dark-panel', panel);
-    document.documentElement.style.setProperty('--dark-panel-light', panel);
-    document.documentElement.style.setProperty('--dark-panel-lighter', panel);
-
-    // 🎯 accents
-    document.documentElement.style.setProperty('--accent-border', `rgba(${r},${g},${b},0.25)`);
-    document.documentElement.style.setProperty('--accent-shadow', `rgba(${r},${g},${b},0.2)`);
-    document.documentElement.style.setProperty('--accent-hover-bg', `rgba(${r},${g},${b},0.1)`);
-    document.documentElement.style.setProperty('--accent-active-bg', `rgba(${r},${g},${b},0.18)`);
-    document.documentElement.style.setProperty('--accent-active-shadow', `rgba(${r},${g},${b},0.3)`);
-    document.documentElement.style.setProperty('--grid-color', `rgba(${r},${g},${b},0.03)`);
-
-    // 🎯 preview (cercle propre)
-    const preview = document.getElementById('live-preview');
-    if (preview) {
-        preview.style.background = hex;
-        preview.style.borderColor = hex;
-        preview.style.boxShadow = `0 0 25px ${hex}`;
-    }
-
-    // 🎯 sync input color
-    const input = document.getElementById('custom-color');
-    if (input) input.value = hex;
 }
 
 // ====================== DONNÉES ======================
@@ -1114,15 +1061,12 @@ function toggleFaq(el) {
     if (!isOpen) { answer.classList.add("open"); el.classList.add("open"); }
 }
 
-function showBypassModal() { document.getElementById("bypassModal").style.display = "flex"; }
-function closeModal() { document.getElementById("bypassModal").style.display = "none"; }
+function showBypassModal()  { document.getElementById("bypassModal").style.display  = "flex"; }
+function closeModal()       { document.getElementById("bypassModal").style.display  = "none"; }
 function showBypassModal2() { document.getElementById("bypassModal2").style.display = "flex"; }
-function closeModal2() { document.getElementById("bypassModal2").style.display = "none"; }
-
+function closeModal2()      { document.getElementById("bypassModal2").style.display = "none"; }
 function showBypassModal3() { document.getElementById("bypassModal3").style.display = "flex"; }
-
-function closeModal3() { document.getElementById("bypassModal3").style.display = "none"; }
-
+function closeModal3()      { document.getElementById("bypassModal3").style.display = "none"; }
 
 function downloadFile() {
     const url = "https://www.dropbox.com/scl/fi/2vdri07077gd8g3qk7pm6/1174180_bypass.rar?rlkey=a4x4nr6obj427egucklc58z58&st=esusubwy&dl=1";
@@ -1136,7 +1080,6 @@ function downloadFile2() {
     link.href = url; link.download = "RE_Requiem_Bypass.rar";
     document.body.appendChild(link); link.click(); document.body.removeChild(link);
 }
-
 function downloadFile3() {
     const url = "https://www.dropbox.com/scl/fi/8cfjg7wxooe3ur4gg0490/271590_bypass.rar?rlkey=t4qdxlyof8ptz207t1ht6oi2t&st=fe8ucc3b&dl=1";
     const link = document.createElement("a");
@@ -1147,55 +1090,34 @@ function downloadFile3() {
 function switchTab(n) {
     document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
     document.getElementById('tab-' + n).classList.add('active');
-    
     document.querySelectorAll('.tab-button').forEach((b, i) => b.classList.toggle('active', i === n));
     document.querySelectorAll('.bottom-nav-btn').forEach((b, i) => b.classList.toggle('active', i === n));
 }
 
 // ====================== INITIALISATION ======================
-
 window.addEventListener('load', () => {
+    // 1. Appliquer le thème sauvegardé
     const custom = localStorage.getItem('customAccent');
-    const theme = localStorage.getItem('theme') || 'purple';
+    const theme  = localStorage.getItem('theme') || 'purple';
 
     if (custom) {
         applyCustomColor(custom);
-        return;
-    }
-
-    const btn = document.querySelector(`[data-theme="${theme}"]`);
-    if (btn) {
+    } else {
+        const btn = document.querySelector(`[data-theme="${theme}"]`);
         setTheme(theme, btn);
     }
-});
 
-document.querySelectorAll(".bypass-card").forEach(card => {
-    const gameName = card.querySelector(".bypass-card-name").textContent;
-    const tag = card.querySelector(".bypass-card-tag");
-
-    const status = getGameStatusColor(gameName);
-
-    tag.classList.add(status);
-});
-
-window.addEventListener("load", () => {
+    // 2. Tags des bypass cards
     document.querySelectorAll(".bypass-card").forEach(card => {
         const gameName = card.querySelector(".bypass-card-name").textContent;
         const tag = card.querySelector(".bypass-card-tag");
-
         const status = getGameStatus(gameName);
-
-        // reset propre
         tag.classList.remove("green", "yellow", "white");
-
-        // couleur
         tag.classList.add(status.color);
-
-        // texte automatique
         tag.textContent = status.text;
     });
 });
-
 </script>
+
 </body>
 </html>
