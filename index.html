@@ -785,8 +785,23 @@
                 </div>
                 <div class="bypass-card-arrow">→</div>
             </div>
+            
+              <div class="bypass-card" onclick="showBypassModal6()">
+                <div class="bypass-card-left">
+                    <img src="wdl.png" alt="Watch Dogs: Legion" class="bypass-image">
+                    <div>
+                        <div class="bypass-card-name">Watch Dogs: Legion
+</div>
+                        <span class="bypass-card-tag"></span>
+                    </div>
+                </div>
+                <div class="bypass-card-arrow">→</div>
+            </div>
 
         </div>
+        
+        
+        
     </div>
 
     <!-- TAB 3 - ONLINE FIX -->
@@ -1011,6 +1026,27 @@
     </div>
 </div>
     
+        <!-- MODAL WATCH DOGS: LEGION -->
+
+<div id="bypassModal6" class="modal">
+    <div class="modal-content">
+        <div class="modal-left">
+            <img src="wdl.png" class="modal-image">
+            <div class="modal-title">Watch Dogs: Legion</div>
+            <button class="download-btn" onclick="downloadFile6()">↓ Télécharger</button>
+            <button class="close-btn" onclick="closeModal6()">Fermer</button>
+        </div>
+        <div class="modal-right">
+            <h3 style="color: var(--neon-cyan); margin-bottom: 10px;">Installation</h3>
+            <div class="step"><div class="step-number">1</div><div><strong>Installe le jeu sur Steam</strong><br><small>Assure-toi que le jeu est installé via Steam avant de continuer.</small></div></div>
+            <div class="step"><div class="step-number">2</div><div><strong>Ouvre le dossier du jeu</strong><br><small>Clic droit → Gérer → Parcourir les fichiers locaux.</small></div></div>
+            <div class="step"><div class="step-number">3</div><div><strong>Extrait et copie les fichiers</strong><br><small>WinRAR → extraire → copier tout dans le dossier.</small><div class="password-box">Mot de passe : <strong>openlua.cloud</strong></div></div></div>
+            <div class="step"><div class="step-number">4</div><div><strong>Remplace les fichiers existants</strong><br><small>Clique sur Remplacer quand Windows le demande.</small></div></div>
+            <div class="step"><div class="step-number">5</div><div><strong>Lancez le jeu</strong><br><small>Lancez le via Steam (oui vous pouvez)</small></div></div>
+        </div>
+    </div>
+</div>
+    
     
 
 <!-- Firebase SDK -->
@@ -1173,7 +1209,7 @@ function applyCustomColor(hex) {
     document.querySelectorAll('.swatch').forEach(s => s.classList.remove('active'));
 }
 
-const greengamelist = ["Red Dead Redemption 2","Grand Theft Auto V Legacy","Assassin’s Creed Unity","Assassin's Creed II","Resident Evil Requiem"];
+const greengamelist = ["Red Dead Redemption 2","Grand Theft Auto V Legacy","Assassin’s Creed Unity","Assassin's Creed II","Resident Evil Requiem","Watch Dogs: Legion"];
 const yellowgamelist = [];
 const whitegamelist = [];
 
@@ -1275,6 +1311,8 @@ function showBypassModal4() { document.getElementById("bypassModal4").style.disp
 function closeModal4()      { document.getElementById("bypassModal4").style.display = "none"; }
  function showBypassModal5() { document.getElementById("bypassModal5").style.display = "flex"; }
 function closeModal5()      { document.getElementById("bypassModal5").style.display = "none"; }
+ function showBypassModal6() { document.getElementById("bypassModal6").style.display = "flex"; }
+function closeModal6()      { document.getElementById("bypassModal6").style.display = "none"; }
 
 function downloadFile() {
     const url = "https://www.dropbox.com/scl/fi/2vdri07077gd8g3qk7pm6/1174180_bypass.rar?rlkey=a4x4nr6obj427egucklc58z58&st=esusubwy&dl=1";
@@ -1301,6 +1339,13 @@ function downloadFile4() {
  function downloadFile5() {
  const url = "https://www.dropbox.com/scl/fi/llxnmfuml9xzw0r41tbsr/33230_bypass.rar?rlkey=qzqyrchcn5va7v1i7n0h1l4km&st=um7hw0gc&dl=1";
  const link = document.createElement("a"); link.href = url; link.download = "AssasinsCreed2_Bypass.rar";
+document.body.appendChild(link); link.click(); document.body.removeChild(link);
+}
+    
+    
+ function downloadFile6() {
+ const url = "https://www.dropbox.com/scl/fi/rl0nbdnmgbgu8spciruma/watchdogslegionbypass.rar?rlkey=9vb80pqyqgx6dbsbg2tbd9zpw&st=gjb4wrlp&dl=1";
+ const link = document.createElement("a"); link.href = url; link.download = "wdlbypass.rar";
 document.body.appendChild(link); link.click(); document.body.removeChild(link);
 }
     
