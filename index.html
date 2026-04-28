@@ -809,6 +809,18 @@
                 </div>
                 <div class="bypass-card-arrow">→</div>
             </div>
+            
+            <div class="bypass-card" onclick="showBypassModal8()">
+                <div class="bypass-card-left">
+                    <img src="blackmyth.png" alt="Black Myth Wukong" class="bypass-image">
+                    <div>
+                        <div class="bypass-card-name">Black Myth Wukong
+</div>
+                        <span class="bypass-card-tag"></span>
+                    </div>
+                </div>
+                <div class="bypass-card-arrow">→</div>
+            </div>
 
         </div>
         
@@ -1245,17 +1257,32 @@ function applyCustomColor(hex) {
 const greengamelist = ["Red Dead Redemption 2","Grand Theft Auto V Legacy","Assassin’s Creed Unity","Assassin's Creed II","Resident Evil Requiem","Watch Dogs: Legion","Dead Space"];
 const yellowgamelist = [];
 const whitegamelist = [];
+const notavailablelist = ["Black Myth Wukong"];
 
 function getGameStatus(gameName) {
-    const name = gameName.trim();
-    if (greengamelist.includes(name)) return { color: "green",  text: "Bypass fonctionnel" };
-    if (yellowgamelist.includes(name)) return { color: "yellow", text: "Bypass incertain" };
-    if (whitegamelist.includes(name))  return { color: "white",  text: "Bypass non testé" };
+    const name = normalize(gameName);
+
+    if (greengamelist.map(normalize).includes(name)) {
+        return { color: "green", text: "Bypass fonctionnel" };
+    }
+
+    if (yellowgamelist.map(normalize).includes(name)) {
+        return { color: "yellow", text: "Bypass incertain" };
+    }
+
+    if (whitegamelist.map(normalize).includes(name)) {
+        return { color: "white", text: "Bypass non testé" };
+    }
+
+    if (notavailablelist.map(normalize).includes(name)) {
+        return { color: "white", text: "Bypass pas encore disponible" };
+    }
+
     return { color: "yellow", text: "Bypass potentiellement non fonctionnel" };
 }
 
 const gamesList = ["Anno 117: Pax Romana","Assassin's Creed Shadows","Assassin’s Creed Unity","Assassin's Creed 2","Atomfall","Avatar: Frontiers of Pandora","Beyond Good & Evil - 20th Anniversary Edition","Black Myth Wukong","BattleBit Remastered","BRAVELY DEFAULT FLYING FAIRY HD Remaster","Borderlands 4","Call of Duty: Black Ops 7","City Transport Simulator","Civilization VII","CODE VEIN II","Company of Heroes 3","Construction Simulator","Crimson Desert","Dead Space","Demon Slayer: The Hinokami Chronicles 1","Demon Slayer: The Hinokami Chronicles 2","Demon Slayer -Kimetsu no Yaiba- Sweep the Board!","Digimon Story Time Stranger","Dirt 5","DRAGON QUEST VII Reimagined","Dune","EA SPORTS FC 24","EA SPORTS FC 25","EA SPORTS FC 26","EA SPORTS WRC","Eagle Flight","Etrian Odyssey HD","Etrian Odyssey II HD","Etrian Odyssey III HD","Evil Genius 2: World Domination","F1 23","F1 24","F1 25","F1 Manager 22","F1 Manager 23","F1 Manager 24","F1 Manager 26","Fe","FINAL FANTASY TACTICS - The Ivalice Chronicles","Firefighting Simulator - The Squad","Football Manager 19","Football Manager 20","Football Manager 21","Football Manager 22","Football Manager 23","Football Manager 24","Football Manager 26", "HONOR","FortiFyte","GRID Legends","Grand Theft Auto V Legacy","Harry Potter: Quidditch Champions","Hatsune Miku: Project Diva Megamix+","Hello Kitty Island Adventures","Jurassic World Evolution 3","Like A Dragon: Gaiden","Like A Dragon: Infinite Wealth","Like A Dragon: Ishin","Like A Dragon: Pirate Yakuza In Hawaii","Lost in Random","Lost Judgment","Life is Strange: Reunion","Madden NFL 21","Madden NFL 22","Madden NFL 23","Madden NFL 24","Madden NFL 25","Madden NFL 26","Mafia: The Old Country","Marathon","Marvel's Midnight Suns","Microsoft Flight Simulator 2024","Might and Magic: Heroes VII – Trial by Fire","MONOPOLY 2024","Monopoly Madness","Monster Hunter Wilds","Monster Hunter Stories 3: Twisted Reflection","Mortal Kombat 1","NBA 2K24","NBA 2K25","NBA 2K26","Need for Speed Unbound","Octopath Traveler 0","OddBallers","Onimusha 2: Samurai's Destiny","Persona 3 Portable","Persona 3 Reload","Persona 4 Arena Ultimax","Persona 4 Revival","Persona 5 Tactica","Phantom Blade Zero","PGA TOUR 2K25","Planet Coaster 2","Plants vs. Zombies: Garden Warfare 2","PRAGMATA","Prince Of Persia The Lost Crown","Professional Baseball Spirits 2024","Professional Baseball Spirits 2025","Rocksmith 2014 Edition REMASTERED","RAIDOU Remastered","Red Dead Redemption 2","Redfall","Resident Evil Requiem","Shin Megami Tensei III: Nocturne HD","Shin Megami Tensei V: Vengeance","Shinobi - Art of Vengeance","Sniper Elite 5","Sniper Elite Resistance","Sniper Elite VR","Sonic Origins","Sonic Superstars","Sonic Racing Crossworlds","Sonic X Shadow Generations","Soul Hackers 2","Speedball","Star Wars Outlaws","Star Wars Squadrons","Stellar Blade","Street Fighter 6","Suicide Squad: Kill the Justice League","Super Mega Baseball 4","The Bus","The First Berserker: Khazan","The Settlers: New Allies","Tom Clancy's Ghost Recon Breakpoint","TopSpin 2K25","Total War: Warhammer 3","Train Sim World 2020","Train Sim World 3","Trials Rising","Two Point Museum","Undisputed","Valiant Hearts: Coming Home","Warhammer 40k: Chaos Gate Daemonhunters","Warhammer Age Of Sigmar: Realms Of Ruin","Watch Dogs: Legion","WWE 2K26","Yakuza Kiwami 3","Dark Ties","Zombie Army 4: Dead War","Zombie Army VR"];
-const bypassGames = ["red dead redemption 2","red dead redemption","red dead","rdr2","resident evil requiem","resident evil req","re requiem","grand theft auto","grand theft auto V","grand theft auto v legacy","grand t","grand","assassin’s creed unity","assassins creed unity","assassin’s creed u","assassins creed u","assassin's creed 2","assassins creed 2","Dead","Dead Space","Dead Spa","Watch Dogs","Watch Dogs:","Watch Dogs: Legion"];
+const bypassGames = ["red dead redemption 2","red dead redemption","red dead","rdr2","resident evil requiem","resident evil req","re requiem","grand theft auto","grand theft auto V","grand theft auto v legacy","grand t","grand","assassin’s creed unity","assassins creed unity","assassin’s creed u","assassins creed u","assassin's creed 2","assassins creed 2","Dead","Dead Space","Dead Spa","Watch Dogs","Watch Dogs:","Watch Dogs: Legion","Black Myth Wukong","Black Myth","Black"];
 
 function normalize(t) { return t.toLowerCase().replace(/[^a-z0-9]/g, ""); }
 function score(input, game) {
