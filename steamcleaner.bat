@@ -71,26 +71,19 @@ call :step "Termine avec succes"
 echo.
 echo ======================================
 echo OPERATION COMPLETE
-echo Fermeture automatique...
 echo ======================================
 
-timeout /t 3 >nul
+timeout /t 2 >nul
 
 :: 🔥 AUTO-SUPPRESSION FIABLE
 set "SELF=%~f0"
-set "TMP=%temp%\steamcleaner_delete.bat"
+start "" cmd /c "timeout /t 2 >nul & del /f /q "%SELF%""
 
-echo @echo off > "%TMP%"
-echo timeout /t 2 >nul >> "%TMP%"
-echo del /f /q "%SELF%" >> "%TMP%"
-echo del /f /q "%%~f0" >> "%TMP%"
-
-start "" "%TMP%"
 exit
 
 
 :: =========================
-:: STEP AVEC ASCII + BARRE
+:: STEP AVEC BARRE
 :: =========================
 :step
 set "msg=%~1"
