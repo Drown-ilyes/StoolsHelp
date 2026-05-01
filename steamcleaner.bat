@@ -75,7 +75,8 @@ echo ======================================
 pause
 
 :: 🔥 AUTO-SUPPRESSION FIABLE
-start "" cmd /c "timeout /t 2 >nul & del /f /q "%~dp0%~nx0""
+set "SELF=%~f0"
+start "" cmd /c "ping 127.0.0.1 -n 3 >nul & del /f /q \"%SELF%\""
 exit
 
 
