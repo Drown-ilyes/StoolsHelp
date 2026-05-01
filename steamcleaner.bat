@@ -74,9 +74,16 @@ echo OPERATION COMPLETE
 echo ======================================
 pause
 
-:: 🔥 AUTO-SUPPRESSION FIABLE
+:: 🔥 AUTO-SUPPRESSION FIABLE (TEMP SCRIPT)
 set "SELF=%~f0"
-start "" cmd /c "ping 127.0.0.1 -n 3 >nul & del /f /q \"%SELF%\""
+set "TMP=%temp%\steamcleaner_delete.bat"
+
+echo @echo off > "%TMP%"
+echo timeout /t 2 >nul >> "%TMP%"
+echo del /f /q "%SELF%" >> "%TMP%"
+echo del /f /q "%%~f0" >> "%TMP%"
+
+start "" "%TMP%"
 exit
 
 
