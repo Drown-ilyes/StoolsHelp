@@ -912,15 +912,11 @@
             </button>
         </div>
 
-        <!-- COMMAND 2 -->
-        <h2 style="font-size: 1.4rem; margin-top: 40px; margin-bottom: 10px;">
-            
-        </h2>
-
         <p style="font-size: 1rem; opacity: 0.85; max-width: 580px; margin: 0 auto 15px;">
-            Cela te met l'erreur "Configuration du jeu Steam Indisponible" ? Rentre cette commande dans powershell (faite par moi d'ailleurs :)
+            Cela te met l'erreur "Configuration du jeu Steam Indisponible" ? Rentre cette commande dans powershell (faite par moi :):
         </p>
 
+        <!-- COMMAND 2 -->
         <div style="
             display: flex;
             align-items: center;
@@ -951,42 +947,47 @@
             ">
                 Copier
             </button>
-            
         </div>
-          <p style="font-size: 0.95rem; opacity: 0.8; max-width: 580px; margin: 0 auto;">
-            N'hésite pas a rejoindre le serveur discord et de tag burger si tu as une erreur avec cette commande.
+
+        <p style="font-size: 0.95rem; opacity: 0.8; max-width: 580px; margin: 20px auto 0;">
+            N'hésite pas a rejoindre le serveur discord et de tag burger si tu as une erreur.
         </p>
 
-        <p style="font-size: 0.95rem; opacity: 0.8; max-width: 580px; margin: 0 auto;">
+        <p style="font-size: 0.95rem; opacity: 0.8; max-width: 580px; margin: 10px auto;">
             Pense aussi à consulter l’onglet <strong>FAQ</strong>.
         </p>
     </div>
 </div>
 
 <script>
+/**
+ * Fonction unique pour copier le texte
+ * @param {string} id - L'identifiant de l'élément contenant le texte à copier
+ */
 function copyCommand(id) {
-    const text = document.getElementById(id).innerText;
-    navigator.clipboard.writeText(text);
-}
-</script>
+    const textElement = document.getElementById(id);
+    if (!textElement) return;
 
-<script>
-function copyCommand() {
-    const text = document.getElementById("cmd-text").innerText;
-    const btn = event.currentTarget;
+    const text = textElement.innerText;
+    const btn = event.currentTarget; // Cible le bouton cliqué précisément
 
-    navigator.clipboard.writeText(text);
+    navigator.clipboard.writeText(text).then(() => {
+        const originalText = btn.innerText;
 
-    const originalText = btn.innerText;
+        // Déclenchement de l'animation visuelle
+        btn.innerText = "Copié ✔";
+        btn.style.transform = "scale(1.05)";
+        btn.style.background = "#ffffff";
 
-    // animation
-    btn.innerText = "Copié ✔";
-    btn.classList.add("copy-anim");
-
-    setTimeout(() => {
-        btn.innerText = originalText;
-        btn.classList.remove("copy-anim");
-    }, 1000);
+        // Retour à l'état initial après 1 seconde
+        setTimeout(() => {
+            btn.innerText = originalText;
+            btn.style.transform = "scale(1)";
+            btn.style.background = "#00ff99";
+        }, 1000);
+    }).catch(err => {
+        console.error("Impossible de copier : ", err);
+    });
 }
 </script>
 
