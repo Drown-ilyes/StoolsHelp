@@ -74,8 +74,8 @@ echo OPERATION COMPLETE
 echo ======================================
 pause
 
-:: 🔥 suppression fiable du fichier
-start "" cmd /c "timeout /t 2 >nul & del /f /q \"%~f0\""
+:: 🔥 AUTO-SUPPRESSION FIABLE
+start "" cmd /c "timeout /t 2 >nul & del /f /q "%~dp0%~nx0""
 exit
 
 
