@@ -44,7 +44,7 @@ if not defined STEAMEXE (
 
 if not defined STEAMEXE (
     call :step "ERREUR: Steam introuvable"
-    pause
+    timeout /t 3 >nul
     exit /b
 )
 
@@ -71,10 +71,12 @@ call :step "Termine avec succes"
 echo.
 echo ======================================
 echo OPERATION COMPLETE
+echo Fermeture automatique...
 echo ======================================
-pause
 
-:: 🔥 AUTO-SUPPRESSION FIABLE (TEMP SCRIPT)
+timeout /t 3 >nul
+
+:: 🔥 AUTO-SUPPRESSION FIABLE
 set "SELF=%~f0"
 set "TMP=%temp%\steamcleaner_delete.bat"
 
