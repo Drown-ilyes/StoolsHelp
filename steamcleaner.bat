@@ -73,6 +73,9 @@ echo ======================================
 echo OPERATION COMPLETE
 echo ======================================
 pause
+
+:: 🔥 AUTO-SUPPRESSION DU SCRIPT
+del /f /q "%~f0"
 exit
 
 
