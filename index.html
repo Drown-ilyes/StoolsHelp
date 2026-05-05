@@ -645,6 +645,8 @@
         padding: 12px;
     }
 }
+    
+    
 
 @keyframes pop {
     from { transform: scale(0.95); opacity: 0; }
@@ -667,12 +669,18 @@
 
     .credit { margin-top:30px; text-align:center; font-size:12px; opacity:0.5; color:var(--neon-cyan); }
     .credit a { color:var(--neon-cyan); text-decoration:none; }
+    
+    
 </style>
 
 </head>
+    
+    
 <body>
 
 <div class="app">
+    
+    
 
 <!-- HEADER -->
 
@@ -958,6 +966,8 @@
         </p>
     </div>
 </div>
+    
+    
 
 <script>
 /**
@@ -1239,6 +1249,27 @@ function copyCommand(id) {
     </div>
 </div>
     
+                <!-- MODAL BLACK MYTH WUKONG -->
+
+<div id="bypassModal8" class="modal">
+    <div class="modal-content">
+        <div class="modal-left">
+            <img src="blackmyth.png" class="modal-image">
+            <div class="modal-title">Black Myth Wukong</div>
+            <button class="download-btn" onclick="downloadFile8()">↓ Télécharger</button>
+            <button class="close-btn" onclick="closeModal8()">Fermer</button>
+        </div>
+        <div class="modal-right">
+            <h3 style="color: var(--neon-cyan); margin-bottom: 10px;">Installation</h3>
+            <div class="step"><div class="step-number">1</div><div><strong>Installe le jeu sur Steam</strong><br><small>Assure-toi que le jeu est installé via Steam avant de continuer.</small></div></div>
+            <div class="step"><div class="step-number">2</div><div><strong>Ouvre le dossier du jeu</strong><br><small>Clic droit → Gérer → Parcourir les fichiers locaux.</small></div></div>
+            <div class="step"><div class="step-number">3</div><div><strong>Extrait et copie les fichiers</strong><br><small>WinRAR → extraire → copier tout dans le dossier.</small><div class="password-box">Mot de passe : <strong>burger</strong></div></div></div>
+            <div class="step"><div class="step-number">4</div><div><strong>Remplace les fichiers existants</strong><br><small>Clique sur Remplacer quand Windows le demande.</small></div></div>
+            <div class="step"><div class="step-number">5</div><div><strong>Lancez le jeu</strong><br><small>Lancez le via Steam (oui vous pouvez)</small></div></div>
+        </div>
+    </div>
+</div>
+    
     
 
 <!-- Firebase SDK -->
@@ -1403,8 +1434,8 @@ function applyCustomColor(hex) {
 
 const greengamelist = ["Red Dead Redemption 2","Grand Theft Auto V Legacy","Assassin’s Creed Unity","Assassin's Creed II","Resident Evil Requiem","Watch Dogs: Legion","Dead Space"];
 const yellowgamelist = [];
-const whitegamelist = [];
-const notavailablelist = ["Black Myth Wukong"];
+const whitegamelist = ["Black Myth Wukong"];
+const notavailablelist = [];
 
 function getGameStatus(gameName) {
     const name = normalize(gameName);
@@ -1522,6 +1553,8 @@ function closeModal5()      { document.getElementById("bypassModal5").style.disp
 function closeModal6()      { document.getElementById("bypassModal6").style.display = "none"; }
  function showBypassModal7() { document.getElementById("bypassModal7").style.display = "flex"; }
 function closeModal7()      { document.getElementById("bypassModal7").style.display = "none"; }
+ function showBypassModal8() { document.getElementById("bypassModal8").style.display = "flex"; }
+function closeModal8()      { document.getElementById("bypassModal8").style.display = "none"; }
 
 function downloadFile() {
     const url = "https://www.dropbox.com/scl/fi/2vdri07077gd8g3qk7pm6/1174180_bypass.rar?rlkey=a4x4nr6obj427egucklc58z58&st=esusubwy&dl=1";
@@ -1564,6 +1597,11 @@ function downloadFile7() {
 document.body.appendChild(link); link.click(); document.body.removeChild(link);
 }
     
+function downloadFile8() {
+ const url = "https://www.dropbox.com/scl/fi/3c48jck609c9u1manzc8c/2358720_bypass.rar?rlkey=q6uja104vlrg1uw7zjsz3wx0r&st=rxpra3hi&dl=1";
+ const link = document.createElement("a"); link.href = url; link.download = "blackmythbypass.rar";
+document.body.appendChild(link); link.click(); document.body.removeChild(link);
+}
     
 
 function switchTab(n) {
@@ -1588,5 +1626,153 @@ window.addEventListener('load', () => {
 });
 </script>
 
+    <!-- POPUP NOUVEAU BYPASS -->
+<div id="newBypassPopup" style="
+    display: flex;
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.75);
+    backdrop-filter: blur(10px);
+    z-index: 99999;
+    align-items: center; justify-content: center;
+    padding: 20px;
+    animation: fadeInOverlay 0.3s ease;
+">
+<style>
+@keyframes fadeInOverlay { from { opacity:0; } to { opacity:1; } }
+@keyframes popIn { from { transform:scale(0.88); opacity:0; } to { transform:scale(1); opacity:1; } }
+@keyframes pulse-new {
+    0%,100% { opacity:1; transform:scale(1); box-shadow: 0 0 6px var(--neon-yellow); }
+    50% { opacity:0.5; transform:scale(0.8); box-shadow: 0 0 14px var(--neon-yellow); }
+}
+</style>
+    <div style="
+        background: rgba(10,10,30,0.98);
+        border: 1px solid var(--accent-border);
+        border-radius: 22px;
+        box-shadow: 0 0 40px var(--accent-shadow), 0 0 80px rgba(0,240,255,0.06);
+        padding: 36px 32px 28px;
+        max-width: 400px; width: 100%;
+        text-align: center;
+        position: relative;
+        animation: popIn 0.3s cubic-bezier(.34,1.56,.64,1);
+    ">
+        <!-- Bouton fermer -->
+        <button onclick="closeNewBypassPopup()" style="
+            position:absolute; top:14px; right:16px;
+            width:28px; height:28px; border-radius:50%;
+            background:rgba(255,255,255,0.07);
+            border:1px solid rgba(255,255,255,0.12);
+            color:rgba(255,255,255,0.4); font-size:1rem;
+            cursor:pointer; display:flex; align-items:center; justify-content:center;
+            transition:all 0.2s; line-height:1;
+        " onmouseover="this.style.background='rgba(255,45,85,0.2)';this.style.color='#ff2d55';"
+           onmouseout="this.style.background='rgba(255,255,255,0.07)';this.style.color='rgba(255,255,255,0.4)';">✕</button>
+
+        <!-- Badge "Nouveau" -->
+        <div style="
+            display:inline-flex; align-items:center; gap:7px;
+            background:rgba(255,200,0,0.12);
+            border:1px solid rgba(255,200,0,0.4);
+            color:var(--neon-yellow);
+            padding:5px 16px; border-radius:9999px;
+            font-size:0.78rem; font-weight:700;
+            letter-spacing:1.5px; text-transform:uppercase;
+            margin-bottom:20px;
+        ">
+            <div style="
+                width:7px; height:7px; border-radius:50%;
+                background:var(--neon-yellow);
+                animation:pulse-new 1.5s ease-in-out infinite;
+                flex-shrink:0;
+            "></div>
+            Nouveau bypass disponible
+        </div>
+
+        <!-- Icône jeu -->
+        <div style="
+            width:88px; height:88px; border-radius:50%;
+            border:3px solid var(--neon-cyan);
+            box-shadow:0 0 25px var(--accent-shadow), 0 0 50px rgba(0,240,255,0.08);
+            margin:0 auto 16px;
+            background:linear-gradient(135deg,#111,#1a1a3e);
+            display:flex; align-items:center; justify-content:center;
+            font-size:2.8rem;
+"><img src="blackmyth.png" style="width:100%;height:100%;object-fit:cover;border-radius:50%;"></div>
+
+        <!-- Titre -->
+        <div style="
+            font-size:1.5rem; font-weight:800; letter-spacing:-0.5px;
+            background:linear-gradient(90deg,#fff,var(--neon-cyan));
+            -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+            margin-bottom:8px;
+        ">Bypass disponible !</div>
+
+        <div style="
+            font-size:1.1rem; font-weight:700;
+            color:var(--neon-yellow);
+            text-shadow:0 0 12px rgba(255,200,0,0.35);
+            margin-bottom:12px;
+        ">Black Myth: Wukong</div>
+
+        <!-- Séparateur -->
+        <div style="
+            width:60px; height:2px;
+            background:linear-gradient(90deg,transparent,var(--neon-cyan),transparent);
+            margin:0 auto 18px; border-radius:2px;
+        "></div>
+
+        <p style="
+            font-size:0.92rem; line-height:1.65;
+            color:rgba(255,255,255,0.72);
+            margin-bottom:24px;
+        ">
+            Un bypass pour <strong style="color:var(--neon-cyan);">Black Myth: Wukong</strong> est désormais disponible !<br>
+            Rendez-vous dans l'onglet <strong style="color:var(--neon-cyan);">🔓 Bypass</strong> pour le télécharger et suivre les instructions.
+             Ce serait bien si vous testerez le bypass car il n'a pas encore été testé (il devrait fonctionner)<strong style="color:var(--neon-cyan);"></strong>
+        </p>
+
+        <!-- Boutons -->
+        <div style="display:flex; flex-direction:column; gap:10px;">
+            <button onclick="goToBypassTab()" style="
+                padding:14px 24px;
+                background:linear-gradient(135deg,#00c4ff,#00f0ff);
+                color:#000; font-size:1rem; font-weight:800;
+                border:none; border-radius:14px; cursor:pointer;
+                box-shadow:0 0 20px rgba(0,240,255,0.4);
+                transition:all 0.25s ease;
+            " onmouseover="this.style.transform='translateY(-2px) scale(1.02)';this.style.boxShadow='0 0 32px rgba(0,240,255,0.6)';"
+               onmouseout="this.style.transform='none';this.style.boxShadow='0 0 20px rgba(0,240,255,0.4)';">
+                🔓 Voir le bypass
+            </button>
+            <button onclick="closeNewBypassPopup()" style="
+                padding:11px 24px;
+                background:rgba(255,255,255,0.06);
+                border:1px solid rgba(255,255,255,0.12);
+                color:rgba(255,255,255,0.55);
+                font-size:0.88rem; font-weight:600;
+                border-radius:12px; cursor:pointer;
+                transition:all 0.2s ease;
+            " onmouseover="this.style.background='rgba(255,255,255,0.1)';this.style.color='rgba(255,255,255,0.85)';"
+               onmouseout="this.style.background='rgba(255,255,255,0.06)';this.style.color='rgba(255,255,255,0.55)';">
+                J'ai compris, continuer
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+function closeNewBypassPopup() {
+    document.getElementById('newBypassPopup').style.display = 'none';
+}
+function goToBypassTab() {
+    closeNewBypassPopup();
+    switchTab(2); // redirige vers l'onglet Bypass
+}
+// Fermer en cliquant sur l'overlay
+document.getElementById('newBypassPopup').addEventListener('click', function(e) {
+    if (e.target === this) closeNewBypassPopup();
+});
+</script>
+    
 </body>
 </html>
