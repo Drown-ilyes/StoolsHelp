@@ -841,6 +841,18 @@
                 </div>
                 <div class="bypass-card-arrow">→</div>
             </div>
+            
+                      <div class="bypass-card" onclick="showBypassModal9()">
+                <div class="bypass-card-left">
+                    <img src="blackmyth.png" alt="PES 2018" class="bypass-image">
+                    <div>
+                        <div class="bypass-card-name">PES 2018
+</div>
+                        <span class="bypass-card-tag"></span>
+                    </div>
+                </div>
+                <div class="bypass-card-arrow">→</div>
+            </div>
 
         </div>
         
@@ -1143,6 +1155,27 @@ function copyCommand(id) {
         </div>
     </div>
 </div>
+    
+    <!-- MODAL RE REQUIEM -->
+
+<div id="bypassModal9" class="modal">
+    <div class="modal-content">
+        <div class="modal-left">
+            <img src="pes18.png" class="modal-image">
+            <div class="modal-title">PES 2018</div>
+            <button class="download-btn" onclick="downloadFile9()">↓ Télécharger</button>
+            <button class="close-btn" onclick="closeModal9()">Fermer</button>
+        </div>
+        <div class="modal-right">
+            <h3 style="color: var(--neon-cyan); margin-bottom: 10px;">Installation</h3>
+            <div class="step"><div class="step-number">1</div><div><strong>Installe le jeu sur Steam</strong><br><small>Assure-toi que le jeu est installé via Steam avant de continuer.</small></div></div>
+            <div class="step"><div class="step-number">2</div><div><strong>Ouvre le dossier du jeu</strong><br><small>Clic droit → Gérer → Parcourir les fichiers locaux.</small></div></div>
+            <div class="step"><div class="step-number">3</div><div><strong>Extrait et copie les fichiers</strong><br><small>WinRAR → extraire → copier tout dans le dossier.</small><div class="password-box">Mot de passe : <strong>burger</strong></div></div></div>
+            <div class="step"><div class="step-number">4</div><div><strong>Remplace les fichiers existants</strong><br><small>Clique sur Remplacer quand Windows le demande.</small></div></div>
+            <div class="step"><div class="step-number">5</div><div><strong>Lancez le jeu</strong><br><small>Lancez le jeu via steam (oui vous pouvez)</small></div></div>
+        </div>
+    </div>
+</div>
 
 <!-- MODAL ASSASIN CREED UNITY-->
 
@@ -1431,7 +1464,7 @@ function applyCustomColor(hex) {
     document.querySelectorAll('.swatch').forEach(s => s.classList.remove('active'));
 }
 
-const greengamelist = ["Red Dead Redemption 2","Grand Theft Auto V Legacy","Assassin’s Creed Unity","Assassin's Creed II","Resident Evil Requiem","Watch Dogs: Legion","Dead Space"];
+const greengamelist = ["Red Dead Redemption 2","Grand Theft Auto V Legacy","Assassin’s Creed Unity","Assassin's Creed II","Resident Evil Requiem","Watch Dogs: Legion","Dead Space","PES 2018"];
 const yellowgamelist = [];
 const whitegamelist = ["Black Myth Wukong"];
 const notavailablelist = [];
@@ -1458,8 +1491,8 @@ function getGameStatus(gameName) {
     return { color: "yellow", text: "Bypass potentiellement non fonctionnel" };
 }
 
-const gamesList = ["Anno 117: Pax Romana","Assassin's Creed Shadows","Assassin’s Creed Unity","Assassin's Creed 2","Atomfall","Avatar: Frontiers of Pandora","Beyond Good & Evil - 20th Anniversary Edition","Black Myth Wukong","BattleBit Remastered","BRAVELY DEFAULT FLYING FAIRY HD Remaster","Borderlands 4","Call of Duty: Black Ops 7","City Transport Simulator","Civilization VII","CODE VEIN II","Company of Heroes 3","Construction Simulator","Crimson Desert","Dead Space","Demon Slayer: The Hinokami Chronicles 1","Demon Slayer: The Hinokami Chronicles 2","Demon Slayer -Kimetsu no Yaiba- Sweep the Board!","Digimon Story Time Stranger","Dirt 5","DRAGON QUEST VII Reimagined","Dune","EA SPORTS FC 24","EA SPORTS FC 25","EA SPORTS FC 26","EA SPORTS WRC","Eagle Flight","Etrian Odyssey HD","Etrian Odyssey II HD","Etrian Odyssey III HD","Evil Genius 2: World Domination","F1 23","F1 24","F1 25","F1 Manager 22","F1 Manager 23","F1 Manager 24","F1 Manager 26","Fe","FINAL FANTASY TACTICS - The Ivalice Chronicles","Firefighting Simulator - The Squad","Football Manager 19","Football Manager 20","Football Manager 21","Football Manager 22","Football Manager 23","Football Manager 24","Football Manager 26", "HONOR","FortiFyte","GRID Legends","Grand Theft Auto V Legacy","Harry Potter: Quidditch Champions","Hatsune Miku: Project Diva Megamix+","Hello Kitty Island Adventures","Jurassic World Evolution 3","Like A Dragon: Gaiden","Like A Dragon: Infinite Wealth","Like A Dragon: Ishin","Like A Dragon: Pirate Yakuza In Hawaii","Lost in Random","Lost Judgment","Life is Strange: Reunion","Madden NFL 21","Madden NFL 22","Madden NFL 23","Madden NFL 24","Madden NFL 25","Madden NFL 26","Mafia: The Old Country","Marathon","Marvel's Midnight Suns","Microsoft Flight Simulator 2024","Might and Magic: Heroes VII – Trial by Fire","MONOPOLY 2024","Monopoly Madness","Monster Hunter Wilds","Monster Hunter Stories 3: Twisted Reflection","Mortal Kombat 1","NBA 2K24","NBA 2K25","NBA 2K26","Need for Speed Unbound","Octopath Traveler 0","OddBallers","Onimusha 2: Samurai's Destiny","Persona 3 Portable","Persona 3 Reload","Persona 4 Arena Ultimax","Persona 4 Revival","Persona 5 Tactica","Phantom Blade Zero","PGA TOUR 2K25","Planet Coaster 2","Plants vs. Zombies: Garden Warfare 2","PRAGMATA","Prince Of Persia The Lost Crown","Professional Baseball Spirits 2024","Professional Baseball Spirits 2025","Rocksmith 2014 Edition REMASTERED","RAIDOU Remastered","Red Dead Redemption 2","Redfall","Resident Evil Requiem","Sea of Thieves","Shin Megami Tensei III: Nocturne HD","Shin Megami Tensei V: Vengeance","Shinobi - Art of Vengeance","Sniper Elite 5","Sniper Elite Resistance","Sniper Elite VR","Sonic Origins","Sonic Superstars","Sonic Racing Crossworlds","Sonic X Shadow Generations","Soul Hackers 2","Speedball","Star Wars Outlaws","Star Wars Squadrons","Stellar Blade","Street Fighter 6","Suicide Squad: Kill the Justice League","Super Mega Baseball 4","The Crew Motorfest","The Bus","The First Berserker: Khazan","The Settlers: New Allies","Tom Clancy's Ghost Recon Breakpoint","TopSpin 2K25","Total War: Warhammer 3","Train Sim World 2020","Train Sim World 3","Trials Rising","Two Point Museum","Undisputed","Valiant Hearts: Coming Home","Warhammer 40k: Chaos Gate Daemonhunters","Warhammer Age Of Sigmar: Realms Of Ruin","Watch Dogs: Legion","WWE 2K26","Yakuza Kiwami 3","Dark Ties","Zombie Army 4: Dead War","Zombie Army VR"];
-const bypassGames = ["red dead redemption 2","red dead redemption","red dead","rdr2","resident evil requiem","resident evil req","re requiem","grand theft auto","grand theft auto V","grand theft auto v legacy","grand t","grand","assassin’s creed unity","assassins creed unity","assassin’s creed u","assassins creed u","assassin's creed 2","assassins creed 2","Dead","Dead Space","Dead Spa","Watch Dogs","Watch Dogs:","Watch Dogs: Legion","Black Myth Wukong","Black Myth","Black"];
+const gamesList = ["Anno 117: Pax Romana","Assassin's Creed Shadows","Assassin’s Creed Unity","Assassin's Creed 2","Atomfall","Avatar: Frontiers of Pandora","Beyond Good & Evil - 20th Anniversary Edition","Black Myth Wukong","BattleBit Remastered","BRAVELY DEFAULT FLYING FAIRY HD Remaster","Borderlands 4","Call of Duty: Black Ops 7","City Transport Simulator","Civilization VII","CODE VEIN II","Company of Heroes 3","Construction Simulator","Crimson Desert","Dead Space","Demon Slayer: The Hinokami Chronicles 1","Demon Slayer: The Hinokami Chronicles 2","Demon Slayer -Kimetsu no Yaiba- Sweep the Board!","Digimon Story Time Stranger","Dirt 5","DRAGON QUEST VII Reimagined","Dune","EA SPORTS FC 24","EA SPORTS FC 25","EA SPORTS FC 26","EA SPORTS WRC","Eagle Flight","Etrian Odyssey HD","Etrian Odyssey II HD","Etrian Odyssey III HD","Evil Genius 2: World Domination","F1 23","F1 24","F1 25","F1 Manager 22","F1 Manager 23","F1 Manager 24","F1 Manager 26","Fe","FINAL FANTASY TACTICS - The Ivalice Chronicles","Firefighting Simulator - The Squad","Football Manager 19","Football Manager 20","Football Manager 21","Football Manager 22","Football Manager 23","Football Manager 24","Football Manager 26", "HONOR","FortiFyte","GRID Legends","Grand Theft Auto V Legacy","Harry Potter: Quidditch Champions","Hatsune Miku: Project Diva Megamix+","Hello Kitty Island Adventures","Jurassic World Evolution 3","Like A Dragon: Gaiden","Like A Dragon: Infinite Wealth","Like A Dragon: Ishin","Like A Dragon: Pirate Yakuza In Hawaii","Lost in Random","Lost Judgment","Life is Strange: Reunion","Madden NFL 21","Madden NFL 22","Madden NFL 23","Madden NFL 24","Madden NFL 25","Madden NFL 26","Mafia: The Old Country","Marathon","Marvel's Midnight Suns","Microsoft Flight Simulator 2024","Might and Magic: Heroes VII – Trial by Fire","MONOPOLY 2024","Monopoly Madness","Monster Hunter Wilds","Monster Hunter Stories 3: Twisted Reflection","Mortal Kombat 1","NBA 2K24","NBA 2K25","NBA 2K26","Need for Speed Unbound","Octopath Traveler 0","OddBallers","Onimusha 2: Samurai's Destiny","Persona 3 Portable","Persona 3 Reload","Persona 4 Arena Ultimax","Persona 4 Revival","Persona 5 Tactica","PES 2018","Phantom Blade Zero","PGA TOUR 2K25","Planet Coaster 2","Plants vs. Zombies: Garden Warfare 2","PRAGMATA","Prince Of Persia The Lost Crown","Professional Baseball Spirits 2024","Professional Baseball Spirits 2025","Rocksmith 2014 Edition REMASTERED","RAIDOU Remastered","Red Dead Redemption 2","Redfall","Resident Evil Requiem","Sea of Thieves","Shin Megami Tensei III: Nocturne HD","Shin Megami Tensei V: Vengeance","Shinobi - Art of Vengeance","Sniper Elite 5","Sniper Elite Resistance","Sniper Elite VR","Sonic Origins","Sonic Superstars","Sonic Racing Crossworlds","Sonic X Shadow Generations","Soul Hackers 2","Speedball","Star Wars Outlaws","Star Wars Squadrons","Stellar Blade","Street Fighter 6","Suicide Squad: Kill the Justice League","Super Mega Baseball 4","The Crew Motorfest","The Bus","The First Berserker: Khazan","The Settlers: New Allies","Tom Clancy's Ghost Recon Breakpoint","TopSpin 2K25","Total War: Warhammer 3","Train Sim World 2020","Train Sim World 3","Trials Rising","Two Point Museum","Undisputed","Valiant Hearts: Coming Home","Warhammer 40k: Chaos Gate Daemonhunters","Warhammer Age Of Sigmar: Realms Of Ruin","Watch Dogs: Legion","WWE 2K26","Yakuza Kiwami 3","Dark Ties","Zombie Army 4: Dead War","Zombie Army VR"];
+const bypassGames = ["red dead redemption 2","red dead redemption","red dead","rdr2","resident evil requiem","resident evil req","re requiem","grand theft auto","grand theft auto V","grand theft auto v legacy","grand t","grand","assassin’s creed unity","assassins creed unity","assassin’s creed u","assassins creed u","assassin's creed 2","assassins creed 2","Dead","Dead Space","Dead Spa","Watch Dogs","Watch Dogs:","Watch Dogs: Legion","Black Myth Wukong","Black Myth","Black","PES 2018","PES","PES 18"];
 
 function normalize(t) { return t.toLowerCase().replace(/[^a-z0-9]/g, ""); }
 function score(input, game) {
@@ -1554,6 +1587,8 @@ function closeModal6()      { document.getElementById("bypassModal6").style.disp
 function closeModal7()      { document.getElementById("bypassModal7").style.display = "none"; }
  function showBypassModal8() { document.getElementById("bypassModal8").style.display = "flex"; }
 function closeModal8()      { document.getElementById("bypassModal8").style.display = "none"; }
+ function showBypassModal9() { document.getElementById("bypassModal9").style.display = "flex"; }
+function closeModal9()      { document.getElementById("bypassModal9").style.display = "none"; }
 
 function downloadFile() {
     const url = "https://www.dropbox.com/scl/fi/2vdri07077gd8g3qk7pm6/1174180_bypass.rar?rlkey=a4x4nr6obj427egucklc58z58&st=esusubwy&dl=1";
@@ -1602,6 +1637,12 @@ function downloadFile8() {
 document.body.appendChild(link); link.click(); document.body.removeChild(link);
 }
     
+function downloadFile9() {
+ const url = "https://www.dropbox.com/scl/fi/htrsi51xdtk8c6qqgpfi1/pes18bypass.rar?rlkey=cafzqr000t8xa6zmbdb1kdfgp&st=dikwd6am&dl=1";
+ const link = document.createElement("a"); link.href = url; link.download = "pes18bypass.rar";
+document.body.appendChild(link); link.click(); document.body.removeChild(link);
+}
+    
 
 function switchTab(n) {
     document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
@@ -1624,7 +1665,7 @@ window.addEventListener('load', () => {
     });
 });
 </script>
-
+    
     <!-- POPUP NOUVEAU BYPASS -->
 <div id="newBypassPopup" style="
     display: flex;
@@ -1634,23 +1675,14 @@ window.addEventListener('load', () => {
     z-index: 99999;
     align-items: center; justify-content: center;
     padding: 20px;
-    animation: fadeInOverlay 0.3s ease;
 ">
-<style>
-@keyframes fadeInOverlay { from { opacity:0; } to { opacity:1; } }
-@keyframes popIn { from { transform:scale(0.88); opacity:0; } to { transform:scale(1); opacity:1; } }
-@keyframes pulse-new {
-    0%,100% { opacity:1; transform:scale(1); box-shadow: 0 0 6px var(--neon-yellow); }
-    50% { opacity:0.5; transform:scale(0.8); box-shadow: 0 0 14px var(--neon-yellow); }
-}
-</style>
     <div style="
         background: rgba(10,10,30,0.98);
         border: 1px solid var(--accent-border);
         border-radius: 22px;
         box-shadow: 0 0 40px var(--accent-shadow), 0 0 80px rgba(0,240,255,0.06);
         padding: 36px 32px 28px;
-        max-width: 400px; width: 100%;
+        max-width: 420px; width: 100%;
         text-align: center;
         position: relative;
         animation: popIn 0.3s cubic-bezier(.34,1.56,.64,1);
@@ -1667,7 +1699,7 @@ window.addEventListener('load', () => {
         " onmouseover="this.style.background='rgba(255,45,85,0.2)';this.style.color='#ff2d55';"
            onmouseout="this.style.background='rgba(255,255,255,0.07)';this.style.color='rgba(255,255,255,0.4)';">✕</button>
 
-        <!-- Badge "Nouveau" -->
+        <!-- Badge -->
         <div style="
             display:inline-flex; align-items:center; gap:7px;
             background:rgba(255,200,0,0.12);
@@ -1684,34 +1716,43 @@ window.addEventListener('load', () => {
                 animation:pulse-new 1.5s ease-in-out infinite;
                 flex-shrink:0;
             "></div>
-            Nouveau bypass disponible
+            Nouveaux bypass disponibles
         </div>
-
-        <!-- Icône jeu -->
-        <div style="
-            width:88px; height:88px; border-radius:50%;
-            border:3px solid var(--neon-cyan);
-            box-shadow:0 0 25px var(--accent-shadow), 0 0 50px rgba(0,240,255,0.08);
-            margin:0 auto 16px;
-            background:linear-gradient(135deg,#111,#1a1a3e);
-            display:flex; align-items:center; justify-content:center;
-            font-size:2.8rem;
-"><img src="blackmyth.png" style="width:100%;height:100%;object-fit:cover;border-radius:50%;"></div>
 
         <!-- Titre -->
         <div style="
             font-size:1.5rem; font-weight:800; letter-spacing:-0.5px;
             background:linear-gradient(90deg,#fff,var(--neon-cyan));
             -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-            margin-bottom:8px;
-        ">Bypass disponible !</div>
+            margin-bottom:18px;
+        ">Bypass disponibles !</div>
 
-        <div style="
-            font-size:1.1rem; font-weight:700;
-            color:var(--neon-yellow);
-            text-shadow:0 0 12px rgba(255,200,0,0.35);
-            margin-bottom:12px;
-        ">Black Myth: Wukong</div>
+        <!-- Les 2 jeux -->
+        <div style="display:flex; gap:24px; justify-content:center; margin-bottom:18px;">
+
+            <!-- Jeu 1 -->
+            <div style="text-align:center;">
+                <div style="
+                    width:72px; height:72px; border-radius:50%;
+                    border:3px solid var(--neon-cyan);
+                    box-shadow:0 0 25px var(--accent-shadow);
+                    margin:0 auto 8px; overflow:hidden;
+                "><img src="blackmyth.png" style="width:100%;height:100%;object-fit:cover;border-radius:50%;"></div>
+                <div style="font-size:0.78rem; font-weight:700; color:var(--neon-yellow);">Black Myth: Wukong</div>
+            </div>
+
+            <!-- Jeu 2 -->
+            <div style="text-align:center;">
+                <div style="
+                    width:72px; height:72px; border-radius:50%;
+                    border:3px solid var(--neon-cyan);
+                    box-shadow:0 0 25px var(--accent-shadow);
+                    margin:0 auto 8px; overflow:hidden;
+                "><img src="pes18.png" style="width:100%;height:100%;object-fit:cover;border-radius:50%;"></div>
+                <div style="font-size:0.78rem; font-weight:700; color:var(--neon-yellow);">PES 2018</div>
+            </div>
+
+        </div>
 
         <!-- Séparateur -->
         <div style="
@@ -1725,9 +1766,8 @@ window.addEventListener('load', () => {
             color:rgba(255,255,255,0.72);
             margin-bottom:24px;
         ">
-            Un bypass pour <strong style="color:var(--neon-cyan);">Black Myth: Wukong</strong> est désormais disponible !<br>
-            Rendez-vous dans l'onglet <strong style="color:var(--neon-cyan);">🔓 Bypass</strong> pour le télécharger et suivre les instructions.
-             Ce serait bien si vous testerez le bypass car il n'a pas encore été testé (il devrait fonctionner)<strong style="color:var(--neon-cyan);"></strong>
+            Un bypass pour <strong style="color:var(--neon-cyan);">Black Myth: Wukong</strong> et <strong style="color:var(--neon-cyan);">PES 2018</strong> sont désormais disponibles !<br>
+            Rendez-vous dans l'onglet <strong style="color:var(--neon-cyan);">🔓 Bypass</strong> pour les télécharger.
         </p>
 
         <!-- Boutons -->
@@ -1741,7 +1781,7 @@ window.addEventListener('load', () => {
                 transition:all 0.25s ease;
             " onmouseover="this.style.transform='translateY(-2px) scale(1.02)';this.style.boxShadow='0 0 32px rgba(0,240,255,0.6)';"
                onmouseout="this.style.transform='none';this.style.boxShadow='0 0 20px rgba(0,240,255,0.4)';">
-                🔓 Voir le bypass
+                🔓 Voir les bypass
             </button>
             <button onclick="closeNewBypassPopup()" style="
                 padding:11px 24px;
@@ -1756,6 +1796,7 @@ window.addEventListener('load', () => {
                 J'ai compris, continuer
             </button>
         </div>
+
     </div>
 </div>
 
@@ -1765,9 +1806,8 @@ function closeNewBypassPopup() {
 }
 function goToBypassTab() {
     closeNewBypassPopup();
-    switchTab(2); // redirige vers l'onglet Bypass
+    switchTab(2);
 }
-// Fermer en cliquant sur l'overlay
 document.getElementById('newBypassPopup').addEventListener('click', function(e) {
     if (e.target === this) closeNewBypassPopup();
 });
