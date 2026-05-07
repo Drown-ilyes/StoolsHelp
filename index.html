@@ -758,38 +758,26 @@
         <div id="full-list" class="full-list" style="display:none;"></div>
     </div>
 
-    <!-- TAB 2 -->
-<!-- TAB 2 - BYPASS AVEC RECHERCHE -->
+   <!-- TAB 2 - BYPASS -->
 <div id="tab-2" class="tab-content">
     <div class="bypass-container">
         <h1 class="bypass-title">Bypass disponibles</h1>
         <p class="bypass-description">Un bypass permet de contourner le DRM du jeu. Cela permet de le lancer même s’il est protégé.</p>
-
-        <!-- Barre de recherche améliorée -->
+        
+        <!-- BARRE DE RECHERCHE -->
         <div style="max-width: 560px; margin: 0 auto 32px; position: relative;">
             <input 
                 type="text" 
                 id="bypass-search" 
-                placeholder="🔍 Rechercher un bypass (RDR2, GTA V, Black Myth, PES...)"
-                style="
-                    width: 100%;
-                    padding: 18px 20px 18px 56px;
-                    font-size: 1.08rem;
-                    background: var(--dark-panel-light);
-                    border: 2px solid var(--accent-border);
-                    border-radius: 16px;
-                    color: white;
-                    outline: none;
-                    box-shadow: 0 0 25px var(--accent-shadow);
-                    transition: all 0.3s ease;
-                "
+                placeholder=" Rechercher un bypass (RDR2, GTA V, Black Myth, PES...)"
+                style="width: 100%; padding: 18px 20px 18px 56px; font-size: 1.08rem; background: var(--dark-panel-light); border: 2px solid var(--accent-border); border-radius: 16px; color: white; outline: none; box-shadow: 0 0 25px var(--accent-shadow); transition: all 0.3s ease;"
                 onkeyup="filterBypasses()">
             <span style="position: absolute; left: 22px; top: 50%; transform: translateY(-50%); font-size: 1.5rem; opacity: 0.6; pointer-events: none;">🔎</span>
         </div>
 
         <div id="bypass-list">
-            <!-- Les cartes bypass -->
-            <div class="bypass-card" data-name="red dead redemption 2 rdr2 red dead">
+            
+            <div class="bypass-card" onclick="showBypassModal()">
                 <div class="bypass-card-left">
                     <img src="rdr2.png" alt="Red Dead Redemption 2" class="bypass-image">
                     <div>
@@ -800,7 +788,7 @@
                 <div class="bypass-card-arrow">→</div>
             </div>
 
-            <div class="bypass-card" data-name="resident evil requiem re requiem">
+            <div class="bypass-card" onclick="showBypassModal2()">
                 <div class="bypass-card-left">
                     <img src="requiem.png" alt="Resident Evil Requiem" class="bypass-image">
                     <div>
@@ -811,7 +799,7 @@
                 <div class="bypass-card-arrow">→</div>
             </div>
 
-            <div class="bypass-card" data-name="grand theft auto v gta v gta5 legacy">
+            <div class="bypass-card" onclick="showBypassModal3()">
                 <div class="bypass-card-left">
                     <img src="gta5.png" alt="Grand Theft Auto V Legacy" class="bypass-image">
                     <div>
@@ -822,7 +810,7 @@
                 <div class="bypass-card-arrow">→</div>
             </div>
 
-            <div class="bypass-card" data-name="assassin’s creed unity assassins creed unity acu">
+            <div class="bypass-card" onclick="showBypassModal4()">
                 <div class="bypass-card-left">
                     <img src="assassins.png" alt="Assassin’s Creed Unity" class="bypass-image">
                     <div>
@@ -833,7 +821,7 @@
                 <div class="bypass-card-arrow">→</div>
             </div>
 
-            <div class="bypass-card" data-name="assassin's creed ii assassins creed 2 ac2">
+            <div class="bypass-card" onclick="showBypassModal5()">
                 <div class="bypass-card-left">
                     <img src="assassins2.png" alt="Assassin's Creed II" class="bypass-image">
                     <div>
@@ -844,7 +832,7 @@
                 <div class="bypass-card-arrow">→</div>
             </div>
 
-            <div class="bypass-card" data-name="watch dogs legion wdl watchdogs">
+            <div class="bypass-card" onclick="showBypassModal6()">
                 <div class="bypass-card-left">
                     <img src="wdl.png" alt="Watch Dogs: Legion" class="bypass-image">
                     <div>
@@ -855,7 +843,7 @@
                 <div class="bypass-card-arrow">→</div>
             </div>
 
-            <div class="bypass-card" data-name="dead space">
+            <div class="bypass-card" onclick="showBypassModal7()">
                 <div class="bypass-card-left">
                     <img src="deadspace.png" alt="Dead Space" class="bypass-image">
                     <div>
@@ -866,7 +854,7 @@
                 <div class="bypass-card-arrow">→</div>
             </div>
 
-            <div class="bypass-card" data-name="black myth wukong black myth">
+            <div class="bypass-card" onclick="showBypassModal8()">
                 <div class="bypass-card-left">
                     <img src="blackmyth.png" alt="Black Myth Wukong" class="bypass-image">
                     <div>
@@ -877,7 +865,7 @@
                 <div class="bypass-card-arrow">→</div>
             </div>
 
-            <div class="bypass-card" data-name="pes 2018 pes18 pes">
+            <div class="bypass-card" onclick="showBypassModal9()">
                 <div class="bypass-card-left">
                     <img src="pes18.png" alt="PES 2018" class="bypass-image">
                     <div>
@@ -887,6 +875,7 @@
                 </div>
                 <div class="bypass-card-arrow">→</div>
             </div>
+
         </div>
     </div>
 </div>
@@ -1852,15 +1841,18 @@ function goToBypassTab() {
     closeNewBypassPopup();
     switchTab(2);
 }
-    
-
-    
 document.getElementById('newBypassPopup').addEventListener('click', function(e) {
     if (e.target === this) closeNewBypassPopup();
 });
 </script>
+    
     <script>
-// Filtre des bypass - Version robuste
+
+
+</script>
+    
+    <script>
+// ====================== FILTRAGE BYPASS ======================
 function filterBypasses() {
     const input = document.getElementById('bypass-search');
     if (!input) return;
@@ -1868,47 +1860,39 @@ function filterBypasses() {
     const searchTerm = input.value.toLowerCase().trim();
     const cards = document.querySelectorAll('#bypass-list .bypass-card');
 
-    let visibleCount = 0;
-
     cards.forEach(card => {
-        const dataName = card.getAttribute('data-name') || '';
-        if (searchTerm === '' || dataName.includes(searchTerm)) {
+        const name = card.querySelector('.bypass-card-name').textContent.toLowerCase();
+        
+        if (searchTerm === '' || name.includes(searchTerm)) {
             card.style.display = 'flex';
             card.style.opacity = '1';
             card.style.transform = 'scale(1)';
-            visibleCount++;
         } else {
-            card.style.opacity = '0.25';
-            card.style.transform = 'scale(0.95)';
+            card.style.opacity = '0';
             setTimeout(() => {
-                if (card.style.opacity === '0.25') {
-                    card.style.display = 'none';
-                }
-            }, 250);
+                if (card.style.opacity === '0') card.style.display = 'none';
+            }, 300);
         }
     });
 }
 
-// Focus automatique + reset quand on change d'onglet
+// Focus automatique sur la recherche quand on ouvre l'onglet Bypass
 function initBypassSearch() {
     const searchInput = document.getElementById('bypass-search');
     if (searchInput) {
         searchInput.focus();
-        filterBypasses(); // reset à l'ouverture
+        filterBypasses(); // reset
     }
 }
 
-// Attacher aux boutons d'onglet
+// Attacher au clic sur l'onglet Bypass
 document.addEventListener('DOMContentLoaded', () => {
-    const bypassTabButtons = document.querySelectorAll('button[onclick*="switchTab(2)"]');
-    bypassTabButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            setTimeout(initBypassSearch, 150);
-        });
+    const bypassButtons = document.querySelectorAll('button[onclick*="switchTab(2)"]');
+    bypassButtons.forEach(btn => {
+        btn.addEventListener('click', () => setTimeout(initBypassSearch, 180));
     });
 });
 </script>
-    
     
 </body>
 </html>
