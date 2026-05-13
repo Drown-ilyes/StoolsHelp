@@ -84,6 +84,8 @@
                 position: relative;
                 z-index: 1;
             }
+            
+            
 
             @keyframes copyPop {
                 0% {
@@ -275,6 +277,8 @@
                     display: block;
                 }
             }
+            
+            
 
             /* ====================== ONLINE COUNTER ====================== */
             .online-badge {
@@ -1253,6 +1257,37 @@
                         <div id="list" class="list"></div>
                         <button class="show-list-btn" onclick="toggleFullList()">📋 Voir la liste de jeux</button>
                         <div id="full-list" class="full-list" style="display: none"></div>
+                                                                                <button class="show-list-btn" onclick="downloadGames()">
+    ⬇️ Télécharger la liste des jeux actuelles (JSON)
+</button>
+             
+                        
+                                       <!-- WARNING -->
+                            <div
+                                style="
+                                    display: flex;
+                                    align-items: flex-start;
+                                    gap: 14px;
+                                    max-width: 560px;
+                                    margin: 0 auto 24px;
+                                    background: rgba(255, 140, 0, 0.08);
+                                    border: 1px solid rgba(255, 140, 0, 0.35);
+                                    border-radius: 14px;
+                                    padding: 14px 18px;
+                                    text-align: left;
+                                ">
+                                <span style="font-size: 1.3rem; flex-shrink: 0; margin-top: 1px">⚠️</span>
+                                <p
+                                    style="
+                                        font-size: 0.9rem;
+                                        line-height: 1.6;
+                                        color: rgba(255, 255, 255, 0.8);
+                                        margin: 0;
+                                    ">
+                                    Cette onglet ne permet PAS de télécharger des jeux, veuillez utiliser un générateur.
+                                </p>
+                                
+                            </div>           
                     </div>
 
                     <!-- TAB 2 - BYPASS -->
@@ -1739,7 +1774,7 @@
                                     ❌ = Jeu indisponible<br /><br />
                                     ✅ = Jeu disponible (si bien orthographié et qu'il existe)<br /><br />
                                     💜 = Jeu disponible <b>UNIQUEMENT</b> via steamrip.com<br /><br />
-                                    ⚠️ = Jeu disponible <b>UNIQUEMENT</b> via bypass (onglet Bypass)
+                                    ⚠️ = Jeu disponible <b>UNIQUEMENT</b> via bypass (onglet Bypas)
                                 </div>
                             </div>
                         </div>
@@ -2839,6 +2874,42 @@
                 if (b.includes(a)) return 40;
                 return 0;
             }
+            
+function downloadGames() {
+
+    const header = `
+  ____
+ |  _ \\
+ | |_) |_   _ _ __ __ _  ___ _ __ 
+ |  _ <| | | | '__/ _\` |/ _ \\ '__|
+ | |_) | |_| | | | (_| |  __/ |   
+ |____/ \\__,_|_|  \\__, |\\___|_|   
+                   __/ |          
+                  |___/ 
+
+Génération de la liste des jeux indisponibles actuelles sur :
+
+https://stools-help.vercel.app/?v=999
+
+(Je répète, cette liste peut être incomplète)
+
+-------------------------------
+`;
+
+    const content = gamesList.join("\n");
+
+    const finalText = header + "\n" + content;
+
+    const blob = new Blob([finalText], { type: "text/plain" });
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "games.txt";
+    a.click();
+
+    URL.revokeObjectURL(url);
+}
 
             function liveSearch() {
                 const inputRaw = document.getElementById("search").value.trim();
