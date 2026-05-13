@@ -616,6 +616,29 @@
                 color: #cc66ff;
             }
 
+.explanation.wait {
+background: rgba(255, 94, 0, 0.12);
+border: 1px solid rgba(255, 94, 0, 0.55);
+color: #ffb36a;
+}
+
+.result.wait {
+background: rgba(255, 94, 0, 0.10);
+border: 3px solid rgba(255, 94, 0, 0.75);
+box-shadow: 0 0 25px rgba(255, 94, 0, 0.35);
+color: #ffb86b;
+}
+
+/* Pour la full list */
+.full-list-item.wait {
+    background: rgba(255, 140, 0, 0.12);
+    border-color: rgba(255, 140, 0, 0.4);
+    color: #ffdd88;
+}
+.full-list-item.wait::before {
+    background: #ff8c00;
+}
+            
             .list {
                 margin-top: 16px;
                 background: var(--dark-panel-lighter);
@@ -1242,6 +1265,10 @@
                             Ce jeu a l'air d'être disponible (SI IL EST BIEN ORTHOGRAPHIÉ ET QU'IL EXISTE), sachez tout
                             de même que la liste des jeux n'est pas complète, et qu'il se peut que le jeu ne marche pas.
                         </div>
+                   <div id="explanation-wait" class="explanation wait" style="display: none;">
+    ⏳ Ce jeu  <strong>n'est pas</strong> disponible pour l'instant<br><br>
+    Je prévois d'ajouter un bypass pour ce jeu.
+</div>
                         <div id="explanation-no" class="explanation no">
                             Quand un jeu est indisponible, cela veut dire qu'il est protégé par un DRM, et qu'il ne sera
                             pas crackable et jouable via SteamTools, Lua Tools, etc.
@@ -1254,11 +1281,12 @@
                             💜 Ce jeu n'est pas disponible via des Tools, mais tu peux l'<strong>obtenir </strong> via
                             steamrip.com (gratuit, simple et safe)
                         </div>
+                        
                         <div id="list" class="list"></div>
                         <button class="show-list-btn" onclick="toggleFullList()">📋 Voir la liste de jeux</button>
                         <div id="full-list" class="full-list" style="display: none"></div>
                                                                                 <button class="show-list-btn" onclick="downloadGames()">
-    ⬇️ Télécharger la liste des jeux actuelles (JSON)
+    ⬇️ Télécharger la liste des jeux actuelles (TXT)
 </button>
              
                         
@@ -1774,7 +1802,8 @@
                                     ❌ = Jeu indisponible<br /><br />
                                     ✅ = Jeu disponible (si bien orthographié et qu'il existe)<br /><br />
                                     💜 = Jeu disponible <b>UNIQUEMENT</b> via steamrip.com<br /><br />
-                                    ⚠️ = Jeu disponible <b>UNIQUEMENT</b> via bypass (onglet Bypas)
+                                    ⚠️ = Jeu disponible <b>UNIQUEMENT</b> via bypass (onglet Bypass)<br /><br />
+                                    ⏳ = Jeu non disponible ; je prévois un bypass pour ce jeu.
                                 </div>
                             </div>
                         </div>
@@ -2647,27 +2676,27 @@
             const whitegamelist = ["Black Myth Wukong"];
             const notavailablelist = [];
 
-            function getGameStatus(gameName) {
-                const name = normalize(gameName);
+function getGameStatus(gameName) {
+    const name = normalize(gameName);
 
-                if (greengamelist.map(normalize).includes(name)) {
-                    return { color: "green", text: "Bypass fonctionnel" };
-                }
+    if (greengamelist.map(normalize).includes(name)) {
+        return { color: "green", text: "Bypass fonctionnel" };
+    }
+    if (waitGamesList.map(normalize).includes(name)) {
+        return { color: "orange", text: "En attente" };
+    }
+    if (yellowgamelist.map(normalize).includes(name)) {
+        return { color: "yellow", text: "Bypass incertain" };
+    }
+    if (whitegamelist.map(normalize).includes(name)) {
+        return { color: "white", text: "Bypass non testé" };
+    }
+    if (notavailablelist.map(normalize).includes(name)) {
+        return { color: "white", text: "Pas encore disponible" };
+    }
 
-                if (yellowgamelist.map(normalize).includes(name)) {
-                    return { color: "yellow", text: "Bypass incertain" };
-                }
-
-                if (whitegamelist.map(normalize).includes(name)) {
-                    return { color: "white", text: "Bypass non testé" };
-                }
-
-                if (notavailablelist.map(normalize).includes(name)) {
-                    return { color: "white", text: "Bypass pas encore disponible" };
-                }
-
-                return { color: "yellow", text: "Bypass potentiellement non fonctionnel" };
-            }
+    return { color: "yellow", text: "Bypass potentiellement non fonctionnel" };
+}
 
             const gamesList = [
                 "Anno 117: Pax Romana",
@@ -2713,6 +2742,7 @@
                 "F1 Manager 24",
                 "F1 Manager 26",
                 "Fe",
+                "FIFA 21",
                 "FIFA 22",
                 "FIFA 23",
                 "FINAL FANTASY TACTICS - The Ivalice Chronicles",
@@ -2782,6 +2812,7 @@
                 "Red Dead Redemption 2",
                 "Redfall",
                 "Resident Evil Requiem",
+                "Resident Evil 2",
                 "Sea of Thieves",
                 "Shin Megami Tensei III: Nocturne HD",
                 "Shin Megami Tensei V: Vengeance",
@@ -2860,6 +2891,10 @@
                 "Stell"
             ];
             const purchaseList = ["FIFA 23", "Forza Horizon 5"];
+            
+            const waitGamesList = [
+    "FIFA 21","FIFA 22","Resident Evil 2"
+];
 
             function normalize(t) {
                 return t.toLowerCase().replace(/[^a-z0-9]/g, "");
@@ -2914,19 +2949,32 @@ https://stools-help.vercel.app/?v=999
             function liveSearch() {
                 const inputRaw = document.getElementById("search").value.trim();
                 const result = document.getElementById("result");
+                
+                
                 const expOk = document.getElementById("explanation-ok");
                 const expNo = document.getElementById("explanation-no");
+                 const expWait = document.getElementById("explanation-wait");
                 const expBypass = document.getElementById("explanation-bypass");
                 const listEl = document.getElementById("list");
-                if (!inputRaw) {
-                    result.textContent = "Tape pour commencer le scan...";
-                    result.className = "result";
-                    expOk.style.display = "none";
-                    expNo.style.display = "none";
-                    expBypass.style.display = "none";
-                    listEl.innerHTML = "";
-                    return;
-                }
+                expOk.style.display = "none";
+expNo.style.display = "none";
+expBypass.style.display = "none";
+expWait.style.display = "none";
+document.getElementById("explanation-purchase").style.display = "none";
+     if (!inputRaw) {
+    result.textContent = "Tape pour commencer le scan...";
+    result.className = "result";
+
+    expOk.style.display = "none";
+    expNo.style.display = "none";
+    expBypass.style.display = "none";
+    expWait.style.display = "none";
+    document.getElementById("explanation-purchase").style.display = "none";
+
+    listEl.innerHTML = "";
+
+    return;
+}
                 let best = null;
                 let bestScore = 0;
                 gamesList.forEach((game) => {
@@ -2936,24 +2984,37 @@ https://stools-help.vercel.app/?v=999
                         best = game;
                     }
                 });
-                const isBypass = best && bypassGames.some((g) => normalize(best) === normalize(g));
+       const isBypass = best && bypassGames.some((g) => normalize(best) === normalize(g));
                 const isPurchase = best && purchaseList.some((g) => normalize(best) === normalize(g));
+                const isWait = best && waitGamesList.some((g) => normalize(best) === normalize(g));
 
                 if (bestScore >= 70) {
                     expOk.style.display = "none";
+                    expWait.style.display = "none";   // ← ajouté
+
                     if (isPurchase) {
                         result.innerHTML = `${best} <span style="font-size:1.3rem;">💜</span>`;
                         result.className = "result purchase";
+                        document.getElementById("explanation-purchase").style.display = "block";
                         expNo.style.display = "none";
                         expBypass.style.display = "none";
-                        document.getElementById("explanation-purchase").style.display = "block";
-                    } else if (isBypass) {
+                    } 
+                    else if (isWait) {
+                        result.innerHTML = `${best} <span style="font-size:1.3rem;">⏳</span>`;
+                        result.className = "result wait";
+                        expWait.style.display = "block";
+                        expNo.style.display = "none";
+                        expBypass.style.display = "none";
+                        document.getElementById("explanation-purchase").style.display = "none";
+                    }
+                    else if (isBypass) {
                         result.innerHTML = `${best} <span style="font-size:1.3rem;">⚠️</span>`;
                         result.className = "result bypass-result";
-                        expNo.style.display = "none";
                         expBypass.style.display = "block";
+                        expNo.style.display = "none";
                         document.getElementById("explanation-purchase").style.display = "none";
-                    } else {
+                    } 
+                    else {
                         result.innerHTML = `${best} <span style="font-size:1.3rem;">❌</span>`;
                         result.className = "result no";
                         expNo.style.display = "block";
@@ -3013,6 +3074,7 @@ https://stools-help.vercel.app/?v=999
                         const normG = normalize(g);
                         const isBypassGame = bypassGames.some((b) => normalize(b) === normG);
                         const isPurchaseGame = purchaseList.some((p) => normalize(p) === normG);
+                        const isWaitGame = waitGamesList.some((w) => normalize(w) === normG);
 
                         let className = "full-list-item unavailable";
                         let emoji = "❌";
@@ -3023,6 +3085,9 @@ https://stools-help.vercel.app/?v=999
                         } else if (isBypassGame) {
                             className = "full-list-item bypass";
                             emoji = "⚠️";
+                        } else if (isWaitGame) {
+                            className = "full-list-item wait";
+                            emoji = "⏳";
                         }
 
                         return `<div class="${className}" onclick="selectGameFromList('${g.replace(/'/g, "\\'")}')">
