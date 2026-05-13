@@ -115,6 +115,105 @@
         gap: 10px;
         font-size: 0.85rem;
     }
+    
+    /* ====================== FULL LIST - UI PREMIUM ====================== */
+/* ====================== FULL LIST - REBRAND MODERNE ====================== */
+.show-list-btn {
+    width: 100%;
+    margin: 24px 0 16px;
+    padding: 16px 24px;
+    background: linear-gradient(90deg, #00f0ff, #a000ff, #00f0ff);
+    background-size: 200% 100%;
+    color: white;
+    font-size: 1.05rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+    box-shadow: 0 0 30px rgba(0, 240, 255, 0.5);
+    transition: all 0.4s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.show-list-btn:hover {
+    background-position: right center;
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 0 45px rgba(160, 0, 255, 0.6);
+}
+
+.full-list {
+    margin-top: 16px;
+    background: rgba(10, 10, 30, 0.95);
+    border: 1px solid var(--accent-border);
+    border-radius: 20px;
+    padding: 20px;
+    max-height: 520px;
+    overflow-y: auto;
+    box-shadow: 0 0 40px rgba(0, 240, 255, 0.15);
+    position: relative;
+}
+
+/* Barre de recherche dans la liste */
+#full-list-search {
+    width: 100%;
+    padding: 14px 20px 14px 50px;
+    background: var(--dark-panel-light);
+    border: 2px solid var(--accent-border);
+    border-radius: 14px;
+    color: white;
+    font-size: 1rem;
+    margin-bottom: 18px;
+}
+
+#full-list-search:focus {
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 25px var(--accent-focus-shadow);
+}
+
+/* Items de la liste */
+.full-list-item {
+    padding: 14px 18px;
+    margin-bottom: 10px;
+    border-radius: 14px;
+    font-size: 0.96rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.full-list-item:hover {
+    transform: translateX(12px);
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.25);
+}
+
+.full-list-item::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background: transparent;
+    transition: 0.3s;
+}
+
+.full-list-item.bypass::before     { background: #ffcc00; }
+.full-list-item.purchase::before   { background: #cc66ff; }
+.full-list-item.unavailable::before{ background: #ff2d55; }
+
+.full-list-item.bypass     { background: rgba(255, 200, 0, 0.12); border-color: rgba(255, 200, 0, 0.3); color: #ffdd88; }
+.full-list-item.purchase   { background: rgba(160, 0, 255, 0.12); border-color: rgba(160, 0, 255, 0.4); color: #cc88ff; }
+.full-list-item.unavailable{ background: rgba(255, 45, 85, 0.08);  border-color: rgba(255, 45, 85, 0.25); }
+
+.full-list-item.bypass::before     { background: #ffcc00; }
+.full-list-item.purchase::before   { background: #cc66ff; }
+.full-list-item.unavailable::before{ background: #ff2d55; }
 
     .server-name { opacity: 0.7; display: none; }
     @media (min-width: 500px) { .server-name { display: block; } }
@@ -658,6 +757,8 @@
 }
     
     
+    
+    
 
 @keyframes pop {
     from { transform: scale(0.95); opacity: 0; }
@@ -754,7 +855,7 @@
     💜 Ce jeu n'est pas disponible via des Tools, mais tu peux l'<strong>obtenir </strong> via steamrip.com (gratuit, simple et safe)
 </div>
         <div id="list" class="list"></div>
-        <button class="show-list-btn" onclick="toggleFullList()">📋 Voir tous les jeux indisponibles</button>
+        <button class="show-list-btn" onclick="toggleFullList()">📋 Voir la liste  de jeux</button>
         <div id="full-list" class="full-list" style="display:none;"></div>
     </div>
 
@@ -1641,38 +1742,75 @@ function toggleFullList() {
     fullListVisible = !fullListVisible;
 
     if (fullListVisible) {
-        el.innerHTML = gamesList.map(g => {
-            const normG = normalize(g);
-            
-            // Vérification Bypass (jaune)
-            const isBypassGame = bypassGames.some(b => normalize(b) === normG);
-            
-            // Vérification Purchase (violet)
-            const isPurchaseGame = purchaseList.some(p => normalize(p) === normG);
+ let html = `
+    <div id="full-list-items"></div>
+`;
 
-            let style = '';
-            let emoji = '❌';
+        el.innerHTML = html;
+        renderFullListItems(); // Premier rendu
 
-            if (isPurchaseGame) {
-                style = 'color:#cc66ff; border-color:rgba(160,0,255,0.5); background:rgba(160,0,255,0.1);';
-                emoji = '💜';
-            } 
-            else if (isBypassGame) {
-                style = 'color:#ffcc00; border-color:rgba(255,200,0,0.5); background:rgba(255,200,0,0.1);';
-                emoji = '⚠️';
-            }
-
-            return `<div class="full-list-item" style="${style}">${emoji} ${g}</div>`;
-        }).join("");
-
-        el.style.display = "block"; 
-        btn.textContent = "❌ Masquer la liste";
+        el.style.display = "block";
+        btn.textContent = "❌ Fermer la liste";
     } else {
-        el.style.display = "none"; 
-        btn.textContent = "📋 Voir tous les jeux indisponibles";
+        el.style.display = "none";
+        btn.textContent = "📋 Voir la liste de jeux";
     }
 }
 
+// Rend tous les items
+function renderFullListItems(filteredGames = gamesList) {
+    const container = document.getElementById("full-list-items");
+    if (!container) return;
+
+    let itemsHTML = filteredGames.map(g => {
+        const normG = normalize(g);
+        const isBypassGame = bypassGames.some(b => normalize(b) === normG);
+        const isPurchaseGame = purchaseList.some(p => normalize(p) === normG);
+
+        let className = "full-list-item unavailable";
+        let emoji = "❌";
+
+        if (isPurchaseGame) {
+            className = "full-list-item purchase";
+            emoji = "💜";
+        } else if (isBypassGame) {
+            className = "full-list-item bypass";
+            emoji = "⚠️";
+        }
+
+        return `<div class="${className}" onclick="selectGameFromList('${g.replace(/'/g, "\\'")}')">
+                    ${emoji} ${g}
+                </div>`;
+    }).join("");
+
+    container.innerHTML = itemsHTML;
+}
+
+// Filtrage en temps réel dans la liste
+function filterFullList() {
+    const searchTerm = document.getElementById("full-list-search").value.toLowerCase().trim();
+    const filtered = gamesList.filter(game => 
+        normalize(game).includes(normalize(searchTerm))
+    );
+    renderFullListItems(filtered);
+}
+
+// Clique sur un jeu → va dans le Checker et le recherche automatiquement
+function selectGameFromList(gameName) {
+    toggleFullList();                    // Ferme la liste
+    switchTab(1);                        // Va dans l'onglet Checker
+    document.getElementById("search").value = gameName;
+    liveSearch();                        // Lance la recherche
+}
+// Clique sur un jeu → ferme la liste et lance la recherche dans le Checker
+function selectGameFromList(gameName) {
+    toggleFullList();                    // Ferme la liste
+    switchTab(1);                        // Va dans l'onglet Checker
+    setTimeout(() => {
+        document.getElementById("search").value = gameName;
+        liveSearch();
+    }, 300);
+}
 function toggleFaq(el) {
     const answer = el.nextElementSibling;
     const isOpen = answer.classList.contains("open");
