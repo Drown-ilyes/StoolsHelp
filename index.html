@@ -2237,10 +2237,19 @@
                 }
 
                 // Restore download confirm setting
-                if (localStorage.getItem('downloadConfirm') === '1') {
-                    const tog = document.getElementById('dlconfirm-toggle');
-                    if (tog) tog.checked = true;
-                }
+       // ====================== DOWNLOAD CONFIRMATION (Par défaut activé la première fois) ======================
+let downloadConfirm = localStorage.getItem('downloadConfirm');
+
+// Si aucune valeur n'existe encore (première visite), on active par défaut
+if (downloadConfirm === null) {
+    downloadConfirm = '1';
+    localStorage.setItem('downloadConfirm', '1');
+}
+
+const tog = document.getElementById('dlconfirm-toggle');
+if (tog) {
+    tog.checked = (downloadConfirm === '1');
+}
             });
         </script>
     </body>
