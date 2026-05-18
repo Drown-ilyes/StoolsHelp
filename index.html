@@ -1341,6 +1341,17 @@
                                     </div>
                                     <div class="bypass-card-arrow">→</div>
                                 </div>
+                                
+                                         <div class="bypass-card" onclick="showBypassModal12()">
+                                    <div class="bypass-card-left">
+                                        <img src="GTA3.png" alt="Grand Theft Auto III - The Definitive Edition" class="bypass-image" />
+                                        <div>
+                                            <div class="bypass-card-name">Grand Theft Auto III - The Definitive Edition</div>
+                                            <span class="bypass-card-tag"></span>
+                                        </div>
+                                    </div>
+                                    <div class="bypass-card-arrow">→</div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1642,6 +1653,26 @@
                     <div class="step"><div class="step-number">3</div><div><strong>Extrait et copie les fichiers</strong><br/><small>WinRAR → extraire → copier tout dans le dossier.</small><div class="password-box">Mot de passe : <strong>openlua.cloud</strong></div></div></div>
                     <div class="step"><div class="step-number">4</div><div><strong>Remplace les fichiers existants</strong><br/><small>Clique sur Remplacer quand Windows le demande.</small></div></div>
                     <div class="step"><div class="step-number">5</div><div><strong>Lancez le jeu</strong><br/><small>Via re9.exe</small></div></div>
+                </div>
+            </div>
+        </div>
+        
+                <!-- MODAL Grand Theft Auto III - The Definitive Edition -->
+        <div id="bypassModal13" class="modal">
+            <div class="modal-content">
+                <div class="modal-left">
+                    <img src="GTA3.png" class="modal-image" />
+                    <div class="modal-title">Grand Theft Auto III - The Definitive Edition</div>
+                    <button class="download-btn" onclick="showDownloadConfirm('GTA3.png','Grand Theft Auto III - The Definitive Edition',doDownloadFile13)">↓ Télécharger</button>
+                    <button class="close-btn" onclick="closeModal13()">Fermer</button>
+                </div>
+                <div class="modal-right">
+                    <h3 style="color:var(--neon-cyan);margin-bottom:10px">Installation</h3>
+                    <div class="step"><div class="step-number">1</div><div><strong>Installe le jeu sur Steam</strong><br/><small>Assure-toi que le jeu est installé via Steam avant de continuer.</small></div></div>
+                    <div class="step"><div class="step-number">2</div><div><strong>Ouvre le dossier du jeu</strong><br/><small>Clic droit → Gérer → Parcourir les fichiers locaux.</small></div></div>
+                    <div class="step"><div class="step-number">3</div><div><strong>Extrait et copie les fichiers</strong><br/><small>WinRAR → extraire → copier tout dans le dossier.</small><div class="password-box">Mot de passe : <strong>burger</strong></div></div></div>
+                    <div class="step"><div class="step-number">4</div><div><strong>Remplace les fichiers existants</strong><br/><small>Clique sur Remplacer quand Windows le demande.</small></div></div>
+                    <div class="step"><div class="step-number">5</div><div><strong>Lancez le jeu</strong><br/><small>Via PlayGTA3.exe dans les fichiers du jeu</small></div></div>
                 </div>
             </div>
         </div>
@@ -2008,7 +2039,11 @@
             function doDownloadFile11() {
             triggerDownload("https://www.dropbox.com/scl/fi/o6zh1p7s0x56di366cjm6/pragmatabypass.rar?rlkey=yyxqz7c7onhmsyr5m03o10qd3&st=q1hzh2wm&dl=1");
             }
-
+            function doDownloadFile13() {
+            triggerDownload("https://www.dropbox.com/scl/fi/g2wlp0c7fzbj5qtzszwbb/1546970_bypass.rar?rlkey=ma48mbb09gn5mu58uv2vo7iwc&dl=1");
+            }
+            
+            
             function triggerDownload(url, filename) {
                 const a = document.createElement("a");
                 a.href = url;
@@ -2019,7 +2054,7 @@
             }
 
             // ====================== GAME DATA ======================
-            const greengamelist = ["Red Dead Redemption 2","Grand Theft Auto V Legacy","Assassin's Creed Unity","Assassin's Creed II","Resident Evil Requiem","Watch Dogs: Legion","Dead Space","PES 2018","Stellar Blade","PRAGMATA"];
+            const greengamelist = ["Red Dead Redemption 2","Grand Theft Auto V Legacy","Assassin's Creed Unity","Assassin's Creed II","Resident Evil Requiem","Watch Dogs: Legion","Dead Space","PES 2018","Stellar Blade","PRAGMATA","Grand Theft Auto III - The Definitive Edition"];
             const yellowgamelist = [];
             const whitegamelist = ["Black Myth Wukong"];
             const notavailablelist = [];
@@ -2206,6 +2241,8 @@
             function closeModal10()     { document.getElementById("bypassModal10").style.display = "none"; }
              function showBypassModal11(){ document.getElementById("bypassModal12").style.display = "flex"; }
             function closeModal11()     { document.getElementById("bypassModal12").style.display = "none"; }
+             function showBypassModal12(){ document.getElementById("bypassModal13").style.display = "flex"; }
+            function closeModal13()     { document.getElementById("bypassModal13").style.display = "none"; }
 
             function switchTab(n) {
                 document.querySelectorAll(".tab-content").forEach(t => t.classList.remove("active"));
