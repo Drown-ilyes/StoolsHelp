@@ -2424,6 +2424,22 @@ if (tog) {
     tog.checked = (downloadConfirm === '1');
 }
             });
+            
+                window.addEventListener("load", () => {
+        setTimeout(() => {
+            const tabMap = {
+                accueil: 0, checker: 1, bypass: 2,
+                onlinefix: 3, "online-fix": 3,
+                commandes: 4, faq: 5,
+                parametres: 6, settings: 6
+            };
+            const urlParams = new URLSearchParams(window.location.search);
+            const tabParam = urlParams.get("tab");
+            if (tabParam && tabMap[tabParam.toLowerCase()] !== undefined) {
+                switchTab(tabMap[tabParam.toLowerCase()]);
+            }
+        }, 50);
+    });
         </script>
     </body>
 </html>
