@@ -2425,7 +2425,7 @@ if (tog) {
 }
             });
             
-                window.addEventListener("load", () => {
+             window.addEventListener("load", () => {
         setTimeout(() => {
             const tabMap = {
                 accueil: 0, checker: 1, bypass: 2,
@@ -2438,8 +2438,45 @@ if (tog) {
             if (tabParam && tabMap[tabParam.toLowerCase()] !== undefined) {
                 switchTab(tabMap[tabParam.toLowerCase()]);
             }
+
+            // ===== HASH → MODAL =====
+            const modalMap = {
+                rdr2: showBypassModal,
+                reddeadredemption2: showBypassModal,
+                reddeadredemption: showBypassModal,
+                rerequiem: showBypassModal2,
+                residentevilrequiem: showBypassModal2,
+                gta5: showBypassModal3,
+                gtav: showBypassModal3,
+                grandtheftautovlegacy: showBypassModal3,
+                acunity: showBypassModal4,
+                assassinscreedunity: showBypassModal4,
+                ac2: showBypassModal5,
+                assasinscreed2: showBypassModal5,
+                assassinscreed2: showBypassModal5,
+                watchdogslegion: showBypassModal6,
+                watchdogs: showBypassModal6,
+                deadspace: showBypassModal7,
+                blackmythwukong: showBypassModal8,
+                blackmyth: showBypassModal8,
+                pes2018: showBypassModal9,
+                pes: showBypassModal9,
+                stellarblade: showBypassModal10,
+                stellar: showBypassModal10,
+                pragmata: showBypassModal11,
+                gta3: showBypassModal12,
+                grandtheftauto3: showBypassModal12,
+                mafia: showBypassModal19,
+                mafiatheoldcountry: showBypassModal19,
+            };
+
+            const hash = window.location.hash.replace("#", "").toLowerCase().replace(/[^a-z0-9]/g, "");
+            if (hash && modalMap[hash]) {
+                modalMap[hash]();
+            }
         }, 50);
     });
+            
         </script>
     </body>
 </html>
