@@ -1961,7 +1961,7 @@
             </div>
         </div>
 <!-- POPUP NOUVEAU BYPASS -->
-<div id="newBypassPopup" style="display:flex;position:fixed;inset:0;background:rgba(0,0,0,0.75);backdrop-filter:blur(10px);z-index:99999;align-items:center;justify-content:center;padding:20px;">
+<div id="newBypassPopup" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);backdrop-filter:blur(10px);z-index:99999;align-items:center;justify-content:center;padding:20px;">
 
     <div style="background:rgba(10,10,30,0.98);border:1px solid var(--accent-border);border-radius:22px;box-shadow:0 0 40px var(--accent-shadow),0 0 80px rgba(0,240,255,0.06);padding:36px 32px 28px;max-width:420px;width:100%;text-align:center;position:relative;animation:popIn 0.3s cubic-bezier(0.34,1.56,0.64,1);">
         
@@ -2576,6 +2576,12 @@ if (tog) {
             if (hash && modalMap[hash]) {
                 modalMap[hash]();
             }
+            
+                    // ===== POPUP : masqué si on est sur tab=bypass =====
+        if (tabParam !== "bypass") {
+            document.getElementById("newBypassPopup").style.display = "flex";
+        }
+            
         }, 50);
     });
             
