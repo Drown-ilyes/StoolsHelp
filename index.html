@@ -568,14 +568,11 @@
                 align-items: center;
                 justify-content: center;
             }
-            .bp-card-overlay {
-                position: absolute;
-                left: 0; right: 0;
-                bottom: 52px; /* hauteur du body */
-                height: 80px;
-                background: linear-gradient(to top, rgba(8,8,24,0.95) 0%, transparent 100%);
-                pointer-events: none;
-            }
+.bp-card-overlay {
+    bottom: 50px; /* valeur fixe hardcodée */
+    height: 0px;
+    background: linear-gradient(to top, rgba(8,8,24,0.95) 0%, transparent 100%);
+}
 
             .bp-card-body {
                 padding: 10px 13px 13px;
