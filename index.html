@@ -1,22 +1,17 @@
 <!doctype html>
-
 <html lang="fr">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>SteamTools Helper</title>
-
-        <!-- FAVICON -->
         <link rel="icon" type="image/png" href="icon.png" />
         <link rel="shortcut icon" href="icon.png" />
-
         <style>
             :root {
                 --neon-cyan: #00f0ff;
                 --neon-green: #00ff9d;
                 --neon-red: #ff2d55;
                 --neon-yellow: #ffcc00;
-
                 --bg1: #1a0033;
                 --bg2: #0a0a1f;
                 --dark-panel: rgba(10, 10, 30, 0.98);
@@ -35,23 +30,13 @@
                 --faq-border: rgba(0, 240, 255, 0.15);
             }
 
-            * {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-            }
+            * { margin: 0; padding: 0; box-sizing: border-box; }
 
             body {
                 background: radial-gradient(circle at 50% 15%, var(--bg1), var(--bg2) 60%);
                 color: white;
                 min-height: 100vh;
-                font-family:
-                    system-ui,
-                    -apple-system,
-                    BlinkMacSystemFont,
-                    "Segoe UI",
-                    Roboto,
-                    sans-serif;
+                font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
                 overflow-y: scroll;
                 position: relative;
                 padding: 20px 0 80px;
@@ -73,7 +58,6 @@
                 100% { background-position: 60px 60px; }
             }
 
-            /* ====================== NO-ANIMATIONS MODE ====================== */
             body.no-animations *,
             body.no-animations *::before,
             body.no-animations *::after {
@@ -94,7 +78,6 @@
                 40% { transform: scale(1.15); }
                 100% { transform: scale(1); }
             }
-
             .copy-anim {
                 animation: copyPop 0.25s ease;
                 box-shadow: 0 0 12px rgba(0, 255, 153, 0.6);
@@ -113,7 +96,6 @@
                 box-shadow: 0 0 25px var(--accent-shadow);
                 margin-bottom: 16px;
             }
-
             .logo {
                 display: flex;
                 align-items: center;
@@ -125,29 +107,15 @@
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
             }
+            .logo-icon { width: 38px; height: 38px; border-radius: 10px; object-fit: cover; flex-shrink: 0; }
+            .header-right { margin-left: auto; display: flex; align-items: center; gap: 10px; font-size: 0.85rem; }
 
-            .logo-icon {
-                width: 38px;
-                height: 38px;
-                border-radius: 10px;
-                object-fit: cover;
-                flex-shrink: 0;
-            }
-
-            .header-right {
-                margin-left: auto;
-                display: flex;
-                align-items: center;
-                gap: 10px;
-                font-size: 0.85rem;
-            }
-
-            /* ====================== FULL LIST ====================== */
+            /* FULL LIST */
             .show-list-btn {
                 width: 100%;
                 margin: 24px 0 16px;
                 padding: 16px 24px;
-               background: linear-gradient(90deg, #3b82f6, #1d4ed8);
+                background: linear-gradient(90deg, #3b82f6, #1d4ed8);
                 background-size: 200% 100%;
                 color: white;
                 font-size: 1.05rem;
@@ -160,13 +128,11 @@
                 text-transform: uppercase;
                 letter-spacing: 1px;
             }
-
             .show-list-btn:hover {
                 background-position: right center;
                 transform: translateY(-4px) scale(1.02);
                 box-shadow: 0 0 45px rgba(160, 0, 255, 0.6);
             }
-
             .full-list {
                 margin-top: 16px;
                 background: rgba(10, 10, 30, 0.95);
@@ -178,7 +144,6 @@
                 box-shadow: 0 0 40px rgba(0, 240, 255, 0.15);
                 position: relative;
             }
-
             #full-list-search {
                 width: 100%;
                 padding: 14px 20px 14px 50px;
@@ -189,12 +154,10 @@
                 font-size: 1rem;
                 margin-bottom: 18px;
             }
-
             #full-list-search:focus {
                 border-color: var(--neon-cyan);
                 box-shadow: 0 0 25px var(--accent-focus-shadow);
             }
-
             .full-list-item {
                 padding: 14px 18px;
                 margin-bottom: 10px;
@@ -209,23 +172,8 @@
                 position: relative;
                 overflow: hidden;
             }
-
-            .full-list-item:hover {
-                transform: translateX(12px);
-                box-shadow: 0 0 20px rgba(0, 240, 255, 0.25);
-            }
-
-            .full-list-item::before {
-                content: "";
-                position: absolute;
-                left: 0;
-                top: 0;
-                height: 100%;
-                width: 4px;
-                background: transparent;
-                transition: 0.3s;
-            }
-
+            .full-list-item:hover { transform: translateX(12px); box-shadow: 0 0 20px rgba(0, 240, 255, 0.25); }
+            .full-list-item::before { content: ""; position: absolute; left: 0; top: 0; height: 100%; width: 4px; background: transparent; transition: 0.3s; }
             .full-list-item.bypass { background: rgba(255, 200, 0, 0.12); border-color: rgba(255, 200, 0, 0.3); color: #ffdd88; }
             .full-list-item.bypass::before { background: #ffcc00; }
             .full-list-item.purchase { background: rgba(160, 0, 255, 0.12); border-color: rgba(160, 0, 255, 0.4); color: #cc88ff; }
@@ -235,15 +183,10 @@
             .full-list-item.wait { background: rgba(255, 140, 0, 0.12); border-color: rgba(255, 140, 0, 0.4); color: #ffdd88; }
             .full-list-item.wait::before { background: #ff8c00; }
 
-            .server-name {
-                opacity: 0.7;
-                display: none;
-            }
-            @media (min-width: 500px) {
-                .server-name { display: block; }
-            }
+            .server-name { opacity: 0.7; display: none; }
+            @media (min-width: 500px) { .server-name { display: block; } }
 
-            /* ====================== ONLINE COUNTER ====================== */
+            /* ONLINE BADGE */
             .online-badge {
                 display: flex;
                 align-items: center;
@@ -260,15 +203,8 @@
                 min-width: 80px;
                 justify-content: center;
             }
-
-            @keyframes pulse-dot {
-                0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 6px #00ff88; }
-                50% { opacity: 0.6; transform: scale(0.85); box-shadow: 0 0 12px #00ff88; }
-            }
-
             .online-count { transition: all 0.3s ease; }
             .online-count.bump { animation: count-bump 0.35s ease; }
-
             @keyframes count-bump {
                 0% { transform: scale(1); }
                 50% { transform: scale(1.35); color: #fff; }
@@ -276,12 +212,7 @@
             }
 
             /* LAYOUT */
-            .main-layout {
-                display: flex;
-                gap: 16px;
-                align-items: flex-start;
-            }
-
+            .main-layout { display: flex; gap: 16px; align-items: flex-start; }
             .sidebar {
                 width: 220px;
                 flex-shrink: 0;
@@ -295,7 +226,6 @@
                 position: sticky;
                 top: 20px;
             }
-
             .tab-button {
                 padding: 14px 18px;
                 border-radius: 12px;
@@ -319,7 +249,6 @@
                 box-shadow: 0 0 20px var(--accent-active-shadow);
                 color: var(--neon-cyan);
             }
-
             .main-content {
                 flex: 1;
                 background: var(--dark-panel);
@@ -328,17 +257,14 @@
                 padding: 30px 28px;
                 min-height: 500px;
             }
-
             .tab-content { display: none; }
             .tab-content.active { display: block; }
 
-            /* NAV BAS */
+            /* BOTTOM NAV */
             .bottom-nav {
                 display: none;
                 position: fixed;
-                bottom: 0;
-                left: 0;
-                right: 0;
+                bottom: 0; left: 0; right: 0;
                 height: 65px;
                 background: var(--bottom-nav-bg);
                 border-top: 1px solid var(--accent-border);
@@ -368,7 +294,6 @@
             .bottom-nav-btn.active { color: var(--neon-cyan); }
             .bottom-nav-btn.active .bn-icon { filter: drop-shadow(0 0 6px var(--neon-cyan)); }
 
-            /* RESPONSIVE */
             @media (max-width: 768px) {
                 body { padding: 12px 0 75px; }
                 .sidebar { display: none; }
@@ -379,11 +304,8 @@
                 .logo-icon { width: 32px; height: 32px; }
             }
 
-            /* CONTENU DES TABS */
-            .welcome {
-                text-align: center;
-                padding: 30px 10px 40px;
-            }
+            /* TAB CONTENTS */
+            .welcome { text-align: center; padding: 30px 10px 40px; }
             .welcome h1 {
                 font-size: 2.2rem;
                 font-weight: 700;
@@ -393,13 +315,7 @@
                 -webkit-text-fill-color: transparent;
                 margin-bottom: 16px;
             }
-            .welcome p {
-                font-size: 1.1rem;
-                line-height: 1.6;
-                opacity: 0.85;
-                max-width: 560px;
-                margin: 0 auto;
-            }
+            .welcome p { font-size: 1.1rem; line-height: 1.6; opacity: 0.85; max-width: 560px; margin: 0 auto; }
 
             .info {
                 display: inline-flex;
@@ -424,11 +340,7 @@
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
             }
-            .subtitle {
-                font-size: 1rem;
-                opacity: 0.6;
-                margin-bottom: 22px;
-            }
+            .subtitle { font-size: 1rem; opacity: 0.6; margin-bottom: 22px; }
 
             input {
                 width: 100%;
@@ -442,10 +354,7 @@
                 transition: all 0.3s;
                 box-shadow: 0 0 12px var(--accent-shadow);
             }
-            input:focus {
-                border-color: var(--neon-cyan);
-                box-shadow: 0 0 25px var(--accent-focus-shadow);
-            }
+            input:focus { border-color: var(--neon-cyan); box-shadow: 0 0 25px var(--accent-focus-shadow); }
 
             .result {
                 margin-top: 20px;
@@ -505,10 +414,261 @@
             .item:hover { background: var(--accent-hover); transform: translateX(6px); }
             .item::before { content: "🎮"; font-size: 1.1rem; opacity: 0.6; }
 
-            .bypass-container {
-                text-align: center;
-                padding: 30px 10px 40px;
+            /* ── BYPASS TAB REDESIGN ── */
+            .bp-wrap { padding: 0; }
+
+            .bp-topbar {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-bottom: 20px;
+                gap: 12px;
+                flex-wrap: wrap;
             }
+            .bp-heading {
+                font-size: 1.9rem;
+                font-weight: 700;
+                letter-spacing: -0.5px;
+                background: linear-gradient(90deg, #fff 30%, var(--neon-cyan));
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                line-height: 1.1;
+            }
+            .bp-subhead {
+                font-size: 0.82rem;
+                color: rgba(255,255,255,0.38);
+                margin-top: 5px;
+            }
+            .bp-date-badge {
+                display: inline-flex;
+                align-items: center;
+                gap: 7px;
+                background: rgba(255,255,255,0.05);
+                border: 1px solid var(--accent-border);
+                border-radius: 9999px;
+                padding: 6px 16px;
+                font-size: 0.78rem;
+                color: rgba(255,255,255,0.45);
+                white-space: nowrap;
+                flex-shrink: 0;
+            }
+            .bp-date-badge span { color: var(--neon-cyan); font-weight: 600; }
+
+            .bp-warning-banner {
+                display: flex;
+                align-items: flex-start;
+                gap: 12px;
+                background: rgba(255,140,0,0.07);
+                border: 1px solid rgba(255,140,0,0.28);
+                border-radius: 14px;
+                padding: 12px 18px;
+                margin-bottom: 18px;
+            }
+            .bp-warning-banner p { font-size: 0.88rem; line-height: 1.55; color: rgba(255,255,255,0.7); }
+            .bp-warning-banner strong { color: #ffaa55; }
+
+            .bp-search-wrap { position: relative; margin-bottom: 14px; }
+            .bp-search-icon {
+                position: absolute;
+                left: 16px; top: 50%;
+                transform: translateY(-50%);
+                font-size: 1rem;
+                color: rgba(255,255,255,0.25);
+                pointer-events: none;
+            }
+            .bp-search-input {
+                width: 100%;
+                background: rgba(255,255,255,0.04);
+                border: 1.5px solid var(--accent-border);
+                border-radius: 14px;
+                padding: 14px 18px 14px 46px;
+                color: white;
+                font-size: 1rem;
+                font-family: inherit;
+                outline: none;
+                transition: border-color 0.25s, box-shadow 0.25s;
+                box-shadow: none;
+            }
+            .bp-search-input:focus {
+                border-color: var(--neon-cyan);
+                box-shadow: 0 0 0 3px rgba(0,240,255,0.08);
+            }
+            .bp-search-input::placeholder { color: rgba(255,255,255,0.22); }
+
+            .bp-chips { display: flex; gap: 7px; flex-wrap: wrap; margin-bottom: 18px; }
+            .bp-chip {
+                padding: 5px 14px;
+                border-radius: 20px;
+                border: 1px solid rgba(255,255,255,0.1);
+                background: rgba(255,255,255,0.04);
+                color: rgba(255,255,255,0.45);
+                font-size: 0.75rem;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.2s;
+                letter-spacing: 0.5px;
+                text-transform: uppercase;
+            }
+            .bp-chip:hover { border-color: rgba(0,240,255,0.35); color: rgba(255,255,255,0.85); }
+            .bp-chip.active {
+                border-color: var(--neon-cyan);
+                background: rgba(0,240,255,0.12);
+                color: var(--neon-cyan);
+                box-shadow: 0 0 14px rgba(0,240,255,0.15);
+            }
+
+            .bp-count-bar {
+                font-size: 0.75rem;
+                color: rgba(255,255,255,0.28);
+                margin-bottom: 14px;
+                letter-spacing: 0.3px;
+            }
+            .bp-count-bar span { color: var(--neon-cyan); font-weight: 700; }
+
+            /* CARD GRID */
+            .bp-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
+                gap: 14px;
+            }
+
+            .bp-card {
+                background: rgba(10,10,30,0.9);
+                border: 1px solid rgba(255,255,255,0.07);
+                border-radius: 16px;
+                overflow: hidden;
+                cursor: pointer;
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                transition: transform 0.28s cubic-bezier(.2,.8,.3,1),
+                            border-color 0.25s,
+                            box-shadow 0.28s;
+            }
+            .bp-card:hover {
+                transform: translateY(-7px);
+                border-color: rgba(0,240,255,0.42);
+                box-shadow:
+                    0 20px 50px rgba(0,0,0,0.55),
+                    0 0 0 1px rgba(0,240,255,0.12),
+                    0 0 40px rgba(0,240,255,0.07);
+            }
+
+            .bp-card-thumb {
+                width: 100%;
+                aspect-ratio: 16/9;
+                object-fit: cover;
+                display: block;
+            }
+            /* fallback si image ne charge pas */
+            .bp-thumb-fallback {
+                width: 100%;
+                aspect-ratio: 16/9;
+                display: none;
+                align-items: center;
+                justify-content: center;
+            }
+            .bp-card-overlay {
+                position: absolute;
+                left: 0; right: 0;
+                bottom: 52px; /* hauteur du body */
+                height: 80px;
+                background: linear-gradient(to top, rgba(8,8,24,0.95) 0%, transparent 100%);
+                pointer-events: none;
+            }
+
+            .bp-card-body {
+                padding: 10px 13px 13px;
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                gap: 6px;
+                background: rgba(8,8,20,0.6);
+            }
+            .bp-card-name {
+                font-size: 0.92rem;
+                font-weight: 700;
+                line-height: 1.25;
+            }
+            .bp-card-footer {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-top: auto;
+            }
+            .bp-card-publisher {
+                font-size: 0.65rem;
+                font-weight: 600;
+                color: rgba(255,255,255,0.28);
+                text-transform: uppercase;
+                letter-spacing: 0.8px;
+            }
+            .bp-badge {
+                font-size: 0.62rem;
+                font-weight: 700;
+                padding: 3px 7px;
+                border-radius: 6px;
+                letter-spacing: 0.3px;
+                text-transform: uppercase;
+            }
+            .bp-badge.ok   { background: rgba(0,255,157,0.1); color: #00ff9d; border: 1px solid rgba(0,255,157,0.22); }
+            .bp-badge.warn { background: rgba(255,200,0,0.1); color: #ffcc00; border: 1px solid rgba(255,200,0,0.22); }
+            .bp-badge.wait { background: rgba(255,140,0,0.1); color: #ff8c00; border: 1px solid rgba(255,140,0,0.22); }
+
+            .bp-dot {
+                position: absolute;
+                top: 9px; right: 9px;
+                width: 9px; height: 9px;
+                border-radius: 50%;
+                border: 1.5px solid rgba(0,0,0,0.5);
+                z-index: 2;
+            }
+            .bp-dot.ok   { background: #00ff9d; box-shadow: 0 0 8px #00ff9d; }
+            .bp-dot.warn { background: #ffcc00; box-shadow: 0 0 8px #ffcc00; }
+            .bp-dot.wait { background: #ff8c00; box-shadow: 0 0 8px #ff8c00; }
+
+            .bp-card-hover-action {
+                position: absolute;
+                inset: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: rgba(0,240,255,0.05);
+                opacity: 0;
+                transition: opacity 0.2s;
+                backdrop-filter: blur(2px);
+                z-index: 10;
+            }
+            .bp-card:hover .bp-card-hover-action { opacity: 1; }
+            .bp-hover-pill {
+                background: rgba(0,240,255,0.14);
+                border: 1px solid rgba(0,240,255,0.5);
+                color: var(--neon-cyan);
+                padding: 9px 20px;
+                border-radius: 50px;
+                font-size: 0.82rem;
+                font-weight: 700;
+                letter-spacing: 0.8px;
+                text-transform: uppercase;
+                box-shadow: 0 0 20px rgba(0,240,255,0.2);
+            }
+
+            .bp-empty {
+                grid-column: 1 / -1;
+                text-align: center;
+                padding: 56px 24px;
+                color: rgba(255,255,255,0.28);
+            }
+            .bp-empty-icon { font-size: 2.5rem; margin-bottom: 12px; opacity: 0.5; }
+            .bp-empty-text { font-size: 0.95rem; }
+
+            @media (max-width: 600px) {
+                .bp-grid { grid-template-columns: repeat(auto-fill, minmax(145px, 1fr)); gap: 10px; }
+                .bp-topbar { flex-direction: column; align-items: flex-start; }
+            }
+
+            /* OLD BYPASS STYLES (kept for compat) */
+            .bypass-container { text-align: center; padding: 30px 10px 40px; }
             .bypass-title {
                 font-size: 2rem;
                 font-weight: 700;
@@ -517,105 +677,6 @@
                 -webkit-text-fill-color: transparent;
                 margin-bottom: 30px;
             }
-            .bypass-description {
-                font-size: 0.9rem;
-                opacity: 0.7;
-                max-width: 500px;
-                margin: 0 auto 24px;
-                line-height: 1.6;
-            }
-
-            /* ====================== BYPASS CARD SIZES ====================== */
-            .bypass-card {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                width: 100%;
-                max-width: 500px;
-                margin: 14px auto;
-                padding: 18px 24px;
-                background: rgba(255, 255, 255, 0.04);
-                border: 1px solid rgba(255, 140, 0, 0.3);
-                border-radius: 16px;
-                cursor: pointer;
-                transition: all 0.3s;
-                text-align: left;
-                color: white;
-            }
-            .bypass-card:hover {
-                background: rgba(255, 140, 0, 0.1);
-                border-color: rgba(255, 140, 0, 0.6);
-                transform: translateX(5px);
-                box-shadow: 0 0 20px rgba(255, 140, 0, 0.3);
-            }
-
-            /* Small cards */
-            #bypass-list.size-small .bypass-card {
-                padding: 10px 14px;
-                margin: 7px auto;
-                border-radius: 12px;
-            }
-            #bypass-list.size-small .bypass-image {
-                width: 34px;
-                height: 34px;
-                border-width: 2px;
-            }
-            #bypass-list.size-small .bypass-card-name {
-                font-size: 0.86rem;
-            }
-            #bypass-list.size-small .bypass-card-emoji { font-size: 1.4rem; }
-
-            /* Large cards */
-            #bypass-list.size-large .bypass-card {
-                padding: 26px 32px;
-                margin: 18px auto;
-                border-radius: 20px;
-            }
-            #bypass-list.size-large .bypass-image {
-                width: 70px;
-                height: 70px;
-                border-width: 4px;
-            }
-            #bypass-list.size-large .bypass-card-name {
-                font-size: 1.2rem;
-            }
-            #bypass-list.size-large .bypass-card-emoji { font-size: 2.4rem; }
-
-            .bypass-card-left {
-                display: flex;
-                align-items: center;
-                gap: 16px;
-            }
-            .bypass-card-emoji { font-size: 2rem; }
-            .bypass-card-name {
-                font-size: 1.05rem;
-                font-weight: 700;
-                margin-bottom: 4px;
-            }
-            .bypass-card-tag {
-                font-size: 0.72rem;
-                font-weight: 700;
-                padding: 2px 8px;
-                border-radius: 50px;
-                display: inline-block;
-            }
-            .bypass-card-tag.green { background: rgba(0, 255, 0, 0.1); border: 1px solid rgba(0, 255, 0, 0.3); color: #00ff66; }
-            .bypass-card-tag.yellow { background: rgba(255, 200, 0, 0.1); border: 1px solid rgba(255, 200, 0, 0.3); color: #ffcc00; }
-            .bypass-card-tag.white { background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.2); color: #ffffff; }
-            .bypass-card-tag.orange { background: rgba(255, 140, 0, 0.1); border: 1px solid rgba(255, 140, 0, 0.3); color: #ff8c00; }
-
-            .bypass-image {
-                width: 52px;
-                height: 52px;
-                border-radius: 50%;
-                object-fit: cover;
-                border: 3px solid var(--neon-cyan);
-                box-shadow: 0 0 18px var(--accent-shadow);
-                flex-shrink: 0;
-                transition: all 0.3s;
-            }
-            .bypass-image:hover { transform: scale(1.08); box-shadow: 0 0 25px var(--accent-active-shadow); }
-            .bypass-card-arrow { color: rgba(255, 140, 0, 0.6); font-size: 1.2rem; }
 
             .discord-btn {
                 display: inline-flex;
@@ -698,20 +759,8 @@
                 padding: 20px;
                 margin-bottom: 14px;
             }
-            .settings-section-title {
-                font-size: 0.9rem;
-                font-weight: 700;
-                color: var(--neon-cyan);
-                margin-bottom: 16px;
-                letter-spacing: 1px;
-                text-transform: uppercase;
-            }
-            .theme-grid {
-                display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                gap: 8px;
-            }
-
+            .settings-section-title { font-size: 0.9rem; font-weight: 700; color: var(--neon-cyan); margin-bottom: 16px; letter-spacing: 1px; text-transform: uppercase; }
+            .theme-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
             .theme-btn {
                 padding: 18px 12px;
                 border-radius: 14px;
@@ -732,26 +781,11 @@
                 min-height: 92px;
                 justify-content: center;
             }
-            .theme-btn:hover {
-                transform: translateY(-4px) scale(1.04);
-                background: rgba(255, 255, 255, 0.15);
-                border-color: var(--neon-cyan);
-                box-shadow: 0 0 20px var(--accent-shadow);
-            }
-            .theme-btn.active-theme {
-                border-color: var(--neon-cyan);
-                background: rgba(0, 240, 255, 0.12);
-                box-shadow: 0 0 25px var(--accent-active-shadow);
-                color: var(--neon-cyan);
-            }
+            .theme-btn:hover { transform: translateY(-4px) scale(1.04); background: rgba(255, 255, 255, 0.15); border-color: var(--neon-cyan); box-shadow: 0 0 20px var(--accent-shadow); }
+            .theme-btn.active-theme { border-color: var(--neon-cyan); background: rgba(0, 240, 255, 0.12); box-shadow: 0 0 25px var(--accent-active-shadow); color: var(--neon-cyan); }
             .theme-btn small { font-size: 0.78rem; opacity: 0.75; font-weight: 500; }
 
-            /* ====================== CARD SIZE BTNS ====================== */
-            .size-grid {
-                display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                gap: 8px;
-            }
+            .size-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
             .size-btn {
                 padding: 16px 10px;
                 border-radius: 14px;
@@ -770,52 +804,16 @@
                 min-height: 80px;
                 justify-content: center;
             }
-            .size-btn:hover {
-                transform: translateY(-3px);
-                background: rgba(255, 255, 255, 0.12);
-                border-color: var(--neon-cyan);
-            }
-            .size-btn.active-size {
-                border-color: var(--neon-cyan);
-                background: rgba(0, 240, 255, 0.12);
-                box-shadow: 0 0 20px var(--accent-active-shadow);
-                color: var(--neon-cyan);
-            }
+            .size-btn:hover { transform: translateY(-3px); background: rgba(255, 255, 255, 0.12); border-color: var(--neon-cyan); }
+            .size-btn.active-size { border-color: var(--neon-cyan); background: rgba(0, 240, 255, 0.12); box-shadow: 0 0 20px var(--accent-active-shadow); color: var(--neon-cyan); }
             .size-btn small { font-size: 0.75rem; opacity: 0.7; font-weight: 500; }
 
-            /* ====================== TOGGLE SWITCH ====================== */
-            .settings-row {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                gap: 16px;
-            }
-            .settings-row-info {}
-            .settings-row-label {
-                font-size: 0.96rem;
-                font-weight: 600;
-                margin-bottom: 4px;
-                color: rgba(255,255,255,0.9);
-            }
-            .settings-row-desc {
-                font-size: 0.78rem;
-                color: rgba(255,255,255,0.45);
-                line-height: 1.4;
-            }
+            .settings-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+            .settings-row-label { font-size: 0.96rem; font-weight: 600; margin-bottom: 4px; color: rgba(255,255,255,0.9); }
+            .settings-row-desc { font-size: 0.78rem; color: rgba(255,255,255,0.45); line-height: 1.4; }
 
-            .toggle-switch {
-                position: relative;
-                display: inline-block;
-                width: 52px;
-                height: 28px;
-                flex-shrink: 0;
-            }
-            .toggle-switch input {
-                opacity: 0;
-                width: 0;
-                height: 0;
-                position: absolute;
-            }
+            .toggle-switch { position: relative; display: inline-block; width: 52px; height: 28px; flex-shrink: 0; }
+            .toggle-switch input { opacity: 0; width: 0; height: 0; position: absolute; }
             .toggle-slider {
                 position: absolute;
                 cursor: pointer;
@@ -830,31 +828,19 @@
             .toggle-slider::before {
                 content: '';
                 position: absolute;
-                width: 20px;
-                height: 20px;
-                left: 3px;
-                top: 3px;
+                width: 20px; height: 20px;
+                left: 3px; top: 3px;
                 background: rgba(255,255,255,0.5);
                 border-radius: 50%;
                 transition: all 0.3s;
             }
-            .toggle-switch input:checked + .toggle-slider {
-                background: rgba(0,240,255,0.2);
-                border-color: var(--neon-cyan);
-                box-shadow: 0 0 14px var(--accent-shadow);
-            }
-            .toggle-switch input:checked + .toggle-slider::before {
-                transform: translateX(24px);
-                background: var(--neon-cyan);
-                box-shadow: 0 0 8px var(--accent-shadow);
-            }
+            .toggle-switch input:checked + .toggle-slider { background: rgba(0,240,255,0.2); border-color: var(--neon-cyan); box-shadow: 0 0 14px var(--accent-shadow); }
+            .toggle-switch input:checked + .toggle-slider::before { transform: translateX(24px); background: var(--neon-cyan); box-shadow: 0 0 8px var(--accent-shadow); }
 
-            /* ====================== COLOR PICKER ====================== */
             .color-picker-section { display: flex; flex-direction: column; gap: 24px; }
             .preset-swatches { display: grid; grid-template-columns: repeat(auto-fit, minmax(58px, 1fr)); gap: 14px; }
             .swatch {
-                width: 58px;
-                height: 58px;
+                width: 58px; height: 58px;
                 border-radius: 50%;
                 border: 4px solid rgba(255, 255, 255, 0.18);
                 box-shadow: 0 0 18px var(--accent-shadow);
@@ -868,27 +854,11 @@
             }
             .swatch:hover { transform: scale(1.15); box-shadow: 0 0 30px var(--accent-active-shadow); border-color: var(--neon-cyan); }
             .swatch.active { border-color: var(--neon-cyan); box-shadow: 0 0 35px var(--accent-active-shadow); transform: scale(1.1); }
-            .custom-picker {
-                background: var(--dark-panel-lighter);
-                border-radius: 18px;
-                padding: 22px 24px;
-                display: flex;
-                align-items: center;
-                gap: 18px;
-                flex-wrap: wrap;
-            }
+            .custom-picker { background: var(--dark-panel-lighter); border-radius: 18px; padding: 22px 24px; display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
             .custom-picker label { font-size: 0.98rem; font-weight: 700; color: var(--neon-cyan); letter-spacing: 0.5px; }
-            .custom-preview {
-                width: 72px;
-                height: 72px;
-                border-radius: 50%;
-                border: 5px solid var(--neon-cyan);
-                box-shadow: 0 0 28px var(--accent-shadow);
-                flex-shrink: 0;
-                transition: all 0.3s;
-            }
+            .custom-preview { width: 72px; height: 72px; border-radius: 50%; border: 5px solid var(--neon-cyan); box-shadow: 0 0 28px var(--accent-shadow); flex-shrink: 0; transition: all 0.3s; }
 
-            /* ====================== MODALS ====================== */
+            /* MODALS */
             .modal {
                 display: none;
                 position: fixed;
@@ -967,8 +937,7 @@
             .step-number {
                 background: #0f3460;
                 color: var(--neon-cyan);
-                width: 24px;
-                height: 24px;
+                width: 24px; height: 24px;
                 border-radius: 50%;
                 display: flex;
                 align-items: center;
@@ -1001,7 +970,7 @@
             }
             .close-btn:hover { background: #444; }
 
-            /* ====================== DOWNLOAD CONFIRM MODAL ====================== */
+            /* DOWNLOAD CONFIRM MODAL */
             #downloadConfirmModal {
                 display: none;
                 position: fixed;
@@ -1027,10 +996,8 @@
             }
             .dl-confirm-close {
                 position: absolute;
-                top: 14px;
-                right: 16px;
-                width: 28px;
-                height: 28px;
+                top: 14px; right: 16px;
+                width: 28px; height: 28px;
                 border-radius: 50%;
                 background: rgba(255,255,255,0.07);
                 border: 1px solid rgba(255,255,255,0.12);
@@ -1044,27 +1011,9 @@
                 line-height: 1;
             }
             .dl-confirm-close:hover { background: rgba(255,45,85,0.2); color: #ff2d55; }
-            .dl-confirm-img {
-                width: 88px;
-                height: 88px;
-                border-radius: 50%;
-                border: 3px solid var(--neon-cyan);
-                box-shadow: 0 0 28px var(--accent-shadow);
-                object-fit: cover;
-                margin-bottom: 16px;
-            }
-            .dl-confirm-title {
-                font-size: 1.25rem;
-                font-weight: 800;
-                color: var(--neon-cyan);
-                margin-bottom: 8px;
-            }
-            .dl-confirm-text {
-                font-size: 0.88rem;
-                color: rgba(255,255,255,0.65);
-                line-height: 1.6;
-                margin-bottom: 24px;
-            }
+            .dl-confirm-img { width: 88px; height: 88px; border-radius: 50%; border: 3px solid var(--neon-cyan); box-shadow: 0 0 28px var(--accent-shadow); object-fit: cover; margin-bottom: 16px; }
+            .dl-confirm-title { font-size: 1.25rem; font-weight: 800; color: var(--neon-cyan); margin-bottom: 8px; }
+            .dl-confirm-text { font-size: 0.88rem; color: rgba(255,255,255,0.65); line-height: 1.6; margin-bottom: 24px; }
             .dl-confirm-btn {
                 width: 100%;
                 padding: 14px;
@@ -1093,21 +1042,9 @@
                 transition: all 0.2s;
             }
             .dl-cancel-btn:hover { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.85); }
-            .dl-divider {
-                width: 50px;
-                height: 2px;
-                background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
-                margin: 0 auto 18px;
-                border-radius: 2px;
-            }
+            .dl-divider { width: 50px; height: 2px; background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent); margin: 0 auto 18px; border-radius: 2px; }
 
-            .credit {
-                margin-top: 30px;
-                text-align: center;
-                font-size: 12px;
-                opacity: 0.5;
-                color: var(--neon-cyan);
-            }
+            .credit { margin-top: 30px; text-align: center; font-size: 12px; opacity: 0.5; color: var(--neon-cyan); }
             .credit a { color: var(--neon-cyan); text-decoration: none; }
         </style>
     </head>
@@ -1140,16 +1077,13 @@
                     <button class="tab-button" onclick="switchTab(6)">⚙️ Paramètres</button>
                 </div>
 
-                <!-- CONTENU -->
                 <div class="main-content">
+
                     <!-- TAB 0 -->
                     <div id="tab-0" class="tab-content active">
                         <div class="welcome">
                             <h1>Bienvenue au centre d'aide</h1>
-                            <p>
-                                Ce site web est pour obtenir de l'aide en rapport aux jeux steamtools, lua tools etc. Ce
-                                serveur est principalement liée au serveur de Abelou.
-                            </p>
+                            <p>Ce site web est pour obtenir de l'aide en rapport aux jeux steamtools, lua tools etc. Ce serveur est principalement liée au serveur de Abelou.</p>
                             <a href="https://discord.gg/eTcyJezWkH" target="_blank" class="discord-btn">
                                 <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
                                     <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057c.002.022.015.043.03.056a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/>
@@ -1166,295 +1100,74 @@
                         <div class="subtitle">Neon Edition</div>
                         <input id="search" placeholder="🔍 Tape le nom du jeu..." oninput="liveSearch()" />
                         <div id="result" class="result">Tape pour commencer le scan...</div>
-                        <div id="explanation-ok" class="explanation ok">
-                            Ce jeu a l'air d'être disponible (SI IL EST BIEN ORTHOGRAPHIÉ ET QU'IL EXISTE), sachez tout
-                            de même que la liste des jeux n'est pas complète, et qu'il se peut que le jeu ne marche pas.
-                        </div>
-                        <div id="explanation-wait" class="explanation wait" style="display: none;">
-                            ⏳ Ce jeu <strong>n'est pas</strong> disponible pour l'instant<br><br>
-                            Je prévois d'ajouter un bypass pour ce jeu.
-                        </div>
-                        <div id="explanation-no" class="explanation no">
-                           Quand un jeu est indisponible, cela veut dire dire qu’il est protégé par un DRM (comme Denuvo), ce qui empêche que vous jouez au jeu peu importe ce que vous faites avec des outils comme SteamTools, Lua Tools, ETC. <br><br> VOUS NE POUVEZ PAS JOUER AU JEU
-                        </div>
-                        <div id="explanation-bypass" class="explanation bypass">
-                            ⚡ Un bypass est disponible pour ce jeu, rendez-vous dans l'onglet
-                            <strong>Bypass disponibles</strong> !
-                        </div>
-                        <div id="explanation-purchase" class="explanation purchase" style="display: none">
-                            💜 Ce jeu n'est pas disponible via des Tools, mais tu peux l'<strong>obtenir </strong> via
-                            steamrip.com (gratuit, simple et safe)
-                        </div>
-
+                        <div id="explanation-ok" class="explanation ok">Ce jeu a l'air d'être disponible (SI IL EST BIEN ORTHOGRAPHIÉ ET QU'IL EXISTE), sachez tout de même que la liste des jeux n'est pas complète, et qu'il se peut que le jeu ne marche pas.</div>
+                        <div id="explanation-wait" class="explanation wait" style="display: none;">⏳ Ce jeu <strong>n'est pas</strong> disponible pour l'instant<br><br>Je prévois d'ajouter un bypass pour ce jeu.</div>
+                        <div id="explanation-no" class="explanation no">Quand un jeu est indisponible, cela veut dire dire qu'il est protégé par un DRM (comme Denuvo), ce qui empêche que vous jouez au jeu peu importe ce que vous faites avec des outils comme SteamTools, Lua Tools, ETC. <br><br> VOUS NE POUVEZ PAS JOUER AU JEU</div>
+                        <div id="explanation-bypass" class="explanation bypass">⚡ Un bypass est disponible pour ce jeu, rendez-vous dans l'onglet <strong>Bypass disponibles</strong> !</div>
+                        <div id="explanation-purchase" class="explanation purchase" style="display: none">💜 Ce jeu n'est pas disponible via des Tools, mais tu peux l'<strong>obtenir</strong> via steamrip.com (gratuit, simple et safe)</div>
                         <div id="list" class="list"></div>
                         <button class="show-list-btn" onclick="toggleFullList()">📋 Voir la liste de jeux</button>
                         <div id="full-list" class="full-list" style="display: none"></div>
-                        <button class="show-list-btn" onclick="downloadGames()">
-                            ⬇️ Télécharger la liste des jeux actuelles (TXT)
-                        </button>
+                        <button class="show-list-btn" onclick="downloadGames()">⬇️ Télécharger la liste des jeux actuelles (TXT)</button>
                     </div>
 
-                    <!-- TAB 2 - BYPASS -->
+                    <!-- TAB 2 - BYPASS REDESIGN -->
                     <div id="tab-2" class="tab-content">
-                        <div class="bypass-container">
-                            <h1 class="bypass-title">Bypass disponibles</h1>
-                            <p class="bypass-description">
-                                Un bypass permet de contourner le DRM du jeu. Cela permet de le lancer même s'il est
-                                protégé.
-                            </p>
+                        <div class="bp-wrap">
 
-                            <!-- WARNING -->
-                            <div style="display:flex;align-items:flex-start;gap:14px;max-width:560px;margin:0 auto 24px;background:rgba(255,140,0,0.08);border:1px solid rgba(255,140,0,0.35);border-radius:14px;padding:14px 18px;text-align:left;">
-                                <span style="font-size:1.3rem;flex-shrink:0;margin-top:1px">⚠️</span>
-                                <p style="font-size:0.9rem;line-height:1.6;color:rgba(255,255,255,0.8);margin:0;">
-                                    Si un bypass ne marche plus, merci de me l'indiquer sur le serveur Discord.
-                                    <strong style="color:#ffaa55">(ping burger)</strong>
-                                </p>
+                            <!-- Header -->
+                            <div class="bp-topbar">
+                                <div>
+                                    <div class="bp-heading">🔓 Bypass disponibles</div>
+                                    <div class="bp-subhead">Contourne la protection DRM de ces jeux</div>
+                                </div>
+                                <div class="bp-date-badge">Dernière màj : <span>23/05/2026</span></div>
                             </div>
 
-              <!-- BARRE DE RECHERCHE -->
-<div style="max-width:560px;margin:0 auto 32px;position:relative">
-    <input type="text" id="bypass-search"
-        placeholder="Rechercher un bypass (RDR2, GTA V, Black Myth, PES...)"
-        style="width:100%;padding:18px 20px 18px 56px;font-size:1.08rem;background:var(--dark-panel-light);border:2px solid var(--accent-border);border-radius:16px;color:white;outline:none;box-shadow:0 0 25px var(--accent-shadow);transition:all 0.3s ease;"
-        onkeyup="filterBypasses()" />
-    <span style="position:absolute;left:22px;top:50%;transform:translateY(-50%);font-size:1.5rem;opacity:0.6;pointer-events:none;">🔎</span>
-</div>
+                            <!-- Warning -->
+                            <div class="bp-warning-banner">
+                                <span style="font-size:1.2rem;flex-shrink:0;margin-top:1px">⚠️</span>
+                                <p>Si un bypass ne fonctionne plus, merci de le signaler sur le serveur Discord. <strong>(ping burger)</strong></p>
+                            </div>
 
-<div id="bypass-list">
+                            <!-- Search -->
+                            <div class="bp-search-wrap">
+                                <span class="bp-search-icon">🔎</span>
+                                <input class="bp-search-input" type="text" id="bp-search"
+                                       placeholder="Rechercher un bypass (RDR2, GTA V, Black Myth, PES...)"
+                                       oninput="bpFilter()" />
+                            </div>
 
-    <div class="bypass-card" onclick="showBypassModal()">
-        <div class="bypass-card-left">
-            <img src="rdr2.png" alt="Red Dead Redemption 2" class="bypass-image" />
-            <div>
-                <div class="bypass-card-name">Red Dead Redemption 2</div>
-                <span class="bypass-card-tag"></span>
-            </div>
-        </div>
-        <div class="bypass-card-arrow">→</div>
-    </div>
+                            <!-- Filter chips -->
+                            <div class="bp-chips" id="bp-chips">
+                                <button class="bp-chip active" onclick="bpSetChip(this,'all')">Tous</button>
+                                <button class="bp-chip" onclick="bpSetChip(this,'rockstar')">Rockstar</button>
+                                <button class="bp-chip" onclick="bpSetChip(this,'ubisoft')">Ubisoft</button>
+                                <button class="bp-chip" onclick="bpSetChip(this,'ea')">EA</button>
+                                <button class="bp-chip" onclick="bpSetChip(this,'capcom')">Capcom</button>
+                                <button class="bp-chip" onclick="bpSetChip(this,'konami')">Konami</button>
+                                <button class="bp-chip" onclick="bpSetChip(this,'other')">Autres</button>
+                            </div>
 
-    <div class="bypass-card" onclick="showBypassModal2()">
-        <div class="bypass-card-left">
-            <img src="requiem.png" alt="Resident Evil Requiem" class="bypass-image" />
-            <div>
-                <div class="bypass-card-name">Resident Evil Requiem</div>
-                <span class="bypass-card-tag"></span>
-            </div>
-        </div>
-        <div class="bypass-card-arrow">→</div>
-    </div>
+                            <!-- Count -->
+                            <div class="bp-count-bar"><span id="bp-count">19</span> bypass affiché(s)</div>
 
-    <div class="bypass-card" onclick="showBypassModal3()">
-        <div class="bypass-card-left">
-            <img src="gta5.png" alt="Grand Theft Auto V Legacy" class="bypass-image" />
-            <div>
-                <div class="bypass-card-name">Grand Theft Auto V Legacy</div>
-                <span class="bypass-card-tag"></span>
-            </div>
-        </div>
-        <div class="bypass-card-arrow">→</div>
-    </div>
+                            <!-- Card grid -->
+                            <div class="bp-grid" id="bp-grid"></div>
 
-    <div class="bypass-card" onclick="showBypassModal4()">
-        <div class="bypass-card-left">
-            <img src="assassins.png" alt="Assassin's Creed Unity" class="bypass-image" />
-            <div>
-                <div class="bypass-card-name">Assassin's Creed Unity</div>
-                <span class="bypass-card-tag"></span>
-            </div>
-        </div>
-        <div class="bypass-card-arrow">→</div>
-    </div>
-
-    <div class="bypass-card" onclick="showBypassModal5()">
-        <div class="bypass-card-left">
-            <img src="assassins2.png" alt="Assassin's Creed II" class="bypass-image" />
-            <div>
-                <div class="bypass-card-name">Assassin's Creed II</div>
-                <span class="bypass-card-tag"></span>
-            </div>
-        </div>
-        <div class="bypass-card-arrow">→</div>
-    </div>
-
-    <div class="bypass-card" onclick="showBypassModal6()">
-        <div class="bypass-card-left">
-            <img src="wdl.png" alt="Watch Dogs: Legion" class="bypass-image" />
-            <div>
-                <div class="bypass-card-name">Watch Dogs: Legion</div>
-                <span class="bypass-card-tag"></span>
-            </div>
-        </div>
-        <div class="bypass-card-arrow">→</div>
-    </div>
-
-    <div class="bypass-card" onclick="showBypassModal7()">
-        <div class="bypass-card-left">
-            <img src="deadspace.png" alt="Dead Space" class="bypass-image" />
-            <div>
-                <div class="bypass-card-name">Dead Space</div>
-                <span class="bypass-card-tag"></span>
-            </div>
-        </div>
-        <div class="bypass-card-arrow">→</div>
-    </div>
-
-    <div class="bypass-card" onclick="showBypassModal8()">
-        <div class="bypass-card-left">
-            <img src="blackmyth.png" alt="Black Myth Wukong" class="bypass-image" />
-            <div>
-                <div class="bypass-card-name">Black Myth Wukong</div>
-                <span class="bypass-card-tag"></span>
-            </div>
-        </div>
-        <div class="bypass-card-arrow">→</div>
-    </div>
-
-    <div class="bypass-card" onclick="showBypassModal9()">
-        <div class="bypass-card-left">
-            <img src="pes18.png" alt="PES 2018" class="bypass-image" />
-            <div>
-                <div class="bypass-card-name">PES 2018</div>
-                <span class="bypass-card-tag"></span>
-            </div>
-        </div>
-        <div class="bypass-card-arrow">→</div>
-    </div>
-
-    <div class="bypass-card" onclick="showBypassModal10()">
-        <div class="bypass-card-left">
-            <img src="stellar.png" alt="Stellar Blade" class="bypass-image" />
-            <div>
-                <div class="bypass-card-name">Stellar Blade</div>
-                <span class="bypass-card-tag"></span>
-            </div>
-        </div>
-        <div class="bypass-card-arrow">→</div>
-    </div>
-
-    <div class="bypass-card" onclick="showBypassModal11()">
-        <div class="bypass-card-left">
-            <img src="PRAGMATA.png" alt="PRAGMATA" class="bypass-image" />
-            <div>
-                <div class="bypass-card-name">PRAGMATA</div>
-                <span class="bypass-card-tag"></span>
-            </div>
-        </div>
-        <div class="bypass-card-arrow">→</div>
-    </div>
-
-    <div class="bypass-card" onclick="showBypassModal12()">
-        <div class="bypass-card-left">
-            <img src="GTA3.png" alt="Grand Theft Auto III - The Definitive Edition" class="bypass-image" />
-            <div>
-                <div class="bypass-card-name">Grand Theft Auto III - The Definitive Edition</div>
-                <span class="bypass-card-tag"></span>
-            </div>
-        </div>
-        <div class="bypass-card-arrow">→</div>
-    </div>
-
-    <div class="bypass-card" onclick="showBypassModal19()">
-        <div class="bypass-card-left">
-            <img src="MAFIA.png" alt="Mafia: The Old Country" class="bypass-image" />
-            <div>
-                <div class="bypass-card-name">Mafia: The Old Country</div>
-                <span class="bypass-card-tag"></span>
-            </div>
-        </div>
-        <div class="bypass-card-arrow">→</div>
-    </div>
-
-    <div class="bypass-card" onclick="showBypassModal20()">
-        <div class="bypass-card-left">
-            <img src="lego.png" alt="LEGO Batman: Legacy of the Dark Knight" class="bypass-image" />
-            <div>
-                <div class="bypass-card-name">LEGO Batman: Legacy of the Dark Knight</div>
-                <span class="bypass-card-tag"></span>
-            </div>
-        </div>
-        <div class="bypass-card-arrow">→</div>
-    </div>
-
-    <div class="bypass-card" onclick="showBypassModal21()">
-        <div class="bypass-card-left">
-            <img src="doom.png" alt="DOOM: The Dark Ages" class="bypass-image" />
-            <div>
-                <div class="bypass-card-name">DOOM: The Dark Ages</div>
-                <span class="bypass-card-tag"></span>
-            </div>
-        </div>
-        <div class="bypass-card-arrow">→</div>
-    </div>
-
-    <div class="bypass-card" onclick="showBypassModal22()">
-        <div class="bypass-card-left">
-            <img src="mirage.png" alt="Assassin's Creed Mirage" class="bypass-image" />
-            <div>
-                <div class="bypass-card-name">Assassin's Creed Mirage</div>
-                <span class="bypass-card-tag"></span>
-            </div>
-        </div>
-        <div class="bypass-card-arrow">→</div>
-    </div>
-
-    <div class="bypass-card" onclick="showBypassModal23()">
-        <div class="bypass-card-left">
-            <img src="fifa22.png" alt="FIFA 22" class="bypass-image" />
-            <div>
-                <div class="bypass-card-name">FIFA 22</div>
-                <span class="bypass-card-tag"></span>
-            </div>
-        </div>
-        <div class="bypass-card-arrow">→</div>
-    </div>
-
-    <div class="bypass-card" onclick="showBypassModal24()">
-        <div class="bypass-card-left">
-            <img src="re3.png" alt="Far Cry 4" class="bypass-image" />
-            <div>
-                <div class="bypass-card-name">Far Cry 4</div>
-                <span class="bypass-card-tag"></span>
-            </div>
-        </div>
-        <div class="bypass-card-arrow">→</div>
-    </div>
-
-    <div class="bypass-card" onclick="showBypassModal25()">
-        <div class="bypass-card-left">
-            <img src="farcry3.png" alt="Far Cry 3" class="bypass-image" />
-            <div>
-                <div class="bypass-card-name">Far Cry 3</div>
-                <span class="bypass-card-tag"></span>
-            </div>
-        </div>
-        <div class="bypass-card-arrow">→</div>
-    </div>
-
-</div>   <!-- FIN DU #bypass-list -->
-
-</div>   <!-- ← FERMETURE IMPORTANTE de .bypass-container -->
-                    </div> <!-- FIN TAB 2 -->
-
-                    <!-- TAB 3 - ONLINE FIX -->
+                        </div>
+                    </div>
 
                     <!-- TAB 3 - ONLINE FIX -->
                     <div id="tab-3" class="tab-content">
                         <div class="bypass-container" style="padding:40px 20px">
                             <h1 class="bypass-title" style="font-size:2.1rem">🌐 Online Fix</h1>
-                            <p style="font-size:1.1rem;line-height:1.7;max-width:620px;margin:0 auto 30px;opacity:0.9;">
-                                Pour jouer en multijoueur avec des amis sur des jeux crackés, tu peux utiliser les Online Fix.
-                            </p>
+                            <p style="font-size:1.1rem;line-height:1.7;max-width:620px;margin:0 auto 30px;opacity:0.9;">Pour jouer en multijoueur avec des amis sur des jeux crackés, tu peux utiliser les Online Fix.</p>
                             <div style="background:rgba(255,255,255,0.08);border:1px solid var(--accent-border);border-radius:16px;padding:28px;max-width:520px;margin:0 auto 30px;">
                                 <p style="font-size:1.15rem;margin-bottom:18px">Voici le lien officiel du Online Fix :</p>
-                                <a href="https://online-fix.me/" target="_blank" style="display:inline-block;background:linear-gradient(45deg,#00c4ff,#0099ff);color:white;padding:16px 32px;border-radius:14px;font-size:1.2rem;font-weight:700;text-decoration:none;box-shadow:0 0 20px rgba(0,196,255,0.5);transition:all 0.3s;">
-                                    🌐 online-fix.me
-                                </a>
+                                <a href="https://online-fix.me/" target="_blank" style="display:inline-block;background:linear-gradient(45deg,#00c4ff,#0099ff);color:white;padding:16px 32px;border-radius:14px;font-size:1.2rem;font-weight:700;text-decoration:none;box-shadow:0 0 20px rgba(0,196,255,0.5);transition:all 0.3s;">🌐 online-fix.me</a>
                             </div>
-                            <p style="font-size:1rem;opacity:0.85;max-width:580px;margin:0 auto">
-                                Pour savoir comment installer correctement un Online Fix, <strong>consultez l'onglet FAQ</strong>.
-                            </p>
+                            <p style="font-size:1rem;opacity:0.85;max-width:580px;margin:0 auto">Pour savoir comment installer correctement un Online Fix, <strong>consultez l'onglet FAQ</strong>.</p>
                         </div>
                     </div>
 
@@ -1462,31 +1175,19 @@
                     <div id="tab-4" class="tab-content">
                         <div class="bypass-container" style="padding:40px 20px;text-align:center">
                             <h1 class="bypass-title" style="font-size:2.1rem">⌨️ Commandes</h1>
-                            <p style="font-size:1.1rem;line-height:1.7;max-width:620px;margin:20px auto 30px;opacity:0.9;">
-                                Des fois, Steamtools a des problèmes. C'est pour ça que cet onglet regroupe les commandes pour réparer les problèmes liés.
-                            </p>
-                            <p style="font-size:1rem;opacity:0.85;max-width:580px;margin:0 auto 15px">
-                                Si vous avez des problèmes comme <strong>"Pas de connexion internet"</strong>,
-                                <strong>"Téléchargement en attente"</strong> ou <strong>"Erreur inconnue"</strong>,
-                                Appuyez sur Windows + R sur votre clavier, puis collez cette commande :
-                            </p>
+                            <p style="font-size:1.1rem;line-height:1.7;max-width:620px;margin:20px auto 30px;opacity:0.9;">Des fois, Steamtools a des problèmes. C'est pour ça que cet onglet regroupe les commandes pour réparer les problèmes liés.</p>
+                            <p style="font-size:1rem;opacity:0.85;max-width:580px;margin:0 auto 15px">Si vous avez des problèmes comme <strong>"Pas de connexion internet"</strong>, <strong>"Téléchargement en attente"</strong> ou <strong>"Erreur inconnue"</strong>, Appuyez sur Windows + R sur votre clavier, puis collez cette commande :</p>
                             <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:580px;margin:0 auto 30px;background:linear-gradient(135deg,#121212,#181818);border:1px solid #2a2a2a;border-radius:12px;padding:14px 14px 14px 16px;font-family:monospace;color:#00ff99;box-shadow:0 0 16px rgba(0,255,153,0.08);">
                                 <span id="cmd-text-1">PowerShell irm steamproof.net | iex</span>
                                 <button type="button" onclick="copyCommand('cmd-text-1')" style="background:#00ff99;border:none;padding:8px 14px;border-radius:8px;cursor:pointer;font-weight:bold;color:#000;white-space:nowrap;transition:0.2s;">Copier</button>
                             </div>
-                            <p style="font-size:1rem;opacity:0.85;max-width:580px;margin:0 auto 15px">
-                                Cela te met l'erreur "Configuration du jeu Steam Indisponible" ? Rentre cette commande dans powershell :
-                            </p>
+                            <p style="font-size:1rem;opacity:0.85;max-width:580px;margin:0 auto 15px">Cela te met l'erreur "Configuration du jeu Steam Indisponible" ? Rentre cette commande dans powershell :</p>
                             <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:580px;margin:0 auto 20px;background:linear-gradient(135deg,#121212,#181818);border:1px solid #2a2a2a;border-radius:12px;padding:14px 14px 14px 16px;font-family:monospace;color:#00ff99;box-shadow:0 0 16px rgba(0,255,153,0.08);">
                                 <span id="cmd-text-2">cd $env:USERPROFILE\Desktop; irm https://tinyurl.com/3mkyshpr -OutFile sc.bat; cmd /c sc.bat</span>
                                 <button type="button" onclick="copyCommand('cmd-text-2')" style="background:#00ff99;border:none;padding:8px 14px;border-radius:8px;cursor:pointer;font-weight:bold;color:#000;white-space:nowrap;transition:0.2s;">Copier</button>
                             </div>
-                            <p style="font-size:0.95rem;opacity:0.8;max-width:580px;margin:20px auto 0">
-                                N'hésite pas a rejoindre le serveur discord et de tag burger si tu as une erreur.
-                            </p>
-                            <p style="font-size:0.95rem;opacity:0.8;max-width:580px;margin:10px auto">
-                                Pense aussi à consulter l'onglet <strong>FAQ</strong>.
-                            </p>
+                            <p style="font-size:0.95rem;opacity:0.8;max-width:580px;margin:20px auto 0">N'hésite pas a rejoindre le serveur discord et de tag burger si tu as une erreur.</p>
+                            <p style="font-size:0.95rem;opacity:0.8;max-width:580px;margin:10px auto">Pense aussi à consulter l'onglet <strong>FAQ</strong>.</p>
                         </div>
                     </div>
 
@@ -1510,7 +1211,7 @@
                         }
                     </script>
 
-                    <!-- TAB 5 -->
+                    <!-- TAB 5 - FAQ -->
                     <div id="tab-5" class="tab-content">
                         <div class="faq-container">
                             <h1 class="faq-title">FAQ</h1>
@@ -1530,7 +1231,7 @@
                                     2. Glissez le fichier téléchargé ici puis extrayez-le (le mot de passe est normalement indiqué sur la page du jeu sur online-fix.me)<br />
                                     3. Si windows vous le demande, remplacez les fichiers<br/>
                                     4. Vous pouvez maintenant lancer le jeu<br /><br />
-                                    <strong>⚠️ Note :</strong> Si ça vous met "self protection failed", le Online Fix ne marche pas. Vous pourrez uniquement jouer avec des gens qui ont le même Online Fix que vous.
+                                    <strong>⚠️ Note :</strong> Si ça vous met "self protection failed", le Online Fix ne marche pas.
                                 </div>
                             </div>
                             <div class="faq-item">
@@ -1538,7 +1239,7 @@
                                 <div class="faq-answer">
                                     Denuvo est un DRM (anti-tamper) utilisé par certains développeurs pour protéger leurs jeux du piratage. Il crash votre jeu s'il détecte que vous n'êtes pas sur une copie légale.<br /><br />
                                     Des groupes de hackers comme <strong>voices38</strong> travaillent à cracker ces protections. Si un jeu est cracké, il se retrouve généralement sur <strong>fitgirl-repacks.site</strong> ou <strong>steamrip.com</strong>.<br /><br />
-                                    Il existe d'autres DRM (Rockstar, Punkbuster, etc.) mais Denuvo est le plus efficace. Peu importe le jeu, vous pourrez y jouer un jour — Denuvo ne fait que retarder le piratage.
+                                    Il existe d'autres DRM (Rockstar, Punkbuster, etc.) mais Denuvo est le plus efficace.
                                 </div>
                             </div>
                             <div class="faq-item">
@@ -1581,7 +1282,6 @@
                         <div class="settings-container">
                             <h1 class="settings-title">⚙️ Paramètres</h1>
 
-                            <!-- ===== COLOR PICKER ===== -->
                             <div class="settings-section">
                                 <div class="settings-section-title">🎨 Color Picker</div>
                                 <div class="color-picker-section">
@@ -1609,30 +1309,6 @@
                                 </div>
                             </div>
 
-                            <!-- ===== TAILLE DES CARTES BYPASS ===== -->
-                            <div class="settings-section">
-                                <div class="settings-section-title">📐 Taille des cartes Bypass</div>
-                                <p style="font-size:0.82rem;color:rgba(255,255,255,0.45);margin-bottom:14px;line-height:1.4;">Ajuste la taille d'affichage des cartes dans l'onglet Bypass.</p>
-                                <div class="size-grid">
-                                    <button class="size-btn" id="size-btn-small" onclick="setCardSize('small')">
-                                        <span style="font-size:1.1rem;">🔹</span>
-                                        Petite
-                                        <small>Compact</small>
-                                    </button>
-                                    <button class="size-btn active-size" id="size-btn-medium" onclick="setCardSize('medium')">
-                                        <span style="font-size:1.4rem;">🔷</span>
-                                        Moyenne
-                                        <small>Défaut</small>
-                                    </button>
-                                    <button class="size-btn" id="size-btn-large" onclick="setCardSize('large')">
-                                        <span style="font-size:1.8rem;">🔶</span>
-                                        Grande
-                                        <small>Spacieux</small>
-                                    </button>
-                                </div>
-                            </div>
-
-                            <!-- ===== ANIMATIONS ===== -->
                             <div class="settings-section">
                                 <div class="settings-section-title">✨ Animations</div>
                                 <div class="settings-row">
@@ -1647,7 +1323,6 @@
                                 </div>
                             </div>
 
-                            <!-- ===== CONFIRMATION TÉLÉCHARGEMENT ===== -->
                             <div class="settings-section">
                                 <div class="settings-section-title">⬇️ Confirmation avant téléchargement</div>
                                 <div class="settings-row">
@@ -1668,10 +1343,7 @@
                     <div style="text-align:center;margin:25px 0 20px">
                         <img src="pfp.png" alt="Profile Picture" style="width:85px;height:85px;border-radius:50%;border:3px solid var(--neon-cyan);box-shadow:0 0 20px var(--accent-shadow);transition:all 0.3s;" />
                     </div>
-
-                    <div class="credit">
-                        Réalisé par <a href="https://x.com/wspp757" target="_blank">@wspp757</a> (@burger)
-                    </div>
+                    <div class="credit">Réalisé par <a href="https://x.com/wspp757" target="_blank">@wspp757</a> (@burger)</div>
                 </div>
             </div>
         </div>
@@ -1687,7 +1359,7 @@
             <button class="bottom-nav-btn" onclick="switchTab(6)"><span class="bn-icon">⚙️</span>Params</button>
         </nav>
 
-        <!-- ====================== MODAL CONFIRMATION TÉLÉCHARGEMENT ====================== -->
+        <!-- MODAL DOWNLOAD CONFIRM -->
         <div id="downloadConfirmModal">
             <div class="dl-confirm-box">
                 <button class="dl-confirm-close" onclick="cancelDownload()">✕</button>
@@ -1700,7 +1372,7 @@
             </div>
         </div>
 
-        <!-- MODAL RDR2 -->
+ <!-- MODAL RDR2 -->
         <div id="bypassModal" class="modal">
             <div class="modal-content">
                 <div class="modal-left">
@@ -2088,121 +1760,36 @@
                 </div>
             </div>
         </div>
-<!-- POPUP NOUVEAU BYPASS -->
-<div id="newBypassPopup" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);backdrop-filter:blur(10px);z-index:99999;align-items:center;justify-content:center;padding:20px;">
-    <div style="background:rgba(10,10,30,0.98);border:1px solid var(--accent-border);border-radius:22px;box-shadow:0 0 40px var(--accent-shadow),0 0 80px rgba(0,240,255,0.06);padding:36px 32px 28px;max-width:420px;width:100%;text-align:center;position:relative;animation:popIn 0.3s cubic-bezier(0.34,1.56,0.64,1);">
-       
-        <!-- bouton fermer -->
-        <button onclick="closeNewBypassPopup()"
-        style="position:absolute;top:14px;right:16px;width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.4);font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s;line-height:1;"
-        onmouseover="this.style.background='rgba(255,45,85,0.2)';this.style.color='#ff2d55';"
-        onmouseout="this.style.background='rgba(255,255,255,0.07)';this.style.color='rgba(255,255,255,0.4)';">✕</button>
 
-        <!-- badge -->
-        <div style="display:inline-flex;align-items:center;gap:7px;background:rgba(255,200,0,0.12);border:1px solid rgba(255,200,0,0.4);color:var(--neon-yellow);padding:5px 16px;border-radius:9999px;font-size:0.78rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:20px;">
-            <div style="width:7px;height:7px;border-radius:50%;background:var(--neon-yellow);animation:pulse-new 1.5s ease-in-out infinite;flex-shrink:0;"></div>
-            Nouveaux bypass disponible
-        </div>
-
-        <!-- titre -->
-        <div style="font-size:1.5rem;font-weight:800;letter-spacing:-0.5px;background:linear-gradient(90deg,#fff,var(--neon-cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:18px;">
-            Bypass disponibles !
-        </div>
-
-        <!-- PREMIÈRE LIGNE : 3 ITEMS -->
-        <div style="display:flex;gap:18px;justify-content:center;flex-wrap:nowrap;margin-bottom:16px">
-            
-   
-
-            <!-- ITEM 2 -->
-            <div style="text-align:center; flex:1; max-width:92px;">
-                <div style="width:70px;height:70px;border-radius:50%;border:3px solid var(--neon-cyan);box-shadow:0 0 25px var(--accent-shadow);margin:0 auto 10px;overflow:hidden;">
-                    <img src="MAFIA.png" style="width:100%;height:100%;object-fit:cover;border-radius:50%" />
+        <!-- POPUP NOUVEAU BYPASS -->
+        <div id="newBypassPopup" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);backdrop-filter:blur(10px);z-index:99999;align-items:center;justify-content:center;padding:20px;">
+            <div style="background:rgba(10,10,30,0.98);border:1px solid var(--accent-border);border-radius:22px;box-shadow:0 0 40px var(--accent-shadow);padding:36px 32px 28px;max-width:420px;width:100%;text-align:center;position:relative;">
+                <button onclick="closeNewBypassPopup()" style="position:absolute;top:14px;right:16px;width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.4);font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s;line-height:1;" onmouseover="this.style.background='rgba(255,45,85,0.2)';this.style.color='#ff2d55';" onmouseout="this.style.background='rgba(255,255,255,0.07)';this.style.color='rgba(255,255,255,0.4)';">✕</button>
+                <div style="display:inline-flex;align-items:center;gap:7px;background:rgba(255,200,0,0.12);border:1px solid rgba(255,200,0,0.4);color:var(--neon-yellow);padding:5px 16px;border-radius:9999px;font-size:0.78rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:20px;">Nouveau bypass disponible</div>
+                <div style="font-size:1.5rem;font-weight:800;letter-spacing:-0.5px;background:linear-gradient(90deg,#fff,var(--neon-cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:18px;">Bypass disponibles !</div>
+                <div style="display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-bottom:16px">
+                    <div style="text-align:center;max-width:92px;"><div style="width:70px;height:70px;border-radius:50%;border:3px solid var(--neon-cyan);box-shadow:0 0 25px var(--accent-shadow);margin:0 auto 10px;overflow:hidden;"><img src="MAFIA.png" style="width:100%;height:100%;object-fit:cover;" /></div><div style="font-size:0.74rem;font-weight:700;color:var(--neon-yellow);line-height:1.25;">Mafia: The Old Country</div></div>
+                    <div style="text-align:center;max-width:92px;"><div style="width:70px;height:70px;border-radius:50%;border:3px solid var(--neon-cyan);box-shadow:0 0 25px var(--accent-shadow);margin:0 auto 10px;overflow:hidden;"><img src="lego.png" style="width:100%;height:100%;object-fit:cover;" /></div><div style="font-size:0.74rem;font-weight:700;color:var(--neon-yellow);line-height:1.25;">LEGO Batman</div></div>
+                    <div style="text-align:center;max-width:92px;"><div style="width:70px;height:70px;border-radius:50%;border:3px solid var(--neon-cyan);box-shadow:0 0 25px var(--accent-shadow);margin:0 auto 10px;overflow:hidden;"><img src="doom.png" style="width:100%;height:100%;object-fit:cover;" /></div><div style="font-size:0.74rem;font-weight:700;color:var(--neon-yellow);line-height:1.25;">DOOM: The Dark Ages</div></div>
+                    <div style="text-align:center;max-width:92px;"><div style="width:70px;height:70px;border-radius:50%;border:3px solid var(--neon-cyan);box-shadow:0 0 25px var(--accent-shadow);margin:0 auto 10px;overflow:hidden;"><img src="fifa22.png" style="width:100%;height:100%;object-fit:cover;" /></div><div style="font-size:0.74rem;font-weight:700;color:var(--neon-yellow);line-height:1.25;">FIFA 22</div></div>
+                    <div style="text-align:center;max-width:92px;"><div style="width:70px;height:70px;border-radius:50%;border:3px solid var(--neon-cyan);box-shadow:0 0 25px var(--accent-shadow);margin:0 auto 10px;overflow:hidden;"><img src="re3.png" style="width:100%;height:100%;object-fit:cover;" /></div><div style="font-size:0.74rem;font-weight:700;color:var(--neon-yellow);line-height:1.25;">Far Cry 4</div></div>
+                    <div style="text-align:center;max-width:92px;"><div style="width:70px;height:70px;border-radius:50%;border:3px solid var(--neon-cyan);box-shadow:0 0 25px var(--accent-shadow);margin:0 auto 10px;overflow:hidden;"><img src="farcry3.png" style="width:100%;height:100%;object-fit:cover;" /></div><div style="font-size:0.74rem;font-weight:700;color:var(--neon-yellow);line-height:1.25;">Far Cry 3</div></div>
                 </div>
-                <div style="font-size:0.74rem;font-weight:700;color:var(--neon-yellow);line-height:1.25;">Mafia: The Old Country</div>
-            </div>
-
-            <!-- ITEM 3 -->
-            <div style="text-align:center; flex:1; max-width:92px;">
-                <div style="width:70px;height:70px;border-radius:50%;border:3px solid var(--neon-cyan);box-shadow:0 0 25px var(--accent-shadow);margin:0 auto 10px;overflow:hidden;">
-                    <img src="lego.png" style="width:100%;height:100%;object-fit:cover;border-radius:50%" />
+                <div style="width:65px;height:2px;background:linear-gradient(90deg,transparent,var(--neon-cyan),transparent);margin:0 auto 19px;border-radius:2px;"></div>
+                <p style="font-size:0.92rem;line-height:1.65;color:rgba(255,255,255,0.72);margin-bottom:24px">Rendez-vous dans l'onglet <strong style="color:var(--neon-cyan)">🔓 Bypass</strong> pour les télécharger.</p>
+                <div style="display:flex;flex-direction:column;gap:10px">
+                    <button onclick="goToBypassTab()" style="padding:14px 24px;background:linear-gradient(135deg,#00c4ff,#00f0ff);color:#000;font-size:1rem;font-weight:800;border:none;border-radius:14px;cursor:pointer;box-shadow:0 0 20px rgba(0,240,255,0.4);transition:all 0.25s ease;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">🔓 Voir les bypass</button>
+                    <button onclick="closeNewBypassPopup()" style="padding:11px 24px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.55);font-size:0.88rem;font-weight:600;border-radius:12px;cursor:pointer;transition:all 0.2s ease;">J'ai compris, continuer</button>
                 </div>
-                <div style="font-size:0.74rem;font-weight:700;color:var(--neon-yellow);line-height:1.25;">LEGO Batman: Legacy of the Dark Knight</div>
-            </div>
-
-        </div>
-
-        <!-- DEUXIÈME LIGNE : 1 ITEM (centré) -->
-        <div style="display:flex;gap:35px;justify-content:center;flex-wrap:nowrap;margin-bottom:16px">
-            <!-- ITEM 4 -->
-            <div style="text-align:center; max-width:92px;">
-                <div style="width:70px;height:70px;border-radius:50%;border:3px solid var(--neon-cyan);box-shadow:0 0 25px var(--accent-shadow);margin:0 auto 10px;overflow:hidden;">
-                    <img src="doom.png" style="width:100%;height:100%;object-fit:cover;border-radius:50%" />
-                </div>
-                <div style="font-size:0.74rem;font-weight:700;color:var(--neon-yellow);line-height:1.25;">DOOM: The Dark Ages</div>
-            </div>
-             <!-- ITEM 5 -->
-                      <div style="text-align:center; max-width:92px;">
-                <div style="width:70px;height:70px;border-radius:50%;border:3px solid var(--neon-cyan);box-shadow:0 0 25px var(--accent-shadow);margin:0 auto 10px;overflow:hidden;">
-                    <img src="fifa22.png" style="width:100%;height:100%;object-fit:cover;border-radius:50%" />
-                </div>
-                <div style="font-size:0.74rem;font-weight:700;color:var(--neon-yellow);line-height:1.25;">FIFA 22</div>
-            </div>
-            
-                            <div style="text-align:center; max-width:92px;">
-                <div style="width:70px;height:70px;border-radius:50%;border:3px solid var(--neon-cyan);box-shadow:0 0 25px var(--accent-shadow);margin:0 auto 10px;overflow:hidden;">
-                    <img src="re3.png" style="width:100%;height:100%;object-fit:cover;border-radius:50%" />
-                </div>
-                <div style="font-size:0.74rem;font-weight:700;color:var(--neon-yellow);line-height:1.25;">Far Cry 4</div>
-            </div>
-            
-                                        <div style="text-align:center; max-width:92px;">
-                <div style="width:70px;height:70px;border-radius:50%;border:3px solid var(--neon-cyan);box-shadow:0 0 25px var(--accent-shadow);margin:0 auto 10px;overflow:hidden;">
-                    <img src="farcry3.png" style="width:100%;height:100%;object-fit:cover;border-radius:50%" />
-                </div>
-                <div style="font-size:0.74rem;font-weight:700;color:var(--neon-yellow);line-height:1.25;">Far Cry 3</div>
             </div>
         </div>
-        
-        
-
-        <!-- séparation -->
-        <div style="width:65px;height:2px;background:linear-gradient(90deg,transparent,var(--neon-cyan),transparent);margin:0 auto 19px;border-radius:2px;"></div>
-
-        <!-- texte -->
-        <p style="font-size:0.92rem;line-height:1.65;color:rgba(255,255,255,0.72);margin-bottom:24px">
-            Un bypass pour <strong style="color:var(--neon-cyan)">Mafia: The Old Country</strong>, 
-            <strong style="color:var(--neon-cyan)">LEGO Batman: Legacy of the Dark Knight</strong>, 
-            <strong style="color:var(--neon-cyan)">DOOM: The Dark Ages</strong> 
-            , <strong style="color:var(--neon-cyan)">FIFA 22</strong> , <strong style="color:var(--neon-cyan)">Far Cry 4</strong> et <strong style="color:var(--neon-cyan)">Far Cry 3</strong> sont désormais disponibles.<br/><br/>
-            Rendez-vous dans l'onglet <strong style="color:var(--neon-cyan)">🔓 Bypass</strong> pour les télécharger.
-        </p>
-
-        <!-- boutons -->
-        <div style="display:flex;flex-direction:column;gap:10px">
-            <button onclick="goToBypassTab()"
-            style="padding:14px 24px;background:linear-gradient(135deg,#00c4ff,#00f0ff);color:#000;font-size:1rem;font-weight:800;border:none;border-radius:14px;cursor:pointer;box-shadow:0 0 20px rgba(0,240,255,0.4);transition:all 0.25s ease;"
-            onmouseover="this.style.transform='translateY(-2px) scale(1.02)';this.style.boxShadow='0 0 32px rgba(0,240,255,0.6)';"
-            onmouseout="this.style.transform='none';this.style.boxShadow='0 0 20px rgba(0,240,255,0.4)';">
-                🔓 Voir les bypass
-            </button>
-            <button onclick="closeNewBypassPopup()"
-            style="padding:11px 24px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.55);font-size:0.88rem;font-weight:600;border-radius:12px;cursor:pointer;transition:all 0.2s ease;"
-            onmouseover="this.style.background='rgba(255,255,255,0.1)';this.style.color='rgba(255,255,255,0.85)';"
-            onmouseout="this.style.background='rgba(255,255,255,0.06)';this.style.color='rgba(255,255,255,0.55)';">
-                J'ai compris, continuer
-            </button>
-        </div>
-    </div>
-</div>
 
         <script>
-            // ====================== HELPER HEX TO RGB ======================
+            // ── THEME ──
             function hexToRgb(hex) {
                 const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
                 return result ? { r: parseInt(result[1], 16), g: parseInt(result[2], 16), b: parseInt(result[3], 16) } : { r: 0, g: 240, b: 255 };
             }
-
             function applyThemeVars(color, bg1, bg2) {
                 const rgb = hexToRgb(color);
                 const r = rgb.r, g = rgb.g, b = rgb.b;
@@ -2231,7 +1818,6 @@
                 const input = document.getElementById("custom-color");
                 if (input) input.value = color;
             }
-
             const themes = {
                 purple: { bg1: "#1a0033", bg2: "#0a0a1f", accent: "#00f0ff" },
                 cyan: { bg1: "#001a2e", bg2: "#000d1a", accent: "#00f0ff" },
@@ -2244,19 +1830,15 @@
                 indigo: { bg1: "#1f0033", bg2: "#14001f", accent: "#9900ff" },
                 gold: { bg1: "#332900", bg2: "#1f1900", accent: "#ffdd00" }
             };
-
             function setTheme(name, btn) {
-                const t = themes[name];
-                if (!t) return;
+                const t = themes[name]; if (!t) return;
                 localStorage.setItem("theme", name);
                 localStorage.removeItem("customAccent");
                 applyThemeVars(t.accent, t.bg1, t.bg2);
                 document.querySelectorAll(".swatch").forEach(s => s.classList.remove("active"));
                 if (btn) btn.classList.add("active");
             }
-
             function selectPreset(name, el) { setTheme(name, el); }
-
             function applyCustomColor(hex) {
                 if (!hex) return;
                 localStorage.setItem("customAccent", hex);
@@ -2267,155 +1849,67 @@
                 document.querySelectorAll(".swatch").forEach(s => s.classList.remove("active"));
             }
 
-            // ====================== CARD SIZE ======================
-            function setCardSize(size) {
-                const list = document.getElementById('bypass-list');
-                if (!list) return;
-                list.classList.remove('size-small', 'size-medium', 'size-large');
-                list.classList.add('size-' + size);
-                localStorage.setItem('cardSize', size);
-                ['small', 'medium', 'large'].forEach(s => {
-                    const btn = document.getElementById('size-btn-' + s);
-                    if (btn) btn.classList.toggle('active-size', s === size);
-                });
-            }
-
-            // ====================== ANIMATIONS ======================
+            // ── ANIMATIONS ──
             function toggleAnimations(disabled) {
                 document.body.classList.toggle('no-animations', disabled);
                 localStorage.setItem('noAnimations', disabled ? '1' : '0');
             }
 
-            // ====================== DOWNLOAD CONFIRMATION ======================
-            function toggleDlConfirm(enabled) {
-                localStorage.setItem('downloadConfirm', enabled ? '1' : '0');
-            }
-
+            // ── DOWNLOAD CONFIRM ──
+            function toggleDlConfirm(enabled) { localStorage.setItem('downloadConfirm', enabled ? '1' : '0'); }
             let pendingDownloadFn = null;
-
             function showDownloadConfirm(icon, name, fn) {
-                if (localStorage.getItem('downloadConfirm') !== '1') {
-                    fn();
-                    return;
-                }
+                if (localStorage.getItem('downloadConfirm') !== '1') { fn(); return; }
                 pendingDownloadFn = fn;
                 document.getElementById('dlConfirm-img').src = icon;
                 document.getElementById('dlConfirm-title').textContent = name;
                 document.getElementById('downloadConfirmModal').style.display = 'flex';
             }
-
             function confirmDownload() {
                 document.getElementById('downloadConfirmModal').style.display = 'none';
                 if (pendingDownloadFn) { pendingDownloadFn(); pendingDownloadFn = null; }
             }
-
             function cancelDownload() {
                 document.getElementById('downloadConfirmModal').style.display = 'none';
                 pendingDownloadFn = null;
             }
+            document.getElementById('downloadConfirmModal').addEventListener('click', function(e) { if (e.target === this) cancelDownload(); });
 
-            // Click outside to close
-            document.getElementById('downloadConfirmModal').addEventListener('click', function(e) {
-                if (e.target === this) cancelDownload();
-            });
+            // ── DOWNLOAD FUNCTIONS ──
+            function triggerDownload(url, filename) { const a = document.createElement("a"); a.href = url; if(filename) a.download = filename; document.body.appendChild(a); a.click(); document.body.removeChild(a); }
+            function doDownloadFile()   { triggerDownload("https://www.dropbox.com/scl/fi/2vdri07077gd8g3qk7pm6/1174180_bypass.rar?rlkey=a4x4nr6obj427egucklc58z58&st=esusubwy&dl=1", "RDR2_Bypass.rar"); }
+            function doDownloadFile2()  { triggerDownload("https://www.dropbox.com/scl/fi/l2csd08z70msue88s2p05/3764200_bypass-2.rar?rlkey=0ievqm3kmtu4y8kncxsjvh000&st=unsg0guu&dl=1", "RE_Requiem_Bypass.rar"); }
+            function doDownloadFile3()  { triggerDownload("https://www.dropbox.com/scl/fi/8cfjg7wxooe3ur4gg0490/271590_bypass.rar?rlkey=t4qdxlyof8ptz207t1ht6oi2t&st=fe8ucc3b&dl=1", "GTA5_Bypass.rar"); }
+            function doDownloadFile4()  { triggerDownload("https://www.dropbox.com/scl/fi/gc5e81p1i04yucpu4hxrm/289650_bypass_ext.zip?rlkey=275jly98uwbpek08xutceovrs&st=6vx9dc1n&dl=1", "AssasinsCreedUnity_Bypass.zip"); }
+            function doDownloadFile5()  { triggerDownload("https://www.dropbox.com/scl/fi/llxnmfuml9xzw0r41tbsr/33230_bypass.rar?rlkey=qzqyrchcn5va7v1i7n0h1l4km&st=um7hw0gc&dl=1", "AssasinsCreed2_Bypass.rar"); }
+            function doDownloadFile6()  { triggerDownload("https://www.dropbox.com/scl/fi/rl0nbdnmgbgu8spciruma/watchdogslegionbypass.rar?rlkey=9vb80pqyqgx6dbsbg2tbd9zpw&st=gjb4wrlp&dl=1", "wdlbypass.rar"); }
+            function doDownloadFile7()  { triggerDownload("https://www.dropbox.com/scl/fi/fugr1e3vocjdrxkie3ap9/deadspacebypass.rar?rlkey=2hyyihyw4gd3d7o3oah7i6bs9&st=nm4wfb9j&dl=1", "deadspacebypass.rar"); }
+            function doDownloadFile8()  { triggerDownload("https://www.dropbox.com/scl/fi/m06hopu1emsm4wh2mp7ss/blackmythwukongbypass.rar?rlkey=usbuxxv4egh8uafu8bkgrm34v&st=c2w093ui&dl=1", "blackmythbypass.rar"); }
+            function doDownloadFile9()  { triggerDownload("https://www.dropbox.com/scl/fi/htrsi51xdtk8c6qqgpfi1/pes18bypass.rar?rlkey=cafzqr000t8xa6zmbdb1kdfgp&st=dikwd6am&dl=1", "pes18bypass.rar"); }
+            function doDownloadFile10() { triggerDownload("https://www.dropbox.com/scl/fi/ehb8ctvig7g7qmddfu5ku/stellarbypass.rar?rlkey=mut48omk5fpn1gu42ai9a1tj8&st=7z44bni6&dl=1", "stellarbypass.rar"); }
+            function doDownloadFile11() { triggerDownload("https://www.dropbox.com/scl/fi/o6zh1p7s0x56di366cjm6/pragmatabypass.rar?rlkey=yyxqz7c7onhmsyr5m03o10qd3&st=q1hzh2wm&dl=1"); }
+            function doDownloadFile13() { triggerDownload("https://www.dropbox.com/scl/fi/g2wlp0c7fzbj5qtzszwbb/1546970_bypass.rar?rlkey=ma48mbb09gn5mu58uv2vo7iwc&dl=1"); }
+            function doDownloadFile19() { triggerDownload("https://www.dropbox.com/scl/fi/wce5xu5kctymrelnpoqay/Mafia.The.Old.Country.Crack.Only-voices38.rar?rlkey=6lsg31e8hivje64p9vg2dzwfx&dl=1"); }
+            function doDownloadFile20() { triggerDownload("https://www.dropbox.com/scl/fi/gn079afvtgb3rrmt8db2n/LEGO.Batman.Legacy.of.the.Dark.Knight.Crack.Only-voices38.rar?rlkey=1tu1aqvdaz8oepf9ywnu2y1eq&st=d73njd02&dl=1"); }
+            function doDownloadFile21() { triggerDownload("https://www.dropbox.com/scl/fi/xctm734kwnw9r2pvbwomy/doombypass.rar?rlkey=i8c6gk7xgvfrr69d11stqqfow&st=e0ve6app&dl=1"); }
+            function doDownloadFile22() { triggerDownload("https://www.dropbox.com/scl/fi/nyk0rk3d9dba9m7ck1yt0/Assassins.Creed.Mirage.Valley.of.Memory.Crack.Only-voices38.rar?rlkey=bq93njn81u8uj7iqyr1ogmkyt&st=ginmhfuh&dl=1", "AC_Mirage_Bypass.rar"); }
+            function doDownloadFile23() { triggerDownload("https://www.dropbox.com/scl/fi/4nbax2kswxsqer40fh5dw/FIFA.22.Crack.Only-voices38.rar?rlkey=cq19xiwtu55p79i3c2kpda4v4&st=oq458e72&dl=1"); }
+            function doDownloadFile24() { triggerDownload("https://www.dropbox.com/scl/fi/r9kn985nwf5yd09mv7nh5/farcry4bypass.rar?rlkey=m5pgapudqc35rl6vlis123gyd&st=ihrib30i&dl=1"); }
+            function doDownloadFile25() { triggerDownload("https://www.dropbox.com/scl/fi/qbw0ekpgc0h2ba7p0ij72/farcry3bypass.rar?rlkey=ml6wds1rusy5x29tjyeh27kp7&st=rv3fiou5&dl=1"); }
 
-            // ====================== ACTUAL DOWNLOAD FUNCTIONS ======================
-            function doDownloadFile() {
-                triggerDownload("https://www.dropbox.com/scl/fi/2vdri07077gd8g3qk7pm6/1174180_bypass.rar?rlkey=a4x4nr6obj427egucklc58z58&st=esusubwy&dl=1", "RDR2_Bypass.rar");
-            }
-            function doDownloadFile2() {
-                triggerDownload("https://www.dropbox.com/scl/fi/l2csd08z70msue88s2p05/3764200_bypass-2.rar?rlkey=0ievqm3kmtu4y8kncxsjvh000&st=unsg0guu&dl=1", "RE_Requiem_Bypass.rar");
-            }
-            function doDownloadFile3() {
-                triggerDownload("https://www.dropbox.com/scl/fi/8cfjg7wxooe3ur4gg0490/271590_bypass.rar?rlkey=t4qdxlyof8ptz207t1ht6oi2t&st=fe8ucc3b&dl=1", "GTA5_Bypass.rar");
-            }
-            function doDownloadFile4() {
-                triggerDownload("https://www.dropbox.com/scl/fi/gc5e81p1i04yucpu4hxrm/289650_bypass_ext.zip?rlkey=275jly98uwbpek08xutceovrs&st=6vx9dc1n&dl=1", "AssasinsCreedUnity_Bypass.zip");
-            }
-            function doDownloadFile5() {
-                triggerDownload("https://www.dropbox.com/scl/fi/llxnmfuml9xzw0r41tbsr/33230_bypass.rar?rlkey=qzqyrchcn5va7v1i7n0h1l4km&st=um7hw0gc&dl=1", "AssasinsCreed2_Bypass.rar");
-            }
-            function doDownloadFile6() {
-                triggerDownload("https://www.dropbox.com/scl/fi/rl0nbdnmgbgu8spciruma/watchdogslegionbypass.rar?rlkey=9vb80pqyqgx6dbsbg2tbd9zpw&st=gjb4wrlp&dl=1", "wdlbypass.rar");
-            }
-            function doDownloadFile7() {
-                triggerDownload("https://www.dropbox.com/scl/fi/fugr1e3vocjdrxkie3ap9/deadspacebypass.rar?rlkey=2hyyihyw4gd3d7o3oah7i6bs9&st=nm4wfb9j&dl=1", "deadspacebypass.rar");
-            }
-            function doDownloadFile8() {
-                triggerDownload("https://www.dropbox.com/scl/fi/m06hopu1emsm4wh2mp7ss/blackmythwukongbypass.rar?rlkey=usbuxxv4egh8uafu8bkgrm34v&st=c2w093ui&dl=1", "blackmythbypass.rar");
-            }
-            function doDownloadFile9() {
-                triggerDownload("https://www.dropbox.com/scl/fi/htrsi51xdtk8c6qqgpfi1/pes18bypass.rar?rlkey=cafzqr000t8xa6zmbdb1kdfgp&st=dikwd6am&dl=1", "pes18bypass.rar");
-            }
-            function doDownloadFile10() {
-                triggerDownload("https://www.dropbox.com/scl/fi/ehb8ctvig7g7qmddfu5ku/stellarbypass.rar?rlkey=mut48omk5fpn1gu42ai9a1tj8&st=7z44bni6&dl=1", "stellarbypass.rar");
-            }
-            function doDownloadFile11() {
-            triggerDownload("https://www.dropbox.com/scl/fi/o6zh1p7s0x56di366cjm6/pragmatabypass.rar?rlkey=yyxqz7c7onhmsyr5m03o10qd3&st=q1hzh2wm&dl=1");
-            }
-            function doDownloadFile13() {
-            triggerDownload("https://www.dropbox.com/scl/fi/g2wlp0c7fzbj5qtzszwbb/1546970_bypass.rar?rlkey=ma48mbb09gn5mu58uv2vo7iwc&dl=1");
-            }
-            function doDownloadFile19() {
-            triggerDownload("https://www.dropbox.com/scl/fi/wce5xu5kctymrelnpoqay/Mafia.The.Old.Country.Crack.Only-voices38.rar?rlkey=6lsg31e8hivje64p9vg2dzwfx&dl=1");
-            }
-                function doDownloadFile20() {
-            triggerDownload("https://www.dropbox.com/scl/fi/gn079afvtgb3rrmt8db2n/LEGO.Batman.Legacy.of.the.Dark.Knight.Crack.Only-voices38.rar?rlkey=1tu1aqvdaz8oepf9ywnu2y1eq&st=d73njd02&dl=1");
-            }
-             function doDownloadFile21() {
-            triggerDownload("https://www.dropbox.com/scl/fi/xctm734kwnw9r2pvbwomy/doombypass.rar?rlkey=i8c6gk7xgvfrr69d11stqqfow&st=e0ve6app&dl=1");
-            }
-            function doDownloadFile23() {
-            triggerDownload("https://www.dropbox.com/scl/fi/4nbax2kswxsqer40fh5dw/FIFA.22.Crack.Only-voices38.rar?rlkey=cq19xiwtu55p79i3c2kpda4v4&st=oq458e72&dl=1");
-            }
-             function doDownloadFile24() {
-            triggerDownload("https://www.dropbox.com/scl/fi/r9kn985nwf5yd09mv7nh5/farcry4bypass.rar?rlkey=m5pgapudqc35rl6vlis123gyd&st=ihrib30i&dl=1");
-            }
-            function doDownloadFile25() {
-            triggerDownload("https://www.dropbox.com/scl/fi/qbw0ekpgc0h2ba7p0ij72/farcry3bypass.rar?rlkey=ml6wds1rusy5x29tjyeh27kp7&st=rv3fiou5&dl=1");
-            }
-            function doDownloadFile22() {
-            triggerDownload(
-             "https://www.dropbox.com/scl/fi/nyk0rk3d9dba9m7ck1yt0/Assassins.Creed.Mirage.Valley.of.Memory.Crack.Only-voices38.rar?rlkey=bq93njn81u8uj7iqyr1ogmkyt&st=ginmhfuh&dl=1",
-             "AC_Mirage_Bypass.rar"
-          );
-}
-            
-            function triggerDownload(url, filename) {
-                const a = document.createElement("a");
-                a.href = url;
-                a.download = filename;
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
-            }
-
-            // ====================== GAME DATA ======================
+            // ── GAME DATA ──
             const greengamelist = ["Red Dead Redemption 2","Grand Theft Auto V Legacy","Assassin's Creed Unity","Assassin's Creed II","Resident Evil Requiem","Watch Dogs: Legion","Dead Space","PES 2018","Stellar Blade","PRAGMATA","Grand Theft Auto III - The Definitive Edition","Mafia: The Old Country","LEGO Batman: Legacy of the Dark Knight","DOOM: The Dark Ages","Assassin's Creed Mirage","FIFA 22","Far Cry 4","Far Cry 3"];
             const yellowgamelist = [];
             const whitegamelist = ["Black Myth Wukong"];
             const notavailablelist = [];
             const waitGamesList = ["FIFA 21","Resident Evil 2"];
 
-            function getGameStatus(gameName) {
-                const name = normalize(gameName);
-                if (greengamelist.map(normalize).includes(name)) return { color: "green", text: "Bypass fonctionnel" };
-                if (waitGamesList.map(normalize).includes(name)) return { color: "orange", text: "En attente" };
-                if (yellowgamelist.map(normalize).includes(name)) return { color: "yellow", text: "Bypass incertain" };
-                if (whitegamelist.map(normalize).includes(name)) return { color: "white", text: "Bypass non testé" };
-                return { color: "yellow", text: "Bypass potentiellement non fonctionnel" };
-            }
+            const gamesList = ["Anno 117: Pax Romana","Assassin's Creed Shadows","Assassin's Creed Unity","Assassin's Creed Mirage","Assassin's Creed 2","Atomfall","Avatar: Frontiers of Pandora","Beyond Good & Evil - 20th Anniversary Edition","Black Myth Wukong","BattleBit Remastered","BRAVELY DEFAULT FLYING FAIRY HD Remaster","Borderlands 4","Call of Duty: Black Ops 7","City Transport Simulator","Civilization VII","CODE VEIN II","Company of Heroes 3","Construction Simulator","Crimson Desert","Dead Space","Demon Slayer: The Hinokami Chronicles 1","Demon Slayer: The Hinokami Chronicles 2","Demon Slayer -Kimetsu no Yaiba- Sweep the Board!","Digimon Story Time Stranger","Dirt 5","DOOM: The Dark Ages","DRAGON QUEST VII Reimagined","Dune","Echoes of Aincrad","EA SPORTS FC 24","EA SPORTS FC 25","EA SPORTS FC 26","EA SPORTS WRC","Eagle Flight","Etrian Odyssey HD","Etrian Odyssey II HD","Etrian Odyssey III HD","Evil Genius 2: World Domination","F1 23","F1 24","F1 25","F1 Manager 22","F1 Manager 23","F1 Manager 24","F1 Manager 26","Far Cry 4","Far Cry 3","Far Cry 6","Far Cry 5","Fe","FIFA 21","FIFA 22","FIFA 23","FINAL FANTASY TACTICS - The Ivalice Chronicles","Firefighting Simulator - The Squad","Football Manager 19","Football Manager 20","Football Manager 21","Football Manager 22","Football Manager 23","Football Manager 24","Football Manager 26","Forza Horizon 5","HONOR","FortiFyte","GRID Legends","Grand Theft Auto III - The Definitive Edition","Grand Theft Auto V Legacy","Harry Potter: Quidditch Champions","Hatsune Miku: Project Diva Megamix+","Hello Kitty Island Adventures","Hogwarts Legacy","Jurassic World Evolution 3","LEGO\u00ae Batman\u2122: Legacy of the Dark Knight","Like A Dragon: Gaiden","Like A Dragon: Infinite Wealth","Like A Dragon: Ishin","Like A Dragon: Pirate Yakuza In Hawaii","Lost in Random","Lost Judgment","Life is Strange: Reunion","Madden NFL 21","Madden NFL 22","Madden NFL 23","Madden NFL 24","Madden NFL 25","Madden NFL 26","Mafia: The Old Country","Marathon","Marvel's Midnight Suns","Microsoft Flight Simulator 2024","Might and Magic: Heroes VII \u2013 Trial by Fire","MONOPOLY 2024","Monopoly Madness","Monster Hunter Wilds","Monster Hunter Stories 3: Twisted Reflection","Mortal Kombat 1","NBA 2K24","NBA 2K25","NBA 2K26","Need for Speed Unbound","Octopath Traveler 0","OddBallers","Onimusha 2: Samurai's Destiny","Persona 3 Portable","Persona 3 Reload","Persona 4 Arena Ultimax","Persona 4 Revival","Persona 5 Tactica","PES 2018","Phantom Blade Zero","PGA TOUR 2K25","Planet Coaster 2","Plants vs. Zombies: Garden Warfare 2","PRAGMATA","Prince Of Persia The Lost Crown","Professional Baseball Spirits 2024","Professional Baseball Spirits 2025","Rocksmith 2014 Edition REMASTERED","RAIDOU Remastered","Red Dead Redemption 2","Redfall","Resident Evil Requiem","Resident Evil 2","Sea of Thieves","Shin Megami Tensei III: Nocturne HD","Shin Megami Tensei V: Vengeance","Shinobi - Art of Vengeance","Sniper Elite 5","Sniper Elite Resistance","Sniper Elite VR","Sonic Origins","Sonic Superstars","Sonic Racing Crossworlds","Sonic X Shadow Generations","Soul Hackers 2","Speedball","Star Wars Outlaws","Star Wars Squadrons","Stellar Blade","Street Fighter 6","Suicide Squad: Kill the Justice League","Super Mega Baseball 4","The Crew Motorfest","The Bus","The First Berserker: Khazan","The Settlers: New Allies","Tom Clancy's Ghost Recon Breakpoint","TopSpin 2K25","Total War: Warhammer 3","Train Sim World 2020","Train Sim World 3","Trials Rising","Two Point Museum","Undisputed","Valiant Hearts: Coming Home","Warhammer 40k: Chaos Gate Daemonhunters","Warhammer Age Of Sigmar: Realms Of Ruin","Watch Dogs: Legion","WWE 2K26","Yakuza Kiwami 3","Dark Ties","Zombie Army 4: Dead War","Zombie Army VR"];
 
-            const gamesList = [
-                "Anno 117: Pax Romana","Assassin's Creed Shadows","Assassin's Creed Unity","Assassin's Creed Mirage","Assassin's Creed 2","Atomfall","Avatar: Frontiers of Pandora","Beyond Good & Evil - 20th Anniversary Edition","Black Myth Wukong","BattleBit Remastered","BRAVELY DEFAULT FLYING FAIRY HD Remaster","Borderlands 4","Call of Duty: Black Ops 7","City Transport Simulator","Civilization VII","CODE VEIN II","Company of Heroes 3","Construction Simulator","Crimson Desert","Dead Space","Demon Slayer: The Hinokami Chronicles 1","Demon Slayer: The Hinokami Chronicles 2","Demon Slayer -Kimetsu no Yaiba- Sweep the Board!","Digimon Story Time Stranger","Dirt 5","DOOM: The Dark Ages","DRAGON QUEST VII Reimagined","Dune","Echoes of Aincrad","EA SPORTS FC 24","EA SPORTS FC 25","EA SPORTS FC 26","EA SPORTS WRC","Eagle Flight","Etrian Odyssey HD","Etrian Odyssey II HD","Etrian Odyssey III HD","Evil Genius 2: World Domination","F1 23","F1 24","F1 25","F1 Manager 22","F1 Manager 23","F1 Manager 24","F1 Manager 26","Far Cry 4","Far Cry 3","Far Cry 6","Far Cry 5","Fe","FIFA 21","FIFA 22","FIFA 23","FINAL FANTASY TACTICS - The Ivalice Chronicles","Firefighting Simulator - The Squad","Football Manager 19","Football Manager 20","Football Manager 21","Football Manager 22","Football Manager 23","Football Manager 24","Football Manager 26","Forza Horizon 5","HONOR","FortiFyte","GRID Legends","Grand Theft Auto III - The Definitive Edition","Grand Theft Auto V Legacy","Harry Potter: Quidditch Champions","Hatsune Miku: Project Diva Megamix+","Hello Kitty Island Adventures","Hogwarts Legacy","Jurassic World Evolution 3","LEGO® Batman™: Legacy of the Dark Knight","Like A Dragon: Gaiden","Like A Dragon: Infinite Wealth","Like A Dragon: Ishin","Like A Dragon: Pirate Yakuza In Hawaii","Lost in Random","Lost Judgment","Life is Strange: Reunion","Madden NFL 21","Madden NFL 22","Madden NFL 23","Madden NFL 24","Madden NFL 25","Madden NFL 26","Mafia: The Old Country","Marathon","Marvel's Midnight Suns","Microsoft Flight Simulator 2024","Might and Magic: Heroes VII – Trial by Fire","MONOPOLY 2024","Monopoly Madness","Monster Hunter Wilds","Monster Hunter Stories 3: Twisted Reflection","Mortal Kombat 1","NBA 2K24","NBA 2K25","NBA 2K26","Need for Speed Unbound","Octopath Traveler 0","OddBallers","Onimusha 2: Samurai's Destiny","Persona 3 Portable","Persona 3 Reload","Persona 4 Arena Ultimax","Persona 4 Revival","Persona 5 Tactica","PES 2018","Phantom Blade Zero","PGA TOUR 2K25","Planet Coaster 2","Plants vs. Zombies: Garden Warfare 2","PRAGMATA","Prince Of Persia The Lost Crown","Professional Baseball Spirits 2024","Professional Baseball Spirits 2025","Rocksmith 2014 Edition REMASTERED","RAIDOU Remastered","Red Dead Redemption 2","Redfall","Resident Evil Requiem","Resident Evil 2","Sea of Thieves","Shin Megami Tensei III: Nocturne HD","Shin Megami Tensei V: Vengeance","Shinobi - Art of Vengeance","Sniper Elite 5","Sniper Elite Resistance","Sniper Elite VR","Sonic Origins","Sonic Superstars","Sonic Racing Crossworlds","Sonic X Shadow Generations","Soul Hackers 2","Speedball","Star Wars Outlaws","Star Wars Squadrons","Stellar Blade","Street Fighter 6","Suicide Squad: Kill the Justice League","Super Mega Baseball 4","The Crew Motorfest","The Bus","The First Berserker: Khazan","The Settlers: New Allies","Tom Clancy's Ghost Recon Breakpoint","TopSpin 2K25","Total War: Warhammer 3","Train Sim World 2020","Train Sim World 3","Trials Rising","Two Point Museum","Undisputed","Valiant Hearts: Coming Home","Warhammer 40k: Chaos Gate Daemonhunters","Warhammer Age Of Sigmar: Realms Of Ruin","Watch Dogs: Legion","WWE 2K26","Yakuza Kiwami 3","Dark Ties","Zombie Army 4: Dead War","Zombie Army VR"
-            ];
-
-            const bypassGames = ["red dead redemption 2","red dead redemption","red dead","rdr2","resident evil requiem","resident evil req","re requiem","grand theft auto","grand theft auto V","grand theft auto v legacy","grand t","grand","assassin's creed unity","assassins creed unity","assassin's creed u","assassins creed u","assassin's creed 2","assassins creed 2","Dead","Dead Space","Dead Spa","Watch Dogs","Watch Dogs:","Watch Dogs: Legion","Black Myth Wukong","Black Myth","Black","PES 2018","PES","PES 18","Stellar Blade","Stellar","Stellar Bl","Stell","PRAGMATA","PRAG","pragmata","prag","Grand Theft Auto III - The Definitive Edition","Mafia: The Old Country","LEGO Batman: Legacy of the Dark Knight","DOOM: The Dark Ages","Assassin's Creed Mirage","FIFA 22","Far Cry 4","Far Cry 3"];
+            const bypassGames = ["red dead redemption 2","red dead redemption","red dead","rdr2","resident evil requiem","grand theft auto","grand theft auto V","grand theft auto v legacy","assassin's creed unity","assassins creed unity","assassin's creed 2","assassins creed 2","dead space","watch dogs","watch dogs: legion","black myth wukong","black myth","pes 2018","pes","pes 18","stellar blade","stellar","pragmata","prag","grand theft auto iii - the definitive edition","mafia: the old country","lego batman: legacy of the dark knight","doom: the dark ages","assassin's creed mirage","fifa 22","far cry 4","far cry 3"];
             const purchaseList = ["FIFA 23","Forza Horizon 5","Hogwarts Legacy"];
 
-            function normalize(t) {
-                return t.toLowerCase().replace(/[^a-z0-9]/g, "");
-            }
+            function normalize(t) { return t.toLowerCase().replace(/[^a-z0-9]/g, ""); }
             function score(input, game) {
                 const a = normalize(input), b = normalize(game);
                 if (a === b) return 100;
@@ -2427,11 +1921,10 @@
             }
 
             function downloadGames() {
-                const header = `  ____\n |  _ \\\n | |_) |_   _ _ __ __ _  ___ _ __ \n |  _ <| | | | '__/ _\` |/ _ \\ '__|\n | |_) | |_| | | | (_| |  __/ |   \n |____/ \\__,_|_|  \\__, |\\___|_|   \n                   __/ |          \n                  |___/ \n\nGénération de la liste des jeux indisponibles actuelles sur :\n\nhttps://stools-help.vercel.app/?v=999\n\n(Je répète, cette liste peut être incomplète)\n\n-------------------------------\n`;
-                const blob = new Blob([header + "\n" + gamesList.join("\n")], { type: "text/plain" });
+                const header = `SteamTools Helper\nhttps://stools-help.vercel.app\n\n`;
+                const blob = new Blob([header + gamesList.join("\n")], { type: "text/plain" });
                 const url = URL.createObjectURL(blob);
-                const a = document.createElement("a");
-                a.href = url; a.download = "games.txt"; a.click();
+                const a = document.createElement("a"); a.href = url; a.download = "games.txt"; a.click();
                 URL.revokeObjectURL(url);
             }
 
@@ -2443,83 +1936,36 @@
                 const expWait = document.getElementById("explanation-wait");
                 const expBypass = document.getElementById("explanation-bypass");
                 const listEl = document.getElementById("list");
-
-                expOk.style.display = "none";
-                expNo.style.display = "none";
-                expBypass.style.display = "none";
-                expWait.style.display = "none";
+                expOk.style.display = "none"; expNo.style.display = "none";
+                expBypass.style.display = "none"; expWait.style.display = "none";
                 document.getElementById("explanation-purchase").style.display = "none";
-
-                if (!inputRaw) {
-                    result.textContent = "Tape pour commencer le scan...";
-                    result.className = "result";
-                    listEl.innerHTML = "";
-                    return;
-                }
-
+                if (!inputRaw) { result.textContent = "Tape pour commencer le scan..."; result.className = "result"; listEl.innerHTML = ""; return; }
                 let best = null, bestScore = 0;
-                gamesList.forEach(game => {
-                    const s = score(inputRaw, game);
-                    if (s > bestScore) { bestScore = s; best = game; }
-                });
-
+                gamesList.forEach(game => { const s = score(inputRaw, game); if (s > bestScore) { bestScore = s; best = game; } });
                 const isBypass = best && bypassGames.some(g => normalize(best) === normalize(g));
                 const isPurchase = best && purchaseList.some(g => normalize(best) === normalize(g));
                 const isWait = best && waitGamesList.some(g => normalize(best) === normalize(g));
-
                 if (bestScore >= 70) {
-                    if (isPurchase) {
-                        result.innerHTML = `${best} <span style="font-size:1.3rem;">💜</span>`;
-                        result.className = "result purchase";
-                        document.getElementById("explanation-purchase").style.display = "block";
-                    } else if (isWait) {
-                        result.innerHTML = `${best} <span style="font-size:1.3rem;">⏳</span>`;
-                        result.className = "result wait";
-                        expWait.style.display = "block";
-                    } else if (isBypass) {
-                        result.innerHTML = `${best} <span style="font-size:1.3rem;">⚠️</span>`;
-                        result.className = "result bypass-result";
-                        expBypass.style.display = "block";
-                    } else {
-                        result.innerHTML = `${best} <span style="font-size:1.3rem;">❌</span>`;
-                        result.className = "result no";
-                        expNo.style.display = "block";
-                    }
-                } else {
-                    result.innerHTML = `${inputRaw} <span style="font-size:1.3rem;">✅</span>`;
-                    result.className = "result ok";
-                    expOk.style.display = "block";
-                }
-
+                    if (isPurchase) { result.innerHTML = `${best} <span style="font-size:1.3rem;">💜</span>`; result.className = "result purchase"; document.getElementById("explanation-purchase").style.display = "block"; }
+                    else if (isWait) { result.innerHTML = `${best} <span style="font-size:1.3rem;">⏳</span>`; result.className = "result wait"; expWait.style.display = "block"; }
+                    else if (isBypass) { result.innerHTML = `${best} <span style="font-size:1.3rem;">⚠️</span>`; result.className = "result bypass-result"; expBypass.style.display = "block"; }
+                    else { result.innerHTML = `${best} <span style="font-size:1.3rem;">❌</span>`; result.className = "result no"; expNo.style.display = "block"; }
+                } else { result.innerHTML = `${inputRaw} <span style="font-size:1.3rem;">✅</span>`; result.className = "result ok"; expOk.style.display = "block"; }
                 const matches = gamesList.filter(g => normalize(g).includes(normalize(inputRaw))).slice(0, 8);
                 listEl.innerHTML = matches.map(g => `<div class="item" onclick="selectGame('${g.replace(/'/g, "\\'")}')">${g}</div>`).join("");
             }
-
-            function selectGame(game) {
-                document.getElementById("search").value = game;
-                document.getElementById("list").innerHTML = "";
-                liveSearch();
-            }
+            function selectGame(game) { document.getElementById("search").value = game; document.getElementById("list").innerHTML = ""; liveSearch(); }
 
             let fullListVisible = false;
             function toggleFullList() {
                 const el = document.getElementById("full-list");
                 const btns = document.querySelectorAll(".show-list-btn");
                 fullListVisible = !fullListVisible;
-                if (fullListVisible) {
-                    el.innerHTML = `<div id="full-list-items"></div>`;
-                    renderFullListItems();
-                    el.style.display = "block";
-                    btns[0].textContent = "❌ Fermer la liste";
-                } else {
-                    el.style.display = "none";
-                    btns[0].textContent = "📋 Voir la liste de jeux";
-                }
+                if (fullListVisible) { el.innerHTML = `<div id="full-list-items"></div>`; renderFullListItems(); el.style.display = "block"; btns[0].textContent = "❌ Fermer la liste"; }
+                else { el.style.display = "none"; btns[0].textContent = "📋 Voir la liste de jeux"; }
             }
-
             function renderFullListItems(filteredGames = gamesList) {
-                const container = document.getElementById("full-list-items");
-                if (!container) return;
+                const container = document.getElementById("full-list-items"); if (!container) return;
                 container.innerHTML = filteredGames.map(g => {
                     const normG = normalize(g);
                     const isBypassGame = bypassGames.some(b => normalize(b) === normG);
@@ -2532,20 +1978,7 @@
                     return `<div class="${className}" onclick="selectGameFromList('${g.replace(/'/g, "\\'")}')">${emoji} ${g}</div>`;
                 }).join("");
             }
-
-            function filterFullList() {
-                const searchTerm = document.getElementById("full-list-search").value.toLowerCase().trim();
-                renderFullListItems(gamesList.filter(game => normalize(game).includes(normalize(searchTerm))));
-            }
-
-            function selectGameFromList(gameName) {
-                toggleFullList();
-                switchTab(1);
-                setTimeout(() => {
-                    document.getElementById("search").value = gameName;
-                    liveSearch();
-                }, 300);
-            }
+            function selectGameFromList(gameName) { toggleFullList(); switchTab(1); setTimeout(() => { document.getElementById("search").value = gameName; liveSearch(); }, 300); }
 
             function toggleFaq(el) {
                 const answer = el.nextElementSibling;
@@ -2555,7 +1988,7 @@
                 if (!isOpen) { answer.classList.add("open"); el.classList.add("open"); }
             }
 
-            // ====================== MODAL OPEN/CLOSE ======================
+            // ── MODAL OPEN/CLOSE ──
             function showBypassModal()  { document.getElementById("bypassModal").style.display = "flex"; }
             function closeModal()       { document.getElementById("bypassModal").style.display = "none"; }
             function showBypassModal2() { document.getElementById("bypassModal2").style.display = "flex"; }
@@ -2576,23 +2009,23 @@
             function closeModal9()      { document.getElementById("bypassModal9").style.display = "none"; }
             function showBypassModal10(){ document.getElementById("bypassModal10").style.display = "flex"; }
             function closeModal10()     { document.getElementById("bypassModal10").style.display = "none"; }
-             function showBypassModal11(){ document.getElementById("bypassModal12").style.display = "flex"; }
+            function showBypassModal11(){ document.getElementById("bypassModal12").style.display = "flex"; }
             function closeModal11()     { document.getElementById("bypassModal12").style.display = "none"; }
-             function showBypassModal12(){ document.getElementById("bypassModal13").style.display = "flex"; }
+            function showBypassModal12(){ document.getElementById("bypassModal13").style.display = "flex"; }
             function closeModal13()     { document.getElementById("bypassModal13").style.display = "none"; }
-               function showBypassModal19(){ document.getElementById("bypassModal19").style.display = "flex"; }
+            function showBypassModal19(){ document.getElementById("bypassModal19").style.display = "flex"; }
             function closeModal19()     { document.getElementById("bypassModal19").style.display = "none"; }
-             function showBypassModal20(){ document.getElementById("bypassModal20").style.display = "flex"; }
+            function showBypassModal20(){ document.getElementById("bypassModal20").style.display = "flex"; }
             function closeModal20()     { document.getElementById("bypassModal20").style.display = "none"; }
-             function showBypassModal21(){ document.getElementById("bypassModal21").style.display = "flex"; }
+            function showBypassModal21(){ document.getElementById("bypassModal21").style.display = "flex"; }
             function closeModal21()     { document.getElementById("bypassModal21").style.display = "none"; }
-         function showBypassModal22(){ document.getElementById("bypassModal22").style.display = "flex"; }
+            function showBypassModal22(){ document.getElementById("bypassModal22").style.display = "flex"; }
             function closeModal22()     { document.getElementById("bypassModal22").style.display = "none"; }
-             function showBypassModal23(){ document.getElementById("bypassModal23").style.display = "flex"; }
+            function showBypassModal23(){ document.getElementById("bypassModal23").style.display = "flex"; }
             function closeModal23()     { document.getElementById("bypassModal23").style.display = "none"; }
-          function showBypassModal24(){ document.getElementById("bypassModal24").style.display = "flex"; }
+            function showBypassModal24(){ document.getElementById("bypassModal24").style.display = "flex"; }
             function closeModal24()     { document.getElementById("bypassModal24").style.display = "none"; }
-           function showBypassModal25(){ document.getElementById("bypassModal25").style.display = "flex"; }
+            function showBypassModal25(){ document.getElementById("bypassModal25").style.display = "flex"; }
             function closeModal25()     { document.getElementById("bypassModal25").style.display = "none"; }
 
             function switchTab(n) {
@@ -2606,32 +2039,97 @@
             function goToBypassTab() { closeNewBypassPopup(); switchTab(2); }
             document.getElementById("newBypassPopup").addEventListener("click", function(e) { if (e.target === this) closeNewBypassPopup(); });
 
-            // ====================== BYPASS SEARCH ======================
-            function filterBypasses() {
-                const input = document.getElementById("bypass-search");
-                if (!input) return;
-                const searchTerm = input.value.toLowerCase().trim();
-                document.querySelectorAll("#bypass-list .bypass-card").forEach(card => {
-                    const name = card.querySelector(".bypass-card-name").textContent.toLowerCase();
-                    if (searchTerm === "" || name.includes(searchTerm)) {
-                        card.style.display = "flex"; card.style.opacity = "1"; card.style.transform = "scale(1)";
-                    } else {
-                        card.style.opacity = "0";
-                        setTimeout(() => { if (card.style.opacity === "0") card.style.display = "none"; }, 300);
-                    }
+            // ── BYPASS CARD DATA ──
+            const BP_GAMES = [
+                { img:"rdr2.png",       name:"Red Dead Redemption 2",              pub:"Rockstar",    tag:"rockstar", status:"ok",   modalFn: showBypassModal   },
+                { img:"requiem.png",    name:"Resident Evil Requiem",              pub:"Capcom",      tag:"capcom",   status:"ok",   modalFn: showBypassModal2  },
+                { img:"gta5.png",       name:"Grand Theft Auto V Legacy",          pub:"Rockstar",    tag:"rockstar", status:"ok",   modalFn: showBypassModal3  },
+                { img:"assassins.png",  name:"Assassin's Creed Unity",             pub:"Ubisoft",     tag:"ubisoft",  status:"ok",   modalFn: showBypassModal4  },
+                { img:"assassins2.png", name:"Assassin's Creed II",                pub:"Ubisoft",     tag:"ubisoft",  status:"ok",   modalFn: showBypassModal5  },
+                { img:"wdl.png",        name:"Watch Dogs: Legion",                 pub:"Ubisoft",     tag:"ubisoft",  status:"ok",   modalFn: showBypassModal6  },
+                { img:"deadspace.png",  name:"Dead Space",                         pub:"EA",          tag:"ea",       status:"ok",   modalFn: showBypassModal7  },
+                { img:"blackmyth.png",  name:"Black Myth Wukong",                  pub:"Game Science", tag:"other",   status:"warn", modalFn: showBypassModal8  },
+                { img:"pes18.png",      name:"PES 2018",                           pub:"Konami",      tag:"konami",   status:"ok",   modalFn: showBypassModal9  },
+                { img:"stellar.png",    name:"Stellar Blade",                      pub:"Shift Up",    tag:"other",    status:"ok",   modalFn: showBypassModal10 },
+                { img:"PRAGMATA.png",   name:"PRAGMATA",                           pub:"Capcom",      tag:"capcom",   status:"ok",   modalFn: showBypassModal11 },
+                { img:"GTA3.png",       name:"GTA III – Definitive Edition",       pub:"Rockstar",    tag:"rockstar", status:"ok",   modalFn: showBypassModal12 },
+                { img:"MAFIA.png",      name:"Mafia: The Old Country",             pub:"2K",          tag:"other",    status:"ok",   modalFn: showBypassModal19 },
+                { img:"lego.png",       name:"LEGO Batman: Legacy",                pub:"Warner",      tag:"other",    status:"ok",   modalFn: showBypassModal20 },
+                { img:"doom.png",       name:"DOOM: The Dark Ages",                pub:"id Software", tag:"other",    status:"ok",   modalFn: showBypassModal21 },
+                { img:"mirage.png",     name:"Assassin's Creed Mirage",            pub:"Ubisoft",     tag:"ubisoft",  status:"ok",   modalFn: showBypassModal22 },
+                { img:"fifa22.png",     name:"FIFA 22",                            pub:"EA",          tag:"ea",       status:"ok",   modalFn: showBypassModal23 },
+                { img:"re3.png",        name:"Far Cry 4",                          pub:"Ubisoft",     tag:"ubisoft",  status:"ok",   modalFn: showBypassModal24 },
+                { img:"farcry3.png",    name:"Far Cry 3",                          pub:"Ubisoft",     tag:"ubisoft",  status:"ok",   modalFn: showBypassModal25 },
+            ];
+
+            let bpCurrentChip = 'all';
+
+            function bpRender(list) {
+                const grid = document.getElementById('bp-grid');
+                const countEl = document.getElementById('bp-count');
+                if (countEl) countEl.textContent = list.length;
+                if (!grid) return;
+                if (list.length === 0) {
+                    grid.innerHTML = `<div class="bp-empty"><div class="bp-empty-icon">🔍</div><div class="bp-empty-text">Aucun bypass trouvé pour cette recherche.</div></div>`;
+                    return;
+                }
+                grid.innerHTML = '';
+                list.forEach(g => {
+                    const card = document.createElement('div');
+                    card.className = 'bp-card';
+                    card.onclick = g.modalFn;
+                    card.innerHTML = `
+                        <div class="bp-dot ${g.status}"></div>
+                        <img
+                            class="bp-card-thumb"
+                            src="${g.img}"
+                            alt="${g.name}"
+                            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+                            loading="lazy"
+                        />
+                        <div class="bp-thumb-fallback" style="background:linear-gradient(135deg,#0a0a1a,#1a1a3a)">
+                            <span style="font-size:2rem;opacity:0.4">${g.name.charAt(0)}</span>
+                        </div>
+                        <div class="bp-card-overlay"></div>
+                        <div class="bp-card-body">
+                            <div class="bp-card-name">${g.name}</div>
+                            <div class="bp-card-footer">
+                                <div class="bp-card-publisher">${g.pub}</div>
+                                <div class="bp-badge ${g.status}">${
+                                    g.status === 'ok'   ? 'Fonctionnel' :
+                                    g.status === 'warn' ? 'Non testé'   : 'En attente'
+                                }</div>
+                            </div>
+                        </div>
+                        <div class="bp-card-hover-action">
+                            <div class="bp-hover-pill">Voir le bypass →</div>
+                        </div>
+                    `;
+                    grid.appendChild(card);
                 });
             }
 
-            document.addEventListener("DOMContentLoaded", () => {
-                document.querySelectorAll('button[onclick*="switchTab(2)"]').forEach(btn => {
-                    btn.addEventListener("click", () => setTimeout(() => {
-                        const si = document.getElementById("bypass-search");
-                        if (si) { si.focus(); filterBypasses(); }
-                    }, 180));
-                });
-            });
+            function bpFilter() {
+                const q = (document.getElementById('bp-search')?.value || '').toLowerCase().trim();
+                let list = BP_GAMES;
+                if (bpCurrentChip !== 'all') list = list.filter(g => g.tag === bpCurrentChip);
+                if (q) list = list.filter(g => g.name.toLowerCase().includes(q) || g.pub.toLowerCase().includes(q));
+                bpRender(list);
+            }
 
-            // ====================== INIT ON LOAD ======================
+            function bpSetChip(el, chip) {
+                bpCurrentChip = chip;
+                document.querySelectorAll('.bp-chip').forEach(c => c.classList.remove('active'));
+                el.classList.add('active');
+                const s = document.getElementById('bp-search');
+                if (s) s.value = '';
+                bpFilter();
+            }
+
+            // rétrocompatibilité
+            function filterBypasses() { bpFilter(); }
+
+            // ── INIT ──
             window.addEventListener("load", () => {
                 // Theme
                 const custom = localStorage.getItem("customAccent");
@@ -2639,119 +2137,58 @@
                 if (custom) applyCustomColor(custom);
                 else { const btn = document.querySelector(`[data-theme="${theme}"]`); setTheme(theme, btn); }
 
-                // Bypass card tags
-                document.querySelectorAll(".bypass-card").forEach(card => {
-                    const gameName = card.querySelector(".bypass-card-name").textContent;
-                    const tag = card.querySelector(".bypass-card-tag");
-                    const status = getGameStatus(gameName);
-                    tag.classList.remove("green", "yellow", "white", "orange");
-                    tag.classList.add(status.color);
-                    tag.textContent = status.text;
-                });
-
-                // Restore card size
-                const savedSize = localStorage.getItem('cardSize') || 'medium';
-                setCardSize(savedSize);
-
-                // Restore animations setting
+                // Animations
                 if (localStorage.getItem('noAnimations') === '1') {
                     document.body.classList.add('no-animations');
                     const tog = document.getElementById('anim-toggle');
                     if (tog) tog.checked = true;
-                    
-                    // ====================== URL TAB ROUTING ======================
-const tabMap = {
-    accueil: 0, checker: 1, bypass: 2,
-    onlinefix: 3, "online-fix": 3,
-    commandes: 4, faq: 5,
-    parametres: 6, settings: 6
-};
-const urlParams = new URLSearchParams(window.location.search);
-const tabParam = urlParams.get("tab");
-if (tabParam && tabMap[tabParam.toLowerCase()] !== undefined) {
-    switchTab(tabMap[tabParam.toLowerCase()]);
-}
                 }
 
-                // Restore download confirm setting
-       // ====================== DOWNLOAD CONFIRMATION (Par défaut activé la première fois) ======================
-let downloadConfirm = localStorage.getItem('downloadConfirm');
+                // Download confirm (activé par défaut)
+                let dlConfirm = localStorage.getItem('downloadConfirm');
+                if (dlConfirm === null) { dlConfirm = '1'; localStorage.setItem('downloadConfirm', '1'); }
+                const dlTog = document.getElementById('dlconfirm-toggle');
+                if (dlTog) dlTog.checked = (dlConfirm === '1');
 
-// Si aucune valeur n'existe encore (première visite), on active par défaut
-if (downloadConfirm === null) {
-    downloadConfirm = '1';
-    localStorage.setItem('downloadConfirm', '1');
-}
+                // Render bypass cards
+                bpRender(BP_GAMES);
 
-const tog = document.getElementById('dlconfirm-toggle');
-if (tog) {
-    tog.checked = (downloadConfirm === '1');
-}
+                // URL tab routing
+                setTimeout(() => {
+                    const tabMap = { accueil:0, checker:1, bypass:2, onlinefix:3, "online-fix":3, commandes:4, faq:5, parametres:6, settings:6 };
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const tabParam = urlParams.get("tab");
+                    if (tabParam && tabMap[tabParam.toLowerCase()] !== undefined) switchTab(tabMap[tabParam.toLowerCase()]);
+
+                    // Hash modal
+                    const modalMap = {
+                        rdr2: showBypassModal, reddeadredemption2: showBypassModal,
+                        rerequiem: showBypassModal2, residentevilrequiem: showBypassModal2,
+                        gta5: showBypassModal3, gtav: showBypassModal3,
+                        acunity: showBypassModal4, assassinscreedunity: showBypassModal4,
+                        ac2: showBypassModal5, assassinscreed2: showBypassModal5,
+                        watchdogslegion: showBypassModal6,
+                        deadspace: showBypassModal7,
+                        blackmythwukong: showBypassModal8,
+                        pes2018: showBypassModal9,
+                        stellarblade: showBypassModal10,
+                        pragmata: showBypassModal11,
+                        gta3: showBypassModal12,
+                        mafia: showBypassModal19,
+                        lego: showBypassModal20,
+                        doom: showBypassModal21,
+                        mirage: showBypassModal22,
+                        fifa22: showBypassModal23,
+                        farcry4: showBypassModal24,
+                        farcry3: showBypassModal25,
+                    };
+                    const hash = window.location.hash.replace("#", "").toLowerCase().replace(/[^a-z0-9]/g, "");
+                    if (hash && modalMap[hash]) modalMap[hash]();
+
+                    // Popup
+                    if (tabParam !== "bypass") document.getElementById("newBypassPopup").style.display = "flex";
+                }, 50);
             });
-            
-             window.addEventListener("load", () => {
-        setTimeout(() => {
-            const tabMap = {
-                accueil: 0, checker: 1, bypass: 2,
-                onlinefix: 3, "online-fix": 3,
-                commandes: 4, faq: 5,
-                parametres: 6, settings: 6
-            };
-            const urlParams = new URLSearchParams(window.location.search);
-            const tabParam = urlParams.get("tab");
-            if (tabParam && tabMap[tabParam.toLowerCase()] !== undefined) {
-                switchTab(tabMap[tabParam.toLowerCase()]);
-            }
-
-            // ===== HASH → MODAL =====
-            const modalMap = {
-                rdr2: showBypassModal,
-                reddeadredemption2: showBypassModal,
-                reddeadredemption: showBypassModal,
-                rerequiem: showBypassModal2,
-                residentevilrequiem: showBypassModal2,
-                gta5: showBypassModal3,
-                gtav: showBypassModal3,
-                grandtheftautovlegacy: showBypassModal3,
-                acunity: showBypassModal4,
-                assassinscreedunity: showBypassModal4,
-                ac2: showBypassModal5,
-                assasinscreed2: showBypassModal5,
-                assassinscreed2: showBypassModal5,
-                watchdogslegion: showBypassModal6,
-                watchdogs: showBypassModal6,
-                deadspace: showBypassModal7,
-                blackmythwukong: showBypassModal8,
-                blackmyth: showBypassModal8,
-                pes2018: showBypassModal9,
-                pes: showBypassModal9,
-                stellarblade: showBypassModal10,
-                stellar: showBypassModal10,
-                pragmata: showBypassModal11,
-                gta3: showBypassModal12,
-                grandtheftauto3: showBypassModal12,
-                mafia: showBypassModal19,
-                mafiatheoldcountry: showBypassModal19,
-                lego: showBypassModal20,
-                doom: showBypassModal21,
-                mirage: showBypassModal22,
-                fifa22: showBypassModal23,
-                farcry4: showBypassModal24,
-            };
-
-            const hash = window.location.hash.replace("#", "").toLowerCase().replace(/[^a-z0-9]/g, "");
-            if (hash && modalMap[hash]) {
-                modalMap[hash]();
-            }
-            
-                    // ===== POPUP : masqué si on est sur tab=bypass =====
-        if (tabParam !== "bypass") {
-            document.getElementById("newBypassPopup").style.display = "flex";
-        }
-            
-        }, 50);
-    });
-            
         </script>
     </body>
 </html>
