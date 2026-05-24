@@ -495,27 +495,7 @@
             }
             .bp-search-input::placeholder { color: rgba(255,255,255,0.22); }
 
-            .bp-chips { display: flex; gap: 7px; flex-wrap: wrap; margin-bottom: 18px; }
-            .bp-chip {
-                padding: 5px 14px;
-                border-radius: 20px;
-                border: 1px solid rgba(255,255,255,0.1);
-                background: rgba(255,255,255,0.04);
-                color: rgba(255,255,255,0.45);
-                font-size: 0.75rem;
-                font-weight: 600;
-                cursor: pointer;
-                transition: all 0.2s;
-                letter-spacing: 0.5px;
-                text-transform: uppercase;
-            }
-            .bp-chip:hover { border-color: rgba(0,240,255,0.35); color: rgba(255,255,255,0.85); }
-            .bp-chip.active {
-                border-color: var(--neon-cyan);
-                background: rgba(0,240,255,0.12);
-                color: var(--neon-cyan);
-                box-shadow: 0 0 14px rgba(0,240,255,0.15);
-            }
+          
 
             .bp-count-bar {
                 font-size: 0.75rem;
@@ -1135,16 +1115,7 @@
                                        oninput="bpFilter()" />
                             </div>
 
-                            <!-- Filter chips -->
-                            <div class="bp-chips" id="bp-chips">
-                                <button class="bp-chip active" onclick="bpSetChip(this,'all')">Tous</button>
-                                <button class="bp-chip" onclick="bpSetChip(this,'rockstar')">Rockstar</button>
-                                <button class="bp-chip" onclick="bpSetChip(this,'ubisoft')">Ubisoft</button>
-                                <button class="bp-chip" onclick="bpSetChip(this,'ea')">EA</button>
-                                <button class="bp-chip" onclick="bpSetChip(this,'capcom')">Capcom</button>
-                                <button class="bp-chip" onclick="bpSetChip(this,'konami')">Konami</button>
-                                <button class="bp-chip" onclick="bpSetChip(this,'other')">Autres</button>
-                            </div>
+                   
 
                             <!-- Count -->
                             <div class="bp-count-bar"><span id="bp-count">19</span> bypass affiché(s)</div>
@@ -1445,6 +1416,26 @@
                     <div class="step"><div class="step-number">3</div><div><strong>Extrait et copie les fichiers</strong><br/><small>WinRAR → extraire → copier tout dans le dossier.</small><div class="password-box">Mot de passe : <strong>openlua.cloud</strong></div></div></div>
                     <div class="step"><div class="step-number">4</div><div><strong>Remplace les fichiers existants</strong><br/><small>Clique sur Remplacer quand Windows le demande.</small></div></div>
                     <div class="step"><div class="step-number">5</div><div><strong>Lancez le jeu</strong><br/><small>Via re9.exe</small></div></div>
+                </div>
+            </div>
+        </div>
+        
+                <!-- MODAL RE REQUIEM -->
+        <div id="bypassModal26" class="modal">
+            <div class="modal-content">
+                <div class="modal-left">
+                    <img src="blackopswar.png" class="modal-image" />
+                    <div class="modal-title">Call of Duty : Black Ops Cold War</div>
+                    <button class="download-btn" onclick="showDownloadConfirm('blackopswar.png','Call of Duty : Black Ops Cold War',doDownloadFile26)">↓ Télécharger</button>
+                    <button class="close-btn" onclick="closeModal26()">Fermer</button>
+                </div>
+                <div class="modal-right">
+                    <h3 style="color:var(--neon-cyan);margin-bottom:10px">Installation</h3>
+                    <div class="step"><div class="step-number">1</div><div><strong>Installe le jeu sur Steam</strong><br/><small>Assure-toi que le jeu est installé via Steam avant de continuer.</small></div></div>
+                    <div class="step"><div class="step-number">2</div><div><strong>Ouvre le dossier du jeu</strong><br/><small>Clic droit → Gérer → Parcourir les fichiers locaux.</small></div></div>
+                    <div class="step"><div class="step-number">3</div><div><strong>Extrait et copie les fichiers</strong><br/><small>WinRAR → extraire → copier tout dans le dossier.</small><div class="password-box">Mot de passe : <strong>burger</strong></div></div></div>
+                    <div class="step"><div class="step-number">4</div><div><strong>Remplace les fichiers existants</strong><br/><small>Clique sur Remplacer quand Windows le demande.</small></div></div>
+                    <div class="step"><div class="step-number">5</div><div><strong>Lancez le jeu</strong><br/><small>Via Steam (oui tu peux)</small></div></div>
                 </div>
             </div>
         </div>
@@ -1893,6 +1884,8 @@
             function doDownloadFile23() { triggerDownload("https://www.dropbox.com/scl/fi/4nbax2kswxsqer40fh5dw/FIFA.22.Crack.Only-voices38.rar?rlkey=cq19xiwtu55p79i3c2kpda4v4&st=oq458e72&dl=1"); }
             function doDownloadFile24() { triggerDownload("https://www.dropbox.com/scl/fi/r9kn985nwf5yd09mv7nh5/farcry4bypass.rar?rlkey=m5pgapudqc35rl6vlis123gyd&st=ihrib30i&dl=1"); }
             function doDownloadFile25() { triggerDownload("https://www.dropbox.com/scl/fi/qbw0ekpgc0h2ba7p0ij72/farcry3bypass.rar?rlkey=ml6wds1rusy5x29tjyeh27kp7&st=rv3fiou5&dl=1"); }
+            function doDownloadFile26() { triggerDownload("https://www.dropbox.com/scl/fi/gy12yajiiz2u5q1yon9vn/blackopswarbypass.rar?rlkey=x32ntji6u4gt4rs16isq0ku3q&st=8pwzgy32&dl=1", "CallofDutyBlackOpsColdWar_Bypass.rar");
+}
 
             // ── GAME DATA ──
             const greengamelist = ["Red Dead Redemption 2","Grand Theft Auto V Legacy","Assassin's Creed Unity","Assassin's Creed II","Resident Evil Requiem","Watch Dogs: Legion","Dead Space","PES 2018","Stellar Blade","PRAGMATA","Grand Theft Auto III - The Definitive Edition","Mafia: The Old Country","LEGO Batman: Legacy of the Dark Knight","DOOM: The Dark Ages","Assassin's Creed Mirage","FIFA 22","Far Cry 4","Far Cry 3"];
@@ -2024,6 +2017,8 @@
             function closeModal24()     { document.getElementById("bypassModal24").style.display = "none"; }
             function showBypassModal25(){ document.getElementById("bypassModal25").style.display = "flex"; }
             function closeModal25()     { document.getElementById("bypassModal25").style.display = "none"; }
+             function showBypassModal26(){ document.getElementById("bypassModal26").style.display = "flex"; }
+            function closeModal26()     { document.getElementById("bypassModal26").style.display = "none"; }
 
             function switchTab(n) {
                 document.querySelectorAll(".tab-content").forEach(t => t.classList.remove("active"));
@@ -2057,6 +2052,7 @@
                 { img:"fifa22.png",     name:"FIFA 22",                            pub:"EA",          tag:"ea",       status:"ok",   modalFn: showBypassModal23 },
                 { img:"re3.png",        name:"Far Cry 4",                          pub:"Ubisoft",     tag:"ubisoft",  status:"ok",   modalFn: showBypassModal24 },
                 { img:"farcry3.png",    name:"Far Cry 3",                          pub:"Ubisoft",     tag:"ubisoft",  status:"ok",   modalFn: showBypassModal25 },
+                { img:"blackopswar.png", name:"Call of Duty : Black Ops Cold War", pub:"Advisor", status:"ok", modalFn: showBypassModal26 },
             ];
 
             let bpCurrentChip = 'all';
@@ -2106,22 +2102,11 @@
                 });
             }
 
-            function bpFilter() {
-                const q = (document.getElementById('bp-search')?.value || '').toLowerCase().trim();
-                let list = BP_GAMES;
-                if (bpCurrentChip !== 'all') list = list.filter(g => g.tag === bpCurrentChip);
-                if (q) list = list.filter(g => g.name.toLowerCase().includes(q) || g.pub.toLowerCase().includes(q));
-                bpRender(list);
-            }
-
-            function bpSetChip(el, chip) {
-                bpCurrentChip = chip;
-                document.querySelectorAll('.bp-chip').forEach(c => c.classList.remove('active'));
-                el.classList.add('active');
-                const s = document.getElementById('bp-search');
-                if (s) s.value = '';
-                bpFilter();
-            }
+function bpFilter() {
+    const q = (document.getElementById('bp-search')?.value || '').toLowerCase().trim();
+    let list = q ? BP_GAMES.filter(g => g.name.toLowerCase().includes(q) || g.pub.toLowerCase().includes(q)) : BP_GAMES;
+    bpRender(list);
+}
 
             // rétrocompatibilité
             function filterBypasses() { bpFilter(); }
