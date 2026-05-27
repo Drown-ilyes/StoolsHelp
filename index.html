@@ -938,15 +938,17 @@
 
             <div class="main-layout">
                 <!-- SIDEBAR desktop -->
-                <div class="sidebar">
-                    <button class="tab-button active" onclick="switchTab(0)">🏠 Accueil</button>
-                    <button class="tab-button" onclick="switchTab(1)">🎮 Checker</button>
-                    <button class="tab-button" onclick="switchTab(2)">🔓 Bypass</button>
-                    <button class="tab-button" onclick="switchTab(3)">🌐 Online Fix</button>
-                    <button class="tab-button" onclick="switchTab(4)">⌨️ Commandes</button>
-                    <button class="tab-button" onclick="switchTab(5)">❓ FAQ</button>
-                    <button class="tab-button" onclick="switchTab(6)">⚙️ Paramètres</button>
-                </div>
+<!-- SIDEBAR desktop -->
+<div class="sidebar">
+    <button class="tab-button active" onclick="switchTab(0)">🏠 Accueil</button>
+    <button class="tab-button" onclick="switchTab(1)">🎮 Checker</button>
+    <button class="tab-button" onclick="switchTab(2)">🔓 Bypass</button>
+    <button class="tab-button" onclick="switchTab(3)">⚡ Hypervisor</button>
+    <button class="tab-button" onclick="switchTab(4)">🌐 Online Fix</button>
+    <button class="tab-button" onclick="switchTab(5)">⌨️ Commandes</button>
+    <button class="tab-button" onclick="switchTab(6)">❓ FAQ</button>
+    <button class="tab-button" onclick="switchTab(7)">⚙️ Paramètres</button>
+</div>
 
                 <div class="main-content">
 
@@ -977,6 +979,11 @@
                         <div id="explanation-bypass" class="explanation bypass">⚡ Un bypass est disponible pour ce jeu, rendez-vous dans l'onglet <strong>Bypass disponibles</strong> !</div>
                         <div id="explanation-purchase" class="explanation purchase" style="display: none">💜 Ce jeu n'est pas disponible via des Tools, mais tu peux l'<strong>obtenir</strong> via steamrip.com (gratuit, simple et safe)</div>
                         <div id="list" class="list"></div>
+                          <div class="bp-warning-banner">
+            <span style="font-size:1.2rem;flex-shrink:0;margin-top:1px">⚠️</span>
+            <p>Voulez vous tout de meme jouer a ce jeu? Accédez a l'onglet "Hypervisor".<br>
+            <strong>Recommandé pour les utilisateurs avancés.</strong></p>
+        </div>
                         <button class="show-list-btn" onclick="toggleFullList()">📋 Voir la liste de jeux</button>
                         <div id="full-list" class="full-list" style="display: none"></div>
                         <button class="show-list-btn" onclick="downloadGames()">⬇️ Télécharger la liste des jeux actuelles (TXT)</button>
@@ -1018,9 +1025,37 @@
                             <div class="bp-grid" id="bp-grid"></div>
                         </div>
                     </div>
+                    
+                    <!-- TAB 7 - BYPASS HYPERVISOR -->
+<div id="tab-3" class="tab-content">
+    <div class="bp-wrap">
+        <div class="bp-topbar">
+            <div>
+                <div class="bp-heading">⚡ Bypass Hypervisor</div>
+                <div class="bp-subhead">Solutions avancées via Hypervisor (Bypass Denuvo etc)</div>
+            </div>
+            <div class="bp-date-badge">Dernière màj : <span>27/05/2026</span></div>
+        </div>
+
+        <div class="bp-warning-banner">
+            <span style="font-size:1.2rem;flex-shrink:0;margin-top:1px">⚠️</span>
+            <p>Lisez ce site ; ces bypass nécessitent une certaine connaissance https://test-ui-eosin.vercel.app/.<br>
+            <strong>Recommandé pour les utilisateurs avancés.</strong></p>
+        </div>
+
+        <div class="bp-search-wrap">
+            <span class="bp-search-icon">🔎</span>
+            <input class="bp-search-input" type="text" id="hyper-search"
+                   placeholder="Rechercher un bypass Hypervisor (RDR2, GTA V...)"
+                   oninput="hyperFilter()" />
+        </div>
+        <div class="bp-count-bar"><span id="hyper-count">0</span> bypass hypervisor affiché(s)</div>
+        <div class="bp-grid" id="hyper-grid"></div>
+    </div>
+</div>
 
                     <!-- TAB 3 - ONLINE FIX -->
-                    <div id="tab-3" class="tab-content">
+                    <div id="tab-4" class="tab-content">
                         <div class="bypass-container" style="padding:40px 20px">
                             <h1 class="bypass-title" style="font-size:2.1rem">🌐 Online Fix</h1>
                             <p style="font-size:1.1rem;line-height:1.7;max-width:620px;margin:0 auto 30px;opacity:0.9;">Pour jouer en multijoueur avec des amis sur des jeux crackés, tu peux utiliser les Online Fix.</p>
@@ -1033,7 +1068,7 @@
                     </div>
 
                     <!-- TAB 4 - COMMANDES -->
-                    <div id="tab-4" class="tab-content">
+                    <div id="tab-5" class="tab-content">
                         <div class="bypass-container" style="padding:40px 20px;text-align:center">
                             <h1 class="bypass-title" style="font-size:2.1rem">⌨️ Commandes</h1>
                             <p style="font-size:1.1rem;line-height:1.7;max-width:620px;margin:20px auto 30px;opacity:0.9;">Des fois, Steamtools a des problèmes. C'est pour ça que cet onglet regroupe les commandes pour réparer les problèmes liés.</p>
@@ -1073,7 +1108,7 @@
                     </script>
 
                     <!-- TAB 5 - FAQ -->
-                    <div id="tab-5" class="tab-content">
+                    <div id="tab-6" class="tab-content">
                         <div class="faq-container">
                             <h1 class="faq-title">FAQ</h1>
                             <div class="faq-item">
@@ -1139,7 +1174,7 @@
                     </div>
 
                     <!-- TAB 6 - PARAMÈTRES -->
-                    <div id="tab-6" class="tab-content">
+                    <div id="tab-7" class="tab-content">
                         <div class="settings-container">
                             <h1 class="settings-title">⚙️ Paramètres</h1>
                             <div class="settings-section">
@@ -1213,16 +1248,17 @@
             </div>
         </div>
 
-        <!-- NAV BAS mobile -->
-        <nav class="bottom-nav">
-            <button class="bottom-nav-btn active" onclick="switchTab(0)"><span class="bn-icon">🏠</span>Accueil</button>
-            <button class="bottom-nav-btn" onclick="switchTab(1)"><span class="bn-icon">🎮</span>Checker</button>
-            <button class="bottom-nav-btn" onclick="switchTab(2)"><span class="bn-icon">🔓</span>Bypass</button>
-            <button class="bottom-nav-btn" onclick="switchTab(3)"><span class="bn-icon">🌐</span>Online Fix</button>
-            <button class="bottom-nav-btn" onclick="switchTab(4)"><span class="bn-icon">⌨️</span>Commandes</button>
-            <button class="bottom-nav-btn" onclick="switchTab(5)"><span class="bn-icon">❓</span>FAQ</button>
-            <button class="bottom-nav-btn" onclick="switchTab(6)"><span class="bn-icon">⚙️</span>Params</button>
-        </nav>
+<!-- NAV BAS mobile -->
+<nav class="bottom-nav">
+    <button class="bottom-nav-btn active" onclick="switchTab(0)"><span class="bn-icon">🏠</span>Accueil</button>
+    <button class="bottom-nav-btn" onclick="switchTab(1)"><span class="bn-icon">🎮</span>Checker</button>
+    <button class="bottom-nav-btn" onclick="switchTab(2)"><span class="bn-icon">🔓</span>Bypass</button>
+    <button class="bottom-nav-btn" onclick="switchTab(3)"><span class="bn-icon">⚡</span>Hypervisor</button>
+    <button class="bottom-nav-btn" onclick="switchTab(4)"><span class="bn-icon">🌐</span>Online Fix</button>
+    <button class="bottom-nav-btn" onclick="switchTab(5)"><span class="bn-icon">⌨️</span>Commandes</button>
+    <button class="bottom-nav-btn" onclick="switchTab(6)"><span class="bn-icon">❓</span>FAQ</button>
+    <button class="bottom-nav-btn" onclick="switchTab(7)"><span class="bn-icon">⚙️</span>Params</button>
+</nav>
 
         <!-- ══════════════════════════════════════════
              UNIVERSAL GAME MODAL (single, dynamic)
@@ -1285,7 +1321,7 @@
                 <div style="display:inline-flex;align-items:center;gap:7px;background:rgba(255,200,0,0.12);border:1px solid rgba(255,200,0,0.4);color:var(--neon-yellow);padding:5px 16px;border-radius:9999px;font-size:0.78rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:20px;">Nouveau bypass disponible</div>
                 <div style="font-size:1.5rem;font-weight:800;letter-spacing:-0.5px;background:linear-gradient(90deg,#fff,var(--neon-cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:18px;">Bypass disponibles !</div>
                 <div style="display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-bottom:16px">
-                    <div style="text-align:center;max-width:92px;"><div style="width:70px;height:70px;border-radius:50%;border:3px solid var(--neon-cyan);box-shadow:0 0 25px var(--accent-shadow);margin:0 auto 10px;overflow:hidden;"><img src="MAFIA.png" style="width:100%;height:100%;object-fit:cover;" /></div><div style="font-size:0.74rem;font-weight:700;color:var(--neon-yellow);line-height:1.25;">Mafia: The Old Country</div></div>
+                    <div style="text-align:center;max-width:92px;"><div style="width:70px;height:70px;border-radius:50%;border:3px solid var(--neon-cyan);box-shadow:0 0 25px var(--accent-shadow);margin:0 auto 10px;overflow:hidden;"><img src="MAFIA.png" style="width:100%;height:100%;object-fit:cover;" /></div><div style="font-size:0.74rem;font-weight:700;color:var(--neon-yellow);line-height:1.25;">FIFA 23</div></div>
                     <div style="text-align:center;max-width:92px;"><div style="width:70px;height:70px;border-radius:50%;border:3px solid var(--neon-cyan);box-shadow:0 0 25px var(--accent-shadow);margin:0 auto 10px;overflow:hidden;"><img src="lego.png" style="width:100%;height:100%;object-fit:cover;" /></div><div style="font-size:0.74rem;font-weight:700;color:var(--neon-yellow);line-height:1.25;">LEGO Batman</div></div>
                     <div style="text-align:center;max-width:92px;"><div style="width:70px;height:70px;border-radius:50%;border:3px solid var(--neon-cyan);box-shadow:0 0 25px var(--accent-shadow);margin:0 auto 10px;overflow:hidden;"><img src="doom.png" style="width:100%;height:100%;object-fit:cover;" /></div><div style="font-size:0.74rem;font-weight:700;color:var(--neon-yellow);line-height:1.25;">DOOM: The Dark Ages</div></div>
                     <div style="text-align:center;max-width:92px;"><div style="width:70px;height:70px;border-radius:50%;border:3px solid var(--neon-cyan);box-shadow:0 0 25px var(--accent-shadow);margin:0 auto 10px;overflow:hidden;"><img src="fifa22.png" style="width:100%;height:100%;object-fit:cover;" /></div><div style="font-size:0.74rem;font-weight:700;color:var(--neon-yellow);line-height:1.25;">FIFA 22</div></div>
@@ -1293,7 +1329,7 @@
                     <div style="text-align:center;max-width:92px;"><div style="width:70px;height:70px;border-radius:50%;border:3px solid var(--neon-cyan);box-shadow:0 0 25px var(--accent-shadow);margin:0 auto 10px;overflow:hidden;"><img src="farcry3.png" style="width:100%;height:100%;object-fit:cover;" /></div><div style="font-size:0.74rem;font-weight:700;color:var(--neon-yellow);line-height:1.25;">Far Cry 3</div></div>
                     <div style="text-align:center;max-width:92px;"><div style="width:70px;height:70px;border-radius:50%;border:3px solid var(--neon-cyan);box-shadow:0 0 25px var(--accent-shadow);margin:0 auto 10px;overflow:hidden;"><img src="blackopswar.png" style="width:100%;height:100%;object-fit:cover;" /></div><div style="font-size:0.74rem;font-weight:700;color:var(--neon-yellow);line-height:1.25;">Call of Duty : Black Ops Cold War</div></div>
                                         <div style="text-align:center;max-width:92px;"><div style="width:70px;height:70px;border-radius:50%;border:3px solid var(--neon-cyan);box-shadow:0 0 25px var(--accent-shadow);margin:0 auto 10px;overflow:hidden;"><img src="fifa21.png" style="width:100%;height:100%;object-fit:cover;" /></div><div style="font-size:0.74rem;font-weight:700;color:var(--neon-yellow);line-height:1.25;">FIFA 21</div></div>
-                    <div style="text-align:center;max-width:92px;"><div style="width:70px;height:70px;border-radius:50%;border:3px solid var(--neon-cyan);box-shadow:0 0 25px var(--accent-shadow);margin:0 auto 10px;overflow:hidden;"><img src="fifa23.png" style="width:100%;height:100%;object-fit:cover;" /></div><div style="font-size:0.74rem;font-weight:700;color:var(--neon-yellow);line-height:1.25;">FIFA 23</div></div>
+                    <div style="text-align:center;max-width:92px;"><div style="width:70px;height:70px;border-radius:50%;border:3px solid var(--neon-cyan);box-shadow:0 0 25px var(--accent-shadow);margin:0 auto 10px;overflow:hidden;"><img src="007.png" style="width:100%;height:100%;object-fit:cover;" /></div><div style="font-size:0.74rem;font-weight:700;color:var(--neon-yellow);line-height:1.25;">007 First Light</div></div>
                 </div>
                 <div style="width:65px;height:2px;background:linear-gradient(90deg,transparent,var(--neon-cyan),transparent);margin:0 auto 19px;border-radius:2px;"></div>
                 <p style="font-size:0.92rem;line-height:1.65;color:rgba(255,255,255,0.72);margin-bottom:24px">Rendez-vous dans l'onglet <strong style="color:var(--neon-cyan)">🔓 Bypass</strong> pour les télécharger.</p>
@@ -1420,6 +1456,7 @@
                 blackops:    () => triggerDownload("https://www.dropbox.com/scl/fi/gy12yajiiz2u5q1yon9vn/blackopswarbypass.rar?rlkey=x32ntji6u4gt4rs16isq0ku3q&st=8pwzgy32&dl=1", "CallofDutyBlackOpsColdWar_Bypass.rar"),
                 fifa21: () => triggerDownload("https://www.dropbox.com/scl/fi/4rck5c4bsrr9za6flu4ub/FIFA21BYPASS.rar?rlkey=805be0scg53z0hllua30r2gzl&st=ofct4z4o&dl=1", "FIFA21_Bypass.rar"),
                 fifa23: () => triggerDownload("https://buzzheavier.com/dgb5kfqoynms", "FIFA23_Bypass.rar"),
+                first: () => triggerDownload("https://www.dropbox.com/scl/fi/6epu0jynrb5d8sbpclmm4/007.First.Light-DenuvOwO.zip?rlkey=pvi4ru9e44vja44fwrmdwxg6m&st=7e4chtlk&dl=1", "FIFA23_Bypass.rar"),
             };
 
             // ── GAME DATA ──
@@ -1609,12 +1646,13 @@
                 if (e.target === document.getElementById('gameModalBackdrop')) closeGameModal();
             }
 
-            function triggerCurrentDownload() {
-                if (!_currentDlKey || !DOWNLOAD_FNS[_currentDlKey]) return;
-                const game = BP_GAMES.find(g => g.dlKey === _currentDlKey);
-                if (!game) { DOWNLOAD_FNS[_currentDlKey](); return; }
-                showDownloadConfirm(game.img, game.name, DOWNLOAD_FNS[_currentDlKey]);
-            }
+     function triggerCurrentDownload() {
+    if (!_currentDlKey || !DOWNLOAD_FNS[_currentDlKey]) return;
+    const game = BP_GAMES.find(g => g.dlKey === _currentDlKey)
+               || HYPER_GAMES.find(g => g.dlKey === _currentDlKey); // ← ajout
+    if (!game) { DOWNLOAD_FNS[_currentDlKey](); return; }
+    showDownloadConfirm(game.img, game.name, DOWNLOAD_FNS[_currentDlKey]);
+}
 
             // ── BYPASS CARD DATA ──
             const BP_GAMES = [
@@ -1722,16 +1760,7 @@
     launch: "FIFA21.exe dans les fichiers du jeu",   // comment lancer le jeu après installation
 },
                 
-                {
-    img: "fifa23.png",         // image du jeu (même dossier que index.html)
-    name: "FIFA 23",              // nom affiché sur la carte et dans le modal
-    pub: "EA",                  // ex: Ubisoft, EA, Rockstar...
-    status: "ok",                    // "ok" = Fonctionnel | "warn" = Non testé | "wait" = En attente
-    dlKey: "fifa23",                 // clé unique, tout en minuscules, sans espaces
-    password: "burger",              // mot de passe WinRAR (supprime la ligne si pas de mdp)
-    launch: "FIFA23.exe dans les fichiers du jeu",   // comment lancer le jeu après installation
-    warning: "⚠️ ATTENTION AUX POPUPS ET AUX PUBS, JE NE SERAI PAS RESPONSABLE, APPUYEZ SUR TELECHARGER UNE FOIS, FERMEZ LA PAGE ET RETELECHARGEZ",
-},
+
             ];
 
             function bpRender(list) {
@@ -1818,10 +1847,15 @@
 
                 // Render bypass cards
                 bpRender(BP_GAMES);
+                
+                hyperRender(HYPER_GAMES);
 
                 // URL tab routing
                 setTimeout(() => {
-                    const tabMap = { accueil:0, checker:1, bypass:2, onlinefix:3, "online-fix":3, commandes:4, faq:5, parametres:6, settings:6 };
+                 const tabMap = {
+    accueil:0, checker:1, bypass:2, hypervisor:3,
+    onlinefix:4, "online-fix":4, commandes:5, faq:6,
+    parametres:7, settings:7 };
                     const urlParams = new URLSearchParams(window.location.search);
                     const tabParam = urlParams.get("tab");
                     if (tabParam && tabMap[tabParam.toLowerCase()] !== undefined) switchTab(tabMap[tabParam.toLowerCase()]);
@@ -1861,6 +1895,73 @@
                     if (tabParam !== "bypass") document.getElementById("newBypassPopup").style.display = "flex";
                 }, 50);
             });
+            
+            
         </script>
+        
+        <script>
+// === BYPASS HYPERVISOR DATA ===
+// ====================== BYPASS HYPERVISOR ======================
+// === BYPASS HYPERVISOR DATA ===
+const HYPER_GAMES = [
+    {
+        img: "007.png", name: "007 First Light", pub: "IO Interactive",
+        status: "ok", dlKey: "first", launch: "rdr2launcher.exe"
+    }
+];
+
+function hyperRender(list) {
+    const grid = document.getElementById('hyper-grid');
+    const countEl = document.getElementById('hyper-count');
+    if (countEl) countEl.textContent = list.length;
+    if (!grid) return;
+
+    if (list.length === 0) {
+        grid.innerHTML = `<div class="bp-empty"><div class="bp-empty-icon">🔍</div><div class="bp-empty-text">Aucun bypass Hypervisor trouvé.</div></div>`;
+        return;
+    }
+
+    grid.innerHTML = '';
+    list.forEach(g => {
+        const card = document.createElement('div');
+        card.className = 'bp-card';
+        card.onclick = () => openGameModal(g);
+        card.innerHTML = `
+            <div class="bp-dot ${g.status}"></div>
+            <img class="bp-card-thumb" src="${g.img}" alt="${g.name}"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+                 loading="lazy" />
+            <div class="bp-thumb-fallback" style="background:linear-gradient(135deg,#0a0a1a,#1a1a3a)">
+                <span style="font-size:2rem;opacity:0.4">${g.name.charAt(0)}</span>
+            </div>
+            <div class="bp-card-overlay"></div>
+            <div class="bp-card-body">
+                <div class="bp-card-name">${g.name}</div>
+                <div class="bp-card-footer">
+                    <div class="bp-card-publisher">${g.pub}</div>
+                    <div class="bp-badge ${g.status}">${
+                        g.status === 'ok' ? 'Fonctionnel' :
+                        g.status === 'warn' ? 'Non testé' : 'En attente'
+                    }</div>
+                </div>
+            </div>
+            <div class="bp-card-hover-action">
+                <div class="bp-hover-pill">Voir le bypass →</div>
+            </div>
+        `;
+        grid.appendChild(card);
+    });
+}
+
+function hyperFilter() {
+    const q = (document.getElementById('hyper-search')?.value || '').toLowerCase().trim();
+    const list = q
+        ? HYPER_GAMES.filter(g => g.name.toLowerCase().includes(q) || g.pub.toLowerCase().includes(q))
+        : HYPER_GAMES;
+    hyperRender(list);
+}
+
+// Et dans le premier script, dans window.addEventListener("load", ...), après bpRender(BP_GAMES) ajoute :
+</script>
     </body>
 </html>
