@@ -1325,7 +1325,7 @@
                 <button onclick="closeNewBypassPopup()" style="position:absolute;top:14px;right:16px;width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.4);font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s;line-height:1;" onmouseover="this.style.background='rgba(255,45,85,0.2)';this.style.color='#ff2d55';" onmouseout="this.style.background='rgba(255,255,255,0.07)';this.style.color='rgba(255,255,255,0.4)';">✕</button>
                 <div style="display:inline-flex;align-items:center;gap:7px;background:rgba(255,200,0,0.12);border:1px solid rgba(255,200,0,0.4);color:var(--neon-yellow);padding:5px 16px;border-radius:9999px;font-size:0.78rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:20px;">Nouveau bypass disponible</div>
                 <div style="font-size:1.5rem;font-weight:800;letter-spacing:-0.5px;background:linear-gradient(90deg,#fff,var(--neon-cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:18px;">Bypass disponibles !</div>
-                <div style="display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-bottom:16px">
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:16px">
                     <div style="text-align:center;max-width:92px;"><div style="width:70px;height:70px;border-radius:50%;border:3px solid var(--neon-cyan);box-shadow:0 0 25px var(--accent-shadow);margin:0 auto 10px;overflow:hidden;"><img src="lego.png" style="width:100%;height:100%;object-fit:cover;" /></div><div style="font-size:0.74rem;font-weight:700;color:var(--neon-yellow);line-height:1.25;">LEGO Batman</div></div>
                     <div style="text-align:center;max-width:92px;"><div style="width:70px;height:70px;border-radius:50%;border:3px solid var(--neon-cyan);box-shadow:0 0 25px var(--accent-shadow);margin:0 auto 10px;overflow:hidden;"><img src="doom.png" style="width:100%;height:100%;object-fit:cover;" /></div><div style="font-size:0.74rem;font-weight:700;color:var(--neon-yellow);line-height:1.25;">DOOM: The Dark Ages</div></div>
                     <div style="text-align:center;max-width:92px;"><div style="width:70px;height:70px;border-radius:50%;border:3px solid var(--neon-cyan);box-shadow:0 0 25px var(--accent-shadow);margin:0 auto 10px;overflow:hidden;"><img src="fifa22.png" style="width:100%;height:100%;object-fit:cover;" /></div><div style="font-size:0.74rem;font-weight:700;color:var(--neon-yellow);line-height:1.25;">FIFA 22</div></div>
@@ -1340,6 +1340,8 @@
                        <div style="text-align:center;max-width:92px;"><div style="width:70px;height:70px;border-radius:50%;border:3px solid var(--neon-cyan);box-shadow:0 0 25px var(--accent-shadow);margin:0 auto 10px;overflow:hidden;"><img src="manager.png" style="width:100%;height:100%;object-fit:cover;" /></div><div style="font-size:0.74rem;font-weight:700;color:var(--neon-yellow);line-height:1.25;">Football Manager 2026</div></div>
                                            <div style="text-align:center;max-width:92px;"><div style="width:70px;height:70px;border-radius:50%;border:3px solid var(--neon-cyan);box-shadow:0 0 25px var(--accent-shadow);margin:0 auto 10px;overflow:hidden;"><img src="nba.png" style="width:100%;height:100%;object-fit:cover;" /></div><div style="font-size:0.74rem;font-weight:700;color:var(--neon-yellow);line-height:1.25;">NBA 2K26</div></div>
                                                                <div style="text-align:center;max-width:92px;"><div style="width:70px;height:70px;border-radius:50%;border:3px solid var(--neon-cyan);box-shadow:0 0 25px var(--accent-shadow);margin:0 auto 10px;overflow:hidden;"><img src="planet.png" style="width:100%;height:100%;object-fit:cover;" /></div><div style="font-size:0.74rem;font-weight:700;color:var(--neon-yellow);line-height:1.25;">Planet Coaster 2</div></div>
+                                                <div style="text-align:center;max-width:92px;"><div style="width:70px;height:70px;border-radius:50%;border:3px solid var(--neon-cyan);box-shadow:0 0 25px var(--accent-shadow);margin:0 auto 10px;overflow:hidden;"><img src="nfl.png" style="width:100%;height:100%;object-fit:cover;" /></div><div style="font-size:0.74rem;font-weight:700;color:var(--neon-yellow);line-height:1.25;">Madden NFL 26</div></div>
+                    
                 </div>
                 <div style="width:65px;height:2px;background:linear-gradient(90deg,transparent,var(--neon-cyan),transparent);margin:0 auto 19px;border-radius:2px;"></div>
                 <p style="font-size:0.92rem;line-height:1.65;color:rgba(255,255,255,0.72);margin-bottom:24px">Rendez-vous dans l'onglet <strong style="color:var(--neon-cyan)">🔓 Bypass</strong> pour les télécharger.</p>
@@ -1473,6 +1475,7 @@
                 manager: () => triggerDownload("https://gofile.io/d/5b57Sf", "FootballManager26_Bypass.rar"),
                 nba: () => triggerDownload("https://vik1ngfile.site/f/V88TDgR1sf", "NBA2K26_Bypass.rar"),
                 planet: () => triggerDownload("https://gofile.io/d/4L4xGs", "PlanetCoaster2_Bypass.rar"),
+                nfl: () => triggerDownload("https://gofile.io/d/4jeCa5", "NFL26_Bypass.rar"),
             };
 
             // ── GAME DATA ──
@@ -1946,6 +1949,10 @@ const HYPER_GAMES = [
        {
         img: "planet.png", name: "Planet Coaster 2", pub: "Frontier Developments",
         status: "ok", dlKey: "planet", launch: "hypervisor-launcher dans les fichiers du jeu", warning: "BUILD : 21103777"
+    },
+        {
+        img: "nfl.png", name: "Madden NFL 26", pub: "EA",
+        status: "ok", dlKey: "nfl", launch: "TOUJOURS le .exe dans les fichiers du jeu"
     },
     
     
