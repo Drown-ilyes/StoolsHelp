@@ -1470,7 +1470,7 @@
                 blackops:    () => triggerDownload("https://www.dropbox.com/scl/fi/gy12yajiiz2u5q1yon9vn/blackopswarbypass.rar?rlkey=x32ntji6u4gt4rs16isq0ku3q&st=8pwzgy32&dl=1", "CallofDutyBlackOpsColdWar_Bypass.rar"),
                 fifa21: () => triggerDownload("https://www.dropbox.com/scl/fi/4rck5c4bsrr9za6flu4ub/FIFA21BYPASS.rar?rlkey=805be0scg53z0hllua30r2gzl&st=ofct4z4o&dl=1", "FIFA21_Bypass.rar"),
                 fifa23: () => triggerDownload("https://buzzheavier.com/dgb5kfqoynms", "FIFA23_Bypass.rar"),
-                first: () => triggerDownload("https://gofile.io/d/pcmPTZ", "FIFA23_Bypass.rar"),
+                first: () => triggerDownload("https://buzzheavier.com/3j92zshr0qbq", "FIFA23_Bypass.rar"),
                 fc26: () => triggerDownload("https://gofile.io/d/Nx0oNJ", "EASPORTSFC26_Bypass.rar"),
                 wwe: () => triggerDownload("https://gofile.io/d/ThJnC8", "WWE2K26_Bypass.rar"),
                 crimson: () => triggerDownload("https://gofile.io/d/6xJeDO", "CrimsonDesert_Bypass.rar"),
@@ -1935,10 +1935,16 @@
 // === BYPASS HYPERVISOR DATA ===
 // ====================== BYPASS HYPERVISOR ======================
 const HYPER_GAMES = [
-    {
-        img: "007.png", name: "007 First Light", pub: "IO Interactive",
-        status: "ok", dlKey: "first", launch: "TOUJOURS le .exe dans les fichiers du jeu"
-    },
+{
+    img: "007.png", name: "007 First Light", pub: "IO Interactive",
+    status: "ok", dlKey: "first",
+    warning: "JEU ENTIER, INSTALLEZ UN BLOQUEUR DE PUB POUR ÉVITER TOUTE PUB MALVEILLANTE !! JE NE SERAI PAS RESPONSABLE ",
+    steps: [
+        { title: "Téléchargez le fichier", desc: "Cliquez sur le bouton de téléchargement ci-dessous pour obtenir les fichier du jeu." },
+        { title: "Extrayez avec WinRAR", desc: "Clic droit sur le fichier → WinRAR → Extraire ici." },
+        { title: "Lancez le jeu", desc: "Ouvrez le dossier extrait et lancez le jeu via Retail\\007FirstLight.exe" },
+    ]
+},
     {
         img: "fc26.png", name: "EA SPORTS FC 26", pub: "EA",
         status: "warn", dlKey: "fc26", launch: "TOUJOURS le .exe dans les fichiers du jeu"
