@@ -917,6 +917,74 @@
 
             .credit { margin-top: 30px; text-align: center; font-size: 12px; opacity: 0.5; color: var(--neon-cyan); }
             .credit a { color: var(--neon-cyan); text-decoration: none; }
+            
+            /* ── TOP DOWNLOADS ── */
+.top-dl-section { margin-top: 36px; }
+.top-dl-title {
+    font-size: 1.15rem; font-weight: 800; letter-spacing: 0.5px;
+    color: rgba(255,255,255,0.85); margin-bottom: 14px;
+    display: flex; align-items: center; gap: 10px;
+}
+.top-dl-title span { color: var(--neon-cyan); font-size: 0.85rem; opacity: 0.7; }
+.top-dl-list { display: flex; flex-direction: column; gap: 10px; }
+.top-dl-card {
+    display: flex; align-items: center; gap: 14px;
+    background: rgba(255,255,255,0.035);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 16px; padding: 12px 16px;
+    cursor: pointer; transition: all 0.28s cubic-bezier(.2,.8,.3,1);
+    position: relative; overflow: hidden;
+}
+.top-dl-card::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+    width: 3px; background: var(--neon-cyan); opacity: 0.5; transition: opacity 0.25s;
+}
+.top-dl-card:hover {
+    background: rgba(0,240,255,0.055);
+    border-color: rgba(0,240,255,0.22);
+    transform: translateX(5px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+}
+.top-dl-card:hover::before { opacity: 1; }
+.top-dl-rank {
+    font-size: 1.1rem; font-weight: 900; color: rgba(255,255,255,0.18);
+    width: 28px; text-align: center; flex-shrink: 0;
+}
+.top-dl-rank.gold   { color: #ffcc00; text-shadow: 0 0 12px rgba(255,200,0,0.5); }
+.top-dl-rank.silver { color: #b0b8c8; text-shadow: 0 0 10px rgba(176,184,200,0.4); }
+.top-dl-rank.bronze { color: #cd7f32; text-shadow: 0 0 10px rgba(205,127,50,0.4); }
+.top-dl-img {
+    width: 52px; height: 52px; border-radius: 10px; object-fit: cover;
+    flex-shrink: 0; border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 4px 14px rgba(0,0,0,0.35);
+}
+.top-dl-info { flex: 1; min-width: 0; }
+.top-dl-name {
+    font-size: 0.93rem; font-weight: 700; color: rgba(255,255,255,0.92);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 4px;
+}
+.top-dl-pub { font-size: 0.72rem; color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing: 0.8px; }
+.top-dl-count {
+    display: flex; flex-direction: column; align-items: center;
+    gap: 1px; flex-shrink: 0; min-width: 44px; text-align: center;
+}
+.top-dl-count-num { font-size: 1rem; font-weight: 900; color: var(--neon-cyan); font-variant-numeric: tabular-nums; }
+.top-dl-count-label { font-size: 0.62rem; font-weight: 600; color: rgba(255,255,255,0.25); text-transform: uppercase; letter-spacing: 0.5px; }
+.top-dl-btn {
+    padding: 8px 14px; border-radius: 9px;
+    background: rgba(0,240,255,0.08); border: 1px solid rgba(0,240,255,0.25);
+    color: var(--neon-cyan); font-size: 0.78rem; font-weight: 800;
+    cursor: pointer; white-space: nowrap; flex-shrink: 0;
+    transition: all 0.2s; letter-spacing: 0.3px;
+}
+.top-dl-btn:hover { background: rgba(0,240,255,0.2); box-shadow: 0 0 18px rgba(0,240,255,0.2); transform: translateY(-1px); }
+.top-dl-btn:active { transform: scale(0.97); }
+.top-dl-loading { text-align: center; padding: 24px; color: rgba(255,255,255,0.2); font-size: 0.85rem; }
+.top-dl-empty { text-align: center; padding: 24px; color: rgba(255,255,255,0.2); font-size: 0.85rem; }
+@media (max-width: 480px) {
+    .top-dl-pub { display: none; }
+    .top-dl-btn { padding: 7px 10px; font-size: 0.72rem; }
+}
         </style>
     </head>
 
@@ -963,6 +1031,14 @@
                                 </svg>
                                 Rejoindre le serveur Discord
                             </a>
+                            
+                            <!-- TOP DOWNLOADS -->
+<div class="top-dl-section">
+    <div class="top-dl-title">🔥 Bypass les plus téléchargés <span id="top-dl-badge"></span></div>
+    <div class="top-dl-list" id="top-dl-list">
+        <div class="top-dl-loading">Chargement...</div>
+    </div>
+</div>
                         </div>
                     </div>
 
@@ -1447,42 +1523,122 @@
             document.getElementById('downloadConfirmModal').addEventListener('click', function(e) { if (e.target === this) cancelDownload(); });
 
             // ── DOWNLOAD FUNCTIONS ──
-            function triggerDownload(url, filename) { const a = document.createElement("a"); a.href = url; if(filename) a.download = filename; document.body.appendChild(a); a.click(); document.body.removeChild(a); }
-            const DOWNLOAD_FNS = {
-                rdr2:        () => triggerDownload("https://www.dropbox.com/scl/fi/2vdri07077gd8g3qk7pm6/1174180_bypass.rar?rlkey=a4x4nr6obj427egucklc58z58&st=esusubwy&dl=1", "RDR2_Bypass.rar"),
-                requiem:     () => triggerDownload("https://www.dropbox.com/scl/fi/l2csd08z70msue88s2p05/3764200_bypass-2.rar?rlkey=0ievqm3kmtu4y8kncxsjvh000&st=unsg0guu&dl=1", "RE_Requiem_Bypass.rar"),
-                gta5:        () => triggerDownload("https://www.dropbox.com/scl/fi/8cfjg7wxooe3ur4gg0490/271590_bypass.rar?rlkey=t4qdxlyof8ptz207t1ht6oi2t&st=fe8ucc3b&dl=1", "GTA5_Bypass.rar"),
-                acunity:     () => triggerDownload("https://www.dropbox.com/scl/fi/gc5e81p1i04yucpu4hxrm/289650_bypass_ext.zip?rlkey=275jly98uwbpek08xutceovrs&st=6vx9dc1n&dl=1", "AssasinsCreedUnity_Bypass.zip"),
-                ac2:         () => triggerDownload("https://www.dropbox.com/scl/fi/llxnmfuml9xzw0r41tbsr/33230_bypass.rar?rlkey=qzqyrchcn5va7v1i7n0h1l4km&st=um7hw0gc&dl=1", "AssasinsCreed2_Bypass.rar"),
-                wdl:         () => triggerDownload("https://www.dropbox.com/scl/fi/rl0nbdnmgbgu8spciruma/watchdogslegionbypass.rar?rlkey=9vb80pqyqgx6dbsbg2tbd9zpw&st=gjb4wrlp&dl=1", "wdlbypass.rar"),
-                deadspace:   () => triggerDownload("https://www.dropbox.com/scl/fi/fugr1e3vocjdrxkie3ap9/deadspacebypass.rar?rlkey=2hyyihyw4gd3d7o3oah7i6bs9&st=nm4wfb9j&dl=1", "deadspacebypass.rar"),
-                blackmyth:   () => triggerDownload("https://www.dropbox.com/scl/fi/m06hopu1emsm4wh2mp7ss/blackmythwukongbypass.rar?rlkey=usbuxxv4egh8uafu8bkgrm34v&st=c2w093ui&dl=1", "blackmythbypass.rar"),
-                pes18:       () => triggerDownload("https://www.dropbox.com/scl/fi/htrsi51xdtk8c6qqgpfi1/pes18bypass.rar?rlkey=cafzqr000t8xa6zmbdb1kdfgp&st=dikwd6am&dl=1", "pes18bypass.rar"),
-                stellar:     () => triggerDownload("https://www.dropbox.com/scl/fi/ehb8ctvig7g7qmddfu5ku/stellarbypass.rar?rlkey=mut48omk5fpn1gu42ai9a1tj8&st=7z44bni6&dl=1", "stellarbypass.rar"),
-                pragmata:    () => triggerDownload("https://www.dropbox.com/scl/fi/o6zh1p7s0x56di366cjm6/pragmatabypass.rar?rlkey=yyxqz7c7onhmsyr5m03o10qd3&st=q1hzh2wm&dl=1"),
-                gta3:        () => triggerDownload("https://www.dropbox.com/scl/fi/g2wlp0c7fzbj5qtzszwbb/1546970_bypass.rar?rlkey=ma48mbb09gn5mu58uv2vo7iwc&dl=1"),
-                mafia:       () => triggerDownload("https://www.dropbox.com/scl/fi/wce5xu5kctymrelnpoqay/Mafia.The.Old.Country.Crack.Only-voices38.rar?rlkey=6lsg31e8hivje64p9vg2dzwfx&dl=1"),
-                lego:        () => triggerDownload("https://www.dropbox.com/scl/fi/gn079afvtgb3rrmt8db2n/LEGO.Batman.Legacy.of.the.Dark.Knight.Crack.Only-voices38.rar?rlkey=1tu1aqvdaz8oepf9ywnu2y1eq&st=d73njd02&dl=1"),
-                doom:        () => triggerDownload("https://www.dropbox.com/scl/fi/xctm734kwnw9r2pvbwomy/doombypass.rar?rlkey=i8c6gk7xgvfrr69d11stqqfow&st=e0ve6app&dl=1"),
-                acmirage:    () => triggerDownload("https://www.dropbox.com/scl/fi/nyk0rk3d9dba9m7ck1yt0/Assassins.Creed.Mirage.Valley.of.Memory.Crack.Only-voices38.rar?rlkey=bq93njn81u8uj7iqyr1ogmkyt&st=ginmhfuh&dl=1", "AC_Mirage_Bypass.rar"),
-                fifa22:      () => triggerDownload("https://www.dropbox.com/scl/fi/4nbax2kswxsqer40fh5dw/FIFA.22.Crack.Only-voices38.rar?rlkey=cq19xiwtu55p79i3c2kpda4v4&st=oq458e72&dl=1"),
-                farcry4:     () => triggerDownload("https://www.dropbox.com/scl/fi/r9kn985nwf5yd09mv7nh5/farcry4bypass.rar?rlkey=m5pgapudqc35rl6vlis123gyd&st=ihrib30i&dl=1"),
-                farcry3:     () => triggerDownload("https://www.dropbox.com/scl/fi/qbw0ekpgc0h2ba7p0ij72/farcry3bypass.rar?rlkey=ml6wds1rusy5x29tjyeh27kp7&st=rv3fiou5&dl=1"),
-                blackops:    () => triggerDownload("https://www.dropbox.com/scl/fi/gy12yajiiz2u5q1yon9vn/blackopswarbypass.rar?rlkey=x32ntji6u4gt4rs16isq0ku3q&st=8pwzgy32&dl=1", "CallofDutyBlackOpsColdWar_Bypass.rar"),
-                fifa21: () => triggerDownload("https://www.dropbox.com/scl/fi/4rck5c4bsrr9za6flu4ub/FIFA21BYPASS.rar?rlkey=805be0scg53z0hllua30r2gzl&st=ofct4z4o&dl=1", "FIFA21_Bypass.rar"),
-                fifa23: () => triggerDownload("https://buzzheavier.com/dgb5kfqoynms", "FIFA23_Bypass.rar"),
-                first: () => triggerDownload("https://bzzhr.to/9v4nvfeqyofu", "FIFA23_Bypass.rar"),
-                fc26: () => triggerDownload("https://gofile.io/d/Nx0oNJ", "EASPORTSFC26_Bypass.rar"),
-                wwe: () => triggerDownload("https://gofile.io/d/ThJnC8", "WWE2K26_Bypass.rar"),
-                crimson: () => triggerDownload("https://gofile.io/d/6xJeDO", "CrimsonDesert_Bypass.rar"),
-                manager: () => triggerDownload("https://gofile.io/d/5b57Sf", "FootballManager26_Bypass.rar"),
-                nba: () => triggerDownload("https://vik1ngfile.site/f/V88TDgR1sf", "NBA2K26_Bypass.rar"),
-                planet: () => triggerDownload("https://gofile.io/d/4L4xGs", "PlanetCoaster2_Bypass.rar"),
-                nfl: () => triggerDownload("https://gofile.io/d/4jeCa5", "NFL26_Bypass.rar"),
-                 f1: () => triggerDownload("https://gofile.io/d/2XjnoM", "F125_Bypass.rar"),
-                awayout: () => triggerDownload("https://gofile.io/d/6nJKXw", "AWayOut_Bypass.rar"),
-                 riders: () => triggerDownload("https://www.dropbox.com/scl/fi/5xrs9t6n3xoqyowdg60w8/Riders.Republic.Crack.Only-Vorii.rar?rlkey=k5h696k8gyod5y5e4wq9ai1uj&e=1&st=s5ipyx8s&dl=1", "RR_Bypass.rar"),
-            };
+           // ── FIREBASE DOWNLOAD COUNTER ──
+const FB_URL = "https://steamtools-helper-default-rtdb.firebaseio.com/dl_counts";
+
+async function fbGet() {
+    try {
+        const res = await fetch(FB_URL + ".json");
+        return await res.json() || {};
+    } catch { return {}; }
+}
+
+async function fbIncrement(dlKey) {
+    try {
+        // On lit la valeur actuelle puis on l'incrémente (transaction simple)
+        const res = await fetch(`${FB_URL}/${dlKey}.json`);
+        const current = await res.json() || 0;
+        await fetch(`${FB_URL}/${dlKey}.json`, {
+            method: "PUT",
+            body: JSON.stringify(current + 1)
+        });
+        renderTopDownloads();
+    } catch(e) { console.warn("Firebase increment failed", e); }
+}
+
+function triggerDownload(url, filename, dlKey) {
+    const a = document.createElement("a");
+    a.href = url;
+    if (filename) a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    if (dlKey) fbIncrement(dlKey);
+}
+
+async function renderTopDownloads() {
+    const list = document.getElementById("top-dl-list");
+    if (!list) return;
+
+    const counts = await fbGet();
+    const allGames = [...BP_GAMES, ...HYPER_GAMES];
+
+    const ranked = allGames
+        .filter(g => counts[g.dlKey] > 0)
+        .map(g => ({ ...g, count: counts[g.dlKey] }))
+        .sort((a, b) => b.count - a.count)
+        .slice(0, 8);
+
+    const badge = document.getElementById("top-dl-badge");
+    if (badge) badge.textContent = ranked.length > 0 ? `top ${ranked.length}` : "";
+
+    if (ranked.length === 0) {
+        list.innerHTML = `<div class="top-dl-empty">Aucun téléchargement enregistré pour l'instant.<br><small style="opacity:0.5">Sois le premier à télécharger un bypass !</small></div>`;
+        return;
+    }
+
+    const rankClass = i => i === 0 ? "gold" : i === 1 ? "silver" : i === 2 ? "bronze" : "";
+    const rankEmoji = i => i === 0 ? "🥇" : i === 1 ? "🥈" : i === 2 ? "🥉" : `${i + 1}`;
+
+    list.innerHTML = ranked.map((g, i) => `
+        <div class="top-dl-card" onclick="openGameModal(${JSON.stringify(g).replace(/"/g, '&quot;')})">
+            <div class="top-dl-rank ${rankClass(i)}">${rankEmoji(i)}</div>
+            <img class="top-dl-img" src="${g.img}" alt="${g.name}" onerror="this.style.opacity='0.2'" loading="lazy" />
+            <div class="top-dl-info">
+                <div class="top-dl-name">${g.name}</div>
+                <div class="top-dl-pub">${g.pub}</div>
+            </div>
+            <div class="top-dl-count">
+                <span class="top-dl-count-num">${g.count}</span>
+                <span class="top-dl-count-label">téléch.</span>
+            </div>
+            <button class="top-dl-btn" onclick="event.stopPropagation(); triggerCurrentDownloadByKey('${g.dlKey}')">⬇️ DL</button>
+        </div>
+    `).join("");
+}
+
+function triggerCurrentDownloadByKey(dlKey) {
+    if (!DOWNLOAD_FNS[dlKey]) return;
+    const allGames = [...BP_GAMES, ...HYPER_GAMES];
+    const game = allGames.find(g => g.dlKey === dlKey);
+    if (!game) { DOWNLOAD_FNS[dlKey](); return; }
+    showDownloadConfirm(game.img, game.name, DOWNLOAD_FNS[dlKey]);
+}
+const DOWNLOAD_FNS = {
+    rdr2:      () => triggerDownload("https://www.dropbox.com/scl/fi/2vdri07077gd8g3qk7pm6/1174180_bypass.rar?rlkey=a4x4nr6obj427egucklc58z58&st=esusubwy&dl=1", "RDR2_Bypass.rar", "rdr2"),
+    requiem:   () => triggerDownload("https://www.dropbox.com/scl/fi/l2csd08z70msue88s2p05/3764200_bypass-2.rar?rlkey=0ievqm3kmtu4y8kncxsjvh000&st=unsg0guu&dl=1", "RE_Requiem_Bypass.rar", "requiem"),
+    gta5:      () => triggerDownload("https://www.dropbox.com/scl/fi/8cfjg7wxooe3ur4gg0490/271590_bypass.rar?rlkey=t4qdxlyof8ptz207t1ht6oi2t&st=fe8ucc3b&dl=1", "GTA5_Bypass.rar", "gta5"),
+    acunity:   () => triggerDownload("https://www.dropbox.com/scl/fi/gc5e81p1i04yucpu4hxrm/289650_bypass_ext.zip?rlkey=275jly98uwbpek08xutceovrs&st=6vx9dc1n&dl=1", "AssasinsCreedUnity_Bypass.zip", "acunity"),
+    ac2:       () => triggerDownload("https://www.dropbox.com/scl/fi/llxnmfuml9xzw0r41tbsr/33230_bypass.rar?rlkey=qzqyrchcn5va7v1i7n0h1l4km&st=um7hw0gc&dl=1", "AssasinsCreed2_Bypass.rar", "ac2"),
+    wdl:       () => triggerDownload("https://www.dropbox.com/scl/fi/rl0nbdnmgbgu8spciruma/watchdogslegionbypass.rar?rlkey=9vb80pqyqgx6dbsbg2tbd9zpw&st=gjb4wrlp&dl=1", "wdlbypass.rar", "wdl"),
+    deadspace: () => triggerDownload("https://www.dropbox.com/scl/fi/fugr1e3vocjdrxkie3ap9/deadspacebypass.rar?rlkey=2hyyihyw4gd3d7o3oah7i6bs9&st=nm4wfb9j&dl=1", "deadspacebypass.rar", "deadspace"),
+    blackmyth: () => triggerDownload("https://www.dropbox.com/scl/fi/m06hopu1emsm4wh2mp7ss/blackmythwukongbypass.rar?rlkey=usbuxxv4egh8uafu8bkgrm34v&st=c2w093ui&dl=1", "blackmythbypass.rar", "blackmyth"),
+    pes18:     () => triggerDownload("https://www.dropbox.com/scl/fi/htrsi51xdtk8c6qqgpfi1/pes18bypass.rar?rlkey=cafzqr000t8xa6zmbdb1kdfgp&st=dikwd6am&dl=1", "pes18bypass.rar", "pes18"),
+    stellar:   () => triggerDownload("https://www.dropbox.com/scl/fi/ehb8ctvig7g7qmddfu5ku/stellarbypass.rar?rlkey=mut48omk5fpn1gu42ai9a1tj8&st=7z44bni6&dl=1", "stellarbypass.rar", "stellar"),
+    pragmata:  () => triggerDownload("https://www.dropbox.com/scl/fi/o6zh1p7s0x56di366cjm6/pragmatabypass.rar?rlkey=yyxqz7c7onhmsyr5m03o10qd3&st=q1hzh2wm&dl=1", null, "pragmata"),
+    gta3:      () => triggerDownload("https://www.dropbox.com/scl/fi/g2wlp0c7fzbj5qtzszwbb/1546970_bypass.rar?rlkey=ma48mbb09gn5mu58uv2vo7iwc&dl=1", null, "gta3"),
+    mafia:     () => triggerDownload("https://www.dropbox.com/scl/fi/wce5xu5kctymrelnpoqay/Mafia.The.Old.Country.Crack.Only-voices38.rar?rlkey=6lsg31e8hivje64p9vg2dzwfx&dl=1", null, "mafia"),
+    lego:      () => triggerDownload("https://www.dropbox.com/scl/fi/gn079afvtgb3rrmt8db2n/LEGO.Batman.Legacy.of.the.Dark.Knight.Crack.Only-voices38.rar?rlkey=1tu1aqvdaz8oepf9ywnu2y1eq&st=d73njd02&dl=1", null, "lego"),
+    doom:      () => triggerDownload("https://www.dropbox.com/scl/fi/xctm734kwnw9r2pvbwomy/doombypass.rar?rlkey=i8c6gk7xgvfrr69d11stqqfow&st=e0ve6app&dl=1", null, "doom"),
+    acmirage:  () => triggerDownload("https://www.dropbox.com/scl/fi/nyk0rk3d9dba9m7ck1yt0/Assassins.Creed.Mirage.Valley.of.Memory.Crack.Only-voices38.rar?rlkey=bq93njn81u8uj7iqyr1ogmkyt&st=ginmhfuh&dl=1", "AC_Mirage_Bypass.rar", "acmirage"),
+    fifa22:    () => triggerDownload("https://www.dropbox.com/scl/fi/4nbax2kswxsqer40fh5dw/FIFA.22.Crack.Only-voices38.rar?rlkey=cq19xiwtu55p79i3c2kpda4v4&st=oq458e72&dl=1", null, "fifa22"),
+    farcry4:   () => triggerDownload("https://www.dropbox.com/scl/fi/r9kn985nwf5yd09mv7nh5/farcry4bypass.rar?rlkey=m5pgapudqc35rl6vlis123gyd&st=ihrib30i&dl=1", null, "farcry4"),
+    farcry3:   () => triggerDownload("https://www.dropbox.com/scl/fi/qbw0ekpgc0h2ba7p0ij72/farcry3bypass.rar?rlkey=ml6wds1rusy5x29tjyeh27kp7&st=rv3fiou5&dl=1", null, "farcry3"),
+    blackops:  () => triggerDownload("https://www.dropbox.com/scl/fi/gy12yajiiz2u5q1yon9vn/blackopswarbypass.rar?rlkey=x32ntji6u4gt4rs16isq0ku3q&st=8pwzgy32&dl=1", "CallofDutyBlackOpsColdWar_Bypass.rar", "blackops"),
+    fifa21:    () => triggerDownload("https://www.dropbox.com/scl/fi/4rck5c4bsrr9za6flu4ub/FIFA21BYPASS.rar?rlkey=805be0scg53z0hllua30r2gzl&st=ofct4z4o&dl=1", "FIFA21_Bypass.rar", "fifa21"),
+    fifa23:    () => triggerDownload("https://buzzheavier.com/dgb5kfqoynms", "FIFA23_Bypass.rar", "fifa23"),
+    first:     () => triggerDownload("https://bzzhr.to/9v4nvfeqyofu", "007FirstLight_Bypass.rar", "first"),
+    fc26:      () => triggerDownload("https://gofile.io/d/Nx0oNJ", "EASPORTSFC26_Bypass.rar", "fc26"),
+    wwe:       () => triggerDownload("https://gofile.io/d/ThJnC8", "WWE2K26_Bypass.rar", "wwe"),
+    crimson:   () => triggerDownload("https://gofile.io/d/6xJeDO", "CrimsonDesert_Bypass.rar", "crimson"),
+    manager:   () => triggerDownload("https://gofile.io/d/5b57Sf", "FootballManager26_Bypass.rar", "manager"),
+    nba:       () => triggerDownload("https://vik1ngfile.site/f/V88TDgR1sf", "NBA2K26_Bypass.rar", "nba"),
+    planet:    () => triggerDownload("https://gofile.io/d/4L4xGs", "PlanetCoaster2_Bypass.rar", "planet"),
+    nfl:       () => triggerDownload("https://gofile.io/d/4jeCa5", "NFL26_Bypass.rar", "nfl"),
+    f1:        () => triggerDownload("https://gofile.io/d/2XjnoM", "F125_Bypass.rar", "f1"),
+    awayout:   () => triggerDownload("https://gofile.io/d/6nJKXw", "AWayOut_Bypass.rar", "awayout"),
+    riders:    () => triggerDownload("https://www.dropbox.com/scl/fi/5xrs9t6n3xoqyowdg60w8/Riders.Republic.Crack.Only-Vorii.rar?rlkey=k5h696k8gyod5y5e4wq9ai1uj&e=1&st=s5ipyx8s&dl=1", "RR_Bypass.rar", "riders"),
+};
 
             // ── GAME DATA ──
             const greengamelist = ["Red Dead Redemption 2","Grand Theft Auto V Legacy","Assassin's Creed Unity","Assassin's Creed II","Resident Evil Requiem","Watch Dogs: Legion","Dead Space","PES 2018","Stellar Blade","PRAGMATA","Grand Theft Auto III - The Definitive Edition","Mafia: The Old Country","LEGO Batman: Legacy of the Dark Knight","DOOM: The Dark Ages","Assassin's Creed Mirage","FIFA 22","Far Cry 4","Far Cry 3"];
@@ -1900,6 +2056,7 @@
                 bpRender(BP_GAMES);
                 
                 hyperRender(HYPER_GAMES);
+                renderTopDownloads();
 
                 // URL tab routing
                 setTimeout(() => {
