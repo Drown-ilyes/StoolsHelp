@@ -1470,35 +1470,54 @@ if (bestScore >= 70) {
             function goToBypassTab() { closeNewBypassPopup(); switchTab(2); }
             document.getElementById("newBypassPopup").addEventListener("click", function(e) { if (e.target === this) closeNewBypassPopup(); });
             document.addEventListener('keydown', e => { if (e.key === 'Escape') closeGameModal(); });
+            
+            const HISTORY_LOG = [
+     { type: "bypass", dlKey: "sonic" },
+    { type: "log", date: "07/06/2026", text: "🎉 Ajout d'un bypass les plus téléchargés dans accueil" },
+    { type: "bypass", dlKey: "riders" },
+];
 
             // ══════════════════════════════════════
             // HISTORIQUE DYNAMIQUE
             // Les jeux en FIN de tableau = les plus récents
             // ══════════════════════════════════════
-            function renderHistory() {
-                // On inverse pour avoir les plus récents en premier
-                const allGames = [...HYPER_GAMES, ...BP_GAMES].reverse();
-                const container = document.getElementById('history-content');
-                if (!container) return;
-                // Met à jour la date du badge avec la date du jour
-                const el = document.getElementById('history-last-date');
-                if (el) el.textContent = "07/06/2026";
-                if (allGames.length === 0) {
-                    container.innerHTML = `<div style="text-align:center;padding:40px;color:rgba(255,255,255,0.3);">Aucun bypass pour l'instant.</div>`;
-                    return;
-                }
-                container.innerHTML = allGames.map(g => `
-                    <div class="top-dl-card" style="margin-bottom:10px;" onclick="openGameModal(${JSON.stringify(g).replace(/"/g,'&quot;')})">
-                        <img class="top-dl-img" src="${g.img}" alt="${g.name}" onerror="this.style.opacity='0.2'" loading="lazy" />
-                        <div class="top-dl-info">
-                            <div class="top-dl-name">${g.name}</div>
-                            <div class="top-dl-pub">${g.pub}</div>
-                        </div>
-                        <div class="bp-badge ${g.status}" style="flex-shrink:0;">${g.status === 'ok' ? 'Fonctionnel' : g.status === 'warn' ? 'Non testé' : 'En attente'}</div>
-                        <button class="top-dl-btn" onclick="event.stopPropagation();triggerCurrentDownloadByKey('${g.dlKey}')">⬇️ Télécharger</button>
+    function renderHistory() {
+    const container = document.getElementById('history-content');
+    if (!container) return;
+    const el = document.getElementById('history-last-date');
+    if (el) el.textContent = "07/06/2026";
+
+    const allGames = [...BP_GAMES, ...HYPER_GAMES];
+
+    container.innerHTML = HISTORY_LOG.map(entry => {
+        if (entry.type === "log") {
+            return `
+                <div style="display:flex;align-items:center;gap:14px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:14px 18px;margin-bottom:10px;">
+                    <div style="flex-shrink:0;width:8px;height:8px;border-radius:50%;background:var(--neon-cyan);box-shadow:0 0 8px var(--neon-cyan);"></div>
+                    <div style="flex:1;">
+                        <div style="font-size:0.93rem;color:rgba(255,255,255,0.85);font-weight:600;">${entry.text}</div>
+                        ${entry.date ? `<div style="font-size:0.72rem;color:rgba(255,255,255,0.28);margin-top:3px;">${entry.date}</div>` : ''}
                     </div>
-                `).join('');
-            }
+                </div>
+            `;
+        } else if (entry.type === "bypass") {
+            const g = allGames.find(x => x.dlKey === entry.dlKey);
+            if (!g) return '';
+            return `
+                <div class="top-dl-card" style="margin-bottom:10px;" onclick="openGameModal(${JSON.stringify(g).replace(/"/g,'&quot;')})">
+                    <img class="top-dl-img" src="${g.img}" alt="${g.name}" onerror="this.style.opacity='0.2'" loading="lazy" />
+                    <div class="top-dl-info">
+                        <div class="top-dl-name">${g.name}</div>
+                        <div class="top-dl-pub">${g.pub}</div>
+                    </div>
+                    <div class="bp-badge ${g.status}" style="flex-shrink:0;">${g.status === 'ok' ? 'Fonctionnel' : g.status === 'warn' ? 'Non testé' : 'En attente'}</div>
+                    <button class="top-dl-btn" onclick="event.stopPropagation();triggerCurrentDownloadByKey('${g.dlKey}')">⬇️ Télécharger</button>
+                </div>
+            `;
+        }
+        return '';
+    }).join('');
+}
 
             // ══════════════════════════════════════
             // POPUP DYNAMIQUE (max 10 derniers bypass)
