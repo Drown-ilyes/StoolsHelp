@@ -261,59 +261,48 @@
             .tab-content.active { display: block; }
 
             /* BOTTOM NAV */
-            .bottom-nav {
-                display: none;
-                position: fixed;
-                bottom: 0; left: 0; right: 0;
-                height: 65px;
-                background: var(--bottom-nav-bg);
-                border-top: 1px solid var(--accent-border);
-                z-index: 999;
-                backdrop-filter: blur(20px);
-                overflow-x: auto;
-                overflow-y: hidden;
-                scrollbar-width: none;
-                -ms-overflow-style: none;
-            }
+.bottom-nav {
+    display: none;
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    height: 65px;
+    background: var(--bottom-nav-bg);
+    border-top: 1px solid var(--accent-border);
+    z-index: 999;
+    backdrop-filter: blur(20px);
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
             .bottom-nav::-webkit-scrollbar { display: none; }
-            .bottom-nav::after {
-                content: "";
-                position: fixed;
-                bottom: 0;
-                right: 0;
-                width: 40px;
-                height: 65px;
-                background: linear-gradient(to left, var(--bottom-nav-bg), transparent);
-                pointer-events: none;
-                z-index: 1000;
-            }
-            .bottom-nav-track {
-                display: flex;
-                align-items: center;
-                gap: 0px;
-                padding: 0 4px;
-                min-width: max-content;
-                height: 100%;
-            }
-            .bottom-nav-btn {
-                flex-shrink: 0;
-                min-width: 68px;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                gap: 3px;
-                padding: 8px 6px;
-                background: transparent;
-                border: none;
-                color: rgba(255, 255, 255, 0.4);
-                font-size: 0.62rem;
-                font-weight: 600;
-                cursor: pointer;
-                transition: all 0.25s;
-                border-radius: 10px;
-                height: 100%;
-            }
+   .bottom-nav-track {
+    display: flex;
+    align-items: center;
+    gap: 0px;
+    padding: 0 4px;
+    min-width: max-content;
+    height: 100%;
+}
+.bottom-nav-btn {
+    flex-shrink: 0;
+    min-width: 68px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    padding: 8px 6px;
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.62rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s;
+    border-radius: 10px;
+    height: 100%;
+}
             .bottom-nav-btn .bn-icon { font-size: 1.3rem; }
             .bottom-nav-btn.active { color: var(--neon-cyan); }
             .bottom-nav-btn.active .bn-icon { filter: drop-shadow(0 0 6px var(--neon-cyan)); }
@@ -630,6 +619,7 @@
 
     <body>
         <div class="app">
+            <!-- HEADER -->
             <div class="header">
                 <div class="logo">
                     <img src="icon.png" alt="" class="logo-icon" />
@@ -644,6 +634,7 @@
             </div>
 
             <div class="main-layout">
+                <!-- SIDEBAR desktop -->
                 <div class="sidebar">
                     <button class="tab-button active" onclick="switchTab(0)">🏠 Accueil</button>
                     <button class="tab-button" onclick="switchTab(1)">🎮 Checker</button>
@@ -691,11 +682,11 @@
                         <div id="explanation-bypass" class="explanation bypass">⚡ Un bypass est disponible pour ce jeu, rendez-vous dans l'onglet <strong>Bypass disponibles</strong> !</div>
                         <div id="explanation-purchase" class="explanation purchase" style="display: none">💜 Ce jeu n'est pas disponible via des Tools, mais tu peux l'<strong>obtenir</strong> via steamrip.com (gratuit, simple et safe)</div>
                         <div id="list" class="list"></div>
-                        <div id="hypervisor-hint" class="bp-warning-banner" style="display:none; margin-top: 20px;">
-                            <span style="font-size:1.2rem;flex-shrink:0;margin-top:1px">⚡</span>
-                            <p>Ce jeu est disponible dans l'onglet <strong style="color:#ffaa55;">Hypervisor</strong> !<br>
-                            <strong>Recommandé pour les utilisateurs avancés.</strong></p>
-                        </div>
+                 <div id="hypervisor-hint" class="bp-warning-banner" style="display:none; margin-top: 20px;">
+    <span style="font-size:1.2rem;flex-shrink:0;margin-top:1px">⚡</span>
+    <p>Ce jeu est disponible dans l'onglet <strong style="color:#ffaa55;">Hypervisor</strong> !<br>
+    <strong>Recommandé pour les utilisateurs avancés.</strong></p>
+</div>
                         <button class="show-list-btn" onclick="toggleFullList()">📋 Voir la liste de jeux</button>
                         <div id="full-list" class="full-list" style="display: none"></div>
                         <button class="show-list-btn" onclick="downloadGames()">⬇️ Télécharger la liste des jeux actuelles (TXT)</button>
@@ -792,7 +783,7 @@
                         </div>
                     </div>
 
-                    <!-- TAB 6 - HISTORIQUE -->
+                    <!-- TAB 6 - HISTORIQUE (DYNAMIQUE) -->
                     <div id="tab-6" class="tab-content">
                         <div class="bp-wrap">
                             <div class="bp-topbar">
@@ -1004,12 +995,13 @@
             </div>
         </div>
 
-        <!-- POPUP NOUVEAU BYPASS -->
+        <!-- POPUP NOUVEAU BYPASS (DYNAMIQUE) -->
         <div id="newBypassPopup" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);backdrop-filter:blur(10px);z-index:99999;align-items:flex-start;justify-content:center;padding:16px;overflow-y:auto;">
             <div style="background:rgba(10,10,30,0.98);border:1px solid var(--accent-border);border-radius:22px;box-shadow:0 0 40px var(--accent-shadow);padding:28px 24px 24px;max-width:420px;width:100%;text-align:center;position:relative;margin:auto;">
                 <button onclick="closeNewBypassPopup()" style="position:absolute;top:14px;right:16px;width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.4);font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s;line-height:1;" onmouseover="this.style.background='rgba(255,45,85,0.2)';this.style.color='#ff2d55';" onmouseout="this.style.background='rgba(255,255,255,0.07)';this.style.color='rgba(255,255,255,0.4)';">✕</button>
                 <div style="display:inline-flex;align-items:center;gap:7px;background:rgba(255,200,0,0.12);border:1px solid rgba(255,200,0,0.4);color:var(--neon-yellow);padding:5px 16px;border-radius:9999px;font-size:0.78rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:20px;">Nouveau bypass disponible</div>
                 <div style="font-size:1.5rem;font-weight:800;letter-spacing:-0.5px;background:linear-gradient(90deg,#fff,var(--neon-cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:18px;">Bypass disponibles !</div>
+                <!-- LISTE DYNAMIQUE : max 10 derniers bypass -->
                 <div id="popup-games-list" style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:16px"></div>
                 <div style="width:65px;height:2px;background:linear-gradient(90deg,transparent,var(--neon-cyan),transparent);margin:0 auto 19px;border-radius:2px;"></div>
                 <p style="font-size:0.92rem;line-height:1.65;color:rgba(255,255,255,0.72);margin-bottom:24px">Rendez-vous dans l'onglet <strong style="color:var(--neon-cyan)">🔓 Bypass</strong> pour les télécharger.</p>
@@ -1020,7 +1012,7 @@
             </div>
         </div>
 
-        <!-- ══════════════ SCRIPT UNIQUE ══════════════ -->
+        <!-- ══════════════ SCRIPT PRINCIPAL ══════════════ -->
         <script>
             // ── THEME ──
             function hexToRgb(hex) {
@@ -1204,58 +1196,8 @@
                 f1:        () => triggerDownload("https://gofile.io/d/2XjnoM", "F125_Bypass.rar", "f1"),
                 awayout:   () => triggerDownload("https://gofile.io/d/6nJKXw", "AWayOut_Bypass.rar", "awayout"),
                 riders:    () => triggerDownload("https://www.dropbox.com/scl/fi/5xrs9t6n3xoqyowdg60w8/Riders.Republic.Crack.Only-Vorii.rar?rlkey=k5h696k8gyod5y5e4wq9ai1uj&e=1&st=s5ipyx8s&dl=1", "RR_Bypass.rar", "riders"),
+                sonic:    () => triggerDownload("https://www.dropbox.com/scl/fi/29dbyeexj9lfy0tyj2r0g/Sonic.Colors.Ultimate.Crack.Only-voices38.rar?rlkey=70ik8o0h310su2z8ivdg0na1d&st=nxz41tp3&dl=1", "SCUltimate_Bypass.rar", "sonic"),
             };
-
-            // ══════════════════════════════════════
-            // HYPER_GAMES — défini ICI, avant tout le reste
-            // Pour ajouter un bypass Hypervisor : ajouter un objet à la FIN du tableau.
-            // ══════════════════════════════════════
-            const HYPER_GAMES = [
-                { img: "007.png", name: "007 First Light", pub: "IO Interactive", status: "ok", dlKey: "first", launch: "TOUJOURS le .exe dans les fichiers du jeu", warning: "BUILD : 23430993, ATTENTION AUX POPUPS, INSTALLEZ UN BLOQUEUR DE PUB, CLIQUER SUR TELECHARGER FERMER LA FENETRE ET RECLIQUEZ, JE NE SERAI PAS RESPONSABLE" },
-                { img: "fc26.png", name: "EA SPORTS FC 26", pub: "EA", status: "ok", dlKey: "fc26", launch: "TOUJOURS le .exe dans les fichiers du jeu", warning: "BUILD : 21803844" },
-                { img: "wwe.png", name: "WWE 2K26", pub: "2K", status: "warn", dlKey: "wwe", launch: "TOUJOURS le .exe dans les fichiers du jeu" },
-                { img: "crimson.png", name: "Crimson Desert", pub: "Pearl Abyss", status: "warn", dlKey: "crimson", launch: "TOUJOURS le .exe dans les fichiers du jeu" },
-                { img: "manager.png", name: "Football Manager 2026", pub: "Sports Interactive", status: "ok", dlKey: "manager", launch: "Via hypervisor-launcher dans les fichiers du jeu", warning: "BUILD : 22504293" },
-                { img: "nba.png", name: "NBA 2K26", pub: "2K", status: "ok", dlKey: "nba", launch: "TOUJOURS le .exe dans les fichiers du jeu", warning: "BUILD : 22469912" },
-                { img: "planet.png", name: "Planet Coaster 2", pub: "Frontier Developments", status: "ok", dlKey: "planet", launch: "hypervisor-launcher dans les fichiers du jeu", warning: "BUILD : 21103777" },
-                { img: "nfl.png", name: "Madden NFL 26", pub: "EA", status: "ok", dlKey: "nfl", launch: "TOUJOURS le .exe dans les fichiers du jeu", warning: "BUILD : 21196045" },
-                { img: "f1.png", name: "F1 25", pub: "Codemasters", status: "warn", dlKey: "f1", launch: "TOUJOURS le .exe dans les fichiers du jeu" },
-            ];
-
-            function hyperRender(list) {
-                const grid = document.getElementById('hyper-grid');
-                const countEl = document.getElementById('hyper-count');
-                if (countEl) countEl.textContent = list.length;
-                if (!grid) return;
-                if (list.length === 0) { grid.innerHTML = `<div class="bp-empty"><div class="bp-empty-icon">🔍</div><div class="bp-empty-text">Aucun bypass Hypervisor trouvé.</div></div>`; return; }
-                grid.innerHTML = '';
-                list.forEach(g => {
-                    const card = document.createElement('div');
-                    card.className = 'bp-card';
-                    card.onclick = () => openGameModal(g);
-                    card.innerHTML = `
-                        <div class="bp-dot ${g.status}"></div>
-                        <img class="bp-card-thumb" src="${g.img}" alt="${g.name}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" loading="lazy" />
-                        <div class="bp-thumb-fallback" style="background:linear-gradient(135deg,#0a0a1a,#1a1a3a)"><span style="font-size:2rem;opacity:0.4">${g.name.charAt(0)}</span></div>
-                        <div class="bp-card-overlay"></div>
-                        <div class="bp-card-body">
-                            <div class="bp-card-name">${g.name}</div>
-                            <div class="bp-card-footer">
-                                <div class="bp-card-publisher">${g.pub}</div>
-                                <div class="bp-badge ${g.status}">${g.status === 'ok' ? 'Fonctionnel' : g.status === 'warn' ? 'Non testé' : 'En attente'}</div>
-                            </div>
-                        </div>
-                        <div class="bp-card-hover-action"><div class="bp-hover-pill">Voir le bypass →</div></div>
-                    `;
-                    grid.appendChild(card);
-                });
-            }
-
-            function hyperFilter() {
-                const q = (document.getElementById('hyper-search')?.value || '').toLowerCase().trim();
-                const list = q ? HYPER_GAMES.filter(g => g.name.toLowerCase().includes(q) || g.pub.toLowerCase().includes(q)) : HYPER_GAMES;
-                hyperRender(list);
-            }
 
             // ── GAME DATA ──
             const waitGamesList = ["Resident Evil 2"];
@@ -1280,7 +1222,6 @@
                 const a = document.createElement("a"); a.href = url; a.download = "games.txt"; a.click();
                 URL.revokeObjectURL(url);
             }
-
             function liveSearch() {
                 const inputRaw = document.getElementById("search").value.trim();
                 const result = document.getElementById("result");
@@ -1292,54 +1233,27 @@
                 expOk.style.display = "none"; expNo.style.display = "none";
                 expBypass.style.display = "none"; expWait.style.display = "none";
                 document.getElementById("explanation-purchase").style.display = "none";
-                document.getElementById("hypervisor-hint").style.display = "none";
-
-                if (!inputRaw) {
-                    result.textContent = "Tape pour commencer le scan...";
-                    result.className = "result";
-                    listEl.innerHTML = "";
-                    return;
-                }
-
+              if (!inputRaw) { result.textContent = "Tape pour commencer le scan..."; result.className = "result"; listEl.innerHTML = ""; document.getElementById("hypervisor-hint").style.display = "none"; return; }
                 let best = null, bestScore = 0;
                 gamesList.forEach(game => { const s = score(inputRaw, game); if (s > bestScore) { bestScore = s; best = game; } });
-
                 const isBypass = best && bypassGames.some(g => normalize(best) === normalize(g));
                 const isPurchase = best && purchaseList.some(g => normalize(best) === normalize(g));
                 const isWait = best && waitGamesList.some(g => normalize(best) === normalize(g));
+if (bestScore >= 70) {
+    const isHyper = HYPER_GAMES.some(g => normalize(g.name) === normalize(best) && g.status === "ok");
+    document.getElementById("hypervisor-hint").style.display = isHyper ? "flex" : "none";
 
-                if (bestScore >= 70) {
-                    // Vérifie si le jeu est dans HYPER_GAMES avec status "ok"
-                    const isHyper = HYPER_GAMES.some(g => normalize(g.name) === normalize(best) && g.status === "ok");
-                    document.getElementById("hypervisor-hint").style.display = isHyper ? "flex" : "none";
-
-                    if (isPurchase) {
-                        result.innerHTML = `${best} <span style="font-size:1.3rem;">💜</span>`;
-                        result.className = "result purchase";
-                        document.getElementById("explanation-purchase").style.display = "block";
-                    } else if (isWait) {
-                        result.innerHTML = `${best} <span style="font-size:1.3rem;">⏳</span>`;
-                        result.className = "result wait";
-                        expWait.style.display = "block";
-                    } else if (isBypass) {
-                        result.innerHTML = `${best} <span style="font-size:1.3rem;">⚠️</span>`;
-                        result.className = "result bypass-result";
-                        expBypass.style.display = "block";
-                    } else {
-                        result.innerHTML = `${best} <span style="font-size:1.3rem;">❌</span>`;
-                        result.className = "result no";
-                        expNo.style.display = "block";
-                    }
-                } else {
-                    result.innerHTML = `${inputRaw} <span style="font-size:1.3rem;">✅</span>`;
-                    result.className = "result ok";
-                    expOk.style.display = "block";
-                }
-
+    if (isPurchase) { result.innerHTML = `${best} <span style="font-size:1.3rem;">💜</span>`; result.className = "result purchase"; document.getElementById("explanation-purchase").style.display = "block"; }
+    else if (isWait) { result.innerHTML = `${best} <span style="font-size:1.3rem;">⏳</span>`; result.className = "result wait"; expWait.style.display = "block"; }
+    else if (isBypass) { result.innerHTML = `${best} <span style="font-size:1.3rem;">⚠️</span>`; result.className = "result bypass-result"; expBypass.style.display = "block"; }
+    else { result.innerHTML = `${best} <span style="font-size:1.3rem;">❌</span>`; result.className = "result no"; expNo.style.display = "block"; }
+} else {
+    document.getElementById("hypervisor-hint").style.display = "none";
+    result.innerHTML = `${inputRaw} <span style="font-size:1.3rem;">✅</span>`; result.className = "result ok"; expOk.style.display = "block";
+}
                 const matches = gamesList.filter(g => normalize(g).includes(normalize(inputRaw))).slice(0, 8);
                 listEl.innerHTML = matches.map(g => `<div class="item" onclick="selectGame('${g.replace(/'/g, "\\'")}')">${g}</div>`).join("");
             }
-
             function selectGame(game) { document.getElementById("search").value = game; document.getElementById("list").innerHTML = ""; liveSearch(); }
 
             let fullListVisible = false;
@@ -1447,14 +1361,14 @@
             }
 
             // ── BP_GAMES ──
-            // Pour ajouter un bypass : ajouter un objet à la FIN du tableau.
+            // Pour ajouter un bypass : ajouter un objet à la FIN du tableau. Il apparaîtra automatiquement en premier dans l'historique et le popup.
             const BP_GAMES = [
                 { img: "rdr2.png", name: "Red Dead Redemption 2", pub: "Rockstar", status: "ok", dlKey: "rdr2", password: "openlua.cloud", launch: "rdr2launcher.exe" },
                 { img: "requiem.png", name: "Resident Evil Requiem", pub: "Capcom", status: "ok", dlKey: "requiem", password: "openlua.cloud", launch: "re9.exe" },
                 { img: "gta5.png", name: "Grand Theft Auto V Legacy", pub: "Rockstar", status: "ok", dlKey: "gta5", password: "openlua.cloud", launch: "PlayGtav.bat (si il y en a deux, essayez les deux)" },
-                { img: "assassins.png", name: "Assassin's Creed Unity", pub: "Ubisoft", status: "ok", dlKey: "acunity", password: "openlua.cloud", launch: "ACU.exe" },
-                { img: "assassins2.png", name: "Assassin's Creed II", pub: "Ubisoft", status: "ok", dlKey: "ac2", password: "openlua.cloud", launch: "Steam (oui tu peux)" },
-                { img: "wdl.png", name: "Watch Dogs: Legion", pub: "Ubisoft", status: "ok", dlKey: "wdl", password: "burger", launch: "Steam (oui tu peux)" },
+                { img: "assassins.png", name: "Assassin's Creed Unity", pub: "UBISOFT", status: "ok", dlKey: "acunity", password: "openlua.cloud", launch: "ACU.exe" },
+                { img: "assassins2.png", name: "Assassin's Creed II", pub: "UBISOFT", status: "ok", dlKey: "ac2", password: "openlua.cloud", launch: "Steam (oui tu peux)" },
+                { img: "wdl.png", name: "Watch Dogs: Legion", pub: "UBISOFT", status: "ok", dlKey: "wdl", password: "burger", launch: "Steam (oui tu peux)" },
                 { img: "deadspace.png", name: "Dead Space", pub: "EA", status: "ok", dlKey: "deadspace", password: "burger", launch: "Steam (oui tu peux)" },
                 { img: "blackmyth.png", name: "Black Myth Wukong", pub: "Game Science", status: "warn", dlKey: "blackmyth", password: "burger", steps: [
                     { title: "Installe le jeu sur Steam", desc: "Assure-toi que le jeu est installé via Steam avant de continuer." },
@@ -1469,10 +1383,10 @@
                 { img: "MAFIA.png", name: "Mafia: The Old Country", pub: "2K", status: "ok", dlKey: "mafia", launch: "Steam (oui tu peux)" },
                 { img: "lego.png", name: "LEGO Batman: Legacy", pub: "Warner", status: "ok", dlKey: "lego", launch: "Steam (oui tu peux)" },
                 { img: "doom.png", name: "DOOM: The Dark Ages", pub: "id Software", status: "ok", dlKey: "doom", password: "burger", launch: "Steam (oui tu peux)" },
-                { img: "mirage.png", name: "Assassin's Creed Mirage", pub: "Ubisoft", status: "ok", dlKey: "acmirage", launch: "Steam (oui tu peux)" },
+                { img: "mirage.png", name: "Assassin's Creed Mirage", pub: "UBISOFT", status: "ok", dlKey: "acmirage", launch: "Steam (oui tu peux)" },
                 { img: "fifa22.png", name: "FIFA 22", pub: "EA", status: "ok", dlKey: "fifa22", launch: "FIFA22.exe" },
-                { img: "re3.png", name: "Far Cry 4", pub: "Ubisoft", status: "ok", dlKey: "farcry4", password: "burger", launch: "Steam (oui tu peux)" },
-                { img: "farcry3.png", name: "Far Cry 3", pub: "Ubisoft", status: "ok", dlKey: "farcry3", warning: "ÉTAPES DIFFÉRENTES !", steps: [
+                { img: "re3.png", name: "Far Cry 4", pub: "UBISOFT", status: "ok", dlKey: "farcry4", password: "burger", launch: "Steam (oui tu peux)" },
+                { img: "farcry3.png", name: "Far Cry 3", pub: "UBISOFT", status: "ok", dlKey: "farcry3", warning: "ÉTAPES DIFFÉRENTES !", steps: [
                     { title: "Installe le jeu sur Steam", desc: "Assure-toi que le jeu est installé via Steam avant de continuer." },
                     { title: "Ouvre le dossier du jeu", desc: "Clic droit → Gérer → Parcourir les fichiers locaux." },
                     { title: "Copie le contenu du dossier bin", desc: "Mets son contenu dans la racine du jeu." },
@@ -1491,6 +1405,8 @@
                     { title: "Remplace les fichiers existants", desc: "Clique sur Remplacer quand Windows le demande." },
                     { title: "Lance le jeu", desc: "Dans les fichiers du jeu, lance via start.exe" },
                 ]},
+                 { img: "sonic.png", name: "Sonic Colors Ultimate", pub: "SEGA", status: "ok", dlKey: "sonic", password: "burger", launch: "Via Steam" },
+                
             ];
 
             function bpRender(list) {
@@ -1555,10 +1471,16 @@
             document.getElementById("newBypassPopup").addEventListener("click", function(e) { if (e.target === this) closeNewBypassPopup(); });
             document.addEventListener('keydown', e => { if (e.key === 'Escape') closeGameModal(); });
 
+            // ══════════════════════════════════════
+            // HISTORIQUE DYNAMIQUE
+            // Les jeux en FIN de tableau = les plus récents
+            // ══════════════════════════════════════
             function renderHistory() {
+                // On inverse pour avoir les plus récents en premier
                 const allGames = [...HYPER_GAMES, ...BP_GAMES].reverse();
                 const container = document.getElementById('history-content');
                 if (!container) return;
+                // Met à jour la date du badge avec la date du jour
                 const el = document.getElementById('history-last-date');
                 if (el) el.textContent = "07/06/2026";
                 if (allGames.length === 0) {
@@ -1578,7 +1500,11 @@
                 `).join('');
             }
 
+            // ══════════════════════════════════════
+            // POPUP DYNAMIQUE (max 10 derniers bypass)
+            // ══════════════════════════════════════
             function renderNewBypassPopup() {
+                // Derniers ajoutés = fin des tableaux, on inverse et on prend les 10 premiers
                 const allGames = [...HYPER_GAMES, ...BP_GAMES].reverse().slice(0, 10);
                 const container = document.getElementById('popup-games-list');
                 if (!container) return;
@@ -1615,7 +1541,8 @@
                 hyperRender(HYPER_GAMES);
                 renderTopDownloads();
                 renderHistory();
-                renderNewBypassPopup();
+                // setTimeout pour s'assurer que HYPER_GAMES est bien chargé
+                setTimeout(renderNewBypassPopup, 0);
 
                 setTimeout(() => {
                     const tabMap = { accueil:0, checker:1, bypass:2, hypervisor:3, onlinefix:4, "online-fix":4, commandes:5, historique:6, faq:7, parametres:8, settings:8 };
@@ -1633,6 +1560,57 @@
                     if (tabParam !== "bypass") document.getElementById("newBypassPopup").style.display = "flex";
                 }, 50);
             });
+        </script>
+
+        <!-- ══════════════ HYPER_GAMES ══════════════ -->
+        <script>
+            // Pour ajouter un bypass Hypervisor : ajouter un objet à la FIN du tableau.
+            const HYPER_GAMES = [
+                { img: "007.png", name: "007 First Light", pub: "IO Interactive", status: "ok", dlKey: "first", launch: "TOUJOURS le .exe dans les fichiers du jeu", warning: "BUILD : 23430993, ATTENTION AUX POPUPS, INSTALLEZ UN BLOQUEUR DE PUB, CLIQUER SUR TELECHARGER FERMER LA FENETRE ET RECLIQUEZ, JE NE SERAI PAS RESPONSABLE" },
+                { img: "fc26.png", name: "EA SPORTS FC 26", pub: "EA", status: "ok", dlKey: "fc26", launch: "TOUJOURS le .exe dans les fichiers du jeu", warning: "BUILD : 21803844" },
+                { img: "wwe.png", name: "WWE 2K26", pub: "2K", status: "warn", dlKey: "wwe", launch: "TOUJOURS le .exe dans les fichiers du jeu" },
+                { img: "crimson.png", name: "Crimson Desert", pub: "Pearl Abyss", status: "warn", dlKey: "crimson", launch: "TOUJOURS le .exe dans les fichiers du jeu" },
+                { img: "manager.png", name: "Football Manager 2026", pub: "Sports Interactive", status: "ok", dlKey: "manager", launch: "Via hypervisor-launcher dans les fichiers du jeu", warning: "BUILD : 22504293" },
+                { img: "nba.png", name: "NBA 2K26", pub: "2K", status: "ok", dlKey: "nba", launch: "TOUJOURS le .exe dans les fichiers du jeu", warning: "BUILD : 22469912" },
+                { img: "planet.png", name: "Planet Coaster 2", pub: "Frontier Developments", status: "ok", dlKey: "planet", launch: "hypervisor-launcher dans les fichiers du jeu", warning: "BUILD : 21103777" },
+                { img: "nfl.png", name: "Madden NFL 26", pub: "EA", status: "ok", dlKey: "nfl", launch: "TOUJOURS le .exe dans les fichiers du jeu", warning: "BUILD : 21196045" },
+                { img: "f1.png", name: "F1 25", pub: "Codemasters", status: "warn", dlKey: "f1", launch: "TOUJOURS le .exe dans les fichiers du jeu" },
+            ];
+
+            function hyperRender(list) {
+                const grid = document.getElementById('hyper-grid');
+                const countEl = document.getElementById('hyper-count');
+                if (countEl) countEl.textContent = list.length;
+                if (!grid) return;
+                if (list.length === 0) { grid.innerHTML = `<div class="bp-empty"><div class="bp-empty-icon">🔍</div><div class="bp-empty-text">Aucun bypass Hypervisor trouvé.</div></div>`; return; }
+                grid.innerHTML = '';
+                list.forEach(g => {
+                    const card = document.createElement('div');
+                    card.className = 'bp-card';
+                    card.onclick = () => openGameModal(g);
+                    card.innerHTML = `
+                        <div class="bp-dot ${g.status}"></div>
+                        <img class="bp-card-thumb" src="${g.img}" alt="${g.name}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" loading="lazy" />
+                        <div class="bp-thumb-fallback" style="background:linear-gradient(135deg,#0a0a1a,#1a1a3a)"><span style="font-size:2rem;opacity:0.4">${g.name.charAt(0)}</span></div>
+                        <div class="bp-card-overlay"></div>
+                        <div class="bp-card-body">
+                            <div class="bp-card-name">${g.name}</div>
+                            <div class="bp-card-footer">
+                                <div class="bp-card-publisher">${g.pub}</div>
+                                <div class="bp-badge ${g.status}">${g.status === 'ok' ? 'Fonctionnel' : g.status === 'warn' ? 'Non testé' : 'En attente'}</div>
+                            </div>
+                        </div>
+                        <div class="bp-card-hover-action"><div class="bp-hover-pill">Voir le bypass →</div></div>
+                    `;
+                    grid.appendChild(card);
+                });
+            }
+
+            function hyperFilter() {
+                const q = (document.getElementById('hyper-search')?.value || '').toLowerCase().trim();
+                const list = q ? HYPER_GAMES.filter(g => g.name.toLowerCase().includes(q) || g.pub.toLowerCase().includes(q)) : HYPER_GAMES;
+                hyperRender(list);
+            }
         </script>
     </body>
 </html>
