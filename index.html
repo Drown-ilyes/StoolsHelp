@@ -955,7 +955,7 @@
 .top-dl-rank.silver { color: #b0b8c8; text-shadow: 0 0 10px rgba(176,184,200,0.4); }
 .top-dl-rank.bronze { color: #cd7f32; text-shadow: 0 0 10px rgba(205,127,50,0.4); }
 .top-dl-img {
-    width: 96px; height: 64px; border-radius: 10px; object-fit: cover;
+    width: 189px; height: 85px; border-radius: 10px; object-fit: cover;
     flex-shrink: 0; border: 1px solid rgba(255,255,255,0.1);
     box-shadow: 0 4px 14px rgba(0,0,0,0.35);
 }
@@ -972,12 +972,17 @@
 .top-dl-count-num { font-size: 1rem; font-weight: 900; color: var(--neon-cyan); font-variant-numeric: tabular-nums; }
 .top-dl-count-label { font-size: 0.62rem; font-weight: 600; color: rgba(255,255,255,0.25); text-transform: uppercase; letter-spacing: 0.5px; }
 .top-dl-btn {
-    padding: 8px 14px; border-radius: 9px;
-    background: rgba(0,240,255,0.08); border: 1px solid rgba(0,240,255,0.25);
-    color: var(--neon-cyan); font-size: 0.78rem; font-weight: 800;
+    padding: 11px 20px; border-radius: 11px;
+    background: linear-gradient(135deg, #ff7a00, #ff2d55);
+    border: none;
+    color: white; font-size: 0.88rem; font-weight: 800;
     cursor: pointer; white-space: nowrap; flex-shrink: 0;
-    transition: all 0.2s; letter-spacing: 0.3px;
+    transition: all 0.22s; letter-spacing: 0.3px;
+    box-shadow: 0 0 18px rgba(255, 80, 0, 0.3);
+    display: flex; align-items: center; gap: 6px;
 }
+.top-dl-btn:hover { transform: translateY(-2px); box-shadow: 0 0 28px rgba(255, 80, 0, 0.55); }
+.top-dl-btn:active { transform: scale(0.97); opacity: 0.88; }
 .top-dl-btn:hover { background: rgba(0,240,255,0.2); box-shadow: 0 0 18px rgba(0,240,255,0.2); transform: translateY(-1px); }
 .top-dl-btn:active { transform: scale(0.97); }
 .top-dl-loading { text-align: center; padding: 24px; color: rgba(255,255,255,0.2); font-size: 0.85rem; }
@@ -1593,7 +1598,7 @@ async function renderTopDownloads() {
                 <span class="top-dl-count-num">${g.count}</span>
                 <span class="top-dl-count-label">téléch.</span>
             </div>
-            <button class="top-dl-btn" onclick="event.stopPropagation(); triggerCurrentDownloadByKey('${g.dlKey}')">⬇️ DL</button>
+            <button class="top-dl-btn" onclick="event.stopPropagation(); triggerCurrentDownloadByKey('${g.dlKey}')">⬇️ Télécharger</button>
         </div>
     `).join("");
 }
