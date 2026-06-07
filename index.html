@@ -931,9 +931,10 @@
     display: flex; align-items: center; gap: 14px;
     background: rgba(255,255,255,0.035);
     border: 1px solid rgba(255,255,255,0.07);
-    border-radius: 16px; padding: 12px 16px;
+    border-radius: 16px; padding: 18px 16px;
     cursor: pointer; transition: all 0.28s cubic-bezier(.2,.8,.3,1);
     position: relative; overflow: hidden;
+    min-height: 90px;
 }
 .top-dl-card::before {
     content: ''; position: absolute; left: 0; top: 0; bottom: 0;
@@ -954,7 +955,7 @@
 .top-dl-rank.silver { color: #b0b8c8; text-shadow: 0 0 10px rgba(176,184,200,0.4); }
 .top-dl-rank.bronze { color: #cd7f32; text-shadow: 0 0 10px rgba(205,127,50,0.4); }
 .top-dl-img {
-    width: 52px; height: 52px; border-radius: 10px; object-fit: cover;
+    width: 96px; height: 64px; border-radius: 10px; object-fit: cover;
     flex-shrink: 0; border: 1px solid rgba(255,255,255,0.1);
     box-shadow: 0 4px 14px rgba(0,0,0,0.35);
 }
