@@ -261,48 +261,48 @@
             .tab-content.active { display: block; }
 
             /* BOTTOM NAV */
-.bottom-nav {
-    display: none;
-    position: fixed;
-    bottom: 0; left: 0; right: 0;
-    height: 65px;
-    background: var(--bottom-nav-bg);
-    border-top: 1px solid var(--accent-border);
-    z-index: 999;
-    backdrop-filter: blur(20px);
-    overflow-x: auto;
-    overflow-y: hidden;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-}
+            .bottom-nav {
+                display: none;
+                position: fixed;
+                bottom: 0; left: 0; right: 0;
+                height: 65px;
+                background: var(--bottom-nav-bg);
+                border-top: 1px solid var(--accent-border);
+                z-index: 999;
+                backdrop-filter: blur(20px);
+                overflow-x: auto;
+                overflow-y: hidden;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+            }
             .bottom-nav::-webkit-scrollbar { display: none; }
-   .bottom-nav-track {
-    display: flex;
-    align-items: center;
-    gap: 0px;
-    padding: 0 4px;
-    min-width: max-content;
-    height: 100%;
-}
-.bottom-nav-btn {
-    flex-shrink: 0;
-    min-width: 68px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 3px;
-    padding: 8px 6px;
-    background: transparent;
-    border: none;
-    color: rgba(255, 255, 255, 0.4);
-    font-size: 0.62rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.25s;
-    border-radius: 10px;
-    height: 100%;
-}
+            .bottom-nav-track {
+                display: flex;
+                align-items: center;
+                gap: 0px;
+                padding: 0 4px;
+                min-width: max-content;
+                height: 100%;
+            }
+            .bottom-nav-btn {
+                flex-shrink: 0;
+                min-width: 68px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 3px;
+                padding: 8px 6px;
+                background: transparent;
+                border: none;
+                color: rgba(255, 255, 255, 0.4);
+                font-size: 0.62rem;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.25s;
+                border-radius: 10px;
+                height: 100%;
+            }
             .bottom-nav-btn .bn-icon { font-size: 1.3rem; }
             .bottom-nav-btn.active { color: var(--neon-cyan); }
             .bottom-nav-btn.active .bn-icon { filter: drop-shadow(0 0 6px var(--neon-cyan)); }
@@ -317,19 +317,201 @@
                 .logo-icon { width: 32px; height: 32px; }
             }
 
-            /* TAB CONTENTS */
-            .welcome { text-align: center; padding: 30px 10px 40px; }
-            .welcome h1 {
-                font-size: 2.2rem;
+            /* ══════════════════════════════════════
+               ACCUEIL REDESIGN
+               ══════════════════════════════════════ */
+            .home-hero {
+                position: relative;
+                padding: 32px 0 28px;
+                text-align: center;
+                overflow: hidden;
+            }
+            .home-hero::before {
+                content: '';
+                position: absolute;
+                top: -40px; left: 50%;
+                transform: translateX(-50%);
+                width: 400px; height: 200px;
+                background: radial-gradient(ellipse, rgba(0,240,255,0.08) 0%, transparent 70%);
+                pointer-events: none;
+            }
+            .home-version-chip {
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+                background: rgba(0,240,255,0.08);
+                border: 1px solid rgba(0,240,255,0.25);
+                color: var(--neon-cyan);
+                font-size: 0.72rem;
                 font-weight: 700;
-                letter-spacing: -1.5px;
-                background: linear-gradient(90deg, #fff, var(--neon-cyan));
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                padding: 5px 14px;
+                border-radius: 50px;
+                margin-bottom: 18px;
+            }
+            .home-version-chip::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--neon-cyan); box-shadow: 0 0 6px var(--neon-cyan); animation: pulse-dot 2s ease infinite; }
+            @keyframes pulse-dot { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:0.5; transform:scale(0.8); } }
+            .home-title {
+                font-size: clamp(1.8rem, 5vw, 2.8rem);
+                font-weight: 800;
+                letter-spacing: -2px;
+                background: linear-gradient(135deg, #fff 30%, var(--neon-cyan) 70%);
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
-                margin-bottom: 16px;
+                line-height: 1.1;
+                margin-bottom: 14px;
             }
-            .welcome p { font-size: 1.1rem; line-height: 1.6; opacity: 0.85; max-width: 560px; margin: 0 auto; }
+            .home-subtitle {
+                font-size: 1rem;
+                color: rgba(255,255,255,0.5);
+                max-width: 460px;
+                margin: 0 auto 28px;
+                line-height: 1.6;
+            }
 
+            /* STATS STRIP */
+            .home-stats {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 12px;
+                margin-bottom: 28px;
+            }
+            .home-stat-card {
+                background: rgba(255,255,255,0.03);
+                border: 1px solid rgba(255,255,255,0.08);
+                border-radius: 16px;
+                padding: 18px 14px;
+                text-align: center;
+                transition: all 0.3s;
+            }
+            .home-stat-card:hover {
+                background: rgba(0,240,255,0.06);
+                border-color: rgba(0,240,255,0.2);
+                transform: translateY(-3px);
+            }
+            .home-stat-num {
+                font-size: 1.9rem;
+                font-weight: 900;
+                color: var(--neon-cyan);
+                font-variant-numeric: tabular-nums;
+                letter-spacing: -1px;
+                line-height: 1;
+                margin-bottom: 4px;
+            }
+            .home-stat-label {
+                font-size: 0.72rem;
+                font-weight: 600;
+                color: rgba(255,255,255,0.3);
+                text-transform: uppercase;
+                letter-spacing: 1px;
+            }
+
+            /* QUICK ACTIONS */
+            .home-actions {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+                margin-bottom: 28px;
+            }
+            .home-action-btn {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                padding: 16px 18px;
+                background: rgba(255,255,255,0.04);
+                border: 1px solid rgba(255,255,255,0.1);
+                border-radius: 16px;
+                cursor: pointer;
+                transition: all 0.28s cubic-bezier(.2,.8,.3,1);
+                text-align: left;
+                color: white;
+                font-family: inherit;
+                width: 100%;
+            }
+            .home-action-btn:hover {
+                background: rgba(0,240,255,0.08);
+                border-color: rgba(0,240,255,0.3);
+                transform: translateY(-4px);
+                box-shadow: 0 12px 32px rgba(0,0,0,0.3), 0 0 20px rgba(0,240,255,0.08);
+            }
+            .home-action-icon {
+                width: 40px; height: 40px;
+                border-radius: 12px;
+                display: flex; align-items: center; justify-content: center;
+                font-size: 1.3rem;
+                flex-shrink: 0;
+            }
+            .home-action-icon.cyan { background: rgba(0,240,255,0.12); box-shadow: 0 0 16px rgba(0,240,255,0.15); }
+            .home-action-icon.yellow { background: rgba(255,200,0,0.12); box-shadow: 0 0 16px rgba(255,200,0,0.15); }
+            .home-action-icon.purple { background: rgba(160,0,255,0.12); box-shadow: 0 0 16px rgba(160,0,255,0.15); }
+            .home-action-icon.green { background: rgba(0,255,157,0.12); box-shadow: 0 0 16px rgba(0,255,157,0.15); }
+            .home-action-text strong { display: block; font-size: 0.9rem; font-weight: 700; margin-bottom: 2px; }
+            .home-action-text small { font-size: 0.75rem; color: rgba(255,255,255,0.35); }
+            .home-action-arrow { margin-left: auto; color: rgba(255,255,255,0.2); font-size: 0.9rem; flex-shrink: 0; transition: all 0.25s; }
+            .home-action-btn:hover .home-action-arrow { color: var(--neon-cyan); transform: translateX(4px); }
+
+            /* DISCORD BANNER */
+            .discord-banner {
+                display: flex;
+                align-items: center;
+                gap: 16px;
+                background: linear-gradient(135deg, rgba(88,101,242,0.15), rgba(114,137,218,0.08));
+                border: 1px solid rgba(88,101,242,0.35);
+                border-radius: 18px;
+                padding: 18px 22px;
+                margin-bottom: 28px;
+                cursor: pointer;
+                transition: all 0.3s;
+                text-decoration: none;
+                color: white;
+            }
+            .discord-banner:hover {
+                background: linear-gradient(135deg, rgba(88,101,242,0.25), rgba(114,137,218,0.15));
+                border-color: rgba(88,101,242,0.6);
+                transform: translateY(-2px);
+                box-shadow: 0 12px 30px rgba(88,101,242,0.2);
+            }
+            .discord-banner-icon {
+                width: 46px; height: 46px;
+                background: rgba(88,101,242,0.2);
+                border-radius: 14px;
+                display: flex; align-items: center; justify-content: center;
+                flex-shrink: 0;
+            }
+            .discord-banner-text strong { display: block; font-size: 0.95rem; font-weight: 700; margin-bottom: 2px; }
+            .discord-banner-text small { font-size: 0.78rem; color: rgba(255,255,255,0.4); }
+            .discord-banner-arrow { margin-left: auto; font-size: 1.2rem; opacity: 0.4; transition: all 0.25s; }
+            .discord-banner:hover .discord-banner-arrow { opacity: 0.9; transform: translateX(4px); }
+
+            /* TOP DOWNLOADS */
+            .top-dl-section { margin-top: 0; }
+            .top-dl-title { font-size: 1.05rem; font-weight: 800; letter-spacing: 0.3px; color: rgba(255,255,255,0.85); margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+            .top-dl-title span { color: var(--neon-cyan); font-size: 0.82rem; opacity: 0.7; }
+            .top-dl-list { display: flex; flex-direction: column; gap: 10px; }
+            .top-dl-card { display: flex; align-items: center; gap: 14px; background: rgba(255,255,255,0.035); border: 1px solid rgba(255,255,255,0.07); border-radius: 16px; padding: 14px 16px; cursor: pointer; transition: all 0.28s cubic-bezier(.2,.8,.3,1); position: relative; overflow: hidden; min-height: 80px; }
+            .top-dl-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--neon-cyan); opacity: 0.5; transition: opacity 0.25s; }
+            .top-dl-card:hover { background: rgba(0,240,255,0.055); border-color: rgba(0,240,255,0.22); transform: translateX(5px); box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
+            .top-dl-card:hover::before { opacity: 1; }
+            .top-dl-rank { font-size: 1.1rem; font-weight: 900; color: rgba(255,255,255,0.18); width: 28px; text-align: center; flex-shrink: 0; }
+            .top-dl-rank.gold { color: #ffcc00; text-shadow: 0 0 12px rgba(255,200,0,0.5); }
+            .top-dl-rank.silver { color: #b0b8c8; text-shadow: 0 0 10px rgba(176,184,200,0.4); }
+            .top-dl-rank.bronze { color: #cd7f32; text-shadow: 0 0 10px rgba(205,127,50,0.4); }
+            .top-dl-img { width: 140px; height: 78px; border-radius: 10px; object-fit: cover; object-position: left center; flex-shrink: 0; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 4px 14px rgba(0,0,0,0.35); }
+            .top-dl-info { flex: 1; min-width: 0; }
+            .top-dl-name { font-size: 0.9rem; font-weight: 700; color: rgba(255,255,255,0.92); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 4px; }
+            .top-dl-pub { font-size: 0.7rem; color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing: 0.8px; }
+            .top-dl-count { display: flex; flex-direction: column; align-items: center; gap: 1px; flex-shrink: 0; min-width: 44px; text-align: center; }
+            .top-dl-count-num { font-size: 1rem; font-weight: 900; color: var(--neon-cyan); font-variant-numeric: tabular-nums; }
+            .top-dl-count-label { font-size: 0.62rem; font-weight: 600; color: rgba(255,255,255,0.25); text-transform: uppercase; letter-spacing: 0.5px; }
+            .top-dl-btn { padding: 10px 16px; border-radius: 11px; background: linear-gradient(135deg, #ff7a00, #ff2d55); border: none; color: white; font-size: 0.82rem; font-weight: 800; cursor: pointer; white-space: nowrap; flex-shrink: 0; transition: all 0.22s; letter-spacing: 0.3px; box-shadow: 0 0 18px rgba(255, 80, 0, 0.3); display: flex; align-items: center; gap: 6px; }
+            .top-dl-btn:hover { transform: translateY(-2px); box-shadow: 0 0 28px rgba(255, 80, 0, 0.55); }
+            .top-dl-btn:active { transform: scale(0.97); opacity: 0.88; }
+            .top-dl-loading { text-align: center; padding: 24px; color: rgba(255,255,255,0.2); font-size: 0.85rem; }
+            .top-dl-empty { text-align: center; padding: 24px; color: rgba(255,255,255,0.2); font-size: 0.85rem; }
+            @media (max-width: 480px) { .top-dl-pub { display: none; } .top-dl-btn { padding: 7px 10px; font-size: 0.72rem; } .top-dl-img { width: 90px; height: 50px; } .home-stats { grid-template-columns: repeat(3,1fr); } .home-actions { grid-template-columns: 1fr; } }
+
+            /* TAB CONTENTS */
             .info {
                 display: inline-flex;
                 align-items: center;
@@ -480,6 +662,61 @@
             .bp-empty-text { font-size: 0.95rem; }
             @media (max-width: 600px) { .bp-grid { grid-template-columns: repeat(auto-fill, minmax(145px, 1fr)); gap: 10px; } .bp-topbar { flex-direction: column; align-items: flex-start; } }
 
+            /* ── BYPASS DOWNLOAD COUNT BADGE ── */
+            .bp-card-dl-count {
+                position: absolute;
+                bottom: 52px;
+                right: 10px;
+                display: flex;
+                align-items: center;
+                gap: 4px;
+                background: rgba(0,0,0,0.65);
+                border: 1px solid rgba(0,240,255,0.2);
+                border-radius: 20px;
+                padding: 3px 9px;
+                font-size: 0.65rem;
+                font-weight: 700;
+                color: var(--neon-cyan);
+                z-index: 3;
+                backdrop-filter: blur(6px);
+            }
+            .bp-card-dl-count::before { content: '⬇️'; font-size: 0.6rem; }
+
+            /* ── STATUS FILTER PILLS ── */
+            .bp-status-filters {
+                display: flex;
+                gap: 8px;
+                flex-wrap: wrap;
+                margin-bottom: 14px;
+            }
+            .bp-status-filter {
+                padding: 7px 16px;
+                border-radius: 9999px;
+                background: rgba(255,255,255,0.04);
+                border: 1.5px solid rgba(255,255,255,0.1);
+                color: rgba(255,255,255,0.45);
+                font-size: 0.78rem;
+                font-weight: 700;
+                cursor: pointer;
+                transition: all 0.22s;
+                white-space: nowrap;
+                letter-spacing: 0.3px;
+                display: flex;
+                align-items: center;
+                gap: 6px;
+            }
+            .bp-status-filter:hover { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.75); }
+            .bp-status-filter.active-all { background: rgba(0,240,255,0.12); border-color: var(--neon-cyan); color: var(--neon-cyan); }
+            .bp-status-filter.active-ok { background: rgba(0,255,157,0.1); border-color: #00ff9d; color: #00ff9d; }
+            .bp-status-filter.active-warn { background: rgba(255,200,0,0.1); border-color: #ffcc00; color: #ffcc00; }
+            .bp-status-filter.active-broken { background: rgba(255,45,85,0.1); border-color: #ff2d55; color: #ff2d55; }
+
+            /* PUBLISHER FILTERS */
+            .bp-publisher-filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+            .bp-pub-filter { padding: 6px 14px; border-radius: 9999px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.5); font-size: 0.78rem; font-weight: 700; cursor: pointer; transition: all 0.2s; white-space: nowrap; letter-spacing: 0.3px; }
+            .bp-pub-filter:hover { background: rgba(0,240,255,0.08); border-color: rgba(0,240,255,0.3); color: var(--neon-cyan); }
+            .bp-pub-filter.active { background: rgba(0,240,255,0.15); border-color: var(--neon-cyan); color: var(--neon-cyan); box-shadow: 0 0 14px rgba(0,240,255,0.15); }
+
             .bypass-container { text-align: center; padding: 30px 10px 40px; }
             .bypass-title { font-size: 2rem; font-weight: 700; background: linear-gradient(90deg, #fff, var(--neon-cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 30px; }
 
@@ -496,11 +733,13 @@
             .faq-answer.open { max-height: 1000px; padding: 0 20px 16px; }
             .faq-question.open span { transform: rotate(45deg); }
 
+            /* SETTINGS */
             .settings-container { padding: 8px 0 30px; }
             .settings-title { font-size: 2rem; font-weight: 700; background: linear-gradient(90deg, #fff, var(--neon-cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 22px; text-align: center; }
             .settings-section { background: var(--dark-panel-lighter); border: 1px solid var(--faq-border); border-radius: 14px; padding: 20px; margin-bottom: 14px; }
             .settings-section-title { font-size: 0.9rem; font-weight: 700; color: var(--neon-cyan); margin-bottom: 16px; letter-spacing: 1px; text-transform: uppercase; }
             .settings-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+            .settings-row + .settings-row { margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.06); }
             .settings-row-label { font-size: 0.96rem; font-weight: 600; margin-bottom: 4px; color: rgba(255,255,255,0.9); }
             .settings-row-desc { font-size: 0.78rem; color: rgba(255,255,255,0.45); line-height: 1.4; }
             .toggle-switch { position: relative; display: inline-block; width: 52px; height: 28px; flex-shrink: 0; }
@@ -519,6 +758,28 @@
             .custom-preview { width: 44px; height: 44px; border-radius: 50%; border: 3px solid var(--neon-cyan); box-shadow: 0 0 20px var(--accent-shadow); flex-shrink: 0; transition: all 0.3s; cursor: pointer; }
             .custom-preview:hover { transform: scale(1.1); box-shadow: 0 0 30px var(--accent-active-shadow); }
             .color-pick-btn:hover { background: rgba(0,240,255,0.1); border-color: var(--neon-cyan); color: var(--neon-cyan); box-shadow: 0 0 18px var(--accent-shadow); transform: translateY(-2px); }
+
+            /* SETTINGS - DENSITY PICKER */
+            .density-picker { display: flex; gap: 8px; }
+            .density-option {
+                flex: 1;
+                padding: 10px 8px;
+                background: rgba(255,255,255,0.04);
+                border: 1.5px solid rgba(255,255,255,0.1);
+                border-radius: 10px;
+                color: rgba(255,255,255,0.45);
+                font-size: 0.78rem;
+                font-weight: 700;
+                cursor: pointer;
+                transition: all 0.2s;
+                text-align: center;
+                letter-spacing: 0.3px;
+            }
+            .density-option:hover { background: rgba(0,240,255,0.06); color: rgba(255,255,255,0.75); }
+            .density-option.active { background: rgba(0,240,255,0.12); border-color: var(--neon-cyan); color: var(--neon-cyan); }
+
+            /* SETTINGS - CARD SIZE */
+            .card-size-preview { font-size: 0.75rem; color: rgba(255,255,255,0.3); margin-top: 8px; }
 
             /* MODAL */
             .gmodal-backdrop { display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.88); backdrop-filter: blur(18px) saturate(0.6); -webkit-backdrop-filter: blur(18px) saturate(0.6); z-index: 9999; align-items: center; justify-content: center; padding: 20px; }
@@ -539,6 +800,8 @@
             .gmodal-status-badge.ok { background: rgba(0,255,157,0.12); color: #00ff9d; border: 1px solid rgba(0,255,157,0.3); }
             .gmodal-status-badge.warn { background: rgba(255,200,0,0.12); color: #ffcc00; border: 1px solid rgba(255,200,0,0.3); }
             .gmodal-game-title { font-size: 1.6rem; font-weight: 800; line-height: 1.15; letter-spacing: -0.5px; color: #fff; text-shadow: 0 2px 24px rgba(0,0,0,0.9); }
+            .gmodal-dl-count-row { display: flex; align-items: center; gap: 6px; margin-top: 6px; font-size: 0.75rem; color: rgba(255,255,255,0.35); }
+            .gmodal-dl-count-row strong { color: var(--neon-cyan); font-variant-numeric: tabular-nums; }
             .gmodal-warning-strip { display: none; align-items: center; gap: 8px; background: linear-gradient(90deg, rgba(255,30,30,0.12), rgba(255,30,30,0.06)); border-top: 1px solid rgba(255,30,30,0.25); border-bottom: 1px solid rgba(255,30,30,0.15); padding: 9px 22px; font-size: 0.8rem; font-weight: 800; color: #ff6677; letter-spacing: 1px; text-transform: uppercase; flex-shrink: 0; }
             .gmodal-warning-strip.visible { display: flex; }
             .gmodal-body { flex: 1; overflow-y: auto; padding: 20px 22px 4px; scrollbar-width: thin; scrollbar-color: rgba(0,240,255,0.15) transparent; }
@@ -578,39 +841,6 @@
             .credit { margin-top: 30px; text-align: center; font-size: 12px; opacity: 0.5; color: var(--neon-cyan); }
             .credit a { color: var(--neon-cyan); text-decoration: none; }
 
-            /* TOP DOWNLOADS */
-            .top-dl-section { margin-top: 36px; }
-            .top-dl-title { font-size: 1.15rem; font-weight: 800; letter-spacing: 0.5px; color: rgba(255,255,255,0.85); margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
-            .top-dl-title span { color: var(--neon-cyan); font-size: 0.85rem; opacity: 0.7; }
-            .top-dl-list { display: flex; flex-direction: column; gap: 10px; }
-            .top-dl-card { display: flex; align-items: center; gap: 14px; background: rgba(255,255,255,0.035); border: 1px solid rgba(255,255,255,0.07); border-radius: 16px; padding: 18px 16px; cursor: pointer; transition: all 0.28s cubic-bezier(.2,.8,.3,1); position: relative; overflow: hidden; min-height: 90px; }
-            .top-dl-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--neon-cyan); opacity: 0.5; transition: opacity 0.25s; }
-            .top-dl-card:hover { background: rgba(0,240,255,0.055); border-color: rgba(0,240,255,0.22); transform: translateX(5px); box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
-            .top-dl-card:hover::before { opacity: 1; }
-            .top-dl-rank { font-size: 1.1rem; font-weight: 900; color: rgba(255,255,255,0.18); width: 28px; text-align: center; flex-shrink: 0; }
-            .top-dl-rank.gold { color: #ffcc00; text-shadow: 0 0 12px rgba(255,200,0,0.5); }
-            .top-dl-rank.silver { color: #b0b8c8; text-shadow: 0 0 10px rgba(176,184,200,0.4); }
-            .top-dl-rank.bronze { color: #cd7f32; text-shadow: 0 0 10px rgba(205,127,50,0.4); }
-            .top-dl-img { width: 180px; height: 100px; border-radius: 10px; object-fit: cover; object-position: left center; flex-shrink: 0; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 4px 14px rgba(0,0,0,0.35); }
-            .top-dl-info { flex: 1; min-width: 0; }
-            .top-dl-name { font-size: 0.93rem; font-weight: 700; color: rgba(255,255,255,0.92); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 4px; }
-            .top-dl-pub { font-size: 0.72rem; color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing: 0.8px; }
-            .top-dl-count { display: flex; flex-direction: column; align-items: center; gap: 1px; flex-shrink: 0; min-width: 44px; text-align: center; }
-            .top-dl-count-num { font-size: 1rem; font-weight: 900; color: var(--neon-cyan); font-variant-numeric: tabular-nums; }
-            .top-dl-count-label { font-size: 0.62rem; font-weight: 600; color: rgba(255,255,255,0.25); text-transform: uppercase; letter-spacing: 0.5px; }
-            .top-dl-btn { padding: 11px 20px; border-radius: 11px; background: linear-gradient(135deg, #ff7a00, #ff2d55); border: none; color: white; font-size: 0.88rem; font-weight: 800; cursor: pointer; white-space: nowrap; flex-shrink: 0; transition: all 0.22s; letter-spacing: 0.3px; box-shadow: 0 0 18px rgba(255, 80, 0, 0.3); display: flex; align-items: center; gap: 6px; }
-            .top-dl-btn:hover { transform: translateY(-2px); box-shadow: 0 0 28px rgba(255, 80, 0, 0.55); }
-            .top-dl-btn:active { transform: scale(0.97); opacity: 0.88; }
-            .top-dl-loading { text-align: center; padding: 24px; color: rgba(255,255,255,0.2); font-size: 0.85rem; }
-            .top-dl-empty { text-align: center; padding: 24px; color: rgba(255,255,255,0.2); font-size: 0.85rem; }
-            @media (max-width: 480px) { .top-dl-pub { display: none; } .top-dl-btn { padding: 7px 10px; font-size: 0.72rem; } }
-
-            /* PUBLISHER FILTERS */
-            .bp-publisher-filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
-            .bp-pub-filter { padding: 6px 14px; border-radius: 9999px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.5); font-size: 0.78rem; font-weight: 700; cursor: pointer; transition: all 0.2s; white-space: nowrap; letter-spacing: 0.3px; }
-            .bp-pub-filter:hover { background: rgba(0,240,255,0.08); border-color: rgba(0,240,255,0.3); color: var(--neon-cyan); }
-            .bp-pub-filter.active { background: rgba(0,240,255,0.15); border-color: var(--neon-cyan); color: var(--neon-cyan); box-shadow: 0 0 14px rgba(0,240,255,0.15); }
-
             /* HISTORIQUE */
             .history-section-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--neon-cyan); opacity: 0.5; margin: 22px 0 10px; }
             .history-section-label:first-child { margin-top: 0; }
@@ -649,22 +879,85 @@
 
                 <div class="main-content">
 
-                    <!-- TAB 0 - ACCUEIL -->
+                    <!-- TAB 0 - ACCUEIL REDESIGN -->
                     <div id="tab-0" class="tab-content active">
-                        <div class="welcome">
-                            <h1>Bienvenue au centre d'aide</h1>
-                            <p>Ce site web est pour obtenir de l'aide en rapport aux jeux steamtools, lua tools etc. Ce serveur est principalement liée au serveur de Abelou.</p>
-                            <a href="https://discord.gg/eTcyJezWkH" target="_blank" class="discord-btn">
-                                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                        <div class="home-hero">
+                            <div class="home-version-chip"></div>
+                            <h1 class="home-title">Centre d'Aide<br>SteamTools</h1>
+                            <p class="home-subtitle">Retrouve bypass, checker et tutoriels pour jouer à tes jeux.</p>
+                        </div>
+
+                        <!-- STATS -->
+                        <div class="home-stats">
+                            <div class="home-stat-card">
+                                <div class="home-stat-num" id="stat-bypass">0</div>
+                                <div class="home-stat-label">Bypass</div>
+                            </div>
+                            <div class="home-stat-card">
+                                <div class="home-stat-num" id="stat-games">0</div>
+                                <div class="home-stat-label">Jeux listés</div>
+                            </div>
+                            <div class="home-stat-card">
+                                <div class="home-stat-num" id="stat-dl">—</div>
+                                <div class="home-stat-label">Total DL</div>
+                            </div>
+                        </div>
+
+                        <!-- QUICK ACTIONS -->
+                        <div class="home-actions">
+                            <button class="home-action-btn" onclick="switchTab(1)">
+                                <div class="home-action-icon cyan">🎮</div>
+                                <div class="home-action-text">
+                                    <strong>Checker un jeu</strong>
+                                    <small>Vérifie si ton jeu est disponible</small>
+                                </div>
+                                <span class="home-action-arrow">›</span>
+                            </button>
+                            <button class="home-action-btn" onclick="switchTab(2)">
+                                <div class="home-action-icon yellow">🔓</div>
+                                <div class="home-action-text">
+                                    <strong>Bypass disponibles</strong>
+                                    <small>Contourne la protection DRM</small>
+                                </div>
+                                <span class="home-action-arrow">›</span>
+                            </button>
+                            <button class="home-action-btn" onclick="switchTab(3)">
+                                <div class="home-action-icon purple">⚡</div>
+                                <div class="home-action-text">
+                                    <strong>Hypervisor</strong>
+                                    <small>Solutions avancées Denuvo</small>
+                                </div>
+                                <span class="home-action-arrow">›</span>
+                            </button>
+                            <button class="home-action-btn" onclick="switchTab(7)">
+                                <div class="home-action-icon green">❓</div>
+                                <div class="home-action-text">
+                                    <strong>FAQ</strong>
+                                    <small>Résoudre les erreurs courantes</small>
+                                </div>
+                                <span class="home-action-arrow">›</span>
+                            </button>
+                        </div>
+
+                        <!-- DISCORD BANNER -->
+                        <a href="https://discord.gg/eTcyJezWkH" target="_blank" class="discord-banner">
+                            <div class="discord-banner-icon">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="#7289da">
                                     <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057c.002.022.015.043.03.056a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/>
                                 </svg>
-                                Rejoindre le serveur Discord
-                            </a>
-                            <div class="top-dl-section">
-                                <div class="top-dl-title">🔥 Bypass les plus téléchargés <span id="top-dl-badge"></span></div>
-                                <div class="top-dl-list" id="top-dl-list">
-                                    <div class="top-dl-loading">Chargement...</div>
-                                </div>
+                            </div>
+                            <div class="discord-banner-text">
+                                <strong>Rejoindre le serveur Discord</strong>
+                                <small>Serveur de Abelou · Aide, annonces, support</small>
+                            </div>
+                            <span class="discord-banner-arrow">›</span>
+                        </a>
+
+                        <!-- TOP DL -->
+                        <div class="top-dl-section">
+                            <div class="top-dl-title">🔥 Bypass les plus téléchargés <span id="top-dl-badge"></span></div>
+                            <div class="top-dl-list" id="top-dl-list">
+                                <div class="top-dl-loading">Chargement...</div>
                             </div>
                         </div>
                     </div>
@@ -682,11 +975,11 @@
                         <div id="explanation-bypass" class="explanation bypass">⚡ Un bypass est disponible pour ce jeu, rendez-vous dans l'onglet <strong>Bypass disponibles</strong> !</div>
                         <div id="explanation-purchase" class="explanation purchase" style="display: none">💜 Ce jeu n'est pas disponible via des Tools, mais tu peux l'<strong>obtenir</strong> via steamrip.com (gratuit, simple et safe)</div>
                         <div id="list" class="list"></div>
-                 <div id="hypervisor-hint" class="bp-warning-banner" style="display:none; margin-top: 20px;">
-    <span style="font-size:1.2rem;flex-shrink:0;margin-top:1px">⚡</span>
-    <p>Ce jeu est disponible dans l'onglet <strong style="color:#ffaa55;">Hypervisor</strong> !<br>
-    <strong>Recommandé pour les utilisateurs avancés.</strong></p>
-</div>
+                        <div id="hypervisor-hint" class="bp-warning-banner" style="display:none; margin-top: 20px;">
+                            <span style="font-size:1.2rem;flex-shrink:0;margin-top:1px">⚡</span>
+                            <p>Ce jeu est disponible dans l'onglet <strong style="color:#ffaa55;">Hypervisor</strong> !<br>
+                            <strong>Recommandé pour les utilisateurs avancés.</strong></p>
+                        </div>
                         <button class="show-list-btn" onclick="toggleFullList()">📋 Voir la liste de jeux</button>
                         <div id="full-list" class="full-list" style="display: none"></div>
                         <button class="show-list-btn" onclick="downloadGames()">⬇️ Télécharger la liste des jeux actuelles (TXT)</button>
@@ -715,6 +1008,15 @@
                                 <span class="bp-search-icon">🔎</span>
                                 <input class="bp-search-input" type="text" id="bp-search" placeholder="Rechercher un bypass (RDR2, GTA V, Black Myth, PES...)" oninput="bpFilter()" />
                             </div>
+
+                            <!-- STATUS FILTERS -->
+                            <div class="bp-status-filters" id="bp-status-filters">
+                                <button class="bp-status-filter active-all" data-status="all" onclick="bpSetStatus('all', this)">Tous</button>
+                                <button class="bp-status-filter" data-status="ok" onclick="bpSetStatus('ok', this)">✅ Fonctionnel</button>
+                                <button class="bp-status-filter" data-status="warn" onclick="bpSetStatus('warn', this)">⚠️ Non testé</button>
+                                <button class="bp-status-filter" data-status="broken" onclick="bpSetStatus('broken', this)">❌ Non fonctionnel</button>
+                            </div>
+
                             <div class="bp-count-bar"><span id="bp-count">0</span> bypass affiché(s)</div>
                             <div class="bp-publisher-filters" id="bp-pub-filters"></div>
                             <div class="bp-grid" id="bp-grid"></div>
@@ -745,6 +1047,15 @@
                                 <span class="bp-search-icon">🔎</span>
                                 <input class="bp-search-input" type="text" id="hyper-search" placeholder="Rechercher un bypass Hypervisor (RDR2, GTA V...)" oninput="hyperFilter()" />
                             </div>
+
+                            <!-- STATUS FILTERS HYPER -->
+                            <div class="bp-status-filters" id="hyper-status-filters">
+                                <button class="bp-status-filter active-all" data-status="all" onclick="hyperSetStatus('all', this)">Tous</button>
+                                <button class="bp-status-filter" data-status="ok" onclick="hyperSetStatus('ok', this)">✅ Fonctionnel</button>
+                                <button class="bp-status-filter" data-status="warn" onclick="hyperSetStatus('warn', this)">⚠️ Non testé</button>
+                                <button class="bp-status-filter" data-status="broken" onclick="hyperSetStatus('broken', this)">❌ Non fonctionnel</button>
+                            </div>
+
                             <div class="bp-count-bar"><span id="hyper-count">0</span> bypass hypervisor affiché(s)</div>
                             <div class="bp-grid" id="hyper-grid"></div>
                         </div>
@@ -867,6 +1178,8 @@
                     <div id="tab-8" class="tab-content">
                         <div class="settings-container">
                             <h1 class="settings-title">⚙️ Paramètres</h1>
+
+                            <!-- COLOR -->
                             <div class="settings-section">
                                 <div class="settings-section-title">🎨 Color Picker</div>
                                 <div class="color-picker-section">
@@ -901,8 +1214,10 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <!-- ANIMATIONS -->
                             <div class="settings-section">
-                                <div class="settings-section-title">✨ Animations</div>
+                                <div class="settings-section-title">✨ Animations & Affichage</div>
                                 <div class="settings-row">
                                     <div class="settings-row-info">
                                         <div class="settings-row-label">Désactiver les animations</div>
@@ -913,12 +1228,25 @@
                                         <span class="toggle-slider"></span>
                                     </label>
                                 </div>
-                            </div>
-                            <div class="settings-section">
-                                <div class="settings-section-title">⬇️ Confirmation avant téléchargement</div>
                                 <div class="settings-row">
                                     <div class="settings-row-info">
-                                        <div class="settings-row-label">Demander confirmation</div>
+                                        <div class="settings-row-label">Taille des cartes bypass</div>
+                                        <div class="settings-row-desc">Ajuste la taille des cartes dans les onglets Bypass et Hypervisor.</div>
+                                    </div>
+                                    <div class="density-picker">
+                                        <div class="density-option active" id="density-sm" onclick="setCardDensity('sm', this)">S</div>
+                                        <div class="density-option" id="density-md" onclick="setCardDensity('md', this)">M</div>
+                                        <div class="density-option" id="density-lg" onclick="setCardDensity('lg', this)">L</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- DOWNLOADS -->
+                            <div class="settings-section">
+                                <div class="settings-section-title">⬇️ Téléchargements</div>
+                                <div class="settings-row">
+                                    <div class="settings-row-info">
+                                        <div class="settings-row-label">Confirmation avant téléchargement</div>
                                         <div class="settings-row-desc">Affiche une fenêtre de confirmation avec l'icône du jeu avant chaque téléchargement de bypass.</div>
                                     </div>
                                     <label class="toggle-switch">
@@ -926,7 +1254,45 @@
                                         <span class="toggle-slider"></span>
                                     </label>
                                 </div>
+                                <div class="settings-row">
+                                    <div class="settings-row-info">
+                                        <div class="settings-row-label">Afficher les compteurs de téléchargement</div>
+                                        <div class="settings-row-desc">Affiche le nombre de téléchargements sur chaque carte bypass.</div>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="dlcount-toggle" onchange="toggleDlCountDisplay(this.checked)" />
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
                             </div>
+
+                            <!-- ACCUEIL -->
+                            <div class="settings-section">
+                                <div class="settings-section-title">🏠 Accueil</div>
+                                <div class="settings-row">
+                                    <div class="settings-row-info">
+                                        <div class="settings-row-label">Afficher le popup nouveaux bypass</div>
+                                        <div class="settings-row-desc">Affiche le popup des nouveaux bypass au démarrage.</div>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="popup-toggle" onchange="togglePopup(this.checked)" />
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- RESET -->
+                            <div class="settings-section">
+                                <div class="settings-section-title">🗑️ Réinitialisation</div>
+                                <div class="settings-row">
+                                    <div class="settings-row-info">
+                                        <div class="settings-row-label">Réinitialiser tous les paramètres</div>
+                                        <div class="settings-row-desc">Remet tous les paramètres à leur valeur par défaut. Les préférences de thème seront perdues.</div>
+                                    </div>
+                                    <button onclick="resetAllSettings()" style="padding:10px 18px;background:rgba(255,45,85,0.12);border:1px solid rgba(255,45,85,0.4);color:#ff2d55;font-size:0.82rem;font-weight:700;border-radius:10px;cursor:pointer;white-space:nowrap;transition:all 0.2s;" onmouseover="this.style.background='rgba(255,45,85,0.22)'" onmouseout="this.style.background='rgba(255,45,85,0.12)'">Réinitialiser</button>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
 
@@ -965,6 +1331,7 @@
                             <span class="gmodal-status-badge ok" id="gmodalStatusBadge">Fonctionnel</span>
                         </div>
                         <div class="gmodal-game-title" id="gmodalTitle">—</div>
+                        <div class="gmodal-dl-count-row" id="gmodalDlCountRow" style="display:none;">⬇️ <strong id="gmodalDlCountNum">0</strong> téléchargements</div>
                     </div>
                 </div>
                 <div class="gmodal-warning-strip" id="gmodalWarningStrip">
@@ -1001,7 +1368,6 @@
                 <button onclick="closeNewBypassPopup()" style="position:absolute;top:14px;right:16px;width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.4);font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s;line-height:1;" onmouseover="this.style.background='rgba(255,45,85,0.2)';this.style.color='#ff2d55';" onmouseout="this.style.background='rgba(255,255,255,0.07)';this.style.color='rgba(255,255,255,0.4)';">✕</button>
                 <div style="display:inline-flex;align-items:center;gap:7px;background:rgba(255,200,0,0.12);border:1px solid rgba(255,200,0,0.4);color:var(--neon-yellow);padding:5px 16px;border-radius:9999px;font-size:0.78rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:20px;">Nouveau bypass disponible</div>
                 <div style="font-size:1.5rem;font-weight:800;letter-spacing:-0.5px;background:linear-gradient(90deg,#fff,var(--neon-cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:18px;">Bypass disponibles !</div>
-                <!-- LISTE DYNAMIQUE : max 10 derniers bypass -->
                 <div id="popup-games-list" style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:16px"></div>
                 <div style="width:65px;height:2px;background:linear-gradient(90deg,transparent,var(--neon-cyan),transparent);margin:0 auto 19px;border-radius:2px;"></div>
                 <p style="font-size:0.92rem;line-height:1.65;color:rgba(255,255,255,0.72);margin-bottom:24px">Rendez-vous dans l'onglet <strong style="color:var(--neon-cyan)">🔓 Bypass</strong> pour les télécharger.</p>
@@ -1084,6 +1450,32 @@
                 localStorage.setItem('noAnimations', disabled ? '1' : '0');
             }
 
+            // ── CARD DENSITY ──
+            const DENSITY_MAP = { sm: 'repeat(auto-fill,minmax(155px,1fr))', md: 'repeat(auto-fill,minmax(200px,1fr))', lg: 'repeat(auto-fill,minmax(260px,1fr))' };
+            function setCardDensity(size, btn) {
+                localStorage.setItem('cardDensity', size);
+                document.querySelectorAll('.density-option').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const tmpl = DENSITY_MAP[size] || DENSITY_MAP.sm;
+                document.querySelectorAll('.bp-grid').forEach(g => g.style.gridTemplateColumns = tmpl);
+            }
+
+            // ── DL COUNT DISPLAY ──
+            function toggleDlCountDisplay(enabled) {
+                localStorage.setItem('showDlCount', enabled ? '1' : '0');
+                document.querySelectorAll('.bp-card-dl-count').forEach(el => el.style.display = enabled ? 'flex' : 'none');
+            }
+
+            // ── POPUP TOGGLE ──
+            function togglePopup(enabled) { localStorage.setItem('showPopup', enabled ? '1' : '0'); }
+
+            // ── RESET ALL ──
+            function resetAllSettings() {
+                if (!confirm('Réinitialiser tous les paramètres ?')) return;
+                localStorage.clear();
+                location.reload();
+            }
+
             // ── DOWNLOAD CONFIRM ──
             function toggleDlConfirm(enabled) { localStorage.setItem('downloadConfirm', enabled ? '1' : '0'); }
             let pendingDownloadFn = null;
@@ -1115,8 +1507,21 @@
                     const current = await res.json() || 0;
                     await fetch(`${FB_URL}/${dlKey}.json`, { method: "PUT", body: JSON.stringify(current + 1) });
                     renderTopDownloads();
+                    updateCardDlBadge(dlKey, current + 1);
                 } catch(e) { console.warn("Firebase increment failed", e); }
             }
+
+            // Cache for DL counts
+            let _dlCountsCache = {};
+
+            function updateCardDlBadge(dlKey, count) {
+                _dlCountsCache[dlKey] = count;
+                document.querySelectorAll(`.bp-card[data-dlkey="${dlKey}"] .bp-card-dl-count`).forEach(el => {
+                    el.textContent = count;
+                    el.style.display = localStorage.getItem('showDlCount') === '1' ? 'flex' : 'none';
+                });
+            }
+
             function triggerDownload(url, filename, dlKey) {
                 const a = document.createElement("a");
                 a.href = url;
@@ -1126,12 +1531,22 @@
                 document.body.removeChild(a);
                 if (dlKey) fbIncrement(dlKey);
             }
+
             async function renderTopDownloads() {
                 const list = document.getElementById("top-dl-list");
                 if (!list) return;
                 const counts = await fbGet();
+                _dlCountsCache = counts;
                 const allGames = [...BP_GAMES, ...HYPER_GAMES];
                 const ranked = allGames.filter(g => counts[g.dlKey] > 0).map(g => ({ ...g, count: counts[g.dlKey] })).sort((a, b) => b.count - a.count).slice(0, 8);
+                
+                // Update stat counter
+                const statDl = document.getElementById('stat-dl');
+                if (statDl) {
+                    const total = Object.values(counts).reduce((a, b) => a + (b || 0), 0);
+                    statDl.textContent = total > 999 ? (total/1000).toFixed(1)+'k' : total;
+                }
+
                 const badge = document.getElementById("top-dl-badge");
                 if (badge) badge.textContent = ranked.length > 0 ? `top ${ranked.length}` : "";
                 if (ranked.length === 0) { list.innerHTML = `<div class="top-dl-empty">Aucun téléchargement enregistré pour l'instant.<br><small style="opacity:0.5">Sois le premier à télécharger un bypass !</small></div>`; return; }
@@ -1149,10 +1564,24 @@
                             <span class="top-dl-count-num">${g.count}</span>
                             <span class="top-dl-count-label">téléch.</span>
                         </div>
-                        <button class="top-dl-btn" onclick="event.stopPropagation(); triggerCurrentDownloadByKey('${g.dlKey}')">⬇️ Télécharger</button>
+                        <button class="top-dl-btn" onclick="event.stopPropagation(); triggerCurrentDownloadByKey('${g.dlKey}')">⬇️ DL</button>
                     </div>
                 `).join("");
+
+                // Also update card badges
+                updateAllCardBadges(counts);
             }
+
+            function updateAllCardBadges(counts) {
+                document.querySelectorAll('.bp-card[data-dlkey]').forEach(card => {
+                    const key = card.getAttribute('data-dlkey');
+                    const badge = card.querySelector('.bp-card-dl-count');
+                    if (badge && counts[key] > 0) {
+                        badge.textContent = counts[key];
+                    }
+                });
+            }
+
             function triggerCurrentDownloadByKey(dlKey) {
                 if (!DOWNLOAD_FNS[dlKey]) return;
                 const allGames = [...BP_GAMES, ...HYPER_GAMES];
@@ -1196,14 +1625,15 @@
                 f1:        () => triggerDownload("https://gofile.io/d/2XjnoM", "F125_Bypass.rar", "f1"),
                 awayout:   () => triggerDownload("https://gofile.io/d/6nJKXw", "AWayOut_Bypass.rar", "awayout"),
                 riders:    () => triggerDownload("https://www.dropbox.com/scl/fi/5xrs9t6n3xoqyowdg60w8/Riders.Republic.Crack.Only-Vorii.rar?rlkey=k5h696k8gyod5y5e4wq9ai1uj&e=1&st=s5ipyx8s&dl=1", "RR_Bypass.rar", "riders"),
-                sonic:    () => triggerDownload("https://www.dropbox.com/scl/fi/29dbyeexj9lfy0tyj2r0g/Sonic.Colors.Ultimate.Crack.Only-voices38.rar?rlkey=70ik8o0h310su2z8ivdg0na1d&st=nxz41tp3&dl=1", "SCUltimate_Bypass.rar", "sonic"),
+                sonic:     () => triggerDownload("https://www.dropbox.com/scl/fi/29dbyeexj9lfy0tyj2r0g/Sonic.Colors.Ultimate.Crack.Only-voices38.rar?rlkey=70ik8o0h310su2z8ivdg0na1d&st=nxz41tp3&dl=1", "SCUltimate_Bypass.rar", "sonic"),
+                undisputed: () => triggerDownload("https://gofile.io/d/CSSQO3", "Undisputed_Bypass.rar", "undisputed"),
             };
 
             // ── GAME DATA ──
             const waitGamesList = ["Resident Evil 2"];
             const purchaseList = ["Forza Horizon 5","Hogwarts Legacy"];
-            const bypassGames = ["red dead redemption 2","red dead redemption","red dead","rdr2","resident evil requiem","grand theft auto","grand theft auto V","grand theft auto v legacy","assassin's creed unity","assassins creed unity","assassin's creed 2","assassins creed 2","dead space","watch dogs","watch dogs: legion","black myth wukong","black myth","pes 2018","pes","pes 18","stellar blade","stellar","pragmata","prag","grand theft auto iii - the definitive edition","mafia: the old country","lego batman: legacy of the dark knight","doom: the dark ages","assassin's creed mirage","fifa 22","far cry 4","far cry 3","FIFA 22","Call of Duty: Black Ops Cold War","FIFA 21","FIFA 23","A Way Out","Riders Republic"];
-            const gamesList = ["007 First Light","Anno 117: Pax Romana","Assassin's Creed Shadows","Assassin's Creed Unity","Assassin's Creed Mirage","Assassin's Creed 2","Atomfall","Avatar: Frontiers of Pandora","A Way Out","Beyond Good & Evil - 20th Anniversary Edition","Black Myth Wukong","BattleBit Remastered","BRAVELY DEFAULT FLYING FAIRY HD Remaster","Borderlands 4","Call of Duty: Black Ops 7","Call of Duty: Black Ops Cold War","City Transport Simulator","Civilization VII","CODE VEIN II","Company of Heroes 3","Construction Simulator","Crimson Desert","Dead Space","Demon Slayer: The Hinokami Chronicles 1","Demon Slayer: The Hinokami Chronicles 2","Demon Slayer -Kimetsu no Yaiba- Sweep the Board!","Digimon Story Time Stranger","Dirt 5","DOOM: The Dark Ages","DRAGON QUEST VII Reimagined","Dune","Echoes of Aincrad","EA SPORTS FC 24","EA SPORTS FC 25","EA SPORTS FC 26","EA SPORTS WRC","Eagle Flight","Etrian Odyssey HD","Etrian Odyssey II HD","Etrian Odyssey III HD","Evil Genius 2: World Domination","F1 23","F1 24","F1 25","F1 Manager 22","F1 Manager 23","F1 Manager 24","F1 Manager 26","Far Cry 4","Far Cry 3","Far Cry 6","Far Cry 5","Fe","FIFA 21","FIFA 22","FIFA 23","FINAL FANTASY TACTICS - The Ivalice Chronicles","Firefighting Simulator - The Squad","Football Manager 19","Football Manager 20","Football Manager 21","Football Manager 22","Football Manager 23","Football Manager 24","Football Manager 26","Forza Horizon 5","HONOR","FortiFyte","GRID Legends","Grand Theft Auto III - The Definitive Edition","Grand Theft Auto V Legacy","Harry Potter: Quidditch Champions","Hatsune Miku: Project Diva Megamix+","Hello Kitty Island Adventures","Hogwarts Legacy","Jurassic World Evolution 3","LEGO\u00ae Batman\u2122: Legacy of the Dark Knight","Like A Dragon: Gaiden","Like A Dragon: Infinite Wealth","Like A Dragon: Ishin","Like A Dragon: Pirate Yakuza In Hawaii","Lost in Random","Lost Judgment","Life is Strange: Reunion","Madden NFL 21","Madden NFL 22","Madden NFL 23","Madden NFL 24","Madden NFL 25","Madden NFL 26","Mafia: The Old Country","Marathon","Marvel's Midnight Suns","METAL GEAR SOLID V: THE PHANTOM PAIN","Microsoft Flight Simulator 2024","Might and Magic: Heroes VII \u2013 Trial by Fire","MONOPOLY 2024","Monopoly Madness","Monster Hunter Wilds","Monster Hunter Stories 3: Twisted Reflection","Mortal Kombat 1","NBA 2K24","NBA 2K25","NBA 2K26","Need for Speed Unbound","Octopath Traveler 0","OddBallers","Onimusha 2: Samurai's Destiny","Persona 3 Portable","Persona 3 Reload","Persona 4 Arena Ultimax","Persona 4 Revival","Persona 5 Tactica","PES 2018","Phantom Blade Zero","PGA TOUR 2K25","Planet Coaster 2","Planet Zoo","Planet Zoo 2","Plants vs. Zombies: Garden Warfare 2","PRAGMATA","Prince Of Persia The Lost Crown","Professional Baseball Spirits 2024","Professional Baseball Spirits 2025","Rocksmith 2014 Edition REMASTERED","RAIDOU Remastered","Red Dead Redemption 2","Redfall","Resident Evil Requiem","Resident Evil 2","Riders Republic","Sea of Thieves","Shin Megami Tensei III: Nocturne HD","Shin Megami Tensei V: Vengeance","Shinobi - Art of Vengeance","Sniper Elite 5","Sniper Elite Resistance","Sniper Elite VR","Sonic Origins","Sonic Superstars","Sonic Racing Crossworlds","Sonic X Shadow Generations","Soul Hackers 2","Speedball","Star Wars Outlaws","Star Wars Squadrons","Stellar Blade","Street Fighter 6","Suicide Squad: Kill the Justice League","Super Mega Baseball 4","The Crew Motorfest","The Bus","The First Berserker: Khazan","The Settlers: New Allies","Tom Clancy's Ghost Recon Breakpoint","TopSpin 2K25","Total War: Warhammer 3","Train Sim World 2020","Train Sim World 3","Trials Rising","Two Point Museum","Undisputed","Valiant Hearts: Coming Home","Warhammer 40k: Chaos Gate Daemonhunters","Warhammer Age Of Sigmar: Realms Of Ruin","Watch Dogs: Legion","WWE 2K26","Yakuza Kiwami 3","Dark Ties","Zombie Army 4: Dead War","Zombie Army VR"];
+            const bypassGames = ["red dead redemption 2","red dead redemption","red dead","rdr2","resident evil requiem","grand theft auto","grand theft auto V","grand theft auto v legacy","assassin's creed unity","assassins creed unity","assassin's creed 2","assassins creed 2","dead space","watch dogs","watch dogs: legion","black myth wukong","black myth","pes 2018","pes","pes 18","stellar blade","stellar","pragmata","prag","grand theft auto iii - the definitive edition","mafia: the old country","lego batman: legacy of the dark knight","doom: the dark ages","assassin's creed mirage","fifa 22","far cry 4","far cry 3","FIFA 22","Call of Duty: Black Ops Cold War","FIFA 21","FIFA 23","A Way Out","Riders Republic","sonic colors ultimate","sonic colours ultimate","sonic colors","sonic colours","Undisputed"];
+            const gamesList = ["007 First Light","Anno 117: Pax Romana","Assassin's Creed Shadows","Assassin's Creed Unity","Assassin's Creed Mirage","Assassin's Creed 2","Atomfall","Avatar: Frontiers of Pandora","A Way Out","Beyond Good & Evil - 20th Anniversary Edition","Black Myth Wukong","BattleBit Remastered","BRAVELY DEFAULT FLYING FAIRY HD Remaster","Borderlands 4","Call of Duty: Black Ops 7","Call of Duty: Black Ops Cold War","City Transport Simulator","Civilization VII","CODE VEIN II","Company of Heroes 3","Construction Simulator","Crimson Desert","Dead Space","Demon Slayer: The Hinokami Chronicles 1","Demon Slayer: The Hinokami Chronicles 2","Demon Slayer -Kimetsu no Yaiba- Sweep the Board!","Digimon Story Time Stranger","Dirt 5","DOOM: The Dark Ages","DRAGON QUEST VII Reimagined","Dune","Echoes of Aincrad","EA SPORTS FC 24","EA SPORTS FC 25","EA SPORTS FC 26","EA SPORTS WRC","Eagle Flight","Etrian Odyssey HD","Etrian Odyssey II HD","Etrian Odyssey III HD","Evil Genius 2: World Domination","F1 23","F1 24","F1 25","F1 Manager 22","F1 Manager 23","F1 Manager 24","F1 Manager 26","Far Cry 4","Far Cry 3","Far Cry 6","Far Cry 5","Fe","FIFA 21","FIFA 22","FIFA 23","FINAL FANTASY TACTICS - The Ivalice Chronicles","Firefighting Simulator - The Squad","Football Manager 19","Football Manager 20","Football Manager 21","Football Manager 22","Football Manager 23","Football Manager 24","Football Manager 26","Forza Horizon 5","HONOR","FortiFyte","GRID Legends","Grand Theft Auto III - The Definitive Edition","Grand Theft Auto V Legacy","Harry Potter: Quidditch Champions","Hatsune Miku: Project Diva Megamix+","Hello Kitty Island Adventures","Hogwarts Legacy","Jurassic World Evolution 3","LEGO\u00ae Batman\u2122: Legacy of the Dark Knight","Like A Dragon: Gaiden","Like A Dragon: Infinite Wealth","Like A Dragon: Ishin","Like A Dragon: Pirate Yakuza In Hawaii","Lost in Random","Lost Judgment","Life is Strange: Reunion","Madden NFL 21","Madden NFL 22","Madden NFL 23","Madden NFL 24","Madden NFL 25","Madden NFL 26","Mafia: The Old Country","Marathon","Marvel's Midnight Suns","METAL GEAR SOLID V: THE PHANTOM PAIN","Microsoft Flight Simulator 2024","Might and Magic: Heroes VII \u2013 Trial by Fire","MONOPOLY 2024","Monopoly Madness","Monster Hunter Wilds","Monster Hunter Stories 3: Twisted Reflection","Mortal Kombat 1","NBA 2K24","NBA 2K25","NBA 2K26","Need for Speed Unbound","Octopath Traveler 0","OddBallers","Onimusha 2: Samurai's Destiny","Persona 3 Portable","Persona 3 Reload","Persona 4 Arena Ultimax","Persona 4 Revival","Persona 5 Tactica","PES 2018","Phantom Blade Zero","PGA TOUR 2K25","Planet Coaster 2","Planet Zoo","Planet Zoo 2","Plants vs. Zombies: Garden Warfare 2","PRAGMATA","Prince Of Persia The Lost Crown","Professional Baseball Spirits 2024","Professional Baseball Spirits 2025","Rocksmith 2014 Edition REMASTERED","RAIDOU Remastered","Red Dead Redemption 2","Redfall","Resident Evil Requiem","Resident Evil 2","Riders Republic","Sea of Thieves","Shin Megami Tensei III: Nocturne HD","Shin Megami Tensei V: Vengeance","Shinobi - Art of Vengeance","Sniper Elite 5","Sniper Elite Resistance","Sniper Elite VR","Sonic Colors Ultimate","Sonic Origins","Sonic Superstars","Sonic Racing Crossworlds","Sonic X Shadow Generations","Soul Hackers 2","Speedball","Star Wars Outlaws","Star Wars Squadrons","Stellar Blade","Street Fighter 6","Suicide Squad: Kill the Justice League","Super Mega Baseball 4","The Crew Motorfest","The Bus","The First Berserker: Khazan","The Settlers: New Allies","Tom Clancy's Ghost Recon Breakpoint","TopSpin 2K25","Total War: Warhammer 3","Train Sim World 2020","Train Sim World 3","Trials Rising","Two Point Museum","Undisputed","Valiant Hearts: Coming Home","Warhammer 40k: Chaos Gate Daemonhunters","Warhammer Age Of Sigmar: Realms Of Ruin","Watch Dogs: Legion","WWE 2K26","Yakuza Kiwami 3","Dark Ties","Zombie Army 4: Dead War","Zombie Army VR"];
 
             function normalize(t) { return t.toLowerCase().replace(/[^a-z0-9]/g, ""); }
             function score(input, game) {
@@ -1233,24 +1663,23 @@
                 expOk.style.display = "none"; expNo.style.display = "none";
                 expBypass.style.display = "none"; expWait.style.display = "none";
                 document.getElementById("explanation-purchase").style.display = "none";
-              if (!inputRaw) { result.textContent = "Tape pour commencer le scan..."; result.className = "result"; listEl.innerHTML = ""; document.getElementById("hypervisor-hint").style.display = "none"; return; }
+                if (!inputRaw) { result.textContent = "Tape pour commencer le scan..."; result.className = "result"; listEl.innerHTML = ""; document.getElementById("hypervisor-hint").style.display = "none"; return; }
                 let best = null, bestScore = 0;
                 gamesList.forEach(game => { const s = score(inputRaw, game); if (s > bestScore) { bestScore = s; best = game; } });
                 const isBypass = best && bypassGames.some(g => normalize(best) === normalize(g));
                 const isPurchase = best && purchaseList.some(g => normalize(best) === normalize(g));
                 const isWait = best && waitGamesList.some(g => normalize(best) === normalize(g));
-if (bestScore >= 70) {
-    const isHyper = HYPER_GAMES.some(g => normalize(g.name) === normalize(best) && g.status === "ok");
-    document.getElementById("hypervisor-hint").style.display = isHyper ? "flex" : "none";
-
-    if (isPurchase) { result.innerHTML = `${best} <span style="font-size:1.3rem;">💜</span>`; result.className = "result purchase"; document.getElementById("explanation-purchase").style.display = "block"; }
-    else if (isWait) { result.innerHTML = `${best} <span style="font-size:1.3rem;">⏳</span>`; result.className = "result wait"; expWait.style.display = "block"; }
-    else if (isBypass) { result.innerHTML = `${best} <span style="font-size:1.3rem;">⚠️</span>`; result.className = "result bypass-result"; expBypass.style.display = "block"; }
-    else { result.innerHTML = `${best} <span style="font-size:1.3rem;">❌</span>`; result.className = "result no"; expNo.style.display = "block"; }
-} else {
-    document.getElementById("hypervisor-hint").style.display = "none";
-    result.innerHTML = `${inputRaw} <span style="font-size:1.3rem;">✅</span>`; result.className = "result ok"; expOk.style.display = "block";
-}
+                if (bestScore >= 70) {
+                    const isHyper = HYPER_GAMES.some(g => normalize(g.name) === normalize(best) && g.status === "ok");
+                    document.getElementById("hypervisor-hint").style.display = isHyper ? "flex" : "none";
+                    if (isPurchase) { result.innerHTML = `${best} <span style="font-size:1.3rem;">💜</span>`; result.className = "result purchase"; document.getElementById("explanation-purchase").style.display = "block"; }
+                    else if (isWait) { result.innerHTML = `${best} <span style="font-size:1.3rem;">⏳</span>`; result.className = "result wait"; expWait.style.display = "block"; }
+                    else if (isBypass) { result.innerHTML = `${best} <span style="font-size:1.3rem;">⚠️</span>`; result.className = "result bypass-result"; expBypass.style.display = "block"; }
+                    else { result.innerHTML = `${best} <span style="font-size:1.3rem;">❌</span>`; result.className = "result no"; expNo.style.display = "block"; }
+                } else {
+                    document.getElementById("hypervisor-hint").style.display = "none";
+                    result.innerHTML = `${inputRaw} <span style="font-size:1.3rem;">✅</span>`; result.className = "result ok"; expOk.style.display = "block";
+                }
                 const matches = gamesList.filter(g => normalize(g).includes(normalize(inputRaw))).slice(0, 8);
                 listEl.innerHTML = matches.map(g => `<div class="item" onclick="selectGame('${g.replace(/'/g, "\\'")}')">${g}</div>`).join("");
             }
@@ -1311,7 +1740,7 @@ if (bestScore >= 70) {
                     return `<div class="gmodal-step"><div class="gmodal-step-num">${i + 1}</div><div class="gmodal-step-text"><strong>${step.title}</strong>${step.desc ? `<small>${step.desc}</small>` : ''}${passwordHTML}</div></div>`;
                 }).join('');
             }
-            function openGameModal(game) {
+            async function openGameModal(game) {
                 _currentDlKey = game.dlKey;
                 document.getElementById('gmodalHeroImg').src = game.img;
                 document.getElementById('gmodalHeroImg').alt = game.name;
@@ -1326,6 +1755,18 @@ if (bestScore >= 70) {
                 const steps = game.steps || buildDefaultSteps(game);
                 document.getElementById('gmodalSteps').innerHTML = buildStepHTML(steps);
                 document.getElementById('gmodalBody').scrollTop = 0;
+
+                // Show DL count in modal
+                const dlCountRow = document.getElementById('gmodalDlCountRow');
+                const dlCountNum = document.getElementById('gmodalDlCountNum');
+                const count = _dlCountsCache[game.dlKey] || 0;
+                if (count > 0 && dlCountRow && dlCountNum) {
+                    dlCountNum.textContent = count;
+                    dlCountRow.style.display = 'flex';
+                } else if (dlCountRow) {
+                    dlCountRow.style.display = 'none';
+                }
+
                 document.getElementById('gameModalBackdrop').classList.add('open');
                 document.body.style.overflow = 'hidden';
             }
@@ -1361,7 +1802,6 @@ if (bestScore >= 70) {
             }
 
             // ── BP_GAMES ──
-            // Pour ajouter un bypass : ajouter un objet à la FIN du tableau. Il apparaîtra automatiquement en premier dans l'historique et le popup.
             const BP_GAMES = [
                 { img: "rdr2.png", name: "Red Dead Redemption 2", pub: "Rockstar", status: "ok", dlKey: "rdr2", password: "openlua.cloud", launch: "rdr2launcher.exe" },
                 { img: "requiem.png", name: "Resident Evil Requiem", pub: "Capcom", status: "ok", dlKey: "requiem", password: "openlua.cloud", launch: "re9.exe" },
@@ -1405,10 +1845,15 @@ if (bestScore >= 70) {
                     { title: "Remplace les fichiers existants", desc: "Clique sur Remplacer quand Windows le demande." },
                     { title: "Lance le jeu", desc: "Dans les fichiers du jeu, lance via start.exe" },
                 ]},
-                 { img: "sonic.png", name: "Sonic Colors Ultimate", pub: "SEGA", status: "ok", dlKey: "sonic", launch: "Steam" },
-                
+                { img: "sonic.png", name: "Sonic Colors Ultimate", pub: "SEGA", status: "ok", dlKey: "sonic", launch: "Steam" },
+                { img: "undisputed.png", name: "Undisputed", pub: "PLAION", status: "ok", dlKey: "undisputed", warning: "Ceci n'est PAS un bypass, c'est le jeu entier!", launch: "Undisputed.exe dans les fichiers du jeu entier",  steps: [
+                    { title: "Installe le .rar", desc: "Installe le .rar fournis" },
+                    { title: "Extrait le", desc: "Utilise WinRar. Clique droit dessus Winrar puis extraire" },
+                    { title: "Ouvre Undisputed.exe", desc: "Dans les fichiers du jeu, ouvre Undisputed.exe" },
+                     ]},
             ];
 
+            // ── BP RENDER WITH DL COUNT BADGE ──
             function bpRender(list) {
                 const grid = document.getElementById('bp-grid');
                 const countEl = document.getElementById('bp-count');
@@ -1416,15 +1861,19 @@ if (bestScore >= 70) {
                 if (!grid) return;
                 if (list.length === 0) { grid.innerHTML = `<div class="bp-empty"><div class="bp-empty-icon">🔍</div><div class="bp-empty-text">Aucun bypass trouvé pour cette recherche.</div></div>`; return; }
                 grid.innerHTML = '';
+                const showDlCount = localStorage.getItem('showDlCount') === '1';
                 list.forEach(g => {
+                    const count = _dlCountsCache[g.dlKey] || 0;
                     const card = document.createElement('div');
                     card.className = 'bp-card';
+                    card.setAttribute('data-dlkey', g.dlKey);
                     card.onclick = () => openGameModal(g);
                     card.innerHTML = `
                         <div class="bp-dot ${g.status}"></div>
                         <img class="bp-card-thumb" src="${g.img}" alt="${g.name}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" loading="lazy" />
                         <div class="bp-thumb-fallback" style="background:linear-gradient(135deg,#0a0a1a,#1a1a3a)"><span style="font-size:2rem;opacity:0.4">${g.name.charAt(0)}</span></div>
                         <div class="bp-card-overlay"></div>
+                        ${count > 0 ? `<div class="bp-card-dl-count" style="display:${showDlCount ? 'flex' : 'none'}">${count}</div>` : `<div class="bp-card-dl-count" style="display:none">0</div>`}
                         <div class="bp-card-body">
                             <div class="bp-card-name">${g.name}</div>
                             <div class="bp-card-footer">
@@ -1439,6 +1888,8 @@ if (bestScore >= 70) {
             }
 
             let _activePub = null;
+            let _activeStatus = 'all';
+
             function bpBuildFilters() {
                 const pubs = [...new Set(BP_GAMES.map(g => g.pub))].sort();
                 const container = document.getElementById('bp-pub-filters');
@@ -1451,10 +1902,20 @@ if (bestScore >= 70) {
                 btn.classList.add('active');
                 bpFilter();
             }
+            function bpSetStatus(status, btn) {
+                _activeStatus = status;
+                document.querySelectorAll('#bp-status-filters .bp-status-filter').forEach(b => { b.className = 'bp-status-filter'; });
+                btn.classList.add(`active-${status === 'all' ? 'all' : status}`);
+                bpFilter();
+            }
             function bpFilter() {
                 const q = (document.getElementById('bp-search')?.value || '').toLowerCase().trim();
                 let list = BP_GAMES;
                 if (_activePub) list = list.filter(g => g.pub === _activePub);
+                if (_activeStatus !== 'all') {
+                    if (_activeStatus === 'broken') list = list.filter(g => g.status === 'broken');
+                    else list = list.filter(g => g.status === _activeStatus);
+                }
                 if (q) list = list.filter(g => g.name.toLowerCase().includes(q) || g.pub.toLowerCase().includes(q));
                 bpRender(list);
             }
@@ -1470,60 +1931,51 @@ if (bestScore >= 70) {
             function goToBypassTab() { closeNewBypassPopup(); switchTab(2); }
             document.getElementById("newBypassPopup").addEventListener("click", function(e) { if (e.target === this) closeNewBypassPopup(); });
             document.addEventListener('keydown', e => { if (e.key === 'Escape') closeGameModal(); });
-            
+
             const HISTORY_LOG = [
-     { type: "bypass", dlKey: "sonic" },
-    { type: "log", date: "07/06/2026", text: "🎉 Ajout d'un bypass les plus téléchargés dans accueil" },
-    { type: "bypass", dlKey: "riders" },
-];
+                { type: "bypass", dlKey: "undisputed" },
+                { type: "bypass", dlKey: "sonic" },
+                { type: "log", date: "07/06/2026", text: "🎉 Ajout d'un bypass les plus téléchargés dans accueil" },
+                { type: "bypass", dlKey: "riders" },
+            ];
 
-            // ══════════════════════════════════════
-            // HISTORIQUE DYNAMIQUE
-            // Les jeux en FIN de tableau = les plus récents
-            // ══════════════════════════════════════
-    function renderHistory() {
-    const container = document.getElementById('history-content');
-    if (!container) return;
-    const el = document.getElementById('history-last-date');
-    if (el) el.textContent = "07/06/2026";
+            function renderHistory() {
+                const container = document.getElementById('history-content');
+                if (!container) return;
+                const el = document.getElementById('history-last-date');
+                if (el) el.textContent = "07/06/2026";
+                const allGames = [...BP_GAMES, ...HYPER_GAMES];
+                container.innerHTML = HISTORY_LOG.map(entry => {
+                    if (entry.type === "log") {
+                        return `
+                            <div style="display:flex;align-items:center;gap:14px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:14px 18px;margin-bottom:10px;">
+                                <div style="flex-shrink:0;width:8px;height:8px;border-radius:50%;background:var(--neon-cyan);box-shadow:0 0 8px var(--neon-cyan);"></div>
+                                <div style="flex:1;">
+                                    <div style="font-size:0.93rem;color:rgba(255,255,255,0.85);font-weight:600;">${entry.text}</div>
+                                    ${entry.date ? `<div style="font-size:0.72rem;color:rgba(255,255,255,0.28);margin-top:3px;">${entry.date}</div>` : ''}
+                                </div>
+                            </div>
+                        `;
+                    } else if (entry.type === "bypass") {
+                        const g = allGames.find(x => x.dlKey === entry.dlKey);
+                        if (!g) return '';
+                        return `
+                            <div class="top-dl-card" style="margin-bottom:10px;" onclick="openGameModal(${JSON.stringify(g).replace(/"/g,'&quot;')})">
+                                <img class="top-dl-img" src="${g.img}" alt="${g.name}" onerror="this.style.opacity='0.2'" loading="lazy" />
+                                <div class="top-dl-info">
+                                    <div class="top-dl-name">${g.name}</div>
+                                    <div class="top-dl-pub">${g.pub}</div>
+                                </div>
+                                <div class="bp-badge ${g.status}" style="flex-shrink:0;">${g.status === 'ok' ? 'Fonctionnel' : g.status === 'warn' ? 'Non testé' : 'En attente'}</div>
+                                <button class="top-dl-btn" onclick="event.stopPropagation();triggerCurrentDownloadByKey('${g.dlKey}')">⬇️ Télécharger</button>
+                            </div>
+                        `;
+                    }
+                    return '';
+                }).join('');
+            }
 
-    const allGames = [...BP_GAMES, ...HYPER_GAMES];
-
-    container.innerHTML = HISTORY_LOG.map(entry => {
-        if (entry.type === "log") {
-            return `
-                <div style="display:flex;align-items:center;gap:14px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:14px 18px;margin-bottom:10px;">
-                    <div style="flex-shrink:0;width:8px;height:8px;border-radius:50%;background:var(--neon-cyan);box-shadow:0 0 8px var(--neon-cyan);"></div>
-                    <div style="flex:1;">
-                        <div style="font-size:0.93rem;color:rgba(255,255,255,0.85);font-weight:600;">${entry.text}</div>
-                        ${entry.date ? `<div style="font-size:0.72rem;color:rgba(255,255,255,0.28);margin-top:3px;">${entry.date}</div>` : ''}
-                    </div>
-                </div>
-            `;
-        } else if (entry.type === "bypass") {
-            const g = allGames.find(x => x.dlKey === entry.dlKey);
-            if (!g) return '';
-            return `
-                <div class="top-dl-card" style="margin-bottom:10px;" onclick="openGameModal(${JSON.stringify(g).replace(/"/g,'&quot;')})">
-                    <img class="top-dl-img" src="${g.img}" alt="${g.name}" onerror="this.style.opacity='0.2'" loading="lazy" />
-                    <div class="top-dl-info">
-                        <div class="top-dl-name">${g.name}</div>
-                        <div class="top-dl-pub">${g.pub}</div>
-                    </div>
-                    <div class="bp-badge ${g.status}" style="flex-shrink:0;">${g.status === 'ok' ? 'Fonctionnel' : g.status === 'warn' ? 'Non testé' : 'En attente'}</div>
-                    <button class="top-dl-btn" onclick="event.stopPropagation();triggerCurrentDownloadByKey('${g.dlKey}')">⬇️ Télécharger</button>
-                </div>
-            `;
-        }
-        return '';
-    }).join('');
-}
-
-            // ══════════════════════════════════════
-            // POPUP DYNAMIQUE (max 10 derniers bypass)
-            // ══════════════════════════════════════
             function renderNewBypassPopup() {
-                // Derniers ajoutés = fin des tableaux, on inverse et on prend les 10 premiers
                 const allGames = [...HYPER_GAMES, ...BP_GAMES].reverse().slice(0, 10);
                 const container = document.getElementById('popup-games-list');
                 if (!container) return;
@@ -1535,6 +1987,14 @@ if (bestScore >= 70) {
                         <div style="font-size:0.74rem;font-weight:700;color:var(--neon-yellow);line-height:1.25;">${g.name}</div>
                     </div>
                 `).join('');
+            }
+
+            // ── UPDATE HOME STATS ──
+            function updateHomeStats() {
+                const statBypass = document.getElementById('stat-bypass');
+                const statGames = document.getElementById('stat-games');
+                if (statBypass) statBypass.textContent = BP_GAMES.length + HYPER_GAMES.length;
+                if (statGames) statGames.textContent = gamesList.length;
             }
 
             // ── INIT ──
@@ -1550,6 +2010,24 @@ if (bestScore >= 70) {
                     if (tog) tog.checked = true;
                 }
 
+                // Card density
+                const savedDensity = localStorage.getItem('cardDensity') || 'sm';
+                const densityBtn = document.getElementById(`density-${savedDensity}`);
+                if (densityBtn) { document.querySelectorAll('.density-option').forEach(b => b.classList.remove('active')); densityBtn.classList.add('active'); }
+                const tmpl = DENSITY_MAP[savedDensity] || DENSITY_MAP.sm;
+                document.querySelectorAll('.bp-grid').forEach(g => g.style.gridTemplateColumns = tmpl);
+
+                // DL count display
+                const showDlCount = localStorage.getItem('showDlCount') === '1';
+                const dlCountTog = document.getElementById('dlcount-toggle');
+                if (dlCountTog) dlCountTog.checked = showDlCount;
+
+                // Popup toggle
+                let showPopup = localStorage.getItem('showPopup');
+                if (showPopup === null) { showPopup = '1'; localStorage.setItem('showPopup', '1'); }
+                const popupTog = document.getElementById('popup-toggle');
+                if (popupTog) popupTog.checked = (showPopup === '1');
+
                 let dlConfirm = localStorage.getItem('downloadConfirm');
                 if (dlConfirm === null) { dlConfirm = '1'; localStorage.setItem('downloadConfirm', '1'); }
                 const dlTog = document.getElementById('dlconfirm-toggle');
@@ -1560,7 +2038,7 @@ if (bestScore >= 70) {
                 hyperRender(HYPER_GAMES);
                 renderTopDownloads();
                 renderHistory();
-                // setTimeout pour s'assurer que HYPER_GAMES est bien chargé
+                updateHomeStats();
                 setTimeout(renderNewBypassPopup, 0);
 
                 setTimeout(() => {
@@ -1569,21 +2047,22 @@ if (bestScore >= 70) {
                     const tabParam = urlParams.get("tab");
                     if (tabParam && tabMap[tabParam.toLowerCase()] !== undefined) switchTab(tabMap[tabParam.toLowerCase()]);
 
-                    const hashMap = { rdr2:"rdr2", reddeadredemption2:"rdr2", rerequiem:"requiem", residentevilrequiem:"requiem", gta5:"gta5", gtav:"gta5", acunity:"acunity", assassinscreedunity:"acunity", ac2:"ac2", assassinscreed2:"ac2", watchdogslegion:"wdl", deadspace:"deadspace", blackmythwukong:"blackmyth", pes2018:"pes18", stellarblade:"stellar", pragmata:"pragmata", gta3:"gta3", mafia:"mafia", lego:"lego", doom:"doom", mirage:"acmirage", fifa22:"fifa22", farcry4:"farcry4", farcry3:"farcry3", blackops:"blackops", fifa21:"fifa21", fifa23:"fifa23", riders:"riders" };
+                    const hashMap = { rdr2:"rdr2", reddeadredemption2:"rdr2", rerequiem:"requiem", residentevilrequiem:"requiem", gta5:"gta5", gtav:"gta5", acunity:"acunity", assassinscreedunity:"acunity", ac2:"ac2", assassinscreed2:"ac2", watchdogslegion:"wdl", deadspace:"deadspace", blackmythwukong:"blackmyth", pes2018:"pes18", stellarblade:"stellar", pragmata:"pragmata", gta3:"gta3", mafia:"mafia", lego:"lego", doom:"doom", mirage:"acmirage", fifa22:"fifa22", farcry4:"farcry4", farcry3:"farcry3", blackops:"blackops", fifa21:"fifa21", fifa23:"fifa23", riders:"riders", sonic:"sonic" };
                     const hash = window.location.hash.replace("#", "").toLowerCase().replace(/[^a-z0-9]/g, "");
                     if (hash && hashMap[hash]) {
                         const game = BP_GAMES.find(g => g.dlKey === hashMap[hash]);
                         if (game) openGameModal(game);
                     }
 
-                    if (tabParam !== "bypass") document.getElementById("newBypassPopup").style.display = "flex";
+                    if (tabParam !== "bypass" && localStorage.getItem('showPopup') !== '0') {
+                        document.getElementById("newBypassPopup").style.display = "flex";
+                    }
                 }, 50);
             });
         </script>
 
         <!-- ══════════════ HYPER_GAMES ══════════════ -->
         <script>
-            // Pour ajouter un bypass Hypervisor : ajouter un objet à la FIN du tableau.
             const HYPER_GAMES = [
                 { img: "007.png", name: "007 First Light", pub: "IO Interactive", status: "ok", dlKey: "first", launch: "TOUJOURS le .exe dans les fichiers du jeu", warning: "BUILD : 23430993, ATTENTION AUX POPUPS, INSTALLEZ UN BLOQUEUR DE PUB, CLIQUER SUR TELECHARGER FERMER LA FENETRE ET RECLIQUEZ, JE NE SERAI PAS RESPONSABLE" },
                 { img: "fc26.png", name: "EA SPORTS FC 26", pub: "EA", status: "ok", dlKey: "fc26", launch: "TOUJOURS le .exe dans les fichiers du jeu", warning: "BUILD : 21803844" },
@@ -1596,6 +2075,8 @@ if (bestScore >= 70) {
                 { img: "f1.png", name: "F1 25", pub: "Codemasters", status: "warn", dlKey: "f1", launch: "TOUJOURS le .exe dans les fichiers du jeu" },
             ];
 
+            let _activeHyperStatus = 'all';
+
             function hyperRender(list) {
                 const grid = document.getElementById('hyper-grid');
                 const countEl = document.getElementById('hyper-count');
@@ -1603,15 +2084,19 @@ if (bestScore >= 70) {
                 if (!grid) return;
                 if (list.length === 0) { grid.innerHTML = `<div class="bp-empty"><div class="bp-empty-icon">🔍</div><div class="bp-empty-text">Aucun bypass Hypervisor trouvé.</div></div>`; return; }
                 grid.innerHTML = '';
+                const showDlCount = localStorage.getItem('showDlCount') === '1';
                 list.forEach(g => {
+                    const count = _dlCountsCache[g.dlKey] || 0;
                     const card = document.createElement('div');
                     card.className = 'bp-card';
+                    card.setAttribute('data-dlkey', g.dlKey);
                     card.onclick = () => openGameModal(g);
                     card.innerHTML = `
                         <div class="bp-dot ${g.status}"></div>
                         <img class="bp-card-thumb" src="${g.img}" alt="${g.name}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" loading="lazy" />
                         <div class="bp-thumb-fallback" style="background:linear-gradient(135deg,#0a0a1a,#1a1a3a)"><span style="font-size:2rem;opacity:0.4">${g.name.charAt(0)}</span></div>
                         <div class="bp-card-overlay"></div>
+                        ${count > 0 ? `<div class="bp-card-dl-count" style="display:${showDlCount ? 'flex' : 'none'}">${count}</div>` : `<div class="bp-card-dl-count" style="display:none">0</div>`}
                         <div class="bp-card-body">
                             <div class="bp-card-name">${g.name}</div>
                             <div class="bp-card-footer">
@@ -1625,9 +2110,21 @@ if (bestScore >= 70) {
                 });
             }
 
+            function hyperSetStatus(status, btn) {
+                _activeHyperStatus = status;
+                document.querySelectorAll('#hyper-status-filters .bp-status-filter').forEach(b => { b.className = 'bp-status-filter'; });
+                btn.classList.add(`active-${status === 'all' ? 'all' : status}`);
+                hyperFilter();
+            }
+
             function hyperFilter() {
                 const q = (document.getElementById('hyper-search')?.value || '').toLowerCase().trim();
-                const list = q ? HYPER_GAMES.filter(g => g.name.toLowerCase().includes(q) || g.pub.toLowerCase().includes(q)) : HYPER_GAMES;
+                let list = HYPER_GAMES;
+                if (_activeHyperStatus !== 'all') {
+                    if (_activeHyperStatus === 'broken') list = list.filter(g => g.status === 'broken');
+                    else list = list.filter(g => g.status === _activeHyperStatus);
+                }
+                if (q) list = list.filter(g => g.name.toLowerCase().includes(q) || g.pub.toLowerCase().includes(q));
                 hyperRender(list);
             }
         </script>
