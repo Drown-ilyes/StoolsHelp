@@ -2047,7 +2047,7 @@
                     const tabParam = urlParams.get("tab");
                     if (tabParam && tabMap[tabParam.toLowerCase()] !== undefined) switchTab(tabMap[tabParam.toLowerCase()]);
 
-                    const hashMap = { rdr2:"rdr2", reddeadredemption2:"rdr2", rerequiem:"requiem", residentevilrequiem:"requiem", gta5:"gta5", gtav:"gta5", acunity:"acunity", assassinscreedunity:"acunity", ac2:"ac2", assassinscreed2:"ac2", watchdogslegion:"wdl", deadspace:"deadspace", blackmythwukong:"blackmyth", pes2018:"pes18", stellarblade:"stellar", pragmata:"pragmata", gta3:"gta3", mafia:"mafia", lego:"lego", doom:"doom", mirage:"acmirage", fifa22:"fifa22", farcry4:"farcry4", farcry3:"farcry3", blackops:"blackops", fifa21:"fifa21", fifa23:"fifa23", riders:"riders", sonic:"sonic" };
+                    const hashMap = { rdr2:"rdr2", reddeadredemption2:"rdr2", rerequiem:"requiem", residentevilrequiem:"requiem", gta5:"gta5", gtav:"gta5", acunity:"acunity", assassinscreedunity:"acunity", ac2:"ac2", assassinscreed2:"ac2", watchdogslegion:"wdl", deadspace:"deadspace", blackmythwukong:"blackmyth", pes2018:"pes18", stellarblade:"stellar", pragmata:"pragmata", gta3:"gta3", mafia:"mafia", lego:"lego", doom:"doom", mirage:"acmirage", fifa22:"fifa22", farcry4:"farcry4", farcry3:"farcry3", blackops:"blackops", fifa21:"fifa21", fifa23:"fifa23", riders:"riders", sonic:"sonic", undisputed:"undisputed" };
                     const hash = window.location.hash.replace("#", "").toLowerCase().replace(/[^a-z0-9]/g, "");
                     if (hash && hashMap[hash]) {
                         const game = BP_GAMES.find(g => g.dlKey === hashMap[hash]);
