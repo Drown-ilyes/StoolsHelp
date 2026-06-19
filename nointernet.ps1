@@ -1,7 +1,7 @@
 & {
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
 
-$confirm = Read-Host '  Ce script va modifier des fichiers dans ton installation Steam. Continuer ? (O/N)'
+$confirm = Read-Host '  Veut-tu vraiment réparer le problème Pas de connexion internet ? Oui ou non'
 if ($confirm -notin @('O','o','Oui','oui','Y','y','Yes','yes')) {
     Write-Host ''
     Write-Host '  Opération annulée.' -ForegroundColor Red
