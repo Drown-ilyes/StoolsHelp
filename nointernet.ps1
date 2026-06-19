@@ -1,7 +1,7 @@
 & {
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
 
-$confirm = Read-Host '  Veut-tu vraiment réparer le problème Pas de connexion internet ? Oui ou non'
+$confirm = Read-Host '  Veut-tu vraiment enlever le probleme Pas de connexion internet ? Oui ou non'
 if ($confirm -notin @('O','o','Oui','oui','Y','y','Yes','yes')) {
     Write-Host ''
     Write-Host '  Opération annulée.' -ForegroundColor Red
